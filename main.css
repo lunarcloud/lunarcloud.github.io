@@ -1,18 +1,19 @@
-:root {
+:root, ::backdrop {
     --main-color-bg: #ccc;
     --main-color-text: #333;
-    --dialog-color-backdrop: rgba(0,0,0,0.7);
+	--dialog-color-backdrop: rgba(100, 100, 100, 0.7);
 }
 
 @media  screen and (prefers-contrast: more) {
-	:root {
+	:root, ::backdrop {
         --main-color-bg: white;
         --main-color-text: black;
+		--dialog-color-backdrop: rgba(255,255,255,0.9);
     }
 }
 
 @media print {
-	:root {
+	:root, ::backdrop {
 		--main-color-bg: white;
 	}
 	#open-about-dialog {
@@ -21,17 +22,18 @@
 } 
 
 @media screen and (prefers-color-scheme: dark) {
-	:root {
+	:root, ::backdrop {
         --main-color-bg: #333;
         --main-color-text: #ccc;
-        --dialog-color-backdrop: rgba(100, 100, 100, 0.7);
+		--dialog-color-backdrop: rgba(0,0,0,0.7);
     }
 }
 
 @media screen and (prefers-contrast: more) and (prefers-color-scheme: dark) {
-	:root {
+	:root, ::backdrop {
         --main-color-bg: black;
         --main-color-text: white;
+		--dialog-color-backdrop: rgba(0,0,0,0.9);
     }
 }
 
@@ -42,8 +44,12 @@
 
 	@keyframes fadeIn {
         0% { opacity: 0; }
-        50% { opacity: 0; }
 	    100% { opacity: 1; }
+	}
+	
+	@keyframes fadeOut {
+        0% { opacity: 1; }
+	    100% { opacity: 0; }
 	}
 
 	@keyframes slideIn {
@@ -79,7 +85,7 @@ body {
 }
 
 #main {
-    animation: fadeIn 500ms;
+	opacity: 0;
 
     padding-top: 5vh;
     padding-left: 15vw;
@@ -87,17 +93,31 @@ body {
 	font-size: 5mm
 }
 
+#main.loaded {
+	opacity: 1;
+    animation: fadeIn 500ms ease-in 0ms;
+}
+
 dialog::backdrop {
     background-color: var(--dialog-color-backdrop);
+}
+
+dialog[is='anim-dialog']::backdrop {
+	animation: fadeIn 500ms ease-out 0ms;
 }
 
 dialog[is='anim-dialog'][open] {
 	animation: slideIn 500ms ease-out 0ms;
 }
 
+dialog[is='anim-dialog'].dismissing::backdrop {
+	animation: fadeOut 500ms linear 0ms;
+}
+
 dialog[is='anim-dialog'][open].dismissing {
 	animation: slideOut 500ms linear 0ms;
 }
+
 
 #open-about-dialog {
     position: absolute;
