@@ -1,24 +1,30 @@
 
 export default class AnimatedDialogElement extends HTMLDialogElement {
 
-closing = false;
+    closing = false;
 
-constructor(){
-    super();
-}
+    constructor(){
+        super();
+    }
 
-close() {
-    if (this.closing) return;
-    this.closing = true;
+    close() {
+        if (this.closing) return;
+        this.closing = true;
 
-    this.addEventListener('animationend', () => {
-    super.close();
-    this.classList.remove("dismissing");
-    this.closing = false;
-    }, {once: true});
-    
-    this.classList.add("dismissing");
-}
+        this.classList.add("dismissing");
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+            this.#closeFinish()
+        else
+            this.addEventListener('animationend', this.#closeFinish, {once: true});
+        
+    }
+
+    #closeFinish() {
+        super.close();
+        this.classList.remove("dismissing");
+        this.closing = false;
+    }
 }
 
 // Register element
