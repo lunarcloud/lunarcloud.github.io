@@ -4,12 +4,34 @@
     --dialog-color-backdrop: rgba(0,0,0,0.7);
 }
 
+@media  screen and (prefers-contrast: more) {
+	:root {
+        --main-color-bg: white;
+        --main-color-text: black;
+    }
+}
 
-@media (prefers-color-scheme: dark) {
+@media print {
+	:root {
+		--main-color-bg: white;
+	}
+	#open-about-dialog {
+		display: none !important;
+	}
+} 
+
+@media screen and (prefers-color-scheme: dark) {
 	:root {
         --main-color-bg: #333;
         --main-color-text: #ccc;
         --dialog-color-backdrop: rgba(100, 100, 100, 0.7);
+    }
+}
+
+@media screen and (prefers-contrast: more) and (prefers-color-scheme: dark) {
+	:root {
+        --main-color-bg: black;
+        --main-color-text: white;
     }
 }
 
@@ -61,6 +83,8 @@ body {
 
     padding-top: 5vh;
     padding-left: 15vw;
+
+	font-size: 5mm
 }
 
 dialog::backdrop {
@@ -81,6 +105,8 @@ dialog[is='anim-dialog'][open].dismissing {
     right: 4px;
     font-weight: bold;
     border-radius: 50%;
+	width: 8mm;
+	font-size: 6mm;
 }
 
 #about-dialog button {
