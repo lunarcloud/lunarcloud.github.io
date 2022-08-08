@@ -1,14 +1,38 @@
 <doctype html>
 <html>
   <head>
-    <title>GitHub Page | Sam Sarette</title>
+    <title>Sam Sarette | Home</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <h1>Under Construction</h1>
-    <p>
-      This website is under construction.
-    </p>
+    <main id="main">
+      <h1>Under Construction</h1>
+      <p>
+        This website is under construction.
+      </p>
+      <button id="open-about-dialog" role="button">i</button>
+    </main>
+    <dialogs>
+      <dialog is="anim-dialog" id="about-dialog">
+        This website will be a sort of portfolio for me.
+        <button role="button">close</button>
+      </dialog>
+    </dialogs>
   </body>
   <script type="module">
+    import "./js/animated-dialog-element.js";
+
+    // On Loaded
+    window.addEventListener("load", () => {
+      // Register with CSS that we're loaded
+      document.getElementById("main").classList.add("loaded");
+
+      // Setup Modal
+      var testDialog = document.getElementById("about-dialog");
+      document.getElementById("open-about-dialog").addEventListener("click", () => testDialog.showModal());
+      testDialog.querySelector("button").addEventListener("click", () => testDialog.close());
+    });
+
   </script>
 </html>
