@@ -1,0 +1,89 @@
+:root {
+    --main-color-bg: #ccc;
+    --main-color-text: #333;
+    --dialog-color-backdrop: rgba(0,0,0,0.7);
+}
+
+
+@media (prefers-color-scheme: dark) {
+	:root {
+        --main-color-bg: #333;
+        --main-color-text: #ccc;
+        --dialog-color-backdrop: rgba(100, 100, 100, 0.7);
+    }
+}
+
+
+/* Animations */
+
+@media screen and (prefers-reduced-motion : no-preference) {
+
+	@keyframes fadeIn {
+        0% { opacity: 0; }
+        50% { opacity: 0; }
+	    100% { opacity: 1; }
+	}
+
+	@keyframes slideIn {
+		0% { transform: translateY(-30px); opacity: 0; }
+	  100% { transform: translateY(0px); opacity: 1; }
+	}
+
+	@keyframes slideOut {
+	  0% { transform: translateY(0px); opacity: 1; }
+	  100% { transform: translateY(30px); opacity: 0; }
+	}
+		
+	@keyframes wiggle {
+		0% { transform: rotate(0deg); }
+	   25% { transform: rotate(0deg); }
+	   50% { transform: rotate(6deg); }
+	   75% { transform: rotate(-6deg); }
+	  100% { transform: rotate(0deg); }
+	}
+
+	@keyframes pop {
+		0% { transform: scale(1); }
+		50% { transform: scale(1.05); }
+		100% { transform: scale(1); }
+	}
+}
+
+body {
+	font-family: system-ui, sans-serif;
+	color: var(--main-color-text);
+	background-color: var(--main-color-bg);
+    margin: 0;
+}
+
+#main {
+    animation: fadeIn 500ms;
+
+    padding-top: 5vh;
+    padding-left: 15vw;
+}
+
+dialog::backdrop {
+    background-color: var(--dialog-color-backdrop);
+}
+
+dialog[is='anim-dialog'][open] {
+	animation: slideIn 500ms ease-out 0ms;
+}
+
+dialog[is='anim-dialog'][open].dismissing {
+	animation: slideOut 500ms linear 0ms;
+}
+
+#open-about-dialog {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+#about-dialog button {
+    display: block;
+    margin: 16px auto 0;
+}
