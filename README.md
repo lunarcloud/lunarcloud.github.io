@@ -1,4 +1,7 @@
-## Welcome to GitHub Pages
+## Do it Myself
+via the index.html page
+
+## Jekyll Stuff
 
 You can use the [editor on GitHub](https://github.com/lunarcloud/lunarcloud.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
