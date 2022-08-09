@@ -112,11 +112,6 @@
     window.addEventListener("load", () => {
       // Register with CSS that we're loaded
       document.getElementById("main").classList.add("loaded");
-
-      // Setup Modal
-      var testDialog = document.getElementById("about-dialog");
-      document.getElementById("open-about-dialog").addEventListener("click", () => testDialog.showModal());
-      testDialog.querySelector("button").addEventListener("click", () => testDialog.close());
     });
 
   </script>
