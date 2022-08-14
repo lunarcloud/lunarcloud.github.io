@@ -1,3 +1,4 @@
+/* Variables */
 :root, ::backdrop {
     --main-color-bg: #ccc;
     --main-color-text: #333;
@@ -39,7 +40,6 @@
 
 
 /* Animations */
-
 @media screen and (prefers-reduced-motion : no-preference) {
 
 	@keyframes fadeIn {
@@ -75,22 +75,65 @@
 		50% { transform: scale(1.05); }
 		100% { transform: scale(1); }
 	}
+
+	@keyframes tinypop {
+		0% { transform: scale(1); }
+		50% { transform: scale(1.005); }
+		100% { transform: scale(1); }
+	}
+}
+
+/* Styles */
+html {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: fit-content;
+}
+
+html:focus-within {
+	scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html:focus-within {
+		scroll-behavior: smooth;
+	}
 }
 
 body {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+
 	font-family: system-ui, sans-serif;
 	color: var(--main-color-text);
 	background-color: var(--main-color-bg);
-    margin: 0;
+	width: 100vw;
+	
+	min-height: 100vh;
+	text-rendering: optimizeSpeed;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
 #main {
+	max-width: 100%;
 	opacity: 0;
-
-    padding-top: 5vh;
-    padding-left: 15vw;
-
-	font-size: 5mm
 }
 
 #main.loaded {
@@ -100,22 +143,6 @@ body {
 
 dialog::backdrop {
     background-color: var(--dialog-color-backdrop);
-}
-
-dialog[is='anim-dialog']::backdrop {
-	animation: fadeIn 500ms ease-out 0ms;
-}
-
-dialog[is='anim-dialog'][open] {
-	animation: slideIn 500ms ease-out 0ms;
-}
-
-dialog[is='anim-dialog'].dismissing::backdrop {
-	animation: fadeOut 500ms linear 0ms;
-}
-
-dialog[is='anim-dialog'][open].dismissing {
-	animation: slideOut 500ms linear 0ms;
 }
 
 
@@ -132,4 +159,17 @@ dialog[is='anim-dialog'][open].dismissing {
 #about-dialog button {
     display: block;
     margin: 16px auto 0;
+}
+
+hero {
+    display: block;
+	margin-top: 3vh;
+    margin-left: 10vw;
+	padding: 12px 16px 12px 6px;
+
+	font-size: 5mm
+}
+
+hero h1 {
+	font-size: 14mm;
 }

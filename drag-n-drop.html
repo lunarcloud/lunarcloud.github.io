@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sam Sarette | Home</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#37c482">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="tarot-card/tarot-card.css">
+    <style>
+      main {
+        padding: 4px;
+      }
+
+      tarot-set {
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+        min-height: 8cm;
+        padding: 4px 8px;
+        border: 1px solid yellow;
+        margin-bottom: 12px;
+      }
+
+      #active-cards {
+
+      }
+    </style>
+  </head>
+  <body>
+    <main id="main">
+      <hero>
+        <h1>Drag n' Drop Demo</h1>
+        <p>
+          mess around with this:
+        </p>
+      </hero>
+      <tarot-set id="available-cards">
+        <tarot-card id="A">A</tarot-card>
+        <tarot-card id="B">B</tarot-card>
+        <tarot-card id="C">C</tarot-card>
+      </tarot-set>
+
+      <tarot-set id="active-cards">
+      </tarot-set>
+    </main>
+  </body>
+  <script type="module">
+    import TarotSetElement from "./tarot-card/tarot-set-element.js";
+    import TarotCardElement from "./tarot-card/tarot-card-element.js";
+
+    // On Loaded
+    window.addEventListener("load", () => {
+      // Register with CSS that we're loaded
+      document.getElementById("main").classList.add("loaded");
+    });
+
+  </script>
+</html>
