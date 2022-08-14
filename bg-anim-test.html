@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="main.css">
     <style>
       main {
-        padding: 40px !important; /* Fix main css to not have padding by default */
+        padding: 40px;
       }
 
       @keyframes celestialSpin {
@@ -106,8 +106,6 @@
     </dialogs>
   </body>
   <script type="module">
-    import "./js/animated-dialog-element.js";
-
     // On Loaded
     window.addEventListener("load", () => {
       // Register with CSS that we're loaded

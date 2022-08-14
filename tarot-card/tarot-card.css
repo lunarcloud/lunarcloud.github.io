@@ -1,0 +1,57 @@
+tarot-card {
+  display: inline-block;
+  position: relative;
+  width: 7cm;
+  height: 12cm;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+
+  --tarot-card-backside-color-bg: rgb(103, 104, 85);
+  --tarot-card-color-bg: #ddd;
+  --tarot-card-color-border: rgba(80, 80, 80, 0.9);
+  --tarot-card-color-text: #333;
+
+  background-color: var(--tarot-card-color-bg);
+  color: var(--tarot-card-color-text);
+  border: 2px solid var(--tarot-card-color-border);
+  border-radius: 8px;
+}
+
+tarot-card::after {
+  content: "backside";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  z-index: 3;
+
+  background-color: var(--tarot-card-backside-color-bg);
+  color: var(--tarot-card-color-text);
+
+  visibility: hidden;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  tarot-card {
+    --tarot-card-backside-color-bg: rgb(41, 41, 24);
+    --tarot-card-color-bg: #444;
+    --tarot-card-color-border: rgba(45, 33, 33, 0.9);
+    --tarot-card-color-text: #ccc;
+  }
+}
+
+tarot-card:hover:not([holding]):not([dragging]) {
+  border: 2px solid rgba(255, 255, 255, 1);
+  cursor: grab;
+}
+
+tarot-card[holding] {
+  animation: pop 600ms;
+  cursor: grabbing;
+}
+
+tarot-card[holding]::after,
+tarot-card[dragging]::after
+{
+  visibility: visible;
+}

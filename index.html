@@ -1,4 +1,4 @@
-<doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Sam Sarette | Home</title>
@@ -8,15 +8,18 @@
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="animated-dialog/animated-dialog.css">
     <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
   </head>
   <body>
+    <button id="open-about-dialog" role="button">i</button>
     <main id="main">
-      <h1>Under Construction</h1>
-      <p>
-        This website is under construction.
-      </p>
-      <button id="open-about-dialog" role="button">i</button>
+      <hero>
+        <h1>Under Construction</h1>
+        <p>
+          This website is under construction.
+        </p>
+      </hero>
     </main>
     <dialogs>
       <dialog is="anim-dialog" id="about-dialog">
@@ -26,7 +29,7 @@
     </dialogs>
   </body>
   <script type="module">
-    import "./js/animated-dialog-element.js";
+    import "./animated-dialog/animated-dialog-element.js";
 
     // On Loaded
     window.addEventListener("load", () => {
