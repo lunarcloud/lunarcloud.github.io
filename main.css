@@ -3,7 +3,10 @@
 	font-family: 'Sam Handwritten A';
 	src: url('font/SamHandwrittenA-Regular.woff2');
 }
-
+@font-face {
+	font-family: 'Sam Sci-Fi';
+	src: url('font/SamSci_fi-Regular.woff2');
+}
 
 /* Variables */
 :root, ::backdrop {
@@ -17,6 +20,9 @@
 
 	--main-font-headers: 'Sam Handwritten A', sans-serif;
 	--main-font-body: 'Sam Handwritten A', sans-serif;
+
+	--odd-font-headers: 'Sam Sci-Fi', sans-serif;
+	--odd-font-body: 'Sam Sci-Fi', sans-serif;
 }
 
 @media  screen and (prefers-contrast: more) {
