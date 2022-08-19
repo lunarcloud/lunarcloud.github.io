@@ -1,16 +1,25 @@
+/* fonts */
+@font-face {
+	font-family: 'Sam Handwritten A';
+	src: url('font/SamHandwrittenA-Regular.woff2');
+}
+
+
 /* Variables */
 :root, ::backdrop {
-    --main-color-bg: #ccc;
-    --main-color-text: #333;
+	--main-color-bg: #ccc;
+	--main-color-text: #333;
 	--dialog-color-backdrop: rgba(100, 100, 100, 0.7);
+	--main-font-headers: 'Sam Handwritten A', sans-serif;
+	--main-font-body: 'Sam Handwritten A', sans-serif;
 }
 
 @media  screen and (prefers-contrast: more) {
 	:root, ::backdrop {
-        --main-color-bg: white;
-        --main-color-text: black;
+		--main-color-bg: white;
+		--main-color-text: black;
 		--dialog-color-backdrop: rgba(255,255,255,0.9);
-    }
+		}
 }
 
 @media print {
@@ -24,18 +33,18 @@
 
 @media screen and (prefers-color-scheme: dark) {
 	:root, ::backdrop {
-        --main-color-bg: #333;
-        --main-color-text: #ccc;
+		--main-color-bg: #333;
+		--main-color-text: #ccc;
 		--dialog-color-backdrop: rgba(0,0,0,0.7);
-    }
+	}
 }
 
 @media screen and (prefers-contrast: more) and (prefers-color-scheme: dark) {
 	:root, ::backdrop {
-        --main-color-bg: black;
-        --main-color-text: white;
+		--main-color-bg: black;
+		--main-color-text: white;
 		--dialog-color-backdrop: rgba(0,0,0,0.9);
-    }
+	}
 }
 
 
@@ -43,31 +52,31 @@
 @media screen and (prefers-reduced-motion : no-preference) {
 
 	@keyframes fadeIn {
-        0% { opacity: 0; }
-	    100% { opacity: 1; }
+				0% { opacity: 0; }
+			100% { opacity: 1; }
 	}
 	
 	@keyframes fadeOut {
-        0% { opacity: 1; }
-	    100% { opacity: 0; }
+				0% { opacity: 1; }
+			100% { opacity: 0; }
 	}
 
 	@keyframes slideIn {
 		0% { transform: translateY(-30px); opacity: 0; }
-	  100% { transform: translateY(0px); opacity: 1; }
+		100% { transform: translateY(0px); opacity: 1; }
 	}
 
 	@keyframes slideOut {
-	  0% { transform: translateY(0px); opacity: 1; }
-	  100% { transform: translateY(30px); opacity: 0; }
+		0% { transform: translateY(0px); opacity: 1; }
+		100% { transform: translateY(30px); opacity: 0; }
 	}
 		
 	@keyframes wiggle {
 		0% { transform: rotate(0deg); }
-	   25% { transform: rotate(0deg); }
-	   50% { transform: rotate(6deg); }
-	   75% { transform: rotate(-6deg); }
-	  100% { transform: rotate(0deg); }
+		25% { transform: rotate(0deg); }
+		50% { transform: rotate(6deg); }
+		75% { transform: rotate(-6deg); }
+		100% { transform: rotate(0deg); }
 	}
 
 	@keyframes pop {
@@ -115,20 +124,29 @@ body {
 	margin: 0;
 	padding: 0;
 
-	font-family: system-ui, sans-serif;
 	color: var(--main-color-text);
 	background-color: var(--main-color-bg);
 	width: 100vw;
 	
 	min-height: 100vh;
 	text-rendering: optimizeSpeed;
+	font-family: var( --main-font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var( --main-font-headers);
 }
 
 input,
 button,
 textarea,
 select {
-  font: inherit;
+	font: inherit;
 }
 
 #main {
@@ -138,33 +156,33 @@ select {
 
 #main.loaded {
 	opacity: 1;
-    animation: fadeIn 500ms ease-in 0ms;
+		animation: fadeIn 500ms ease-in 0ms;
 }
 
 dialog::backdrop {
-    background-color: var(--dialog-color-backdrop);
+		background-color: var(--dialog-color-backdrop);
 }
 
 
 #open-about-dialog {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    font-weight: bold;
-    border-radius: 50%;
+		position: absolute;
+		top: 4px;
+		right: 4px;
+		font-weight: bold;
+		border-radius: 50%;
 	width: 8mm;
 	font-size: 6mm;
 }
 
 #about-dialog button {
-    display: block;
-    margin: 16px auto 0;
+		display: block;
+		margin: 16px auto 0;
 }
 
 hero {
-    display: block;
+		display: block;
 	margin-top: 3vh;
-    margin-left: 10vw;
+		margin-left: 10vw;
 	padding: 12px 16px 12px 6px;
 
 	font-size: 5mm
