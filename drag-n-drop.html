@@ -31,6 +31,7 @@
     </style>
   </head>
   <body>
+    <a is="fadeout-anchor" href="./">Back</a>
     <main id="main">
       <hero>
         <h1>Drag n' Drop Demo</h1>
@@ -51,12 +52,6 @@
   <script type="module">
     import TarotSetElement from "./tarot-card/tarot-set-element.js";
     import TarotCardElement from "./tarot-card/tarot-card-element.js";
-
-    // On Loaded
-    window.addEventListener("load", () => {
-      // Register with CSS that we're loaded
-      document.getElementById("main").classList.add("loaded");
-    });
-
+    import "./page-fade/page-fade.js";
   </script>
 </html>

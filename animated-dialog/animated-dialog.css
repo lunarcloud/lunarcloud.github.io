@@ -32,10 +32,10 @@ dialog[is='anim-dialog'][open] {
 	animation: AnimDialogSlideIn 500ms ease-out 0ms;
 }
 
-dialog[is='anim-dialog'].dismissing::backdrop {
+dialog[is='anim-dialog'][dismissing]::backdrop {
 	animation: AnimDialogFadeOut 500ms linear 0ms;
 }
 
-dialog[is='anim-dialog'][open].dismissing {
+dialog[is='anim-dialog'][open][dismissing] {
 	animation: AnimDialogSlideOut 500ms linear 0ms;
 }

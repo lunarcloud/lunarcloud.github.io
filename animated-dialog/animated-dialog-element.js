@@ -11,7 +11,7 @@ export default class AnimatedDialogElement extends HTMLDialogElement {
         if (this.closing) return;
         this.closing = true;
 
-        this.classList.add("dismissing");
+        this.toggleAttribute("dismissing", true);
 
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
             this.#closeFinish()
@@ -22,7 +22,7 @@ export default class AnimatedDialogElement extends HTMLDialogElement {
 
     #closeFinish() {
         super.close();
-        this.classList.remove("dismissing");
+        this.toggleAttribute("dismissing", false);
         this.closing = false;
     }
 }

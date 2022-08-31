@@ -1,11 +1,9 @@
+@import url('./page-fade/page-fade.css');
+
 /* fonts */
 @font-face {
 	font-family: 'Sam Handwritten A';
 	src: url('font/SamHandwrittenA-Regular.woff2');
-}
-@font-face {
-	font-family: 'Sam Sci-Fi';
-	src: url('font/SamSci_fi-Regular.woff2');
 }
 
 /* Variables */
@@ -20,9 +18,6 @@
 
 	--main-font-headers: 'Sam Handwritten A', sans-serif;
 	--main-font-body: 'Sam Handwritten A', sans-serif;
-
-	--odd-font-headers: 'Sam Sci-Fi', sans-serif;
-	--odd-font-body: 'Sam Sci-Fi', sans-serif;
 }
 
 @media  screen and (prefers-contrast: more) {
@@ -196,15 +191,9 @@ a:visited {
 	opacity: 0;
 }
 
-#main.loaded {
-	opacity: 1;
-		animation: fadeIn 500ms ease-in 0ms;
-}
-
 dialog::backdrop {
-		background-color: var(--dialog-color-backdrop);
+	background-color: var(--dialog-color-backdrop);
 }
-
 
 #open-about-dialog {
 	position: absolute;
