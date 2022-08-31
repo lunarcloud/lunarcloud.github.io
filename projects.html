@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sam Sarette | Test | Tarot Drag N' Drop</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#37c482">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <style>
+      main {
+        padding: 4px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main id="main">
+      <a is="fadeout-anchor" href="./">Back</a>
+      <h1>Projects List Demo</h1>
+      <ul id="all-projects">
+        <project-display id="ataito-game" tags="gamedev,godot,xr,amateur,shaders">
+            <span slot="title">Ataito: Spirit Swapper</span>
+            <span slot="description">
+              <p>VR Game written in Godot.</p>
+              <p>There were a lot of shaders we learned about.</p>
+            </span>
+        </project-display>
+
+        <project-display id="ataito-game" tags="gamedev,unity,xr,professional">
+          <span slot="title">VR Labratory</span>
+          <span slot="description">
+            <p>VR experience for marketing of KMC Systems at a trade show.</p>
+            <p>Used 360 camera, VR Interaction Framework, imported models, etc</p>
+          </span>
+      </project-display>
+      </ul>
+
+    </main>
+  </body>
+  <script type="module">
+    import ProjectDisplayElement from "./project-display/project-display-element.js";
+    import "./page-fade/page-fade.js";
+  </script>
+</html>

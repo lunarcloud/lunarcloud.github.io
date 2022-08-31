@@ -101,6 +101,7 @@
     </style>
   </head>
   <body>
+    <a is="fadeout-anchor" href="./">Back</a>
     <main id="main">
       <h1>Celestial Body Animations<small>with pseudo-3d rotation</small></h1>
       
@@ -122,11 +123,6 @@
     </dialogs>
   </body>
   <script type="module">
-    // On Loaded
-    window.addEventListener("load", () => {
-      // Register with CSS that we're loaded
-      document.getElementById("main").classList.add("loaded");
-    });
-
+    import "./page-fade/page-fade.js";
   </script>
 </html>

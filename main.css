@@ -1,9 +1,10 @@
+@import url('./page-fade/page-fade.css');
+
 /* fonts */
 @font-face {
 	font-family: 'Sam Handwritten A';
 	src: url('font/SamHandwrittenA-Regular.woff2');
 }
-
 
 /* Variables */
 :root, ::backdrop {
@@ -190,15 +191,9 @@ a:visited {
 	opacity: 0;
 }
 
-#main.loaded {
-	opacity: 1;
-		animation: fadeIn 500ms ease-in 0ms;
-}
-
 dialog::backdrop {
-		background-color: var(--dialog-color-backdrop);
+	background-color: var(--dialog-color-backdrop);
 }
-
 
 #open-about-dialog {
 	position: absolute;

@@ -1,0 +1,53 @@
+internal {
+  --project-display-color-bg: #ddd;
+  --project-display-color-border: rgba(80, 80, 80, 0.9);
+  --project-display-color-text: #333;
+
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  justify-items: stretch;
+
+  background-color: var(--project-display-color-bg);
+  color: var(--project-display-color-text);
+  border: 2px solid var(--project-display-color-border);
+  border-radius: 8px;
+  padding-right: 12px;
+  margin: 12px 6px;
+  overflow: hidden;
+}
+
+
+@media screen and (prefers-color-scheme: dark) {
+  internal {
+    --project-display-backside-color-bg: rgb(41, 41, 24);
+    --project-display-color-bg: #444;
+    --project-display-color-border: rgba(45, 33, 33, 0.9);
+    --project-display-color-text: #ccc;
+  }
+}
+
+internal > .thumbnail {
+  align-self: stretch;
+  margin-right: 1rem;
+  grid-column: 1;
+  grid-row: 1 / 4;
+}
+
+internal > :not(.thumbnail) {
+  grid-column: 2;
+}
+
+internal ul.tags {
+  margin: 4px;
+}
+
+internal ul.tags > li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+internal ul.tags > li > a {
+  cursor: pointer;
+  user-select: all;
+}
+
