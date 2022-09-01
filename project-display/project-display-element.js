@@ -29,6 +29,17 @@ export default class ProjectDisplayElement extends HTMLElement {
             listItemEl.appendChild(anchorEl);
             clone.querySelector("ul.tags").appendChild(listItemEl);
         });
+
+        // Set Background of thumbnail
+        if (this.hasAttribute("thumbnail")) {
+            clone.querySelector(".thumbnail").style.backgroundImage = `url(${this.getAttribute("thumbnail")})`;
+        }
+
+        // Set Title
+        if (this.hasAttribute("title")) {
+            clone.querySelector(".title").textContent = this.getAttribute("title");
+        }
+        
         
         shadow.appendChild(clone);
     }
