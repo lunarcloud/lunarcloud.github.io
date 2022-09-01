@@ -4,15 +4,15 @@ internal {
   --project-display-color-text: #333;
 
   display: inline-grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: max(128px, 30%) auto;
   justify-items: stretch;
 
-  background-color: var(--project-display-color-bg);
   color: var(--project-display-color-text);
   border: 2px solid var(--project-display-color-border);
   border-radius: 8px;
-  padding-right: 12px;
   margin: 12px 6px;
+  width: calc(100% - 28px); /* full, minus 12px*2 margin and 2px*2 border */
+  min-width: 540px;
   overflow: hidden;
 }
 
@@ -28,13 +28,22 @@ internal {
 
 internal > .thumbnail {
   align-self: stretch;
-  margin-right: 1rem;
+  height: 100%;
   grid-column: 1;
-  grid-row: 1 / 4;
+  background-color: rgba(0,0,0,0.2);
+  display: block;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
 }
 
-internal > :not(.thumbnail) {
+internal > .info {
   grid-column: 2;
+  background-color: var(--project-display-color-bg);
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
 }
 
 internal ul.tags {
@@ -51,3 +60,6 @@ internal ul.tags > li > a {
   user-select: all;
 }
 
+internal .hidden {
+  display: none !important;
+}

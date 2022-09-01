@@ -2,10 +2,15 @@
     <body>
         <template id="project-display-template">
             <internal>
-                <img class="thumbnail" src="//placehold.co/96x128" />
-                <h1><slot name="title">TBD Title</slot></h1>
-                <slot name="description"><p>TBD Description</p></slot>
-                <ul class="tags"></ul>
+                <div class="thumbnail"></div>
+                <div class="info">
+                    <h1 class="title">Project Unknown</h1>
+                    <p class="for hidden"></p>
+                    <p class="timeframe hidden"><time class="start" datetime="" /> - <time class="last" datetime="" /></p>
+                    <p class="published hidden">Published: <time datetime="" /></p>
+                    <slot name="description"><p>Description Not Provided</p></slot>
+                    <ul class="tags"></ul>
+                </div>
             </internal>
         </template>
     </body>
