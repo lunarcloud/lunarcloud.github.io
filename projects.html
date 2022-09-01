@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sam Sarette | Test | Tarot Drag N' Drop</title>
+    <title>Sam Sarette | Test | Projects</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#37c482">
@@ -11,6 +11,7 @@
     <style>
       main {
         padding: 4px;
+        font-size: 12pt;
       }
 
       #all-projects {
@@ -35,25 +36,86 @@
         Projects <together>List Demo</together>
       </h1>
       <div id="all-projects">
-        <project-display 
-          id="ataito-game"
-          title="Ataito: The Spirit Swapper"
-          for="Sam & Malcolm Team"
-          tags="gamedev,godot,xr,amateur,shaders"
-          thumbnail="//placehold.co/96x128"
-          released="2022-01-30"
-          first="2022-01-28" last="2022-06-26"
-          link-main="https://malcolmnixon.itch.io/ataito-the-spirit-swapper"
-          link-repo="https://github.com/Malcolmnixon/Ataito-Game "
+          
+      <project-display 
+          id="kmc-int-1"
+          title="Internal Utility Project #1"
+          for="KMC Systems"
+          tags="professional"
+          first="2012-03-10" last="2012-08-17"
+          link-main-repo-announcement=""
           >
-            <span slot="description">
-              <p>Hosted and Participated in Global Game Jam, online with the Southern NH Game Dev Meetup in 2022.</p>
-              <p>First Project using the Godot game engine's XR Toolkit</p>
-              <p>Created shaders, Some modelling and texturing, mechanics programming, level design, foley sound effects work.</p>
-            </span>
-        </project-display>
+          <span slot="description">
+            <p>Documentation Template Application in PHP</p>
+          </span>
+      </project-display>
 
-        <project-display 
+      <project-display 
+          id="kmc-ge-spinlab-1"
+          title="GE SpinLab™ Hyperpolarizer"
+          for="KMC Systems"
+          tags="professional"
+          first="2012-08-20" last="2013-09-20"
+          link-announcement="https://www.medgadget.com/2014/05/ge-releases-spinlab-mri-hyperpolarizer-for-cellular-imaging-of-metabolic-activity.html"
+          >
+          <span slot="description">
+            <p>C++ Qt4 UI</p>
+          </span>
+        
+      <project-display 
+          id="kmc-roche-bloodhound"
+          title="Roche Cobas m511 with Bloodhound® technology"
+          for="KMC Systems"
+          tags="professional"
+          first="2013-09-20" last="2017-05-17"
+          link-announcement="https://www.prnewswire.com/news-releases/roche-launches-the-new-cobas-m-511-analyzer-signaling-a-new-era-in-hematology-testing-300610789.html"
+          >
+          <span slot="description">
+            <p>Java, Javascript</p>
+            <p>Manufacturing Software Suite & Service Technician Software</p>
+            <p>Web Application using Robotics Control API, Barcodes</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="kmc-bmx-vmsp"
+          title="bioMérieux VITEK® MS PRIME"
+          for="KMC Systems"
+          tags="professional"
+          first="2017-01-06" last="2022-09-01"
+          link-announcement="https://www.linkedin.com/posts/activity-6856616798125649920-paoh"
+          >
+          <span slot="description">
+            <p>Java, Typescript, Angular, SQL</p>
+            <p>Business Logic Architect, Unit Tests, PostgreSQL Database, Angular UX, Installer, Manufacturing Procedures, SQE-Supporting Scripts, Continuous Integration</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="kmc-int-2"
+          title="Internal Utility Project #2"
+          for="KMC Systems"
+          tags="professional"
+          first="2020-11-04" last="2022-04-14"
+          >
+          <span slot="description">
+            <p>C# Desktop Application with Installer and Cross-Platform Avalonia XAML GUI</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="kmc-ge-spinlab-mpqc"
+          title="GE SpinLab™ Hyperpolarizer - Extension"
+          for="KMC Systems"
+          tags="professional"
+          first="2021-05-19"
+          >
+          <span slot="description">
+            <p>Robotics, Business Logic, UI, Installer</p>
+          </span>
+      </project-display>
+        
+      <project-display 
           id="vr-lab"
           title="Virtual Medical Labratory"
           for="KMC Systems"
@@ -68,165 +130,299 @@
             <p>Shown at the AACC Annual Scientific Meeting & Clinical Lab Expo 2021 (Sept 26-30).</p>
           </span>
       </project-display>
-
-      <!-- 
-        TODO:
-
-        ## Professional
-
-        # GE SpinLab™ Hyperpolarizer (via KMC Systems)
-        https://www.medgadget.com/2014/05/ge-releases-spinlab-mri-hyperpolarizer-for-cellular-imaging-of-metabolic-activity.html
-        C++ Qt4 UI
-
-        # KMC Systems - Internal Utility Project #1
-        Documentation Template Application in PHP
-
-        # Roche Cobas m511 with Bloodhound® technology (via KMC Systems)
-        https://www.prnewswire.com/news-releases/roche-launches-the-new-cobas-m-511-analyzer-signaling-a-new-era-in-hematology-testing-300610789.html
-        Java, Javascript
-        Manufacturing Software Suite & Service Technician Software
-        Web Application using Robotics Control API, Barcodes
-
-        # bioMérieux VITEK® MS PRIME (via KMC Systems)
-        https://www.linkedin.com/posts/activity-6856616798125649920-paoh
-        Java, Typescript, Angular, SQL
-        Business Logic Architect, Unit Tests, PostgreSQL Database, Angular UX,
-        Installer, Manufacturing Procedures, SQE-Supporting Scripts, Continuous Integration
-
-        # GE SpinLab™ Hyperpolarizer - Extension (via KMC Systems)
-        Robotics, Business Logic, UI, Installer
-
-        # KMC Systems - Internal Utility Project #2
-        C# Desktop Application with Installer and Cross-Platform Avalonia XAML GUI
-
-        # KMC Systems Virtual Labratory
-        2021-09-26
-        2021-08-02 - 2021-09-20 
-        https://www.linkedin.com/posts/kmc-systems-inc-_innovation-activity-6857727563062620161-mGuG
-        Unity 3D VR experience for trade show and marketing installation, 360 photography, environment and interaction design.
-        Shown at the AACC Annual Scientific Meeting & Clinical Lab Expo 2021 (Sept 26-30)
-
-        # KMC Systems - Internal Utility Project #3
-        C# ASP MVC Progressive Web Application
-
-        # KMC Systems - Internal Utility Project #4
-        Installer and NuGet packaging for C# and C++ Embedded & RPC SDK
-
-        ## Games
-
-        # Gerstenberg Heroes
-        2016-11-13
-        2016-11-11 - 2021-08-06
-        https://citizensofantiford.itch.io/gerstenberg-heroes
-        https://citizensofantiford.com/game?jam&year=2016&month=november
-        Sponsored and Participated in game jam at NHTI in 2016.
-
-        # Switchboard Copper
-        2018-01-28
-        2018-01-26 - 2019-10-11
-        https://citizensofantiford.itch.io/switchboard-copper
-        https://github.com/lunarcloud/visual-novel-GGJ-2018/
-        Sponsored and Participated in game jam at NHTI in 2018.
-
-        # Homeworlds
-        2019-02-27
-        2019-01-21 - 2019-02-03
-        https://samsarette.itch.io/homeworlds
-        Participated in Global Game Jam at NHTI in 2019.
-
-        # Nathan Powell's Wild Araz
-        2019-08-10
-        https://citizensofantiford.itch.io/wild-araz
-        Beta Tester and Release Engineer for a friend's game.
-        See "RPG Maker (XP, VX, VX Ace) Installer Creation Scripts"
-
-        # Shipwreck
-        2020-02-2
-        2020-01-31 - 2020-02-02
-        https://samsarette.itch.io/shipwreck
-        Participated in Global Game Jam at NHTI in 2020.
-
-        # The Color Below
-        2020-08-03
-        2020-07-30 - 2022-04-02
-        https://samsarette.itch.io/color-below 
-        Participated in the InkJam game jam online in 2020.
-        Mentored writer in "Ink" technology, and helped artist with technical aspects.
-        Developed the game with the Godot game engine using the Ink narrative middleware.
-
-        # Ataito: The Spirit Swapper
-        2022-01-30
-        2022-01-28 - 2022-06-26
-        https://malcolmnixon.itch.io/ataito-the-spirit-swapper
-        https://github.com/Malcolmnixon/Ataito-Game 
-        Hosted and Participated in Global Game Jam, online with the Southern NH Game Dev Meetup in 2022.
-        First First Project using the Godot game engine's XR Toolkit.
-        Created shaders, Some modelling and texturing, level design, foley sound effects work. 
-
-        ## Other
-
-        # IGDANH Presentation - Interactive Storytelling with Ink
-        2019-05-14
-        https://www.meetup.com/igda-new-hampshire-game-development-meetup/events/260827461/ 
-        Presented to NH game developers on the Ink narrative middleware.
         
-        # Script-Dialog 
-        2014-10-07 - 2022-05-21
-        https://github.com/lunarcloud/script-dialog 
-        Linux bash library for TUI/GUI dialogs.
-
-        # Ballpoint: Friendly Wrapper for Ink on Unity
-        2020-09-09 - 2020-10-14
-        https://github.com/lunarcloud/ballpoint-unity
-        OpenUPM packaged addon for using Ink middleware with Unity game engine.
-
-        # Godot XR Toolkit
-        2022-05-19 - 2022-08-01
-        https://github.com/GodotVR/godot-xr-tools
-        Contributed ranged grab logic, editor node icons, consulted on design.
-
-        # Inky (Writing App for Ink)
-        2019-10-18 - 2022-06-15
-        https://github.com/inkle/inky
-        Contributed to dark mode feature, web template improvements, linux packaging, keyboard shortcuts. 
-
-        # PlayDate Project Build Scripts
-        2022-06-10
-        https://github.com/lunarcloud/playdate-project-build-scripts
-        Command-line script (windows and linux variants) for building PlayDate SDK projects.
-
-        # PlayDate Visual Studio Code Addon
-        2022-05-13 - 2022-05-18
-        https://github.com/orta/vscode-playdate
-        Contributed Linux fixes
-
-        # Godot (Gamepad) Rumble Demo
-        2022-02-10 - 2022-02-13
-        https://godotengine.org/asset-library/asset/1230
-        https://github.com/lunarcloud/godot-rumble-example-project/ 
-        Example Project for using gamepad rumble with the Godot game engine.
-
-        # RPG Maker (XP, VX, VX Ace) Installer Creation Scripts 
-        2015-09-02 - 2022-05-16
-        https://github.com/lunarcloud/rpg-maker-vx-installer-scripts
-        Used on and developed for "Nathan Powell's Wild Araz", 
-        These scripts will create a number of installers for Windows, Mac, and Linux 
-        - for games made with the ruby-powered RPG Maker game engine.
-
-        # Qt Enhanced Project Template
-        2013-05--5  - 2018-12-13
-        https://github.com/lunarcloud/qt-enhanced-project-template 
-        Project Template for the Qt Creator IDE to produce a desktop application 
-        with icons, a main window, support for native OS dock menus, and styling.
-        Also includes a default README with an explanation on how to deploy / create installers.
-
-        # GameInputJS
-        2015-11-01 - 2019-05-05
-        https://github.com/lunarcloud/gameinputjs
-        Javascript library for using gamepads with a standardized mapping, 
-        and APIs for getting the gamepads' type, icons, button names.  
-
-       -->
+      <project-display 
+          id="kmc-int-3"
+          title="Internal Utility Project #3"
+          for="KMC Systems"
+          tags="professional"
+          first="2022-05-11" last="2022-08-02"
+          link-main-repo-announcement=""
+          >
+          <span slot="description">
+            <p>C# ASP MVC Progressive Web Application</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="kmc-int-4"
+          title="Internal Utility Project #4"
+          for="KMC Systems"
+          tags="professional"
+          first="2022-08-11"
+          >
+          <span slot="description">
+            <p>Installer and NuGet packaging for C# and C++ Embedded & RPC SDK</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="antiford-gerstenberg-heroes-game"
+          title="Gerstenberg Heroes"
+          for="Citizens of Antiford"
+          tags="hobbyist"
+          released="2016-11-13"
+          first="2016-11-11" last="2021-08-06"
+          link-main="https://citizensofantiford.itch.io/gerstenberg-heroes"
+          link-announcement="https://citizensofantiford.com/game?jam&year=2016&month=november"
+          >
+          <span slot="description">
+            <p>Sponsored and Participated in game jam at NHTI in 2016.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="antiford-switchboard-copper-game"
+          title="Switchboard Copper"
+          for="Citizens of Antiford"
+          tags="hobbyist"
+          released="2018-01-28"
+          first="2018-01-26" last="2019-10-11"
+          link-main="https://citizensofantiford.itch.io/switchboard-copper"
+          link-repo="https://github.com/lunarcloud/visual-novel-GGJ-2018/"
+          >
+          <span slot="description">
+            <p>Sponsored and Participated in game jam at NHTI in 2018.</p>
+            <p>TODO Used as example of Ink in many game engines</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="homeworlds-game"
+          title="Homeworlds"
+          for="Personal"
+          tags="hobbyist"
+          released="2019-02-27"
+          first="2019-01-21" last="2019-02-03"
+          link-main="https://samsarette.itch.io/homeworlds"
+          >
+          <span slot="description">
+            <p>Participated in Global Game Jam at NHTI in 2019.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="antiford-wild-araz"
+          title="Nathan Powell's Wild Araz"
+          for="Citizens of Antiford"
+          tags="hobbyist,support"
+          released="2019-08-10"
+          link-main="https://citizensofantiford.itch.io/wild-araz"
+          >
+          <span slot="description">
+            <p> Beta Tester and Release Engineer for a friend's game.</p>
+            <p>See "RPG Maker Installer Creation Scripts"</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="shipwreck-game"
+          title="Shipwreck"
+          for="Personal"
+          tags="hobbyist"
+          released="2020-02-02"
+          first="2020-01-31" last="2020-02-02"
+          link-main="https://samsarette.itch.io/shipwreck"
+          >
+          <span slot="description">
+            <p>Participated in Global Game Jam at NHTI in 2020.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="color-below-game"
+          title="The Color Below"
+          for="Personal"
+          tags="hobbyist"
+          released="2020-08-03"
+          first="2020-07-30" last="2022-04-02"
+          link-main="https://samsarette.itch.io/color-below"
+          >
+          <span slot="description">
+            <p>Participated in the InkJam game jam online in 2020.</p>
+            <p>Mentored writer in "Ink" technology, and helped artist with technical aspects..</p>
+            <p>Developed the game with the Godot game engine using the Ink narrative middleware.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="ataito-game"
+          title="Ataito: The Spirit Swapper"
+          for="Sam & Malcolm Team"
+          tags="gamedev,godot,xr,hobbyist,shaders"
+          thumbnail="//placehold.co/96x128"
+          released="2022-01-30"
+          first="2022-01-28" last="2022-06-26"
+          link-main="https://malcolmnixon.itch.io/ataito-the-spirit-swapper"
+          link-repo="https://github.com/Malcolmnixon/Ataito-Game "
+          >
+            <span slot="description">
+              <p>Hosted and Participated in Global Game Jam, online with the Southern NH Game Dev Meetup in 2022.</p>
+              <p>First Project using the Godot game engine's XR Toolkit</p>
+              <p>Created shaders, Some modelling and texturing, mechanics programming, level design, foley sound effects work.</p>
+            </span>
+        </project-display>
+        
+      <project-display 
+          id="igdanh-presents-ink"
+          title="Presentation - Interactive Storytelling with Ink"
+          for="IGDANH"
+          tags="hobbyist"
+          released="2019-05-14"
+          link-main="https://www.meetup.com/igda-new-hampshire-game-development-meetup/events/260827461/"
+          >
+          <span slot="description">
+            <p>Presented to NH game developers on the Ink narrative middleware.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="script-dialog"
+          title="Script-Dialog"
+          for="Personal"
+          tags="hobbyist"
+          first="2014-10-07" last="2022-05-21"
+          link-repo="https://github.com/lunarcloud/script-dialog"
+          >
+          <span slot="description">
+            <p>Linux bash library for TUI/GUI dialogs.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="unity-ballpoint-ink"
+          title="Ballpoint: Friendly Wrapper for Ink on Unity"
+          for="Personal"
+          tags="hobbyist"
+          first="2020-09-09" last="2020-10-14"
+          link-main="https://openupm.com/packages/org.samsarette.ballpoint-unity"
+          link-repo="https://github.com/lunarcloud/ballpoint-unity"
+          >
+          <span slot="description">
+            <p>OpenUPM packaged addon for using Ink middleware with Unity game engine.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="godot-xr-toolkit"
+          title="Godot XR Toolkit"
+          for="Godot"
+          tags="hobbyist"
+          first="2022-05-19" last="2022-08-01"
+          link-repo="https://github.com/GodotVR/godot-xr-tools"
+          >
+          <span slot="description">
+            <p>Contributed ranged grab logic, editor node icons, consulted on design.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="inky"
+          title="Inky (Writing App for Ink)"
+          for="Inkle"
+          tags="hobbyist"
+          first="2019-10-18" last="2022-06-15"
+          link-repo="https://github.com/inkle/inky"
+          >
+          <span slot="description">
+            <p>Contributed to dark mode feature, web template improvements, linux packaging, keyboard shortcuts.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="playdate-build-scripts"
+          title="PlayDate Project Build Scripts"
+          for="Personal"
+          tags="hobbyist"
+          released="2022-06-10"
+          link-repo="https://github.com/lunarcloud/playdate-project-build-scripts"
+          >
+          <span slot="description">
+            <p>Command-line script (windows and linux variants) for building PlayDate SDK projects.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="playdate-vscode"
+          title="PlayDate Visual Studio Code Addon"
+          for="Personal"
+          tags="hobbyist"
+          first="2022-05-13" last="2022-05-18"
+          link-repo="https://github.com/orta/vscode-playdate"
+          >
+          <span slot="description">
+            <p>Contributed Linux fixes.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="godot-rumble-example"
+          title="Godot (Gamepad) Rumble Demo"
+          for="Godot"
+          tags="hobbyist"
+          first="2022-02-10" last="2022-02-13"
+          link-main="https://godotengine.org/asset-library/asset/1230"
+          link-repo="https://github.com/lunarcloud/godot-rumble-example-project/ "
+          >
+          <span slot="description">
+            <p>Example Project for using gamepad rumble with the Godot game engine.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="rpgmaker-installer-scripts"
+          title="RPG Maker Installer Creation Scripts"
+          for="Personal"
+          tags="hobbyist"
+          first="2015-09-02" last="2022-05-16"
+          link-repo="https://github.com/lunarcloud/rpg-maker-vx-installer-scripts"
+          >
+          <span slot="description">
+            <p>Used on and developed for "Nathan Powell's Wild Araz".</p>
+            <p>These scripts will create a number of installers for Windows, Mac, and Linux for games made with the ruby-powered RPG Maker game engines (XP, VX, VX Ace).</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="qt-proj-template"
+          title="Qt Enhanced Project Template"
+          for="Personal"
+          tags="hobbyist"
+          first="2013-05-05" last="2018-12-13"
+          link-repo="https://github.com/lunarcloud/qt-enhanced-project-template"
+          >
+          <span slot="description">
+            <p>Project Template for the Qt Creator IDE to produce a desktop application with icons, a main window, support for native OS dock menus, and styling.</p>
+            <p>Also includes a default README with an explanation on how to deploy / create installers.</p>
+          </span>
+      </project-display>
+        
+      <project-display 
+          id="gameinputjs"
+          title="GameInputJS"
+          for="Personal"
+          tags="hobbyist"
+          first="2015-11-01" last="2019-05-05"
+          link-repo="https://github.com/lunarcloud/gameinputjs"
+          >
+          <span slot="description">
+            <p>Javascript library for using gamepads with a standardized mapping, and APIs for getting the gamepads' type, icons, button names.</p>
+          </span>
+      </project-display>
+        
+      <!--
+        # Citizens of Antiford - Website
+        TODO - TODO
+        https://citizensofantiford.com
+        PHP Web Application - Social Media and Document Creation. eBook Download and text-to-speech reader features.   
+      -->
+        
+      <!--
+        # Citizens of Antiford - Steampunk Convention Panels
+        TODO - TODO
+        https://citizensofantiford.com
+        Several presentations performed for various conventions. 
+      -->
     </div>
 
     </main>
