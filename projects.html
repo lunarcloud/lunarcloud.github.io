@@ -3,6 +3,7 @@
   <head>
     <title>Sam Sarette | Test | Projects</title>
     
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#37c482">
 
@@ -16,7 +17,6 @@
 
       #all-projects {
         display: flex;
-        width: calc(100% - 20px);
         margin: auto;
         flex-direction: column;
         align-items: center;
@@ -25,6 +25,16 @@
       #all-projects project-display {
         max-width: 100%;
         width: 720px;
+      }
+
+
+      @media screen and (max-width: 640px) {
+        main {
+          font-size: 10pt;
+        }
+        main > h1 {
+          font-size: 24pt;
+        }
       }
 
     </style>
@@ -39,11 +49,11 @@
           
       <project-display 
           id="kmc-int-1"
-          title="Internal Utility Project #1"
+          name="Internal Utility Project #1"
           for="KMC Systems"
           tags="professional"
+          thumbnail="img/projects/kmc-mono.svg"
           first="2012-03-10" last="2012-08-17"
-          link-main-repo-announcement=""
           >
           <span slot="description">
             <p>Documentation Template Application in PHP</p>
@@ -52,9 +62,10 @@
 
       <project-display 
           id="kmc-ge-spinlab-1"
-          title="GE SpinLab™ Hyperpolarizer"
+          name="GE SpinLab™ Hyperpolarizer"
           for="KMC Systems"
-          tags="professional"
+          tags="professional" 
+          thumbnail="img/projects/ge-spinlab.jpg" thumbnail-size="cover"
           first="2012-08-20" last="2013-09-20"
           link-announcement="https://www.medgadget.com/2014/05/ge-releases-spinlab-mri-hyperpolarizer-for-cellular-imaging-of-metabolic-activity.html"
           >
@@ -65,9 +76,10 @@
         
       <project-display 
           id="kmc-roche-bloodhound"
-          title="Roche Cobas m511 with Bloodhound® technology"
+          name="Roche Cobas m511 with Bloodhound® technology"
           for="KMC Systems"
           tags="professional"
+          thumbnail="img/projects/roche-cobas-m511.png"
           first="2013-09-20" last="2017-05-17"
           link-announcement="https://www.prnewswire.com/news-releases/roche-launches-the-new-cobas-m-511-analyzer-signaling-a-new-era-in-hematology-testing-300610789.html"
           >
@@ -80,9 +92,10 @@
         
       <project-display 
           id="kmc-bmx-vmsp"
-          title="bioMérieux VITEK® MS PRIME"
+          name="bioMérieux VITEK® MS PRIME"
           for="KMC Systems"
           tags="professional"
+          thumbnail="img/projects/bmx-vmsp.jpg" thumbnail-size="cover"
           first="2017-01-06" last="2022-09-01"
           link-announcement="https://www.linkedin.com/posts/activity-6856616798125649920-paoh"
           >
@@ -94,9 +107,10 @@
         
       <project-display 
           id="kmc-int-2"
-          title="Internal Utility Project #2"
+          name="Internal Utility Project #2"
           for="KMC Systems"
           tags="professional"
+          thumbnail="img/projects/kmc-mono.svg"
           first="2020-11-04" last="2022-04-14"
           >
           <span slot="description">
@@ -106,9 +120,10 @@
         
       <project-display 
           id="kmc-ge-spinlab-mpqc"
-          title="GE SpinLab™ Hyperpolarizer - Extension"
+          name="GE SpinLab™ Hyperpolarizer - Extension"
           for="KMC Systems"
           tags="professional"
+          thumbnail="img/projects/ge-spinlab.jpg" thumbnail-size="cover"
           first="2021-05-19"
           >
           <span slot="description">
@@ -118,9 +133,10 @@
         
       <project-display 
           id="vr-lab"
-          title="Virtual Medical Labratory"
+          name="Virtual Medical Labratory"
           for="KMC Systems"
           tags="gamedev,unity,xr,professional"
+          thumbnail="img/projects/kmc-vr-lab.jpg" thumbnail-size="cover"
           released="2021-09-20"
           first="2021-08-02" last="2021-09-20"
           link-announcement="https://www.linkedin.com/posts/kmc-systems-inc-_innovation-activity-6857727563062620161-mGuG"
@@ -134,9 +150,10 @@
         
       <project-display 
           id="kmc-int-3"
-          title="Internal Utility Project #3"
+          name="Internal Utility Project #3"
           for="KMC Systems"
           tags="professional"
+          thumbnail="img/projects/kmc-mono.svg" 
           first="2022-05-11" last="2022-08-02"
           link-main-repo-announcement=""
           >
@@ -146,10 +163,11 @@
       </project-display>
         
       <project-display 
-          id="kmc-int-4"
-          title="Internal Utility Project #4"
+          id="kmc-sdk"
+          name="Internal SDK"
           for="KMC Systems"
           tags="professional"
+          thumbnail="img/projects/kmc-mono.svg"
           first="2022-08-11"
           >
           <span slot="description">
@@ -159,9 +177,10 @@
         
       <project-display 
           id="antiford-gerstenberg-heroes-game"
-          title="Gerstenberg Heroes"
+          name="Gerstenberg Heroes"
           for="Citizens of Antiford"
           tags="hobbyist"
+          thumbnail="img/projects/gerstenberg-heroes.jpg" thumbnail-size="cover"
           released="2016-11-13"
           first="2016-11-11" last="2021-08-06"
           link-main="https://citizensofantiford.itch.io/gerstenberg-heroes"
@@ -174,9 +193,10 @@
         
       <project-display 
           id="antiford-switchboard-copper-game"
-          title="Switchboard Copper"
+          name="Switchboard Copper"
           for="Citizens of Antiford"
           tags="hobbyist"
+          thumbnail="img/projects/switchboard-copper.jpg" thumbnail-size="cover"
           released="2018-01-28"
           first="2018-01-26" last="2019-10-11"
           link-main="https://citizensofantiford.itch.io/switchboard-copper"
@@ -190,9 +210,10 @@
         
       <project-display 
           id="homeworlds-game"
-          title="Homeworlds"
+          name="Homeworlds"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/homeworlds-game.jpg" thumbnail-size="cover"
           released="2019-02-27"
           first="2019-01-21" last="2019-02-03"
           link-main="https://samsarette.itch.io/homeworlds"
@@ -204,9 +225,10 @@
         
       <project-display 
           id="antiford-wild-araz"
-          title="Nathan Powell's Wild Araz"
+          name="Nathan Powell's Wild Araz"
           for="Citizens of Antiford"
           tags="hobbyist,support"
+          thumbnail="img/projects/wild-araz.jpg" thumbnail-size="cover"
           released="2019-08-10"
           link-main="https://citizensofantiford.itch.io/wild-araz"
           >
@@ -218,9 +240,10 @@
         
       <project-display 
           id="shipwreck-game"
-          title="Shipwreck"
+          name="Shipwreck"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/shipwreck-game.jpg"  thumbnail-size="cover"
           released="2020-02-02"
           first="2020-01-31" last="2020-02-02"
           link-main="https://samsarette.itch.io/shipwreck"
@@ -232,9 +255,10 @@
         
       <project-display 
           id="color-below-game"
-          title="The Color Below"
+          name="The Color Below"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/color-below-game.jpg"  thumbnail-size="cover"
           released="2020-08-03"
           first="2020-07-30" last="2022-04-02"
           link-main="https://samsarette.itch.io/color-below"
@@ -248,10 +272,10 @@
         
       <project-display 
           id="ataito-game"
-          title="Ataito: The Spirit Swapper"
+          name="Ataito: The Spirit Swapper"
           for="Sam & Malcolm Team"
           tags="gamedev,godot,xr,hobbyist,shaders"
-          thumbnail="//placehold.co/96x128"
+          thumbnail="img/projects/ataito-game.jpg"  thumbnail-size="cover"
           released="2022-01-30"
           first="2022-01-28" last="2022-06-26"
           link-main="https://malcolmnixon.itch.io/ataito-the-spirit-swapper"
@@ -266,9 +290,10 @@
         
       <project-display 
           id="igdanh-presents-ink"
-          title="Presentation - Interactive Storytelling with Ink"
+          name="Presentation - Interactive Storytelling with Ink"
           for="IGDANH"
           tags="hobbyist"
+          thumbnail="img/projects/ink-presentation.jpg"  thumbnail-size="cover"
           released="2019-05-14"
           link-main="https://www.meetup.com/igda-new-hampshire-game-development-meetup/events/260827461/"
           >
@@ -279,9 +304,10 @@
         
       <project-display 
           id="script-dialog"
-          title="Script-Dialog"
+          name="Script-Dialog"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/script-dialog.jpg"  thumbnail-size="cover"
           first="2014-10-07" last="2022-05-21"
           link-repo="https://github.com/lunarcloud/script-dialog"
           >
@@ -292,9 +318,10 @@
         
       <project-display 
           id="unity-ballpoint-ink"
-          title="Ballpoint: Friendly Wrapper for Ink on Unity"
+          name="Ballpoint: Friendly Wrapper for Ink on Unity"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/ballpoint-unity.jpg"  thumbnail-size="cover"
           first="2020-09-09" last="2020-10-14"
           link-main="https://openupm.com/packages/org.samsarette.ballpoint-unity"
           link-repo="https://github.com/lunarcloud/ballpoint-unity"
@@ -306,9 +333,10 @@
         
       <project-display 
           id="godot-xr-toolkit"
-          title="Godot XR Toolkit"
+          name="Godot XR Toolkit"
           for="Godot"
           tags="hobbyist"
+          thumbnail="img/projects/godot-xr-tools.png"
           first="2022-05-19" last="2022-08-01"
           link-repo="https://github.com/GodotVR/godot-xr-tools"
           >
@@ -319,9 +347,10 @@
         
       <project-display 
           id="inky"
-          title="Inky (Writing App for Ink)"
+          name="Inky (Writing App for Ink)"
           for="Inkle"
           tags="hobbyist"
+          thumbnail="img/projects/inky.png"
           first="2019-10-18" last="2022-06-15"
           link-repo="https://github.com/inkle/inky"
           >
@@ -332,9 +361,10 @@
         
       <project-display 
           id="playdate-build-scripts"
-          title="PlayDate Project Build Scripts"
+          name="PlayDate Project Build Scripts"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/playdate-build-scripts.jpg"  thumbnail-size="cover"
           released="2022-06-10"
           link-repo="https://github.com/lunarcloud/playdate-project-build-scripts"
           >
@@ -345,9 +375,10 @@
         
       <project-display 
           id="playdate-vscode"
-          title="PlayDate Visual Studio Code Addon"
+          name="PlayDate Visual Studio Code Addon"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/vscode-playdate.jpg"  thumbnail-size="cover"
           first="2022-05-13" last="2022-05-18"
           link-repo="https://github.com/orta/vscode-playdate"
           >
@@ -358,9 +389,10 @@
         
       <project-display 
           id="godot-rumble-example"
-          title="Godot (Gamepad) Rumble Demo"
+          name="Godot (Gamepad) Rumble Demo"
           for="Godot"
           tags="hobbyist"
+          thumbnail="img/projects/godot-rumble.png"
           first="2022-02-10" last="2022-02-13"
           link-main="https://godotengine.org/asset-library/asset/1230"
           link-repo="https://github.com/lunarcloud/godot-rumble-example-project/ "
@@ -372,9 +404,10 @@
         
       <project-display 
           id="rpgmaker-installer-scripts"
-          title="RPG Maker Installer Creation Scripts"
+          name="RPG Maker Installer Creation Scripts"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/lunarcloud.jpg"
           first="2015-09-02" last="2022-05-16"
           link-repo="https://github.com/lunarcloud/rpg-maker-vx-installer-scripts"
           >
@@ -386,9 +419,10 @@
         
       <project-display 
           id="qt-proj-template"
-          title="Qt Enhanced Project Template"
+          name="Qt Enhanced Project Template"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/lunarcloud.jpg"
           first="2013-05-05" last="2018-12-13"
           link-repo="https://github.com/lunarcloud/qt-enhanced-project-template"
           >
@@ -400,9 +434,10 @@
         
       <project-display 
           id="gameinputjs"
-          title="GameInputJS"
+          name="GameInputJS"
           for="Personal"
           tags="hobbyist"
+          thumbnail="img/projects/lunarcloud.jpg"
           first="2015-11-01" last="2019-05-05"
           link-repo="https://github.com/lunarcloud/gameinputjs"
           >
@@ -413,9 +448,10 @@
 
       <project-display 
           id="antiford-website"
-          title="Citizens of Antiford - Website"
-          for="Personal"
+          name="CitizensOfAntiford.com"
+          for="Citizens of Antiford"
           tags="hobbyist"
+          thumbnail="img/projects/antiford.png"
           first="2012-06-22" last="2022-01-24"
           link-main="https://citizensofantiford.com"
           >
@@ -426,9 +462,10 @@
         
       <project-display 
           id="antiford-rogues-tabletop"
-          title="Rogues of Antiford - Tabletop Game"
-          for="Personal"
+          name="Rogues of Antiford - Tabletop Game"
+          for="Citizens of Antiford"
           tags="hobbyist"
+          thumbnail="img/projects/rogues-of-antiford.jpg" thumbnail-size="cover"
           first="2017-09-17"
           link-main="https://www.facebook.com/roguesgame"
           >
@@ -446,9 +483,10 @@
          
       <project-display 
           id="portfolio-website"
-          title="Portfolio Website"
+          name="Portfolio Website"
           for="Personal"
           tags="professional"
+          thumbnail="favicon.ico" thumbnail-size="unset" thumbnail-repeat="repeat"
           first="2022-08-08"
           link-main="https://lunarcloud.github.io/"
           link-repo="https://github.com/lunarcloud/lunarcloud.github.io/"

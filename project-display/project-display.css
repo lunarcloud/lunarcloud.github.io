@@ -12,7 +12,6 @@ internal {
   border-radius: 8px;
   margin: 12px 6px;
   width: calc(100% - 28px); /* full, minus 12px*2 margin and 2px*2 border */
-  min-width: 540px;
   overflow: hidden;
 }
 
@@ -33,8 +32,9 @@ internal > .thumbnail {
   background-color: rgba(0,0,0,0.2);
   display: block;
   overflow: hidden;
-  background-position: center;
-  background-size: cover;
+  background-position: 60%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 internal > .info {
@@ -46,11 +46,28 @@ internal > .info {
   padding-right: 0.5rem;
 }
 
-internal ul.tags {
+internal > .info > h1 {
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+internal > .info > p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+internal ul.tags,
+internal ul.links {
   margin: 4px;
 }
 
-internal ul.tags > li {
+internal ul.links {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+internal ul.tags > li,
+internal ul.links > li {
   display: inline-block;
   margin-right: 0.5rem;
 }
@@ -60,6 +77,36 @@ internal ul.tags > li > a {
   user-select: all;
 }
 
+internal ul.links > li > a {
+  color: inherit;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(76, 154, 128);
+  background-color: rgb(76, 154, 128, 0.5);
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+
+internal ul.links > li > a:hover {
+  border-color: rgb(58, 118, 98);
+  background-color: rgba(53, 108, 90, 0.5);
+}
+
+internal ul.links > li > a:active {
+  border-color: rgb(34, 69, 57);
+  background-color: rgba(30, 61, 50, 0.5);
+}
+
 internal .hidden {
   display: none !important;
+}
+
+
+@media screen and (max-width: 640px) {
+  internal {
+    grid-template-columns: 20% auto;
+  }  
 }
