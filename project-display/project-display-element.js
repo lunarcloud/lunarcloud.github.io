@@ -93,7 +93,7 @@ export default class ProjectDisplayElement extends HTMLElement {
             clone.querySelector(".for").classList.remove("hidden");
         }
         
-        // Set Name (Title)
+        // Set Name (can't use 'title' because that'll make a tooltip)
         if (this.hasAttribute("name")) {
             clone.querySelector(".name").textContent = this.getAttribute("name");
         } else {
@@ -102,6 +102,45 @@ export default class ProjectDisplayElement extends HTMLElement {
         
         
         shadow.appendChild(clone);
+    }
+
+    /**
+     * Compare two project-displays by provided dates.
+     * @param {ProjectDisplayElement} projectA  a project-display.
+     * @param {ProjectDisplayElement} projectB  another project-display.
+     * @returns {number}                        comparison result
+     */
+    static compareDate(projectA, projectB) {
+
+        // Check if they're both ongoing
+        let ongoingA = projectA.hasAttribute("first") && !projectA.hasAttribute("last");
+        let ongoingB = projectB.hasAttribute("first") && !projectB.hasAttribute("last");
+        if (ongoingA && !ongoingB) return 1;
+        if (!ongoingA && ongoingB) return -1;
+
+
+        let firstA = projectA.attributes['first']?.value ?? "";
+        let releasedA = projectA.attributes['released']?.value ?? "";
+        let minA =[releasedA, firstA].sort()[0];
+        
+        let firstB = projectB.attributes['first']?.value ?? "";
+        let releasedB = projectB.attributes['released']?.value ?? "";
+        let minB = [releasedB, firstB].sort()[0];
+        
+        return minA.localeCompare(minB);
+    }
+
+    /**
+     * Create a comparison function with the given attribute.
+     * @param   {string}    attributeName   name of the attribute to compare on.
+     * @returns {function}                  comparator function.
+     */
+    static generateCompare(attributeName) {
+        return (projectA, projectB) => {
+            let attrA = projectA.attributes[attributeName]?.value ?? "";
+            let attrB = projectB.attributes[attributeName]?.value ?? "";
+            return attrA.localeCompare(attrB);
+        };        
     }
 }
 
