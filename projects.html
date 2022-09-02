@@ -627,5 +627,8 @@
   <script type="module">
     import "./page-fade/page-fade.js";
     import "./controllers/projects.js";
+
+    if ('App' in globalThis === false) globalThis.App = { Controller: undefined };
+    globalThis.App.Controller = new ProjectsPageController();
   </script>
 </html>

@@ -20,7 +20,3 @@ export default class ProjectsPageController {
         }
     }
 }
-
-
-if ('App' in globalThis === false) globalThis.App = {};
-globalThis.App.Controller = new ProjectsPageController();
