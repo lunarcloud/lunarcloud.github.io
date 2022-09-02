@@ -5,5 +5,7 @@
   "description": "A portfolio of Sam Sarette's work.",
   "theme_color": "#37c482",
   "background_color": "#999",
-  "display": "browser"
+  "display": "minimal-ui",
+  "start_url": "/",
+  "orientation": "any"
 }
