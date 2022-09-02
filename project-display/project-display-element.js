@@ -23,9 +23,11 @@ export default class ProjectDisplayElement extends HTMLElement {
         let tags = this.getAttribute("tags").split(',');
         tags.sort((a, b) => a.length - b.length + a.localeCompare(b)); // shortest-first, then alphabetical
         tags.forEach(tag => {
+            if (tag.trim() == '') return; // ignore empties
+
             const listItemEl = document.createElement('li');
             const anchorEl = document.createElement('a');
-            anchorEl.textContent = `#${tag}`;
+            anchorEl.textContent = tag;
             listItemEl.appendChild(anchorEl);
             clone.querySelector("ul.tags").appendChild(listItemEl);
         });
@@ -45,17 +47,17 @@ export default class ProjectDisplayElement extends HTMLElement {
         // Set Links
         let linksEl = clone.querySelector(".links");
         if (this.hasAttribute("link-main")) {
-            linksEl.querySelector(".main").href = this.getAttribute("link-main");
+            linksEl.querySelector(".main a").href = this.getAttribute("link-main");
             linksEl.querySelector(".main").classList.remove("hidden");
             linksEl.classList.remove("hidden");
         }
         if (this.hasAttribute("link-repo")) {
-            linksEl.querySelector(".repo").href = this.getAttribute("link-repo");
+            linksEl.querySelector(".repo a").href = this.getAttribute("link-repo");
             linksEl.querySelector(".repo").classList.remove("hidden");
             linksEl.classList.remove("hidden");
         }
         if (this.hasAttribute("link-announcement")) {
-            linksEl.querySelector(".announcement").href = this.getAttribute("link-announcement");
+            linksEl.querySelector(".announcement a").href = this.getAttribute("link-announcement");
             linksEl.querySelector(".announcement").classList.remove("hidden");
             linksEl.classList.remove("hidden");
         }

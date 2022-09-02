@@ -59,6 +59,7 @@ internal > .info > p {
 internal ul.tags,
 internal ul.links {
   margin: 4px;
+  padding-inline-start: 0;
 }
 
 internal ul.links {
@@ -77,6 +78,17 @@ internal ul.tags > li > a {
   user-select: all;
 }
 
+internal ul.tags > li > a:before {
+  display: inline;
+  content: " ▶ ";
+  font-size: 0.5rem;
+  vertical-align: text-top;
+}
+
+internal ul.tags > li:hover > a:before {
+  color:rgb(58, 118, 98);
+} 
+
 internal ul.links > li > a {
   color: inherit;
   border-width: 1px;
@@ -89,6 +101,7 @@ internal ul.links > li > a {
   user-select: none;
   text-decoration: none;
 }
+
 
 internal ul.links > li > a:hover {
   border-color: rgb(58, 118, 98);
