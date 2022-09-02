@@ -1,3 +1,6 @@
+
+document.body.toggleAttribute("unloading", false);
+
 // Let the CSS know when to fade the page in
 document.addEventListener('readystatechange', (event) => {
     if (event.target.readyState === 'complete') {
@@ -37,18 +40,21 @@ export default class FadeOutAnchorElement extends HTMLAnchorElement {
             document.body.addEventListener('animationend', () => this.#fadingOutFinish(), {once: true});
         
         event.preventDefault();
+
         return false;
     }
 
     #fadingOutFinish() {
-        this.click();
-        this.fadingOut = false;
-        setTimeout(() => this.fadePageIn(), 100); // if you don't do this then it's blank when you click 'back'
-    }
-
-    fadePageIn() {
-        document.body.toggleAttribute("loaded", true);
-        document.body.toggleAttribute("unloading", false);
+        let pageFader = this;
+        // This is needed to reset the fade for when user returns via 'back' navigation.
+        window.addEventListener("beforeunload", () => {
+            document.body.toggleAttribute("loaded", true);
+            document.body.toggleAttribute("unloading", false);
+            pageFader.fadingOut = false;
+        });
+        
+        // actual click must happen last in function, all code ceases to exist after navigation
+        this.click(); 
     }
 }
 

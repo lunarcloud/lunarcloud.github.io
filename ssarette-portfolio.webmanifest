@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "Sam Sarette's Portfolio",
+  "short_name": "ssarette-portfolio",
+  "description": "A portfolio of Sam Sarette's work.",
+  "theme_color": "#37c482",
+  "background_color": "#999",
+  "display": "browser"
+}
