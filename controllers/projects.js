@@ -1,4 +1,4 @@
-import ProjectDisplayElement from "../project-display/project-display-element";
+import ProjectDisplayElement from "../project-display/project-display-element.js";
 
 export default class ProjectsPageController {
     
@@ -20,3 +20,6 @@ export default class ProjectsPageController {
         }
     }
 }
+
+if ('App' in globalThis === false) globalThis.App = { Controller: undefined };
+globalThis.App.Controller = new ProjectsPageController();
