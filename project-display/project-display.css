@@ -19,6 +19,12 @@ internal {
   margin: 12px 6px;
   width: calc(100% - 28px); /* full, minus 12px*2 margin and 2px*2 border */
   overflow: hidden;
+  hyphens: auto;
+}
+
+[word-break-no-hyphen] {
+  -webkit-hyphenate-character: '';
+  hyphenate-character: '';
 }
 
 

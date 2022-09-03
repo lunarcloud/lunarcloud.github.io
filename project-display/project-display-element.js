@@ -117,10 +117,14 @@ export default class ProjectDisplayElement extends HTMLElement {
         
         // Set Name (can't use 'title' because that'll make a tooltip)
         if (this.hasAttribute("name")) {
-            clone.querySelector(".name").textContent = this.getAttribute("name");
+            let nameEl = clone.querySelector(".name");
+            nameEl.textContent = this.getAttribute("name");
+            if (this.hasAttribute("name-no-hyphen-char")) 
+                nameEl.setAttribute("word-break-no-hyphen", true);
         } else {
             console.warn("project-display element does not have a name!", this);
         }
+
         
         
         shadow.appendChild(clone);
