@@ -71,7 +71,7 @@ internal ul.links {
   margin-bottom: 8px;
 }
 
-internal ul.tags > li {
+internal ul.links > li {
   display: inline-block;
   margin-right: 0.5rem;
 }
@@ -89,6 +89,12 @@ internal ul.links > li > a {
   text-decoration: none;
 }
 
+internal ul.links > li > a:before {
+  display: inline;
+  content: " ▶ ";
+  font-size: 0.5rem;
+  vertical-align: text-top;
+}
 
 internal ul.links > li > a:hover {
   border-color: rgb(58, 118, 98);
