@@ -1,3 +1,4 @@
+import "../page-fade/page-fade.js";
 import ProjectDisplayElement from "../project-display/project-display-element.js";
 
 export default class ProjectsPageController {
@@ -8,8 +9,16 @@ export default class ProjectsPageController {
     /** @type Array<ProjectDisplayElement> */
     projectEls;
 
+    /** @type boolean */
     pageIsFiltered = false;
+
+    /** @type Array<string> */
     pageFilters = [];
+
+    /** @type HTMLButtonElement */
+    filterClearBtn;
+    /** @type FadeOutAnchorElement */
+    filterClearBtnA;
 
     constructor() {
         this.allProjectsEl = document.getElementById("all-projects");
@@ -31,33 +40,33 @@ export default class ProjectsPageController {
         }
 
         this.filterClearBtn = document.getElementById("filter-clear");
+        this.filterClearBtnA = document.getElementById("filter-clear-a")
         if (this.pageFilters.length == 0) {
            this.filterClearBtn.toggleAttribute("disabled", true);
+           document.getElementById("project-tags-label").toggleAttribute("hidden", true);
         } else {
             this.filterClearBtn.addEventListener("click", () => this.clearFilters());
         }
 
         let filtersListEl = document.getElementById("filters-list").querySelector("ul.project-tags");
-        this.pageFilters.forEach(tag => {
+        for (const tag of this.pageFilters) {
             if (tag.trim() == '') return; // ignore empties
 
             const listItemEl = document.createElement('li');
-            listItemEl.toggleAttribute("active", pageFilters.includes(tag));
+            listItemEl.toggleAttribute("active", this.pageFilters.includes(tag));
 
-            const anchorEl = document.createElement('a');
+            const anchorEl = document.createElement('a', { is: "fadeout-anchor"});
             anchorEl.textContent = tag;
-            anchorEl.addEventListener("click", () => { 
+            anchorEl.addEventListener("fadednavigate", () => { 
                 listItemEl.toggleAttribute("active");
                 let active = listItemEl.hasAttribute("active");
-                const event = new CustomEvent("projectfilterselected", {
-                    detail: { tag, active }
-                });
-                this.dispatchEvent(event);
-             });
+                this.updateFilter(tag, active);
+                return false;
+             }, {passive: false});
              
             listItemEl.appendChild(anchorEl);
             filtersListEl.appendChild(listItemEl);
-        });
+        }
     }
 
     updateFilter(tagName, active) {
@@ -79,7 +88,8 @@ export default class ProjectsPageController {
     clearFilters() {
         let search = new URLSearchParams(location.search);
         search.delete("filter");
-        location.search = search;
+        this.filterClearBtnA.href = `?${search}`;
+        this.filterClearBtnA.click();
     }
 
 }

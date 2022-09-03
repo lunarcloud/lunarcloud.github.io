@@ -9,9 +9,12 @@ ul.project-tags > li {
   margin-right: 0.5rem;
 }
 
-ul.project-tags > li > a {
+ul.project-tags > li > a,
+ul.project-tags > li > a:link {
   cursor: pointer;
   user-select: all;
+  color: unset;
+  text-decoration: none;
 }
 
 ul.project-tags > li > a:before {
@@ -21,10 +24,16 @@ ul.project-tags > li > a:before {
   vertical-align: text-top;
 }
 
-ul.project-tags > li[active] > a:before {
-  color: rgb(95, 196, 133);
-}
+@media screen {
+  ul.project-tags > li[active] > a:before {
+    color: rgb(95, 196, 133);
+  }
 
-ul.project-tags > li:hover > a:before {
-  color:rgb(58, 118, 98);
-} 
+  ul.project-tags > li:not([active]):hover > a:before {
+    color: var(--main-color-text);
+  }
+
+  ul.project-tags > li:hover > a {
+    color: rgb(154, 109, 178);
+  } 
+}
