@@ -89,13 +89,6 @@ internal ul.links > li > a {
   text-decoration: none;
 }
 
-internal ul.links > li > a:before {
-  display: inline;
-  content: " ▶ ";
-  font-size: 0.5rem;
-  vertical-align: text-top;
-}
-
 internal ul.links > li > a:hover {
   border-color: rgb(58, 118, 98);
   background-color: rgba(53, 108, 90, 0.5);
