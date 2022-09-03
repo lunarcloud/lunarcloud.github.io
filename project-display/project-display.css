@@ -4,6 +4,7 @@ internal {
   --project-display-color-bg: #ddd;
   --project-display-color-border: rgba(80, 80, 80, 0.9);
   --project-display-color-text: #333;
+  --project-display-color-date: rgb(40, 57, 196);
   --min-size: 256px;
 
   min-width: var(--min-size);
@@ -26,6 +27,7 @@ internal {
     --project-display-color-bg: #444;
     --project-display-color-border: rgba(45, 33, 33, 0.9);
     --project-display-color-text: #ccc;
+    --project-display-color-date: rgb(100, 149, 237);
   }
 }
 
@@ -34,6 +36,7 @@ internal {
     --project-display-color-bg: transparent;
     --project-display-color-border: rgba(45, 33, 33, 0.9);
     --project-display-color-text: black;
+    --project-display-color-date: rgb(40, 57, 196);
   }
 }
 
@@ -56,12 +59,32 @@ internal > .info {
   flex-direction: column;
   padding-left: 1rem;
   padding-right: 0.5rem;
+  position: relative;
+  --team-icon-width: 32px;
+}
+
+internal > .info > .size {
+  position: absolute;
+  top: 6px;
+  right: 4px;
+}
+internal > .info > .size,
+internal > .info > .size img {
+  width: var(--team-icon-width);
+  height: var(--team-icon-width);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  internal > .info > .size img {
+    filter: drop-shadow(0px 0px 3px rgb(50,100,100));
+  }
 }
 
 internal > .info > h1 {
   font-family: var(--main-font-headers);
   margin-top: 10px;
   margin-bottom: 4px;
+  margin-right: var(--team-icon-width);
 }
 
 internal > .info > p {
@@ -70,6 +93,10 @@ internal > .info > p {
 }
 
 @media screen {
+
+  internal time {
+    color: var(--project-display-color-date);
+  }
 
   internal ul.links {
     margin: 4px;

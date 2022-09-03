@@ -107,6 +107,13 @@ export default class ProjectDisplayElement extends HTMLElement {
             clone.querySelector(".for").textContent = this.getAttribute("for");
             clone.querySelector(".for").classList.remove("hidden");
         }
+
+        // Set Rough Team-Size
+        if (this.hasAttribute("size")) {
+            clone.querySelector(".size").classList.remove("hidden");
+            let sizeImg = clone.querySelector(`.size .${this.getAttribute("size")}`);
+            sizeImg.classList.remove("hidden");
+        }
         
         // Set Name (can't use 'title' because that'll make a tooltip)
         if (this.hasAttribute("name")) {
