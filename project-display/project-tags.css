@@ -1,0 +1,30 @@
+
+ul.project-tags {
+  margin: 4px;
+  padding-inline-start: 0;
+}
+
+ul.project-tags > li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+ul.project-tags > li > a {
+  cursor: pointer;
+  user-select: all;
+}
+
+ul.project-tags > li > a:before {
+  display: inline;
+  content: " ▶ ";
+  font-size: 0.5rem;
+  vertical-align: text-top;
+}
+
+ul.project-tags > li[active] > a:before {
+  color: rgb(95, 196, 133);
+}
+
+ul.project-tags > li:hover > a:before {
+  color:rgb(58, 118, 98);
+} 
