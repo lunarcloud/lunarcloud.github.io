@@ -10,14 +10,23 @@
         0% { opacity: 1; }
         100% { opacity: 0; }
 	}
-}
 
-body[loaded] #main {
-	opacity: 1;
-	animation: pageFadeIn 500ms ease-in 0ms;
-}
+	body #main {
+		opacity: 0;
+	}
 
-body[unloading] #main {
-	opacity: 0;
-	animation: pageFadeOut 500ms ease-in 0ms;
+	body[loaded] #main {
+		opacity: 1;
+		animation: pageFadeIn 500ms ease-in 0ms;
+	}
+
+	body[unloading] #main {
+		opacity: 0;
+		animation: pageFadeOut 500ms ease-in 0ms;
+	}
+
+	body[loaded][same-page] #main,
+	body[unloading][same-page] #main {
+		animation-duration: 100ms;
+	}
 }

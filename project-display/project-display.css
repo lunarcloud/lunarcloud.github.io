@@ -23,10 +23,17 @@ internal {
 
 @media screen and (prefers-color-scheme: dark) {
   internal {
-    --project-display-backside-color-bg: rgb(41, 41, 24);
     --project-display-color-bg: #444;
     --project-display-color-border: rgba(45, 33, 33, 0.9);
     --project-display-color-text: #ccc;
+  }
+}
+
+@media print {
+  internal {
+    --project-display-color-bg: transparent;
+    --project-display-color-border: rgba(45, 33, 33, 0.9);
+    --project-display-color-text: black;
   }
 }
 
@@ -52,6 +59,7 @@ internal > .info {
 }
 
 internal > .info > h1 {
+  font-family: var(--main-font-headers);
   margin-top: 10px;
   margin-bottom: 4px;
 }
@@ -61,42 +69,62 @@ internal > .info > p {
   margin-bottom: 2px;
 }
 
-internal ul.links {
-  margin: 4px;
-  padding-inline-start: 0;
+@media screen {
+
+  internal ul.links {
+    margin: 4px;
+    padding-inline-start: 0;
+  }
+
+  internal ul.links {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  internal ul.links > li {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+
+  internal ul.links > li > a {
+    color: inherit;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(76, 154, 128);
+    background-color: rgb(76, 154, 128, 0.5);
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+  }
+
+  internal ul.links > li > a:hover {
+    border-color: rgb(58, 118, 98);
+    background-color: rgba(53, 108, 90, 0.5);
+  }
+
+  internal ul.links > li > a:active {
+    border-color: rgb(34, 69, 57);
+    background-color: rgba(30, 61, 50, 0.5);
+  }
 }
 
-internal ul.links {
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
-internal ul.links > li {
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-internal ul.links > li > a {
-  color: inherit;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(76, 154, 128);
-  background-color: rgb(76, 154, 128, 0.5);
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-  user-select: none;
-  text-decoration: none;
-}
-
-internal ul.links > li > a:hover {
-  border-color: rgb(58, 118, 98);
-  background-color: rgba(53, 108, 90, 0.5);
-}
-
-internal ul.links > li > a:active {
-  border-color: rgb(34, 69, 57);
-  background-color: rgba(30, 61, 50, 0.5);
+@media print {
+  internal ul.links {
+    padding-inline-start: 12px;
+  }
+  internal ul.links > li {
+    list-style-type: none;
+    margin-bottom: 4pt;
+  }
+  internal ul.links > li > a {
+    text-decoration: none;
+  }
+  internal ul.links > li > a:after {
+    content: ": " attr(href);
+    font-weight: bold;
+  }
 }
 
 internal .hidden {

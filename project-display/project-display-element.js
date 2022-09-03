@@ -1,3 +1,5 @@
+import {FadeOutAnchorElement} from "../page-fade/page-fade.js";
+
 const pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',') ?? [];
 
 export default class ProjectDisplayElement extends HTMLElement {
@@ -31,17 +33,16 @@ export default class ProjectDisplayElement extends HTMLElement {
             const listItemEl = document.createElement('li');
             listItemEl.toggleAttribute("active", pageFilters.includes(tag));
 
-            const anchorEl = document.createElement('a');
+            const anchorEl = document.createElement('a', { is: "fadeout-anchor"});
             anchorEl.textContent = tag;
-            anchorEl.addEventListener("click", () => { 
+            anchorEl.href= `?filter=${tag}`;
+            anchorEl.addEventListener("fadednavigate", () => { 
                 listItemEl.toggleAttribute("active");
                 let active = listItemEl.hasAttribute("active");
-                const event = new CustomEvent("projectfilterselected", {
-                    detail: { tag, active }
-                });
+                const event = new CustomEvent("projectfilterselected", { detail: { tag, active } });
                 this.dispatchEvent(event);
-             });
-             
+             }, {passive: false});
+
             listItemEl.appendChild(anchorEl);
             clone.querySelector("ul.tags").appendChild(listItemEl);
         });

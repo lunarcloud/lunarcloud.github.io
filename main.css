@@ -18,8 +18,13 @@
 	--main-a-active-color: #316c31;
 	--main-a-visited-color: #528379;
 
-	--main-font-headers: 'Sam Handwritten A', sans-serif;
-	--main-font-body: 'Sam Handwritten A', sans-serif;
+
+	--high-readability-font: 'Lexend Deca', sans-serif;
+	--print-readability-font: 'Gentium Book Basic', serif;
+	--handwritten-font: 'Sam Handwritten A', sans-serif;
+	--main-font-headers: var(--handwritten-font);
+	--main-font-body: var(--high-readability-font);
+	--main-font-size: 10pt;
 }
 
 @media  screen and (prefers-contrast: more) {
@@ -33,9 +38,13 @@
 @media print {
 	:root, ::backdrop {
 		--main-color-bg: white;
+		--main-font-body: var(--print-readability-font);
 	}
 	#open-about-dialog {
 		display: none !important;
+	}
+	[print-hidden] {
+		display: none;
 	}
 } 
 
@@ -60,13 +69,13 @@
 @media screen and (prefers-reduced-motion : no-preference) {
 
 	@keyframes fadeIn {
-				0% { opacity: 0; }
-			100% { opacity: 1; }
+		0% { opacity: 0; }
+		100% { opacity: 1; }
 	}
 	
 	@keyframes fadeOut {
-				0% { opacity: 1; }
-			100% { opacity: 0; }
+		0% { opacity: 1; }
+		100% { opacity: 0; }
 	}
 
 	@keyframes slideIn {
@@ -145,6 +154,7 @@ body {
 	min-height: 100vh;
 	text-rendering: optimizeSpeed;
 	font-family: var( --main-font-body);
+	font-size: var(--main-font-size);
 }
 
 h1,
@@ -195,7 +205,6 @@ a:visited {
 
 #main {
 	max-width: 100%;
-	opacity: 0;
 }
 
 dialog::backdrop {

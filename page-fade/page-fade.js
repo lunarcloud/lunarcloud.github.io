@@ -16,6 +16,7 @@ if (document.readyState === 'complete') {
 export class FadeOutAnchorElement extends HTMLAnchorElement {
 
     fadingOut = false;
+    samePage = false;
 
     constructor(){
         super();
@@ -24,6 +25,8 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
             return;
         }
 
+        this.samePage = this.pathname == location.pathname;
+        this.toggleAttribute("same-page", this.samePage);
         this.addEventListener('click', e => this.fadePageOut(e));
     }
 
@@ -33,12 +36,13 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
 
         document.body.toggleAttribute("loaded", false);
         document.body.toggleAttribute("unloading", true);
+        document.body.toggleAttribute("same-page", this.samePage);
 
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
             this.#fadingOutFinish()
         else
             document.body.addEventListener('animationend', () => this.#fadingOutFinish(), {once: true});
-        
+
         event.preventDefault();
 
         return false;
@@ -47,14 +51,21 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
     #fadingOutFinish() {
         let pageFader = this;
         // This is needed to reset the fade for when user returns via 'back' navigation.
-        window.addEventListener("beforeunload", () => {
-            document.body.toggleAttribute("loaded", true);
-            document.body.toggleAttribute("unloading", false);
-            pageFader.fadingOut = false;
-        });
+            window.addEventListener("beforeunload", () => {
+                document.body.toggleAttribute("loaded", true);
+                document.body.toggleAttribute("unloading", false);
+                document.body.toggleAttribute("same-page", false);
+                pageFader.fadingOut = false;
+            });
+
+        // done as a final "fadednavigate" means it'll be subject to prevented propogation, and actually happen last
+        // particularly, helpful when reduced-motion means no extra time due to animations
+        this.addEventListener("fadednavigate", () => {
+            // actual click must happen last in function, all code ceases to exist after navigation
+            this.click();
+        }, {once: true});
         
-        // actual click must happen last in function, all code ceases to exist after navigation
-        this.click(); 
+        this.dispatchEvent(new CustomEvent("fadednavigate", { detail: { } }));
     }
 }
 
