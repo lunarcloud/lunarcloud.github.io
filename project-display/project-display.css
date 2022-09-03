@@ -1,10 +1,15 @@
+@import url("./project-tags.css");
+
 internal {
   --project-display-color-bg: #ddd;
   --project-display-color-border: rgba(80, 80, 80, 0.9);
   --project-display-color-text: #333;
+  --min-size: 256px;
+
+  min-width: var(--min-size);
 
   display: inline-grid;
-  grid-template-columns: max(128px, 30%) auto;
+  grid-template-columns: max(calc(var(--min-size) / 2.5), 30%) auto;
   justify-items: stretch;
 
   color: var(--project-display-color-text);
@@ -56,7 +61,6 @@ internal > .info > p {
   margin-bottom: 2px;
 }
 
-internal ul.tags,
 internal ul.links {
   margin: 4px;
   padding-inline-start: 0;
@@ -67,27 +71,10 @@ internal ul.links {
   margin-bottom: 8px;
 }
 
-internal ul.tags > li,
-internal ul.links > li {
+internal ul.tags > li {
   display: inline-block;
   margin-right: 0.5rem;
 }
-
-internal ul.tags > li > a {
-  cursor: pointer;
-  user-select: all;
-}
-
-internal ul.tags > li > a:before {
-  display: inline;
-  content: " ▶ ";
-  font-size: 0.5rem;
-  vertical-align: text-top;
-}
-
-internal ul.tags > li:hover > a:before {
-  color:rgb(58, 118, 98);
-} 
 
 internal ul.links > li > a {
   color: inherit;
@@ -115,11 +102,4 @@ internal ul.links > li > a:active {
 
 internal .hidden {
   display: none !important;
-}
-
-
-@media screen and (max-width: 640px) {
-  internal {
-    grid-template-columns: 20% auto;
-  }  
 }

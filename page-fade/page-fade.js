@@ -13,7 +13,7 @@ if (document.readyState === 'complete') {
 }
 
 // Define the Anchor variant that lets us fade out
-export default class FadeOutAnchorElement extends HTMLAnchorElement {
+export class FadeOutAnchorElement extends HTMLAnchorElement {
 
     fadingOut = false;
 
@@ -60,3 +60,5 @@ export default class FadeOutAnchorElement extends HTMLAnchorElement {
 
 // Register element
 customElements.define('fadeout-anchor', FadeOutAnchorElement, {extends: 'a'});
+
+export default FadeOutAnchorElement;

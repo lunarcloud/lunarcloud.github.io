@@ -1,7 +1,10 @@
+const pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',') ?? [];
 
 export default class ProjectDisplayElement extends HTMLElement {
 
     static templateElement;
+
+    tags = [];
 
     constructor() {
         super();
@@ -20,14 +23,25 @@ export default class ProjectDisplayElement extends HTMLElement {
         const clone = document.importNode(ProjectDisplayElement.templateElement.content, true);
         
         // Append Tags from attribute to list
-        let tags = this.getAttribute("tags").split(',');
-        tags.sort((a, b) => a.length - b.length + a.localeCompare(b)); // shortest-first, then alphabetical
-        tags.forEach(tag => {
+        this.tags = this.getAttribute("tags").split(',');
+        this.tags.sort((a, b) => a.length - b.length + a.localeCompare(b)); // shortest-first, then alphabetical
+        this.tags.forEach(tag => {
             if (tag.trim() == '') return; // ignore empties
 
             const listItemEl = document.createElement('li');
+            listItemEl.toggleAttribute("active", pageFilters.includes(tag));
+
             const anchorEl = document.createElement('a');
             anchorEl.textContent = tag;
+            anchorEl.addEventListener("click", () => { 
+                listItemEl.toggleAttribute("active");
+                let active = listItemEl.hasAttribute("active");
+                const event = new CustomEvent("projectfilterselected", {
+                    detail: { tag, active }
+                });
+                this.dispatchEvent(event);
+             });
+             
             listItemEl.appendChild(anchorEl);
             clone.querySelector("ul.tags").appendChild(listItemEl);
         });
