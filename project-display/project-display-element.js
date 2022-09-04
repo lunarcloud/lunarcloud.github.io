@@ -23,7 +23,7 @@ export default class ProjectDisplayElement extends HTMLElement {
 
         // Apply Template html to shadow DOM
         const clone = document.importNode(ProjectDisplayElement.templateElement.content, true);
-        
+
         // Append Tags from attribute to list
         this.tags = this.getAttribute("tags").split(",");
         this.tags.sort((a, b) => a.length - b.length + a.localeCompare(b)); // shortest-first, then alphabetical
@@ -38,7 +38,7 @@ export default class ProjectDisplayElement extends HTMLElement {
 
             anchorEl.textContent = tag;
             anchorEl.href= `?filter=${tag}`;
-            anchorEl.addEventListener("fadednavigate", () => { 
+            anchorEl.addEventListener("fadednavigate", () => {
                 let active = listItemEl.toggleAttribute("active");
                 this.dispatchEvent(new CustomEvent("projectfilterselected", { detail: { tag, active } }));
             }, {passive: false});
@@ -108,25 +108,31 @@ export default class ProjectDisplayElement extends HTMLElement {
             clone.querySelector(".for").classList.remove("hidden");
         }
 
+        // Set Team Role (can't use just "role" as that's ARIA role)
+        if (this.hasAttribute("team-role")) {
+            clone.querySelector(".team-role").textContent = this.getAttribute("team-role");
+            clone.querySelector(".team-role").classList.remove("hidden");
+        }
+
         // Set Rough Team-Size
         if (this.hasAttribute("size")) {
             clone.querySelector(".size").classList.remove("hidden");
             let sizeImg = clone.querySelector(`.size .${this.getAttribute("size")}`);
             sizeImg.classList.remove("hidden");
         }
-        
+
         // Set Name (can't use 'title' because that'll make a tooltip)
         if (this.hasAttribute("name")) {
             let nameEl = clone.querySelector(".name");
             nameEl.textContent = this.getAttribute("name");
-            if (this.hasAttribute("name-no-hyphen-char")) 
+            if (this.hasAttribute("name-no-hyphen-char"))
                 nameEl.setAttribute("word-break-no-hyphen", true);
         } else {
             console.warn("project-display element does not have a name!", this);
         }
 
-        
-        
+
+
         shadow.appendChild(clone);
     }
 
@@ -148,11 +154,11 @@ export default class ProjectDisplayElement extends HTMLElement {
         let firstA = projectA.attributes["first"]?.value ?? "";
         let releasedA = projectA.attributes["released"]?.value ?? "";
         let minA =[releasedA, firstA].sort()[0];
-        
+
         let firstB = projectB.attributes["first"]?.value ?? "";
         let releasedB = projectB.attributes["released"]?.value ?? "";
         let minB = [releasedB, firstB].sort()[0];
-        
+
         return minA.localeCompare(minB);
     }
 
@@ -166,7 +172,7 @@ export default class ProjectDisplayElement extends HTMLElement {
             let attrA = projectA.attributes[attributeName]?.value ?? "";
             let attrB = projectB.attributes[attributeName]?.value ?? "";
             return attrA.localeCompare(attrB);
-        };        
+        };
     }
 }
 

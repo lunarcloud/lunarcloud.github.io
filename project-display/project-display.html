@@ -5,7 +5,7 @@
             <internal>
                 <div class="thumbnail"></div>
                 <div class="info">
-                    <div class="size hidden" title="Rough size of team [for the portion of project involved].">
+                    <div class="size hidden" print-hidden title="Rough size of team [for the portion of project involved].">
                         <img alt="solo" class="solo hidden" src="project-display/img/solo-size.png"/>
                         <img alt="duo" class="duo hidden" src="project-display/img/duo-size.png" />
                         <img alt="trio" class="trio hidden" src="project-display/img/trio-size.png" />
@@ -15,7 +15,10 @@
                     <p class="for hidden">TODO</p>
                     <p class="timeframe hidden"><time class="first hidden" datetime="3038-01-01">TODO</time> - <time class="last">ongoing</time></p>
                     <p class="published hidden">Released: <time datetime="3038-01-01">TODO</time></p>
+                    <p class="team-role hidden"></p>
+                    <hr>
                     <slot name="description"><p>Description Not Provided</p></slot>
+                    <hr>
                     <ul class="tags project-tags"></ul>
                     <ul class="links hidden">
                         <li class="main hidden"><a href="#" target="_blank" rel="noopener">Website</a></li>
