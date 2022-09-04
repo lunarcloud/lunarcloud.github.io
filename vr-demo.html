@@ -15,36 +15,38 @@
     </head>
     <body>
         <main style="height: 100vh; width: 100vw; position: absolute; right: 0; bottom: 0;">
-            <div id="vr-content" style="height: 100%; width: 100%;"><a-scene embedded>
-                <a-assets>
-                    <a-asset-item id="meeple-robot" src="gltf/robot.glb"></a-asset-item>
-                    <a-asset-item id="meeple-gent1" src="gltf/gent1.glb"></a-asset-item>
-                    <a-asset-item id="meeple-lady1" src="gltf/lady1.glb"></a-asset-item>
-                    <a-asset-item id="meeple-airship" src="gltf/airship.glb"></a-asset-item>
+            <div id="vr-content" style="height: 100%; width: 100%;">
+                <a-scene embedded vr-mode-ui="enabled: true;">
+                    <a-assets>
+                        <a-asset-item id="meeple-robot" src="gltf/robot.glb"></a-asset-item>
+                        <a-asset-item id="meeple-gent1" src="gltf/gent1.glb"></a-asset-item>
+                        <a-asset-item id="meeple-lady1" src="gltf/lady1.glb"></a-asset-item>
+                        <a-asset-item id="meeple-airship" src="gltf/airship.glb"></a-asset-item>
 
-                    <a-asset-item id="ataito-bucket" src="gltf/ataito-bucket.glb"></a-asset-item>
-                    <a-asset-item id="kmc-vr-large-bottle" src="gltf/kmc-vr-large-bottle.glb"></a-asset-item>
-                    <a-asset-item id="shipwreck" src="gltf/shipwreck.glb"></a-asset-item>
-                </a-assets>
+                        <a-asset-item id="ataito-bucket" src="gltf/ataito-bucket.glb"></a-asset-item>
+                        <a-asset-item id="kmc-vr-large-bottle" src="gltf/kmc-vr-large-bottle.glb"></a-asset-item>
+                        <a-asset-item id="shipwreck" src="gltf/shipwreck.glb"></a-asset-item>
+                    </a-assets>
 
-                <a-entity gltf-model="#meeple-airship" position="-1 0.1 -5" scale="0.5 0.5 0.5" rotation="0 25 0">
-                    <a-entity gltf-model="#meeple-robot" position="1.75 1.6 1" rotation="0 15 0"></a-entity>
-                    <a-entity gltf-model="#meeple-lady1" position="0 1.6 1.5" rotation="0 0 0"></a-entity>
-                    <a-entity gltf-model="#meeple-gent1" position="-1.75 1.6 1" rotation="0 -15 0"></a-entity>
-                </a-entity>
+                    <a-entity gltf-model="#meeple-airship" position="-1 0.1 -5" scale="0.5 0.5 0.5" rotation="0 25 0">
+                        <a-entity gltf-model="#meeple-robot" position="1.75 1.6 1" rotation="0 15 0"></a-entity>
+                        <a-entity gltf-model="#meeple-lady1" position="0 1.6 1.5" rotation="0 0 0"></a-entity>
+                        <a-entity gltf-model="#meeple-gent1" position="-1.75 1.6 1" rotation="0 -15 0"></a-entity>
+                    </a-entity>
 
-                <a-entity gltf-model="#ataito-bucket" position="1.5 0.25 -3.5" scale="0.25 0.25 0.25" rotation="0 45 0"></a-entity>
-                <a-entity gltf-model="#kmc-vr-large-bottle" position="0.5 0 -3.5" scale="3 3 3" rotation="0 45 0"></a-entity>
-                <a-entity gltf-model="#shipwreck" position="2.5 3 -5.5" scale="1 1 1" rotation="45 45 0"></a-entity>
+                    <a-entity gltf-model="#ataito-bucket" position="1.5 0.25 -3.5" scale="0.25 0.25 0.25" rotation="0 45 0"></a-entity>
+                    <a-entity gltf-model="#kmc-vr-large-bottle" position="0.5 0 -3.5" scale="3 3 3" rotation="0 45 0"></a-entity>
+                    <a-entity gltf-model="#shipwreck" position="2.5 3 -5.5" scale="1 1 1" rotation="45 45 0"></a-entity>
 
-                <a-plane position="0 0 -4.5" rotation="-90 0 0" width="6" height="3.5" color="#61615e"></a-plane>
+                    <a-plane position="0 0 -4.5" rotation="-90 0 0" width="6" height="3.5" color="#61615e"></a-plane>
 
 
-                <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 4" rotation="45 0 0"></a-entity>
-                <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 -4" rotation="-45 0 0"></a-entity>
-                <a-entity light="type: ambient; color: #ccf; intensity: 1"></a-entity>
-                <a-sky color="#79a7de"></a-sky>
-          </a-scene></div>
+                    <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 4" rotation="45 0 0"></a-entity>
+                    <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 -4" rotation="-45 0 0"></a-entity>
+                    <a-entity light="type: ambient; color: #ccf; intensity: 1"></a-entity>
+
+            </a-scene>
+            </div>
         </main>
         <aside>
             <div style="
