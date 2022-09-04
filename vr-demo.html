@@ -24,17 +24,20 @@
 
                     <a-asset-item id="ataito-bucket" src="gltf/ataito-bucket.glb"></a-asset-item>
                     <a-asset-item id="kmc-vr-large-bottle" src="gltf/kmc-vr-large-bottle.glb"></a-asset-item>
+                    <a-asset-item id="shipwreck" src="gltf/shipwreck.glb"></a-asset-item>
                 </a-assets>
 
-                <a-entity gltf-model="#meeple-robot" position="0.75 0.9 -4.5" scale="0.5 0.5 0.5" rotation="0 15 0"></a-entity>
-                <a-entity gltf-model="#meeple-lady1" position="0 0.9 -4.25" scale="0.5 0.5 0.5" rotation="0 0 0"></a-entity>
-                <a-entity gltf-model="#meeple-gent1" position="-0.75 0.9 -4.5" scale="0.5 0.5 0.5" rotation="0 -15 0"></a-entity>
-                <a-entity gltf-model="#meeple-airship" position="0 0.1 -5" scale="0.5 0.5 0.5" rotation="0 0 0"></a-entity>
+                <a-entity gltf-model="#meeple-airship" position="-1 0.1 -5" scale="0.5 0.5 0.5" rotation="0 25 0">
+                    <a-entity gltf-model="#meeple-robot" position="1.75 1.6 1" rotation="0 15 0"></a-entity>
+                    <a-entity gltf-model="#meeple-lady1" position="0 1.6 1.5" rotation="0 0 0"></a-entity>
+                    <a-entity gltf-model="#meeple-gent1" position="-1.75 1.6 1" rotation="0 -15 0"></a-entity>
+                </a-entity>
 
-                <a-entity gltf-model="#ataito-bucket" position="0.75 0.25 -3" scale="0.25 0.25 0.25" rotation="0 45 0"></a-entity>
-                <a-entity gltf-model="#kmc-vr-large-bottle" position="-0.75 0 -3" scale="3 3 3" rotation="0 45 0"></a-entity>
+                <a-entity gltf-model="#ataito-bucket" position="1.5 0.25 -3.5" scale="0.25 0.25 0.25" rotation="0 45 0"></a-entity>
+                <a-entity gltf-model="#kmc-vr-large-bottle" position="0.5 0 -3.5" scale="3 3 3" rotation="0 45 0"></a-entity>
+                <a-entity gltf-model="#shipwreck" position="2.5 3 -5.5" scale="1 1 1" rotation="45 45 0"></a-entity>
 
-                <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#61615e"></a-plane>
+                <a-plane position="0 0 -4.5" rotation="-90 0 0" width="6" height="3.5" color="#61615e"></a-plane>
 
 
                 <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 4" rotation="45 0 0"></a-entity>
