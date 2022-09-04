@@ -1,18 +1,16 @@
-@import url("./project-tags.css");
+@import "./project-tags.css";
 
 internal {
   --project-display-color-bg: #ddd;
-  --project-display-color-border: rgba(80, 80, 80, 0.9);
+  --project-display-color-border: rgb(80 80 80 / 90%);
   --project-display-color-text: #333;
-  --project-display-color-date: rgb(40, 57, 196);
+  --project-display-color-date: rgb(40 57 196);
   --min-size: 256px;
 
   min-width: var(--min-size);
-
   display: inline-grid;
   grid-template-columns: max(calc(var(--min-size) / 2.5), 30%) auto;
   justify-items: stretch;
-
   color: var(--project-display-color-text);
   border: 2px solid var(--project-display-color-border);
   border-radius: 8px;
@@ -23,26 +21,25 @@ internal {
 }
 
 [word-break-no-hyphen] {
-  -webkit-hyphenate-character: '';
-  hyphenate-character: '';
+  -webkit-hyphenate-character: "";
+  hyphenate-character: "";
 }
-
 
 @media screen and (prefers-color-scheme: dark) {
   internal {
     --project-display-color-bg: #444;
-    --project-display-color-border: rgba(45, 33, 33, 0.9);
+    --project-display-color-border: rgb(45 33 33 / 90%);
     --project-display-color-text: #ccc;
-    --project-display-color-date: rgb(100, 149, 237);
+    --project-display-color-date: rgb(100 149 237);
   }
 }
 
 @media print {
   internal {
     --project-display-color-bg: transparent;
-    --project-display-color-border: rgba(45, 33, 33, 0.9);
+    --project-display-color-border: rgb(45 33 33 / 90%);
     --project-display-color-text: black;
-    --project-display-color-date: rgb(40, 57, 196);
+    --project-display-color-date: rgb(40 57 196);
   }
 }
 
@@ -50,7 +47,7 @@ internal > .thumbnail {
   align-self: stretch;
   height: 100%;
   grid-column: 1;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgb(0 0 0 / 20%);
   display: block;
   overflow: hidden;
   background-position: 60%;
@@ -66,6 +63,7 @@ internal > .info {
   padding-left: 1rem;
   padding-right: 0.5rem;
   position: relative;
+
   --team-icon-width: 32px;
 }
 
@@ -74,6 +72,7 @@ internal > .info > .size {
   top: 6px;
   right: 4px;
 }
+
 internal > .info > .size,
 internal > .info > .size img {
   width: var(--team-icon-width);
@@ -82,7 +81,7 @@ internal > .info > .size img {
 
 @media screen and (prefers-color-scheme: dark) {
   internal > .info > .size img {
-    filter: drop-shadow(0px 0px 3px rgb(50,100,100));
+    filter: drop-shadow(0 0 3px rgb(50 100 100));
   }
 }
 
@@ -99,7 +98,6 @@ internal > .info > p {
 }
 
 @media screen {
-
   internal time {
     color: var(--project-display-color-date);
   }
@@ -107,9 +105,6 @@ internal > .info > p {
   internal ul.links {
     margin: 4px;
     padding-inline-start: 0;
-  }
-
-  internal ul.links {
     margin-top: 8px;
     margin-bottom: 8px;
   }
@@ -123,8 +118,8 @@ internal > .info > p {
     color: inherit;
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(76, 154, 128);
-    background-color: rgb(76, 154, 128, 0.5);
+    border-color: rgb(76 154 128);
+    background-color: rgb(76 154 128 / 50%);
     border-radius: 4px;
     padding: 4px 8px;
     cursor: pointer;
@@ -133,13 +128,13 @@ internal > .info > p {
   }
 
   internal ul.links > li > a:hover {
-    border-color: rgb(58, 118, 98);
-    background-color: rgba(53, 108, 90, 0.5);
+    border-color: rgb(58 118 98);
+    background-color: rgb(53 108 90 / 50%);
   }
 
   internal ul.links > li > a:active {
-    border-color: rgb(34, 69, 57);
-    background-color: rgba(30, 61, 50, 0.5);
+    border-color: rgb(34 69 57);
+    background-color: rgb(30 61 50 / 50%);
   }
 }
 
@@ -147,14 +142,17 @@ internal > .info > p {
   internal ul.links {
     padding-inline-start: 12px;
   }
+
   internal ul.links > li {
     list-style-type: none;
     margin-bottom: 4pt;
   }
+
   internal ul.links > li > a {
     text-decoration: none;
   }
-  internal ul.links > li > a:after {
+
+  internal ul.links > li > a::after {
     content: ": " attr(href);
     font-weight: bold;
   }

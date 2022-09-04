@@ -1,41 +1,53 @@
-
 /* Animations */
-@media screen and (prefers-reduced-motion : no-preference) {
+@media screen and (prefers-reduced-motion: no-preference) {
+  @keyframes anim-dialog-fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
-	@keyframes AnimDialogFadeIn {
-        0% { opacity: 0; }
-	    100% { opacity: 1; }
-	}
-	
-	@keyframes AnimDialogFadeOut {
-        0% { opacity: 1; }
-	    100% { opacity: 0; }
-	}
+  @keyframes anim-dialog-fade-out {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
 
-	@keyframes AnimDialogSlideIn {
-		0% { transform: translateY(-30px); opacity: 0; }
-	  100% { transform: translateY(0px); opacity: 1; }
-	}
+  @keyframes anim-dialog-slide-in {
+    0% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
 
-	@keyframes AnimDialogSlideOut {
-	  0% { transform: translateY(0px); opacity: 1; }
-	  100% { transform: translateY(30px); opacity: 0; }
-	}
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes anim-dialog-slide-out {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+  }
 }
 
 /* Styles */
-dialog[is='anim-dialog']::backdrop {
-	animation: AnimDialogFadeIn 500ms ease-out 0ms;
+dialog[is="anim-dialog"]::backdrop {
+  animation: anim-dialog-fade-in 500ms ease-out 0ms;
 }
 
-dialog[is='anim-dialog'][open] {
-	animation: AnimDialogSlideIn 500ms ease-out 0ms;
+dialog[is="anim-dialog"][open] {
+  animation: anim-dialog-slide-in 500ms ease-out 0ms;
 }
 
-dialog[is='anim-dialog'][dismissing]::backdrop {
-	animation: AnimDialogFadeOut 500ms linear 0ms;
+dialog[is="anim-dialog"][dismissing]::backdrop {
+  animation: anim-dialog-fade-out 500ms linear 0ms;
 }
 
-dialog[is='anim-dialog'][open][dismissing] {
-	animation: AnimDialogSlideOut 500ms linear 0ms;
+dialog[is="anim-dialog"][open][dismissing] {
+  animation: anim-dialog-slide-out 500ms linear 0ms;
 }

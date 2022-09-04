@@ -1,0 +1,57 @@
+@import "main.css";
+
+main {
+  padding: 4px;
+}
+
+#all-projects {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+#filters-list,
+#all-projects project-display {
+  max-width: 100%;
+  width: 720px;
+  margin: auto;
+}
+
+#filters-list {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#filters-list #filter-clear {
+  text-align: right;
+  margin-right: 20px;
+  flex-grow: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+#filters-list .project-tags {
+  text-align: left;
+  flex-grow: 1;
+}
+
+#project-tags-label {
+  margin: auto;
+}
+
+#all-projects project-display[hidden] {
+  display: none !important;
+}
+
+@media screen and (max-width: 640px) {
+  main {
+    font-size: 10pt;
+  }
+
+  main > h1 {
+    font-size: 24pt;
+  }
+}

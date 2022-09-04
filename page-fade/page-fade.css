@@ -1,32 +1,30 @@
+@media screen and (prefers-reduced-motion: no-preference) {
+  @keyframes page-fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
-@media screen and (prefers-reduced-motion : no-preference) {
+  @keyframes page-fade-out {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
 
-	@keyframes pageFadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-	}
-	
-	@keyframes pageFadeOut {
-        0% { opacity: 1; }
-        100% { opacity: 0; }
-	}
+  body #main {
+    opacity: 0;
+  }
 
-	body #main {
-		opacity: 0;
-	}
+  body[loaded] #main {
+    opacity: 1;
+    animation: page-fade-in 500ms ease-in 0ms;
+  }
 
-	body[loaded] #main {
-		opacity: 1;
-		animation: pageFadeIn 500ms ease-in 0ms;
-	}
+  body[unloading] #main {
+    opacity: 0;
+    animation: page-fade-out 500ms ease-in 0ms;
+  }
 
-	body[unloading] #main {
-		opacity: 0;
-		animation: pageFadeOut 500ms ease-in 0ms;
-	}
-
-	body[loaded][same-page] #main,
-	body[unloading][same-page] #main {
-		animation-duration: 100ms;
-	}
+  body[loaded][same-page] #main,
+  body[unloading][same-page] #main {
+    animation-duration: 300ms;
+  }
 }

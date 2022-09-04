@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "eslint-fix": "eslint **/*.js --fix",
+        "eslint": "eslint **/*.js",
+        "htmllint": "npx linthtml \"**/*.html\"",
+        "csslint": "npx stylelint \"**/*.css\""
+    }
+}

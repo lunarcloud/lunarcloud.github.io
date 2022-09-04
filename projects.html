@@ -1,718 +1,664 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Sam Sarette | Test | Projects</title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#37c482">
+<html lang="en">
 
-    <link rel="manifest" href="/ssarette-portfolio.webmanifest">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="main.css">
-    <style>
-      main {
-        padding: 4px;
-      }
+    <head>
+        <title>Sam Sarette | Test | Projects</title>
 
-      #all-projects {
-        display: flex;
-        margin: auto;
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      #filters-list,
-      #all-projects project-display {
-        max-width: 100%;
-        width: 720px;
-        margin: auto;
-      }
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#37c482">
 
-      #filters-list { 
-        display: flex;
-        flex-direction: row-reverse;
-      }
+        <link rel="manifest" href="/ssarette-portfolio.webmanifest">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="projects.css">
+    </head>
 
-      #filters-list #filter-clear {
-        text-align: right;
-        margin-right: 20px;
-        flex-grow: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        overflow-wrap: break-word;
-        text-overflow: ellipsis;
-      }
+    <body>
+        <main id="main">
+            <a is="fadeout-anchor" print-hidden href="./">Back</a>
 
-      #filters-list .project-tags {
-        text-align: left;
-        flex-grow: 1;
-      }
-      
-      #project-tags-label {
-        margin: auto;
-      }
+            <h1>
+                Projects <together>List Demo</together>
+            </h1>
 
-      #all-projects project-display[hidden] {
-        display: none !important;
-      }
+            <div id="filters-list">
+                <button id="filter-clear" type="reset" print-hidden>Clear Filters</button>
+                <a is="fadeout-anchor" id="filter-clear-a" hidden href="?"></a>
+                <ul id="active-project-tags" class="tags project-tags"></ul>
+                <span id="project-tags-label">Active:</span>
+            </div>
 
-      @media screen and (max-width: 640px) {
-        main {
-          font-size: 10pt;
-        }
-        main > h1 {
-          font-size: 24pt;
-        }
-      }
+            <div id="all-projects">
 
-    </style>
-  </head>
-  <body>
-    <main id="main">
-      <a is="fadeout-anchor" print-hidden href="./">Back</a>
-      
-      <h1>
-        Projects <together>List Demo</together>
-      </h1>
-      
-      <div id="filters-list">
-        <button id="filter-clear" type="reset" print-hidden>Clear Filters</button>
-        <a is="fadeout-anchor" id="filter-clear-a" hidden href="?"></a>
-        <ul id="active-project-tags" class="tags project-tags"></ul>
-        <label id="project-tags-label" for="active-project-tags">Active:</label>
-      </div>
+                <project-display
+                    id="kmc-int-1"
+                    name="Internal Utility Project #1"
+                    for="KMC Systems"
+                    size="solo"
+                    tags="professional,webapp,php,sql,js/ts,soap-api"
+                    thumbnail="img/projects/kmc-mono.svg"
+                    first="2012-03-10" last="2012-08-17"
+                >
+                    <span slot="description">
+                    <p>Documentation Template Application. Built with the MySQL and PHP</p>
+                    <p>The main goal was to generate release notes with bug tracking integration.</p>
+                    <p>Based on the release number and type/state, it would fill out the 'bugs closed', 'features added', and other such document sections. </p>
+                    <p>Our bug tracker at the time used a SOAP-based API.</p>
+                    </span>
+                </project-display>
 
-      <div id="all-projects">
-            
-        <project-display 
-            id="kmc-int-1"
-            name="Internal Utility Project #1"
-            for="KMC Systems"
-            size="solo"
-            tags="professional,webapp,php,sql,js/ts,soap-api"
-            thumbnail="img/projects/kmc-mono.svg"
-            first="2012-03-10" last="2012-08-17"
-            >
-            <span slot="description">
-              <p>Documentation Template Application. Built with the MySQL and PHP</p>
-              <p>The main goal was to generate release notes with bug tracking integration.</p>
-              <p>Based on the release number and type/state, it would fill out the 'bugs closed', 'features added', and other such document sections. </p>
-              <p>Our bug tracker at the time used a SOAP-based API.</p>
-            </span>
-        </project-display>
+                <project-display
+                    id="kmc-ge-spinlab-1"
+                    name="GE SpinLab™ Hyper&shy;polarizer"
+                    for="KMC Systems"
+                    size="trio"
+                    tags="professional,qt,c++,robotics,windows"
+                    thumbnail="img/projects/ge-spinlab.jpg" thumbnail-size="cover"
+                    first="2012-08-20" last="2013-09-20"
+                    link-announcement="https://www.medgadget.com/2014/05/ge-releases-spinlab-mri-hyperpolarizer-for-cellular-imaging-of-metabolic-activity.html"
+                >
+                    <span slot="description">
+                    <p>Designed and implemented UX updates to support a major addition to the device's workflow.</p>
+                    <p>The UI was stateless, so information gathered each update would inform the whole state of the UI.</p>
+                    </span>
+                </project-display>
 
-        <project-display 
-            id="kmc-ge-spinlab-1"
-            name="GE SpinLab™ Hyper&shy;polarizer"
-            for="KMC Systems"
-            size="trio"
-            tags="professional,qt,c++,robotics,windows" 
-            thumbnail="img/projects/ge-spinlab.jpg" thumbnail-size="cover"
-            first="2012-08-20" last="2013-09-20"
-            link-announcement="https://www.medgadget.com/2014/05/ge-releases-spinlab-mri-hyperpolarizer-for-cellular-imaging-of-metabolic-activity.html"
-            >
-            <span slot="description">
-              <p>Designed and implemented UX updates to support a major addition to the device's workflow.</p>
-              <p>The UI was stateless, so information gathered each update would inform the whole state of the UI.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="kmc-roche-bloodhound"
-            name="Roche Cobas m511 with Bloodhound® technology - Manufacturing & Service Software"
-            for="KMC Systems"
-            size="duo"
-            tags="professional,java,js/ts,robotics,barcodes,installers,linux"
-            thumbnail="img/projects/roche-cobas-m511.png"
-            first="2013-09-20" last="2017-05-17"
-            link-announcement="https://www.prnewswire.com/news-releases/roche-launches-the-new-cobas-m-511-analyzer-signaling-a-new-era-in-hematology-testing-300610789.html"
-            >
-            <span slot="description">
-              <p>Manufacturing Software Suite & Service Technician Software</p>
-              <p>Web Application using Robotics Control API to "teach" various positions of motors.</p>
-              <p>I used barcodes to transfer from station to station where digital transfer was available.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="kmc-bmx-vmsp"
-            name="bioMérieux VITEK® MS PRIME"
-            for="KMC Systems"
-            size="team"
-            tags="professional,java,js/ts,angular,sql,rest-api,installers,robotics,windows,os-integration,continuous-integration"
-            thumbnail="img/projects/bmx-vmsp.jpg" thumbnail-size="cover"
-            first="2017-01-06" last="2022-09-01"
-            link-announcement="https://www.linkedin.com/posts/activity-6856616798125649920-paoh"
-            >
-            <span slot="description">
-              <p>Mass spectrometer which gathered massive amounts of data, which we packaged as standard mzML format.</p>
-              <p>I was a major contributor to our web app front-end, the database design and queries, and the instrument-to-server communications, including results, auditable events, and alerts.</p>
-              <p>I architected the work-scheduling algorithms based on customer requirements, built a complex installer which checked several system components and registered a windows service.</p>
-              <p>I also was the developer responsible for working out the software-focused manufacturing process, helped write software quality scripts, and administered / improved our CI build scripts.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="kmc-int-2"
-            name="Internal Utility Project #2"
-            for="KMC Systems"
-            size="solo"
-            tags="professional,c#,xaml,installers,os-integration"
-            thumbnail="img/projects/kmc-mono.svg"
-            first="2020-11-04" last="2022-04-14"
-            >
-            <span slot="description">
-              <p>C# Desktop Application with Installer and Cross-Platform Avalonia XAML GUI.</p>
-              <p>This project, while simple, was primarily done as an exercise to practice our software lifecycle process from start-to-finish.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="kmc-ge-spinlab-mpqc"
-            name="GE SpinLab™ Hyper&shy;polarizer - Additional Device"
-            for="KMC Systems"
-            size="solo"
-            tags="professional,c#,winforms,installers,robotics,windows"
-            thumbnail="img/projects/ge-spinlab.jpg" thumbnail-size="cover"
-            first="2021-05-19"
-            >
-            <span slot="description">
-              <p>Hands-on modification of the embedded hardware definition files to support updates to the 
-                products' robotics and sensors. Updated the state machine logic to introduce new workflow.
-              </p>
-              <p>Significantly improved the installer and cleaned up the UI and threading.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="vr-lab"
-            name="Virtual Medical Labratory"
-            for="KMC Systems"
-            size="solo"
-            tags="professional,gamedev,unity,xr,c#,meta-quest-2"
-            thumbnail="img/projects/kmc-vr-lab.jpg" thumbnail-size="cover"
-            released="2021-09-20"
-            first="2021-08-02" last="2021-09-20"
-            link-announcement="https://www.linkedin.com/posts/kmc-systems-inc-_innovation-activity-6857727563062620161-mGuG"
-            >
-            <span slot="description">
-              <p>VR experience for KMC Systems trade show booth and office marketing installation. 
-                Shown at the AACC Annual Scientific Meeting & Clinical Lab Expo 2021 (Sept 26-30).
-              </p>
-              <p>I was the primary developer - 360 photography, environment and interaction design, and more.</p>
-              <p>We recorded lots of mixed-reality footage for display on a TV near the installation.</p>
-              <p>In the demo, you can use a floating paintbrush and pallet to change the instrument's skins,
-                open the drawers and replace the bottles in their slots,
-                open the robotics area and watch the machine park itself into a safe position so you can insert a microtiter plate,
-                and overall, you can play with the consumables on the desk and fridge and walk around the instrument.
-              </p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="kmc-int-3"
-            name="Internal Utility Project #3"
-            for="KMC Systems"
-            size="duo"
-            tags="professional,c#,asp,js/ts,pwa"
-            thumbnail="img/projects/kmc-mono.svg" 
-            first="2022-05-11" last="2022-08-02"
-            >
-            <span slot="description">
-              <p>C# ASP MVC Progressive Web Application.</p>
-              <p>This application was a collaborative effort to replace an overly-complex spreadsheet management came to rely on.</p>
-              <p>Partly responsible for inspiring me to create this <a href="#portfolio-website">portfolio site</a></p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="kmc-sdk"
-            name="Internal SDK"
-            for="KMC Systems"
-            size="duo"
-            tags="professional,c#,c++,nuget,installers,os-integration,continuous-integration"
-            thumbnail="img/projects/kmc-mono.svg"
-            first="2022-08-11"
-            >
-            <span slot="description">
-              <p>Created the Installer (msi) and NuGet packages for our primary Embedded &amp; RPC SDK. Involved lots of manually-created nuspec files, adjusting project templates, devops yaml build scripts.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="antiford-gerstenberg-heroes-game"
-            name="Gersten&shy;berg Heroes"
-            for="Citizens of Antiford"
-            size="trio"
-            tags="hobby,gamedev,gamepad,multiplayer"
-            thumbnail="img/projects/gerstenberg-heroes.jpg" thumbnail-size="cover"
-            released="2016-11-13"
-            first="2016-11-11" last="2021-08-06"
-            link-main="https://citizensofantiford.itch.io/gerstenberg-heroes"
-            link-announcement="https://citizensofantiford.com/game?jam&year=2016&month=november"
-            >
-            <span slot="description">
-              <p>Sponsored and Participated in game jam at NHTI in 2016.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="antiford-switchboard-copper-game"
-            name="Switch&shy;board Copper"
-            for="Citizens of Antiford"
-            size="trio"
-            tags="hobby,gamedev,ink,js/ts,unity,godot,xr,renpy,google-cardboard,google-daydream"
-            thumbnail="img/projects/switchboard-copper.jpg" thumbnail-size="cover"
-            released="2018-01-28"
-            first="2018-01-26" last="2019-10-11"
-            link-main="https://citizensofantiford.itch.io/switchboard-copper"
-            link-repo="https://github.com/lunarcloud/visual-novel-GGJ-2018/"
-            >
-            <span slot="description">
-              <p>Sponsored and Participated in game jam at NHTI in 2018.</p>
-              <p>Once the game was complete, I used as it as an example of using Ink in many game engines, by reimplementing it several times.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="homeworlds-game"
-            name="Home&shy;worlds"
-            for="Personal"
-            size="duo"
-            tags="hobby,gamedev,xr,ink,google-cardboard,google-daydream"
-            thumbnail="img/projects/homeworlds-game.jpg" thumbnail-size="cover"
-            released="2019-02-27"
-            first="2019-01-21" last="2019-02-03"
-            link-main="https://samsarette.itch.io/homeworlds"
-            >
-            <span slot="description">
-              <p>Participated in Global Game Jam at NHTI in 2019.</p>
-              <p>Wired in the procedural generation system that my partner designed, and implemented the Ink-powered trade-partner discussion system.</p>
-              <p>Also, created several character animations using a Microsoft Kinect.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="antiford-wild-araz"
-            name="Nathan Powell's Wild Araz"
-            for="Citizens of Antiford"
-            tags="hobby,support,gamedev,installers,windows,macos,linux"
-            thumbnail="img/projects/wild-araz.jpg" thumbnail-size="cover"
-            released="2019-08-10"
-            link-main="https://citizensofantiford.itch.io/wild-araz"
-            >
-            <span slot="description">
-              <p> Beta Tester and Release Engineer for a friend's game.</p>
-              <p>See <a href="#rpgmaker-installer-scripts">"RPG Maker Installer Creation Scripts"</a></p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="shipwreck-game"
-            name="Shipwreck"
-            for="Personal"
-            size="duo"
-            tags="hobby,gamedev,unity,kinect,android,windows,linux"
-            thumbnail="img/projects/shipwreck-game.jpg"  thumbnail-size="cover"
-            released="2020-02-02"
-            first="2020-01-31" last="2020-02-02"
-            link-main="https://samsarette.itch.io/shipwreck"
-            >
-            <span slot="description">
-              <p>Participated in Global Game Jam at NHTI in 2020.</p>
-              <p>Made multiplayer-focused gameplay using server-size synchronization that partner developed.</p>
-              <p>Designed the spaceship and did some texturing of it using material maker.</p>
-              <p>Created the fly-by observation camera used by the "observer" client.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="color-below-game"
-            name="The Color Below"
-            for="Personal"
-            size="trio"
-            tags="hobby,gamedev,godot,ink,windows,macos,linux,android"
-            thumbnail="img/projects/color-below-game.jpg"  thumbnail-size="cover"
-            released="2020-08-03"
-            first="2020-07-30" last="2020-08-10"
-            link-main="https://samsarette.itch.io/color-below"
-            >
-            <span slot="description">
-              <p>Participated in the InkJam game jam online in 2020.</p>
-              <p>Mentored writer in "Ink" technology, and helped artist with technical aspects of game-art development.</p>
-              <p>Developed the game with the Godot game engine using the Ink narrative middleware.</p>
-            </span>
-        </project-display>
-        
-        <project-display 
-            id="ataito-game"
-            name="Ataito: The Spirit Swapper"
-            for="Personal"
-            size="duo"
-            tags="hobby,gamedev,godot,xr,3d-modelling,particle-effects,meta-quest-2,windows"
-            thumbnail="img/projects/ataito-game.jpg"  thumbnail-size="cover"
-            released="2022-01-30"
-            first="2022-01-28" last="2022-06-26"
-            link-main="https://malcolmnixon.itch.io/ataito-the-spirit-swapper"
-            link-repo="https://github.com/Malcolmnixon/Ataito-Game "
-            >
-              <span slot="description">
-                <p>Hosted and Participated in Global Game Jam, online with the Southern NH Game Dev Meetup in 2022.</p>
-                <p>First Project using the Godot game engine's XR Toolkit</p>
-                <p>Created particle effects, Some modelling and texturing, mechanics programming, level design, foley sound effects work.</p>
-              </span>
-          </project-display>
-          
-        <project-display 
-            id="igdanh-presents-ink"
-            name="Present&shy;ation: Inter&shy;active Story&shy;telling with Ink"
-            for="IGDANH"
-            size="solo"
-            tags="hobby,gamedev,ink,presentation"
-            thumbnail="img/projects/ink-presentation.jpg"  thumbnail-size="cover"
-            released="2019-05-14"
-            link-main="https://www.meetup.com/igda-new-hampshire-game-development-meetup/events/260827461/"
-            >
-            <span slot="description">
-              <p>Presented to NH game developers on the Ink narrative middleware.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="script-dialog"
-            name="Script-Dialog"
-            for="Personal"
-            size="solo"
-            tags="hobby,bash,linux"
-            thumbnail="img/projects/script-dialog.jpg"  thumbnail-size="cover"
-            first="2014-10-07" last="2022-05-21"
-            link-repo="https://github.com/lunarcloud/script-dialog"
-            >
-            <span slot="description">
-              <p>Linux bash library for TUI/GUI dialogs.</p>
-              <p>The idea is that if you launch the script via file manager, you get GUI popups, 
-                but if you ran it from the terminal, you'll get the TUI dialogs.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="unity-ballpoint-ink"
-            name="Ballpoint: Friendly Wrapper for Ink on Unity"
-            for="Personal"
-            size="solo"
-            tags="hobby,gamedev,unity,ink,addon"
-            thumbnail="img/projects/ballpoint-unity.jpg"  thumbnail-size="cover"
-            first="2020-09-09" last="2020-10-14"
-            link-main="https://openupm.com/packages/org.samsarette.ballpoint-unity"
-            link-repo="https://github.com/lunarcloud/ballpoint-unity"
-            >
-            <span slot="description">
-              <p>OpenUPM packaged addon for using Ink middleware with Unity game engine.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="godot-xr-toolkit"
-            name="Godot XR Toolkit"
-            for="Godot"
-            size="duo"
-            tags="hobby,gamedev,addon,godot,xr,meta-quest-2,windows,linux"
-            thumbnail="img/projects/godot-xr-tools.png"
-            first="2022-05-19" last="2022-08-01"
-            link-repo="https://github.com/GodotVR/godot-xr-tools"
-            >
-            <span slot="description">
-              <p>Contributed ranged grab logic, editor node icons, consulted on design.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="inky"
-            name="Inky (Writing App for Ink)"
-            for="Inkle"
-            tags="hobby,gamedev,ink,js/ts,installers,windows,macos,linux"
-            thumbnail="img/projects/inky.png"
-            first="2019-10-18" last="2022-06-15"
-            link-repo="https://github.com/inkle/inky"
-            >
-            <span slot="description">
-              <p>Contributed to dark mode feature, web template improvements, linux packaging, keyboard shortcuts.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="playdate-build-scripts"
-            name="PlayDate Project Build Scripts"
-            for="Personal"
-            size="solo"
-            tags="hobby,gamedev,bash,windows,linux"
-            thumbnail="img/projects/playdate-build-scripts.jpg"  thumbnail-size="cover"
-            released="2022-06-10"
-            link-repo="https://github.com/lunarcloud/playdate-project-build-scripts"
-            >
-            <span slot="description">
-              <p>Command-line script (windows and linux variants) for building PlayDate SDK projects.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="playdate-vscode"
-            name="PlayDate Visual Studio Code Addon"
-            for="Personal"
-            tags="hobby,gamedev,addon"
-            thumbnail="img/projects/vscode-playdate.jpg"  thumbnail-size="cover"
-            first="2022-05-13" last="2022-05-18"
-            link-repo="https://github.com/orta/vscode-playdate"
-            >
-            <span slot="description">
-              <p>Contributed Linux fixes.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="godot-rumble-example"
-            name="Godot (Gamepad) Rumble Demo"
-            for="Godot"
-            size="solo"
-            tags="hobby,gamedev,godot,gamepad,android,windows,macos,linux"
-            thumbnail="img/projects/godot-rumble.png"
-            first="2022-02-10" last="2022-02-13"
-            link-main="https://godotengine.org/asset-library/asset/1230"
-            link-repo="https://github.com/lunarcloud/godot-rumble-example-project/ "
-            >
-            <span slot="description">
-              <p>Example Project for using gamepad rumble with the Godot game engine.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="rpgmaker-installer-scripts"
-            name="RPG Maker Installer Creation Scripts"
-            for="Personal"
-            size="solo"
-            tags="hobby,gamedev,bash,installers,linux"
-            thumbnail="img/projects/lunarcloud.jpg"
-            first="2015-09-02" last="2022-05-16"
-            link-repo="https://github.com/lunarcloud/rpg-maker-vx-installer-scripts"
-            >
-            <span slot="description">
-              <p>Used on and developed for <a href="#antiford-wild-araz">"Nathan Powell's Wild Araz"</a>.</p>
-              <p>These scripts will create a number of installers for Windows, Mac, and Linux for games made with the ruby-powered RPG Maker game engines (XP, VX, VX Ace).</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="qt-proj-template"
-            name="Qt Enhanced Project Template"
-            for="Personal"
-            size="solo"
-            tags="hobby,c++,qt,addon"
-            thumbnail="img/projects/lunarcloud.jpg"
-            first="2013-05-05" last="2018-12-13"
-            link-repo="https://github.com/lunarcloud/qt-enhanced-project-template"
-            >
-            <span slot="description">
-              <p>Project Template for the Qt Creator IDE to produce a desktop application with icons, a main window, support for native OS dock menus, and styling.</p>
-              <p>Also includes a default README with an explanation on how to deploy / create installers.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="antiford-doom-game"
-            name="Antiford &quot;Doom&quot; "
-            for="Personal"
-            size="solo"
-            tags="hobby,gamedev,js/ts,impactjs,gamepad"
-            thumbnail="img/projects/antiford-doom.jpg" thumbnail-size="cover"
-            first="2015-11-13" last="2015-11-15"
-            link-main="https://citizensofantiford.com/games/jam/2015/november/games/AntifordDoom/"
-            link-announcement="https://citizensofantiford.com/game?jam&year=2015&month=november"
-            >
-            <span slot="description">
-              <p>First-person shooter in the style of wolfenstein &amp; Doom, made with the ImpactJS game engine.</p>
-              <p>First use of my <a href="#gameinputjs">GameInputJS</a> library </p>
-            </span>
-        </project-display>
+                <project-display
+                    id="kmc-roche-bloodhound"
+                    name="Roche Cobas m511 with Bloodhound® technology - Manufacturing &amp; Service Software"
+                    for="KMC Systems"
+                    size="duo"
+                    tags="professional,java,js/ts,robotics,barcodes,installers,linux"
+                    thumbnail="img/projects/roche-cobas-m511.png"
+                    first="2013-09-20" last="2017-05-17"
+                    link-announcement="https://www.prnewswire.com/news-releases/roche-launches-the-new-cobas-m-511-analyzer-signaling-a-new-era-in-hematology-testing-300610789.html"
+                >
+                    <span slot="description">
+                    <p>Manufacturing Software Suite &amp; Service Technician Software</p>
+                    <p>Web Application using Robotics Control API to "teach" various positions of motors.</p>
+                    <p>I used barcodes to transfer from station to station where digital transfer was available.</p>
+                    </span>
+                </project-display>
 
-        <project-display 
-            id="gameinputjs"
-            name="Game&shy;InputJS"
-            for="Personal"
-            size="solo"
-            tags="hobby,gamedev,js/ts,gamepad,windows,macos,linux,android"
-            thumbnail="img/projects/lunarcloud.jpg"
-            first="2015-11-01" last="2019-05-05"
-            link-repo="https://github.com/lunarcloud/gameinputjs"
-            >
-            <span slot="description">
-              <p>js/ts library for using gamepads with a standardized mapping, and APIs for getting the gamepads' type, icons, button names.</p>
-            </span>
-        </project-display>
+                <project-display
+                    id="kmc-bmx-vmsp"
+                    name="bioMérieux VITEK® MS PRIME"
+                    for="KMC Systems"
+                    size="team"
+                    tags="professional,java,js/ts,angular,sql,rest-api,installers,robotics,windows,os-integration,continuous-integration"
+                    thumbnail="img/projects/bmx-vmsp.jpg" thumbnail-size="cover"
+                    first="2017-01-06" last="2022-09-01"
+                    link-announcement="https://www.linkedin.com/posts/activity-6856616798125649920-paoh"
+                >
+                    <span slot="description">
+                    <p>Mass spectrometer which gathered massive amounts of data, which we packaged as standard mzML format.</p>
+                    <p>I was a major contributor to our web app front-end, the database design and queries, and the instrument-to-server communications, including results, auditable events, and alerts.</p>
+                    <p>I architected the work-scheduling algorithms based on customer requirements, built a complex installer which checked several system components and registered a windows service.</p>
+                    <p>I also was the developer responsible for working out the software-focused manufacturing process, helped write software quality scripts, and administered / improved our CI build scripts.</p>
+                    </span>
+                </project-display>
 
-        <project-display 
-            id="antiford-website"
-            name="CitizensOf&shy;Antiford&shy;.com" name-no-hyphen-char
-            for="Citizens of Antiford"
-            size="solo"
-            tags="hobby,php,sql,js/ts,rest-api"
-            thumbnail="img/projects/antiford.png"
-            first="2012-06-22" last="2021-08-19"
-            link-main="https://citizensofantiford.com"
-            >
-            <span slot="description">
-              <p>PHP Web Application - Social Media and Document Creation. eBook Download and text-to-speech reader features.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-            id="antiford-rogues-tabletop"
-            name="Rogues of Antiford - Tabletop Game"
-            for="Citizens of Antiford"
-            size="solo"
-            tags="hobby,gamedev,fusion-360,3d-modelling,3d-printing"
-            thumbnail="img/projects/rogues-of-antiford.jpg" thumbnail-size="cover"
-            first="2017-09-17"
-            link-main="https://www.facebook.com/roguesgame"
-            >
-            <span slot="description">
-              <p>3D Printed pieces, tabletop game.</p>
-            </span>
-        </project-display>
-          
-        <project-display 
-          id="jewelry-city-virtual-2020"
-          name="Jewelry City Steam&shy;punk Festival 2020"
-          for="Steam&shy;punks of New England"
-          size="team"
-          tags="hobby,presentation,event-planning,media-production"
-          thumbnail="img/projects/jewelry-city-festival.jpg" thumbnail-size="cover"
-          first="2020-05-19" last="2020-11-22"
-          released="2020-11-20"
-          link-main="https://www.youtube.com/playlist?list=PLYwE9hUT04-iByNOdPsDYGRKWGhZAF76P"
-          >
-          <span slot="description">
-            <p>Contributed technical expertise instrumental in planning the virtual event, came up with the idea to use a single playlist of 'premeire' and live videos.</p>
-            <p>Trained and worked with several performers who sought to perform live on YouTube.</p>
-            <p>Contributed a pre-recorded presentation, followed-up with live Q&amp;A.</p>
-            <p>Manned the YouTube pages during the premeires and live videos to ensure all went well.</p>
-          </span>
-        </project-display>
+                <project-display
+                    id="kmc-int-2"
+                    name="Internal Utility Project #2"
+                    for="KMC Systems"
+                    size="solo"
+                    tags="professional,c#,xaml,installers,os-integration"
+                    thumbnail="img/projects/kmc-mono.svg"
+                    first="2020-11-04" last="2022-04-14"
+                >
+                    <span slot="description">
+                    <p>C# Desktop Application with Installer and Cross-Platform Avalonia XAML GUI.</p>
+                    <p>This project, while simple, was primarily done as an exercise to practice our software lifecycle process from start-to-finish.</p>
+                    </span>
+                </project-display>
 
-        <project-display 
-          id="antiford-panels"
-          name="Steam&shy;punk Con&shy;vention Panels"
-          for="Citizens Of Antiford"
-          size="trio"
-          tags="hobby,presentation"
-          thumbnail="img/projects/steampunk-panels-karaoke.jpg" thumbnail-size="cover"
-          first="2012-11-04" last="2020-11-22"
-          link-main="https://citizensofantiford.com/about"
-          >
-          <span slot="description">
-            <p>Several presentations performed for various conventions. </p>
-            <ul>
-              <li>Another Anime Con&shy;vention</li>
-              <li>TempleCon</li>
-              <li>Steam&shy;punk Industrial Revolution</li>
-              <li>RuffleCon</li>
-              <li>Watch City Steam&shy;punk Festival</li>
-              <li>Jewelry City Steam&shy;punk Festival</li>
-              <li>Springfield Vermont Steam&shy;punk Festival</li>
-              <li>FanExpo Boston</li>
-            </ul>
-          </span>
-        </project-display>
+                <project-display
+                    id="kmc-ge-spinlab-mpqc"
+                    name="GE SpinLab™ Hyper&shy;polarizer - Additional Device"
+                    for="KMC Systems"
+                    size="solo"
+                    tags="professional,c#,winforms,installers,robotics,windows"
+                    thumbnail="img/projects/ge-spinlab.jpg" thumbnail-size="cover"
+                    first="2021-05-19"
+                >
+                    <span slot="description">
+                    <p>Hands-on modification of the embedded hardware definition files to support updates to the
+                        products' robotics and sensors. Updated the state machine logic to introduce new workflow.
+                    </p>
+                    <p>Significantly improved the installer and cleaned up the UI and threading.</p>
+                    </span>
+                </project-display>
 
-        <project-display 
-          id="antiford-panels"
-          name="Antiford x RuffleCon Announcement Film"
-          for="Citizens Of Antiford"
-          size="team"
-          tags="hobby,media-production"
-          thumbnail="img/projects/travelling-to-rufflecon.jpg" thumbnail-size="cover"
-          released="2015-08-27"
-          link-main="https://www.youtube.com/watch?v=bjy-jK9xtY0"
-          >
-          <span slot="description">
-            <p>Created a video to announce a particularly large involvement in the fashion convention, RuffleCon, in 2015.</p>
-            <p>Since we were to do 10 panels, vending, and M.C. a portion of the fashion show, we thought it special.</p>
-            <p>In this video, we got costumed, found excellent locations, worked with dry ice, and composited stop motion over live action.</p>
-          </span>
-        </project-display>
+                <project-display
+                    id="vr-lab"
+                    name="Virtual Medical Labratory"
+                    for="KMC Systems"
+                    size="solo"
+                    tags="professional,gamedev,unity,xr,c#,meta-quest-2"
+                    thumbnail="img/projects/kmc-vr-lab.jpg" thumbnail-size="cover"
+                    released="2021-09-20"
+                    first="2021-08-02" last="2021-09-20"
+                    link-announcement="https://www.linkedin.com/posts/kmc-systems-inc-_innovation-activity-6857727563062620161-mGuG"
+                >
+                    <span slot="description">
+                    <p>VR experience for KMC Systems trade show booth and office marketing installation.
+                        Shown at the AACC Annual Scientific Meeting &amp; Clinical Lab Expo 2021 (Sept 26-30).
+                    </p>
+                    <p>I was the primary developer - 360 photography, environment and interaction design, and more.</p>
+                    <p>We recorded lots of mixed-reality footage for display on a TV near the installation.</p>
+                    <p>In the demo, you can use a floating paintbrush and pallet to change the instrument's skins,
+                        open the drawers and replace the bottles in their slots,
+                        open the robotics area and watch the machine park itself into a safe position so you can insert a microtiter plate,
+                        and overall, you can play with the consumables on the desk and fridge and walk around the instrument.
+                    </p>
+                    </span>
+                </project-display>
 
-        <project-display 
-          id="antiford-book"
-          name="Adventure: A Collection of Steam&shy;punk Short Stories"
-          for="Citizens Of Antiford"
-          size="team"
-          tags="hobby,writing,crowdfunding,media-production"
-          thumbnail="img/projects/adventure-collection-book.jpg" thumbnail-size="cover"
-          released="2016-12-01"
-          first="2013-11-01" last="2017-01-01"
-          link-main="https://citizensofantiford.storenvy.com/products/18598564-volume-1-adventure-a-collection-of-steampunk-short-stories"
-          link-announcement="https://www.kickstarter.com/projects/citizensofantiford/adventure-a-collection-of-steampunk-short-stories"
-          >
-          <span slot="description">
-            <p>Ran a crowdfunding campaign, directed and edited the video, and helped design the campaign &amp; tiers.</p>
-            <p>Was serious as amateur editor. </p>
-          </span>
-        </project-display>
-        
-        <project-display 
-            id="machen-bachen-2019"
-            name="Machen Bachen Steam&shy;punk Festival 2019"
-            for="Citizens of Antiford"
-            size="team"
-            tags="hobby,event-planning,media-production,js/ts"
-            thumbnail="img/projects/machen-bachen-2019.jpg" thumbnail-size="cover"
-            released="2019-10-05"
-            link-main="https://citizensofantiford.com/machenbachen?location-preview"
-            >
-            <span slot="description">
-              <p>Helped plan the event.</p>
-              <p>Created an interactive virtual tour of the location using 360&deg; photography.</p>
-              <p>Made a Raspberry Pi -powered photobooth for use during the event.</p>
-              <p>During the event, our food truck bailed, so I personally ensured vendors had food and drink throughout the day.</p>
-            </span>
-        </project-display>
+                <project-display
+                    id="kmc-int-3"
+                    name="Internal Utility Project #3"
+                    for="KMC Systems"
+                    size="duo"
+                    tags="professional,c#,asp,js/ts,pwa"
+                    thumbnail="img/projects/kmc-mono.svg"
+                    first="2022-05-11" last="2022-08-02"
+                >
+                    <span slot="description">
+                    <p>C# ASP MVC Progressive Web Application.</p>
+                    <p>This application was a collaborative effort to replace an overly-complex spreadsheet management came to rely on.</p>
+                    <p>Partly responsible for inspiring me to create this <a href="#portfolio-website">portfolio site</a></p>
+                    </span>
+                </project-display>
 
-        <project-display 
-            id="backtobacklog-podcast"
-            name="Back to Backlog Podcast"
-            for="Personal"
-            size="duo"
-            tags="hobby,presentation,media-production"
-            thumbnail="img/projects/backtobacklog.jpg" thumbnail-size="cover"
-            first="2022-02-21"
-            link-main="https://anchor.fm/backtobacklog"
-            >
-            <span slot="description">
-              <p>An audio podcast where I discuss video games and related topics with my cohost, Lindsay.</p>
-              <p>Production done online with video conferencing, OBS, and Audacity.</p>
-            </span>
-        </project-display>
-        
-        <project-display 
-            id="portfolio-website"
-            name="Portfolio Website"
-            for="Personal"
-            size="solo"
-            tags="professional,js/ts"
-            thumbnail="favicon.ico" thumbnail-size="unset" thumbnail-repeat="repeat"
-            first="2022-08-08"
-            link-main="https://lunarcloud.github.io/"
-            link-repo="https://github.com/lunarcloud/lunarcloud.github.io/"
-            >
-            <span slot="description">
-              <p>This very portfolio website. Using all the tricks I've learned in <a href="https://github.com/lunarcloud/modern-web-cheat-sheet/">my cheat sheet</a></p>
-              <p>The desire to create a new web app came from the realization that some of my best, most professional work is, by its nature, proprietary.</p>
-              <p>The website has: print vs screen styling, light v. dark themes, full v. reduced animation, and regular v. more contrast.</p>
-            </span>
-        </project-display>
-      
-      </div> <!-- /all-projects-list -->
-    </main>
-  </body>
-  <script type="module" src="./controllers/projects.js"></script>
+                <project-display
+                    id="kmc-sdk"
+                    name="Internal SDK"
+                    for="KMC Systems"
+                    size="duo"
+                    tags="professional,c#,c++,nuget,installers,os-integration,continuous-integration"
+                    thumbnail="img/projects/kmc-mono.svg"
+                    first="2022-08-11"
+                >
+                    <span slot="description">
+                    <p>Created the Installer (msi) and NuGet packages for our primary Embedded &amp; RPC SDK. Involved lots of manually-created nuspec files, adjusting project templates, devops yaml build scripts.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-gerstenberg-heroes-game"
+                    name="Gersten&shy;berg Heroes"
+                    for="Citizens of Antiford"
+                    size="trio"
+                    tags="hobby,gamedev,gamepad,multiplayer"
+                    thumbnail="img/projects/gerstenberg-heroes.jpg" thumbnail-size="cover"
+                    released="2016-11-13"
+                    first="2016-11-11" last="2021-08-06"
+                    link-main="https://citizensofantiford.itch.io/gerstenberg-heroes"
+                    link-announcement="https://citizensofantiford.com/game?jam&year=2016&month=november"
+                >
+                    <span slot="description">
+                    <p>Sponsored and Participated in game jam at NHTI in 2016.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-switchboard-copper-game"
+                    name="Switch&shy;board Copper"
+                    for="Citizens of Antiford"
+                    size="trio"
+                    tags="hobby,gamedev,ink,js/ts,unity,godot,xr,renpy,google-cardboard,google-daydream"
+                    thumbnail="img/projects/switchboard-copper.jpg" thumbnail-size="cover"
+                    released="2018-01-28"
+                    first="2018-01-26" last="2019-10-11"
+                    link-main="https://citizensofantiford.itch.io/switchboard-copper"
+                    link-repo="https://github.com/lunarcloud/visual-novel-GGJ-2018/"
+                >
+                    <span slot="description">
+                    <p>Sponsored and Participated in game jam at NHTI in 2018.</p>
+                    <p>Once the game was complete, I used as it as an example of using Ink in many game engines, by reimplementing it several times.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="homeworlds-game"
+                    name="Home&shy;worlds"
+                    for="Personal"
+                    size="duo"
+                    tags="hobby,gamedev,xr,ink,google-cardboard,google-daydream"
+                    thumbnail="img/projects/homeworlds-game.jpg" thumbnail-size="cover"
+                    released="2019-02-27"
+                    first="2019-01-21" last="2019-02-03"
+                    link-main="https://samsarette.itch.io/homeworlds"
+                >
+                    <span slot="description">
+                    <p>Participated in Global Game Jam at NHTI in 2019.</p>
+                    <p>Wired in the procedural generation system that my partner designed, and implemented the Ink-powered trade-partner discussion system.</p>
+                    <p>Also, created several character animations using a Microsoft Kinect.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-wild-araz"
+                    name="Nathan Powell's Wild Araz"
+                    for="Citizens of Antiford"
+                    tags="hobby,support,gamedev,installers,windows,macos,linux"
+                    thumbnail="img/projects/wild-araz.jpg" thumbnail-size="cover"
+                    released="2019-08-10"
+                    link-main="https://citizensofantiford.itch.io/wild-araz"
+                >
+                    <span slot="description">
+                    <p> Beta Tester and Release Engineer for a friend's game.</p>
+                    <p>See <a href="#rpgmaker-installer-scripts">"RPG Maker Installer Creation Scripts"</a></p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="shipwreck-game"
+                    name="Shipwreck"
+                    for="Personal"
+                    size="duo"
+                    tags="hobby,gamedev,unity,kinect,android,windows,linux"
+                    thumbnail="img/projects/shipwreck-game.jpg"  thumbnail-size="cover"
+                    released="2020-02-02"
+                    first="2020-01-31" last="2020-02-02"
+                    link-main="https://samsarette.itch.io/shipwreck"
+                >
+                    <span slot="description">
+                    <p>Participated in Global Game Jam at NHTI in 2020.</p>
+                    <p>Made multiplayer-focused gameplay using server-size synchronization that partner developed.</p>
+                    <p>Designed the spaceship and did some texturing of it using material maker.</p>
+                    <p>Created the fly-by observation camera used by the "observer" client.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="color-below-game"
+                    name="The Color Below"
+                    for="Personal"
+                    size="trio"
+                    tags="hobby,gamedev,godot,ink,windows,macos,linux,android"
+                    thumbnail="img/projects/color-below-game.jpg"  thumbnail-size="cover"
+                    released="2020-08-03"
+                    first="2020-07-30" last="2020-08-10"
+                    link-main="https://samsarette.itch.io/color-below"
+                >
+                    <span slot="description">
+                    <p>Participated in the InkJam game jam online in 2020.</p>
+                    <p>Mentored writer in "Ink" technology, and helped artist with technical aspects of game-art development.</p>
+                    <p>Developed the game with the Godot game engine using the Ink narrative middleware.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="ataito-game"
+                    name="Ataito: The Spirit Swapper"
+                    for="Personal"
+                    size="duo"
+                    tags="hobby,gamedev,godot,xr,3d-modelling,particle-effects,meta-quest-2,windows"
+                    thumbnail="img/projects/ataito-game.jpg"  thumbnail-size="cover"
+                    released="2022-01-30"
+                    first="2022-01-28" last="2022-06-26"
+                    link-main="https://malcolmnixon.itch.io/ataito-the-spirit-swapper"
+                    link-repo="https://github.com/Malcolmnixon/Ataito-Game "
+                >
+                    <span slot="description">
+                        <p>Hosted and Participated in Global Game Jam, online with the Southern NH Game Dev Meetup in 2022.</p>
+                        <p>First Project using the Godot game engine's XR Toolkit</p>
+                        <p>Created particle effects, Some modelling and texturing, mechanics programming, level design, foley sound effects work.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="igdanh-presents-ink"
+                    name="Present&shy;ation: Inter&shy;active Story&shy;telling with Ink"
+                    for="IGDANH"
+                    size="solo"
+                    tags="hobby,gamedev,ink,presentation"
+                    thumbnail="img/projects/ink-presentation.jpg"  thumbnail-size="cover"
+                    released="2019-05-14"
+                    link-main="https://www.meetup.com/igda-new-hampshire-game-development-meetup/events/260827461/"
+                >
+                    <span slot="description">
+                    <p>Presented to NH game developers on the Ink narrative middleware.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="script-dialog"
+                    name="Script-Dialog"
+                    for="Personal"
+                    size="solo"
+                    tags="hobby,bash,linux"
+                    thumbnail="img/projects/script-dialog.jpg"  thumbnail-size="cover"
+                    first="2014-10-07" last="2022-05-21"
+                    link-repo="https://github.com/lunarcloud/script-dialog"
+                >
+                    <span slot="description">
+                    <p>Linux bash library for TUI/GUI dialogs.</p>
+                    <p>The idea is that if you launch the script via file manager, you get GUI popups,
+                        but if you ran it from the terminal, you'll get the TUI dialogs.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="unity-ballpoint-ink"
+                    name="Ballpoint: Friendly Wrapper for Ink on Unity"
+                    for="Personal"
+                    size="solo"
+                    tags="hobby,gamedev,unity,ink,addon"
+                    thumbnail="img/projects/ballpoint-unity.jpg"  thumbnail-size="cover"
+                    first="2020-09-09" last="2020-10-14"
+                    link-main="https://openupm.com/packages/org.samsarette.ballpoint-unity"
+                    link-repo="https://github.com/lunarcloud/ballpoint-unity"
+                >
+                    <span slot="description">
+                    <p>OpenUPM packaged addon for using Ink middleware with Unity game engine.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="godot-xr-toolkit"
+                    name="Godot XR Toolkit"
+                    for="Godot"
+                    size="duo"
+                    tags="hobby,gamedev,addon,godot,xr,meta-quest-2,windows,linux"
+                    thumbnail="img/projects/godot-xr-tools.png"
+                    first="2022-05-19" last="2022-08-01"
+                    link-repo="https://github.com/GodotVR/godot-xr-tools"
+                    >
+                    <span slot="description">
+                    <p>Contributed ranged grab logic, editor node icons, consulted on design.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="inky"
+                    name="Inky (Writing App for Ink)"
+                    for="Inkle"
+                    tags="hobby,gamedev,ink,js/ts,installers,windows,macos,linux"
+                    thumbnail="img/projects/inky.png"
+                    first="2019-10-18" last="2022-06-15"
+                    link-repo="https://github.com/inkle/inky"
+                    >
+                    <span slot="description">
+                    <p>Contributed to dark mode feature, web template improvements, linux packaging, keyboard shortcuts.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="playdate-build-scripts"
+                    name="PlayDate Project Build Scripts"
+                    for="Personal"
+                    size="solo"
+                    tags="hobby,gamedev,bash,windows,linux"
+                    thumbnail="img/projects/playdate-build-scripts.jpg"  thumbnail-size="cover"
+                    released="2022-06-10"
+                    link-repo="https://github.com/lunarcloud/playdate-project-build-scripts"
+                    >
+                    <span slot="description">
+                    <p>Command-line script (windows and linux variants) for building PlayDate SDK projects.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="playdate-vscode"
+                    name="PlayDate Visual Studio Code Addon"
+                    for="Personal"
+                    tags="hobby,gamedev,addon"
+                    thumbnail="img/projects/vscode-playdate.jpg"  thumbnail-size="cover"
+                    first="2022-05-13" last="2022-05-18"
+                    link-repo="https://github.com/orta/vscode-playdate"
+                    >
+                    <span slot="description">
+                    <p>Contributed Linux fixes.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="godot-rumble-example"
+                    name="Godot (Gamepad) Rumble Demo"
+                    for="Godot"
+                    size="solo"
+                    tags="hobby,gamedev,godot,gamepad,android,windows,macos,linux"
+                    thumbnail="img/projects/godot-rumble.png"
+                    first="2022-02-10" last="2022-02-13"
+                    link-main="https://godotengine.org/asset-library/asset/1230"
+                    link-repo="https://github.com/lunarcloud/godot-rumble-example-project/ "
+                    >
+                    <span slot="description">
+                    <p>Example Project for using gamepad rumble with the Godot game engine.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="rpgmaker-installer-scripts"
+                    name="RPG Maker Installer Creation Scripts"
+                    for="Personal"
+                    size="solo"
+                    tags="hobby,gamedev,bash,installers,linux"
+                    thumbnail="img/projects/lunarcloud.jpg"
+                    first="2015-09-02" last="2022-05-16"
+                    link-repo="https://github.com/lunarcloud/rpg-maker-vx-installer-scripts"
+                    >
+                    <span slot="description">
+                    <p>Used on and developed for <a href="#antiford-wild-araz">"Nathan Powell's Wild Araz"</a>.</p>
+                    <p>These scripts will create a number of installers for Windows, Mac, and Linux for games made with the ruby-powered RPG Maker game engines (XP, VX, VX Ace).</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="qt-proj-template"
+                    name="Qt Enhanced Project Template"
+                    for="Personal"
+                    size="solo"
+                    tags="hobby,c++,qt,addon"
+                    thumbnail="img/projects/lunarcloud.jpg"
+                    first="2013-05-05" last="2018-12-13"
+                    link-repo="https://github.com/lunarcloud/qt-enhanced-project-template"
+                    >
+                    <span slot="description">
+                    <p>Project Template for the Qt Creator IDE to produce a desktop application with icons, a main window, support for native OS dock menus, and styling.</p>
+                    <p>Also includes a default README with an explanation on how to deploy / create installers.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-doom-game"
+                    name="Antiford &quot;Doom&quot; "
+                    for="Personal"
+                    size="solo"
+                    tags="hobby,gamedev,js/ts,impactjs,gamepad"
+                    thumbnail="img/projects/antiford-doom.jpg" thumbnail-size="cover"
+                    first="2015-11-13" last="2015-11-15"
+                    link-main="https://citizensofantiford.com/games/jam/2015/november/games/AntifordDoom/"
+                    link-announcement="https://citizensofantiford.com/game?jam&year=2015&month=november"
+                    >
+                    <span slot="description">
+                    <p>First-person shooter in the style of wolfenstein &amp; Doom, made with the ImpactJS game engine.</p>
+                    <p>First use of my <a href="#gameinputjs">GameInputJS</a> library </p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="gameinputjs"
+                    name="Game&shy;InputJS"
+                    for="Personal"
+                    size="solo"
+                    tags="hobby,gamedev,js/ts,gamepad,windows,macos,linux,android"
+                    thumbnail="img/projects/lunarcloud.jpg"
+                    first="2015-11-01" last="2019-05-05"
+                    link-repo="https://github.com/lunarcloud/gameinputjs"
+                    >
+                    <span slot="description">
+                    <p>js/ts library for using gamepads with a standardized mapping, and APIs for getting the gamepads' type, icons, button names.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-website"
+                    name="CitizensOf&shy;Antiford&shy;.com" name-no-hyphen-char
+                    for="Citizens of Antiford"
+                    size="solo"
+                    tags="hobby,php,sql,js/ts,rest-api"
+                    thumbnail="img/projects/antiford.png"
+                    first="2012-06-22" last="2021-08-19"
+                    link-main="https://citizensofantiford.com"
+                    >
+                    <span slot="description">
+                    <p>PHP Web Application - Social Media and Document Creation. eBook Download and text-to-speech reader features.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-rogues-tabletop"
+                    name="Rogues of Antiford - Tabletop Game"
+                    for="Citizens of Antiford"
+                    size="solo"
+                    tags="hobby,gamedev,fusion-360,3d-modelling,3d-printing"
+                    thumbnail="img/projects/rogues-of-antiford.jpg" thumbnail-size="cover"
+                    first="2017-09-17"
+                    link-main="https://www.facebook.com/roguesgame"
+                    >
+                    <span slot="description">
+                    <p>3D Printed pieces, tabletop game.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                id="jewelry-city-virtual-2020"
+                name="Jewelry City Steam&shy;punk Festival 2020"
+                for="Steam&shy;punks of New England"
+                size="team"
+                tags="hobby,presentation,event-planning,media-production"
+                thumbnail="img/projects/jewelry-city-festival.jpg" thumbnail-size="cover"
+                first="2020-05-19" last="2020-11-22"
+                released="2020-11-20"
+                link-main="https://www.youtube.com/playlist?list=PLYwE9hUT04-iByNOdPsDYGRKWGhZAF76P"
+                >
+                <span slot="description">
+                    <p>Contributed technical expertise instrumental in planning the virtual event, came up with the idea to use a single playlist of 'premeire' and live videos.</p>
+                    <p>Trained and worked with several performers who sought to perform live on YouTube.</p>
+                    <p>Contributed a pre-recorded presentation, followed-up with live Q&amp;A.</p>
+                    <p>Manned the YouTube pages during the premeires and live videos to ensure all went well.</p>
+                </span>
+                </project-display>
+
+                <project-display
+                id="antiford-panels"
+                name="Steam&shy;punk Con&shy;vention Panels"
+                for="Citizens Of Antiford"
+                size="trio"
+                tags="hobby,presentation"
+                thumbnail="img/projects/steampunk-panels-karaoke.jpg" thumbnail-size="cover"
+                first="2012-11-04" last="2020-11-22"
+                link-main="https://citizensofantiford.com/about"
+                >
+                <span slot="description">
+                    <p>Several presentations performed for various conventions. </p>
+                    <ul>
+                    <li>Another Anime Con&shy;vention</li>
+                    <li>TempleCon</li>
+                    <li>Steam&shy;punk Industrial Revolution</li>
+                    <li>RuffleCon</li>
+                    <li>Watch City Steam&shy;punk Festival</li>
+                    <li>Jewelry City Steam&shy;punk Festival</li>
+                    <li>Springfield Vermont Steam&shy;punk Festival</li>
+                    <li>FanExpo Boston</li>
+                    </ul>
+                </span>
+                </project-display>
+
+                <project-display
+                id="antiford-rufflecon-video"
+                name="Antiford x RuffleCon Announcement Film"
+                for="Citizens Of Antiford"
+                size="team"
+                tags="hobby,media-production"
+                thumbnail="img/projects/travelling-to-rufflecon.jpg" thumbnail-size="cover"
+                released="2015-08-27"
+                link-main="https://www.youtube.com/watch?v=bjy-jK9xtY0"
+                >
+                <span slot="description">
+                    <p>Created a video to announce a particularly large involvement in the fashion convention, RuffleCon, in 2015.</p>
+                    <p>Since we were to do 10 panels, vending, and M.C. a portion of the fashion show, we thought it special.</p>
+                    <p>In this video, we got costumed, found excellent locations, worked with dry ice, and composited stop motion over live action.</p>
+                </span>
+                </project-display>
+
+                <project-display
+                id="antiford-book"
+                name="Adventure: A Collection of Steam&shy;punk Short Stories"
+                for="Citizens Of Antiford"
+                size="team"
+                tags="hobby,writing,crowdfunding,media-production"
+                thumbnail="img/projects/adventure-collection-book.jpg" thumbnail-size="cover"
+                released="2016-12-01"
+                first="2013-11-01" last="2017-01-01"
+                link-main="https://citizensofantiford.storenvy.com/products/18598564-volume-1-adventure-a-collection-of-steampunk-short-stories"
+                link-announcement="https://www.kickstarter.com/projects/citizensofantiford/adventure-a-collection-of-steampunk-short-stories"
+                >
+                <span slot="description">
+                    <p>Ran a crowdfunding campaign, directed and edited the video, and helped design the campaign &amp; tiers.</p>
+                    <p>Was serious as amateur editor. </p>
+                </span>
+                </project-display>
+
+                <project-display
+                    id="machen-bachen-2019"
+                    name="Machen Bachen Steam&shy;punk Festival 2019"
+                    for="Citizens of Antiford"
+                    size="team"
+                    tags="hobby,event-planning,media-production,js/ts"
+                    thumbnail="img/projects/machen-bachen-2019.jpg" thumbnail-size="cover"
+                    released="2019-10-05"
+                    link-main="https://citizensofantiford.com/machenbachen?location-preview"
+                    >
+                    <span slot="description">
+                    <p>Helped plan the event.</p>
+                    <p>Created an interactive virtual tour of the location using 360&deg; photography.</p>
+                    <p>Made a Raspberry Pi -powered photobooth for use during the event.</p>
+                    <p>During the event, our food truck bailed, so I personally ensured vendors had food and drink throughout the day.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="backtobacklog-podcast"
+                    name="Back to Backlog Podcast"
+                    for="Personal"
+                    size="duo"
+                    tags="hobby,presentation,media-production"
+                    thumbnail="img/projects/backtobacklog.jpg" thumbnail-size="cover"
+                    first="2022-02-21"
+                    link-main="https://anchor.fm/backtobacklog"
+                    >
+                    <span slot="description">
+                    <p>An audio podcast where I discuss video games and related topics with my cohost, Lindsay.</p>
+                    <p>Production done online with video conferencing, OBS, and Audacity.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="portfolio-website"
+                    name="Portfolio Website"
+                    for="Personal"
+                    size="solo"
+                    tags="professional,js/ts"
+                    thumbnail="favicon.ico" thumbnail-size="unset" thumbnail-repeat="repeat"
+                    first="2022-08-08"
+                    link-main="https://lunarcloud.github.io/"
+                    link-repo="https://github.com/lunarcloud/lunarcloud.github.io/"
+                    >
+                    <span slot="description">
+                    <p>This very portfolio website. Using all the tricks I've learned in <a href="https://github.com/lunarcloud/modern-web-cheat-sheet/">my cheat sheet</a></p>
+                    <p>The desire to create a new web app came from the realization that some of my best, most professional work is, by its nature, proprietary.</p>
+                    <p>The website has: print vs screen styling, light v. dark themes, full v. reduced animation, and regular v. more contrast.</p>
+                    </span>
+                </project-display>
+
+            </div> <!-- /all-projects-list -->
+        </main>
+    </body>
+    <script type="module" src="./controllers/projects.js"></script>
+
 </html>
