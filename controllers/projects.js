@@ -28,7 +28,7 @@ export default class ProjectsPageController {
         );
         this.projectEls = this.projectEls.sort(ProjectDisplayElement.compareDate).reverse();
 
-        this.pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',').filter(i => /\S/.test(i)) ?? [];
+        this.pageFilters = new URLSearchParams(location.search)?.get("filter")?.split(",").filter(i => /\S/.test(i)) ?? [];
 
         for (let projEl of this.projectEls) {
             this.allProjectsEl.appendChild(projEl);
@@ -40,29 +40,28 @@ export default class ProjectsPageController {
         }
 
         this.filterClearBtn = document.getElementById("filter-clear");
-        this.filterClearBtnA = document.getElementById("filter-clear-a")
+        this.filterClearBtnA = document.getElementById("filter-clear-a");
         if (this.pageFilters.length == 0) {
-           this.filterClearBtn.toggleAttribute("disabled", true);
-           document.getElementById("project-tags-label").toggleAttribute("hidden", true);
+            this.filterClearBtn.toggleAttribute("disabled", true);
+            document.getElementById("project-tags-label").toggleAttribute("hidden", true);
         } else {
             this.filterClearBtn.addEventListener("click", () => this.clearFilters());
         }
 
         let filtersListEl = document.getElementById("filters-list").querySelector("ul.project-tags");
         for (const tag of this.pageFilters) {
-            if (tag.trim() == '') return; // ignore empties
+            if (tag.trim() == "") return; // ignore empties
 
-            const listItemEl = document.createElement('li');
+            const listItemEl = document.createElement("li");
             listItemEl.toggleAttribute("active", this.pageFilters.includes(tag));
 
-            const anchorEl = document.createElement('a', { is: "fadeout-anchor"});
+            const anchorEl = document.createElement("a", { is: "fadeout-anchor"});
             anchorEl.textContent = tag;
             anchorEl.addEventListener("fadednavigate", () => { 
-                listItemEl.toggleAttribute("active");
-                let active = listItemEl.hasAttribute("active");
+                let active = listItemEl.toggleAttribute("active");
                 this.updateFilter(tag, active);
                 return false;
-             }, {passive: false});
+            }, {passive: false});
              
             listItemEl.appendChild(anchorEl);
             filtersListEl.appendChild(listItemEl);
@@ -82,7 +81,7 @@ export default class ProjectsPageController {
         } else {
             search.set("filter", this.pageFilters);
         }
-        location.search = search.toString().replaceAll('%2C', ',');
+        location.search = search.toString().replaceAll("%2C", ",");
     }
 
     clearFilters() {
@@ -94,5 +93,5 @@ export default class ProjectsPageController {
 
 }
 
-if ('App' in globalThis === false) globalThis.App = { Page: undefined };
+if ("App" in globalThis === false) globalThis.App = { Page: undefined };
 globalThis.App.Page = new ProjectsPageController();

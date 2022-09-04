@@ -1,4 +1,3 @@
-
 ul.project-tags {
   margin: 4px;
   padding-inline-start: 0;
@@ -17,7 +16,7 @@ ul.project-tags > li > a:link {
   text-decoration: none;
 }
 
-ul.project-tags > li > a:before {
+ul.project-tags > li > a::before {
   display: inline;
   content: " ▶ ";
   font-size: 0.5rem;
@@ -25,15 +24,15 @@ ul.project-tags > li > a:before {
 }
 
 @media screen {
-  ul.project-tags > li[active] > a:before {
-    color: rgb(95, 196, 133);
+  ul.project-tags > li[active] > a::before {
+    color: rgb(95 196 133);
   }
 
-  ul.project-tags > li:not([active]):hover > a:before {
+  ul.project-tags > li:not([active]):hover > a::before {
     color: var(--main-color-text);
   }
 
   ul.project-tags > li:hover > a {
-    color: rgb(154, 109, 178);
-  } 
+    color: rgb(154 109 178);
+  }
 }

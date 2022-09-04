@@ -1,59 +1,55 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Sam Sarette | Test | Tarot Drag N' Drop</title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#37c482">
+<html lang="en">
+    <head>
+        <title>Sam Sarette | Test | Tarot Drag N' Drop</title>
 
-    <link rel="manifest" href="/ssarette-portfolio.webmanifest">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="tarot-card/tarot-card.css">
-    <style>
-      main {
-        padding: 4px;
-      }
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#37c482">
 
-      tarot-set {
-        display: flex;
-        justify-content: center;
+        <link rel="manifest" href="/ssarette-portfolio.webmanifest">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="tarot-card/tarot-card.css">
+        <style>
+            main {
+                padding: 4px;
+            }
 
-        width: calc(100% - 18px); /* full, minus paddings and borders */
-        min-height: 8cm;
-        padding: 4px 8px;
-        border: 1px solid yellow;
-        margin-bottom: 12px;
-      }
+            tarot-set {
+                display: flex;
+                justify-content: center;
 
-      #active-cards {
+                width: calc(100% - 18px);
+                /* full, minus paddings and borders */
+                min-height: 8cm;
+                padding: 4px 8px;
+                border: 1px solid yellow;
+                margin-bottom: 12px;
+            }
 
-      }
-    </style>
-  </head>
-  <body>
-    <a is="fadeout-anchor" print-hidden href="./">Back</a>
-    <main id="main">
-      <hero>
-        <h1>Drag n' Drop Demo</h1>
-        <p>
-          mess around with this:
-        </p>
-      </hero>
-      <tarot-set id="available-cards">
-        <tarot-card id="A">A</tarot-card>
-        <tarot-card id="B">B</tarot-card>
-        <tarot-card id="C">C</tarot-card>
-      </tarot-set>
+            /* #active-cards {} */
+        </style>
+    </head>
 
-      <tarot-set id="active-cards">
-      </tarot-set>
-    </main>
-  </body>
-  <script type="module">
-    import TarotSetElement from "./tarot-card/tarot-set-element.js";
-    import TarotCardElement from "./tarot-card/tarot-card-element.js";
-    import "./page-fade/page-fade.js";
-  </script>
+    <body>
+        <a is="fadeout-anchor" print-hidden href="./">Back</a>
+        <main id="main">
+            <hero>
+                <h1>Drag n' Drop Demo</h1>
+                <p>
+                    mess around with this:
+                </p>
+            </hero>
+            <tarot-set id="available-cards">
+                <tarot-card id="a">A</tarot-card>
+                <tarot-card id="b">B</tarot-card>
+                <tarot-card id="c">C</tarot-card>
+            </tarot-set>
+
+            <tarot-set id="active-cards">
+            </tarot-set>
+        </main>
+    </body>
+    <script type="module" src="controllers/drag-n-drop.js"></script>
 </html>

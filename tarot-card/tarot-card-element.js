@@ -7,7 +7,7 @@ export default class TarotCardElement extends HTMLElement {
         this.removeAttribute("dragging");
         this.removeAttribute("holding");
 
-        this.setAttribute('draggable', true);
+        this.setAttribute("draggable", true);
         this.addEventListener("dragstart", this.#dragStart);
         this.addEventListener("dragend", this.#dragEnd);
 
@@ -19,7 +19,7 @@ export default class TarotCardElement extends HTMLElement {
     }
 
     #dragStart(event) {
-        this.setAttribute("dragging", '');
+        this.setAttribute("dragging", "");
         if (this.id) 
         {
             event.dataTransfer.effectAllowed = "move";
@@ -31,6 +31,10 @@ export default class TarotCardElement extends HTMLElement {
         }
     }
 
+    /**
+	 * Handle the end of a drag.
+	 * @param {DragEvent} event 
+	 */
     #dragEnd(event) {
         this.removeAttribute("dragging");
         event.dataTransfer.dropEffect = "move";
@@ -38,13 +42,19 @@ export default class TarotCardElement extends HTMLElement {
         this.#holdEnd(event); // not holding if just stopped dragging
     }
 
-    #holdStart(event) {
+    /**
+	 * Handle the start of a drag/hold.
+	 */
+    #holdStart() {
         if (this.#holding) return;
-        this.setAttribute("holding", '');
+        this.setAttribute("holding", "");
         this.#holding = true;
     }
 
-    #holdEnd(event) {
+    /**
+	 * Handle the end of a drag/hold.
+	 */
+    #holdEnd() {
         if (!this.#holding) return;
         this.removeAttribute("holding");
         this.#holding = false;
@@ -52,4 +62,4 @@ export default class TarotCardElement extends HTMLElement {
 }
 
 // Register element
-customElements.define('tarot-card', TarotCardElement);
+customElements.define("tarot-card", TarotCardElement);

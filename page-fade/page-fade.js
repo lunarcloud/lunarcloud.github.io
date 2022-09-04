@@ -1,15 +1,19 @@
 
 document.body.toggleAttribute("unloading", false);
 
+if (document.referrer) {
+    document.body.toggleAttribute("same-page", (new URL(document.referrer)).pathname == window.location.pathname);
+}
+
 // Let the CSS know when to fade the page in
-document.addEventListener('readystatechange', (event) => {
-    if (event.target.readyState === 'complete') {
+document.addEventListener("readystatechange", (event) => {
+    if (event.target.readyState === "complete") {
         document.body.toggleAttribute("loaded", true);
     }
 });
 
-if (document.readyState === 'complete') {
-      document.body.toggleAttribute("loaded", true);
+if (document.readyState === "complete") {
+    document.body.toggleAttribute("loaded", true);
 }
 
 // Define the Anchor variant that lets us fade out
@@ -20,14 +24,18 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
 
     constructor(){
         super();
-        if (this.attributes.hasOwnProperty("download")) {
+        if (this.hasAttribute("download")) {
             console.warn("FadeOutAnchorElement is a download! Fading will not be available.", this);
             return;
         }
 
-        this.samePage = this.pathname == location.pathname;
-        this.toggleAttribute("same-page", this.samePage);
-        this.addEventListener('click', e => this.fadePageOut(e));
+        this.addEventListener("click", e => this.fadePageOut(e));
+
+        // the pathname doesn't correctly read at construction, but does one frame later
+        requestAnimationFrame(() => {
+            this.samePage = this.pathname == window.location.pathname;
+            this.toggleAttribute("same-page", this.samePage);
+        });
     }
 
     fadePageOut(event) {
@@ -38,10 +46,10 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
         document.body.toggleAttribute("unloading", true);
         document.body.toggleAttribute("same-page", this.samePage);
 
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-            this.#fadingOutFinish()
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+            this.#fadingOutFinish();
         else
-            document.body.addEventListener('animationend', () => this.#fadingOutFinish(), {once: true});
+            document.body.addEventListener("animationend", () => this.#fadingOutFinish(), {once: true});
 
         event.preventDefault();
 
@@ -50,7 +58,7 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
 
     #fadingOutFinish() {
         let pageFader = this;
-        
+
         // This is needed to reset the fade for when user returns via 'back' navigation.
         window.addEventListener("beforeunload", () => {
             document.body.toggleAttribute("loaded", true);
@@ -63,14 +71,14 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
         // particularly, helpful when reduced-motion means no extra time due to animations
         this.addEventListener("fadednavigate", () => {
             // actual click must happen last in function, all code ceases to exist after navigation
-            this.click();
+            requestAnimationFrame(() => this.click());
         }, {once: true});
-        
+
         this.dispatchEvent(new CustomEvent("fadednavigate", { detail: { } }));
     }
 }
 
 // Register element
-customElements.define('fadeout-anchor', FadeOutAnchorElement, {extends: 'a'});
+customElements.define("fadeout-anchor", FadeOutAnchorElement, {extends: "a"});
 
 export default FadeOutAnchorElement;

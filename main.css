@@ -1,160 +1,212 @@
-@import url('./page-fade/page-fade.css');
-@import url('./project-display/project-tags.css');
-
+@import "./page-fade/page-fade.css";
+@import "./project-display/project-tags.css";
 
 /* fonts */
 @font-face {
-	font-family: 'Sam Handwritten A';
-	src: url('font/SamHandwrittenA-Regular.woff2');
+  font-family: "Sam Handwritten A";
+  src: url("font/SamHandwrittenA-Regular.woff2");
 }
 
 /* Variables */
-:root, ::backdrop {
-	--main-color-bg: #ccc;
-	--main-color-text: #333;
-	--dialog-color-backdrop: rgba(100, 100, 100, 0.7);
-	--main-a-link-color: #488948;
-	--main-a-hover-color: #319131;
-	--main-a-active-color: #316c31;
-	--main-a-visited-color: #528379;
-
-
-	--high-readability-font: 'Lexend Deca', sans-serif;
-	--print-readability-font: 'Gentium Book Basic', serif;
-	--handwritten-font: 'Sam Handwritten A', sans-serif;
-	--main-font-headers: var(--handwritten-font);
-	--main-font-body: var(--high-readability-font);
-	--main-font-size: 10pt;
+:root,
+::backdrop {
+  --main-color-bg: #ccc;
+  --main-color-text: #333;
+  --dialog-color-backdrop: rgb(100 100 100 / 70%);
+  --main-a-link-color: #488948;
+  --main-a-hover-color: #319131;
+  --main-a-active-color: #316c31;
+  --main-a-visited-color: #528379;
+  --high-readability-font: "Lexend Deca", sans-serif;
+  --print-readability-font: "Gentium Book Basic", serif;
+  --handwritten-font: "Sam Handwritten A", sans-serif;
+  --main-font-headers: var(--handwritten-font);
+  --main-font-body: var(--high-readability-font);
+  --main-font-size: 10pt;
 }
 
-@media  screen and (prefers-contrast: more) {
-	:root, ::backdrop {
-		--main-color-bg: white;
-		--main-color-text: black;
-		--dialog-color-backdrop: rgba(255,255,255,0.9);
-		}
+@media screen and (prefers-contrast: more) {
+  :root,
+  ::backdrop {
+    --main-color-bg: white;
+    --main-color-text: black;
+    --dialog-color-backdrop: rgb(255 255 255 / 90%);
+  }
 }
 
 @media print {
-	:root, ::backdrop {
-		--main-color-bg: white;
-		--main-font-body: var(--print-readability-font);
-	}
-	#open-about-dialog {
-		display: none !important;
-	}
-	[print-hidden] {
-		display: none;
-	}
-} 
+  :root,
+  ::backdrop {
+    --main-color-bg: white;
+    --main-font-body: var(--print-readability-font);
+  }
+
+  #open-about-dialog {
+    display: none !important;
+  }
+
+  [print-hidden] {
+    display: none;
+  }
+}
 
 @media screen and (prefers-color-scheme: dark) {
-	:root, ::backdrop {
-		--main-color-bg: #333;
-		--main-color-text: #ccc;
-		--dialog-color-backdrop: rgba(0,0,0,0.7);
-	}
+  :root,
+  ::backdrop {
+    --main-color-bg: #333;
+    --main-color-text: #ccc;
+    --dialog-color-backdrop: rgb(0 0 0 / 70%);
+  }
 }
 
 @media screen and (prefers-contrast: more) and (prefers-color-scheme: dark) {
-	:root, ::backdrop {
-		--main-color-bg: black;
-		--main-color-text: white;
-		--dialog-color-backdrop: rgba(0,0,0,0.9);
-	}
+  :root,
+  ::backdrop {
+    --main-color-bg: black;
+    --main-color-text: white;
+    --dialog-color-backdrop: rgb(0 0 0 / 90%);
+  }
 }
 
-
 /* Animations */
-@media screen and (prefers-reduced-motion : no-preference) {
+@media screen and (prefers-reduced-motion: no-preference) {
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
 
-	@keyframes fadeIn {
-		0% { opacity: 0; }
-		100% { opacity: 1; }
-	}
-	
-	@keyframes fadeOut {
-		0% { opacity: 1; }
-		100% { opacity: 0; }
-	}
+    100% {
+      opacity: 1;
+    }
+  }
 
-	@keyframes slideIn {
-		0% { transform: translateY(-30px); opacity: 0; }
-		100% { transform: translateY(0px); opacity: 1; }
-	}
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
 
-	@keyframes slideOut {
-		0% { transform: translateY(0px); opacity: 1; }
-		100% { transform: translateY(30px); opacity: 0; }
-	}
-		
-	@keyframes wiggle {
-		0% { transform: rotate(0deg); }
-		25% { transform: rotate(0deg); }
-		50% { transform: rotate(6deg); }
-		75% { transform: rotate(-6deg); }
-		100% { transform: rotate(0deg); }
-	}
+    100% {
+      opacity: 0;
+    }
+  }
 
-	@keyframes pop {
-		0% { transform: scale(1); }
-		50% { transform: scale(1.05); }
-		100% { transform: scale(1); }
-	}
+  @keyframes slide-in {
+    0% {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
 
-	@keyframes tinypop {
-		0% { transform: scale(1); }
-		50% { transform: scale(1.005); }
-		100% { transform: scale(1); }
-	}
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-out {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes wiggle {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    25% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(6deg);
+    }
+
+    75% {
+      transform: rotate(-6deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes tinypop {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.005);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
 }
 
 /* Styles */
 html {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	margin: 0;
-	padding: 0;
-
-	overflow-x: hidden;
-	overflow-y: auto;
-	height: fit-content;
-	font-size: 14pt;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: fit-content;
+  font-size: 14pt;
 }
 
 html:focus-within {
-	scroll-behavior: auto;
+  scroll-behavior: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-	html:focus-within {
-		scroll-behavior: smooth;
-	}
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	margin: 0;
-	padding: 0;
-	
-	overflow-y: auto;
-	overflow-x: auto;
-	overflow-wrap: anywhere;
-	hyphens: auto;
-
-	color: var(--main-color-text);
-	background-color: var(--main-color-bg);
-	width: 100vw;
-	
-	min-height: 100vh;
-	text-rendering: optimizeSpeed;
-	font-family: var( --main-font-body);
-	font-size: var(--main-font-size);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: auto;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  color: var(--main-color-text);
+  background-color: var(--main-color-bg);
+  width: 100vw;
+  min-height: 100vh;
+  text-rendering: optimizespeed;
+  font-family: var(--main-font-body);
+  font-size: var(--main-font-size);
 }
 
 h1,
@@ -163,83 +215,91 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var( --main-font-headers);
+  font-family: var(--main-font-headers);
 }
 
 h1 {
-	font-size: 2.9rem;
+  font-size: 2.9rem;
 }
+
 h2 {
-	font-size: 2.6rem;
+  font-size: 2.6rem;
 }
+
 h3 {
-	font-size: 2.3rem;
+  font-size: 2.3rem;
 }
+
 h4 {
-	font-size: 2rem;
+  font-size: 2rem;
 }
 
 small {
-	font-size: 0.5em;
+  font-size: 0.5em;
 }
 
 input,
 button,
 textarea,
 select {
-	font: inherit;
+  font: inherit;
 }
 
-a, a:link {
-	color: var(--main-a-link-color);
+a,
+a:link {
+  color: var(--main-a-link-color);
 }
-a:hover, a:visited:hover {
-	color: var(--main-a-hover-color);
+
+a:hover,
+a:visited:hover {
+  color: var(--main-a-hover-color);
 }
-a:active, a:visited:active {
-	color: var(--main-a-active-color);
+
+a:active,
+a:visited:active {
+  color: var(--main-a-active-color);
 }
+
 a:visited {
-	color: var(--main-a-visited-color);
+  color: var(--main-a-visited-color);
 }
 
 #main {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 dialog::backdrop {
-	background-color: var(--dialog-color-backdrop);
+  background-color: var(--dialog-color-backdrop);
 }
 
 #open-about-dialog {
-	position: absolute;
-	top: 4px;
-	right: 4px;
-	font-weight: bold;
-	border-radius: 50%;
-	width: 8mm;
-	font-size: 6mm;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 8mm;
+  font-size: 6mm;
 }
 
 #about-dialog button {
-		display: block;
-		margin: 16px auto 0;
+  display: block;
+  margin: 16px auto 0;
 }
 
 together {
-	display: inline;
-	white-space: nowrap;
+  display: inline;
+  white-space: nowrap;
 }
 
 hero {
-	display: block;
-	margin-top: 3vh;
-	margin-left: 2rem;
-	padding: 12px 16px 12px 6px;
-
-	font-size: 1.5rem;
+  display: block;
+  margin-top: 3vh;
+  margin-left: 2rem;
+  padding: 12px 16px 12px 6px;
+  font-size: 1.5rem;
 }
 
 hero h1 {
-	font-size: 4rem;
+  font-size: 4rem;
 }

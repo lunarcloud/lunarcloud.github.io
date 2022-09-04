@@ -1,130 +1,59 @@
-<doctype html>
-<html>
-  <head>
-    <title>Sam Sarette | Test | Celestial Bodies</title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#37c482">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sam Sarette | Test | Celestial Bodies</title>
 
-    <link rel="manifest" href="/ssarette-portfolio.webmanifest">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="main.css">
-    <style>
-      main {
-        padding: 40px;
-      }
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#37c482">
 
-      @keyframes celestialSpin {
-        0% { background-position-x: 0px; background-position-y:  0px; transform: rotate(0deg); }
-        50% { transform: rotate(-25deg); }
-        100% { background-position-x: 2560px; background-position-y: 640px; transform: rotate(0deg); }
-      }
-      
-      @keyframes starSpinRotate {
-        0% { background-position-x: 0px; background-position-y:  0px; transform: rotate(0deg); }
-        100% { background-position-x: 2560px; background-position-y: 640px;  transform: rotate(360deg) }
-      }
+        <link rel="manifest" href="/ssarette-portfolio.webmanifest">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="celestial-test.css">
+    </head>
 
-      sun, moon {
-        display: block;
-        box-sizing: border-box;
-        position: relative;
-        max-width: 40vw;
-        max-height: 40vw;
-        width: 400px;
-        height: 400px;
-        
-        background-size: contain;
-        background-repeat: repeat;
-        animation: celestialSpin 100s infinite linear;
+    <body>
+        <a is="fadeout-anchor" print-hidden href="./">Back</a>
+        <main id="main">
+            <h1>Celestial Body Animations<small>with pseudo-3d rotation</small></h1>
 
-        border-radius: 50%;
-        clip-path: circle(50% at center);
-        shape-outside: circle(50% at center);
-        shape-margin: 6px;
-        
-        overflow: hidden;
-        color: transparent; /* Don't put text in here */
-
-        margin: 10px;
-      }
-      
-      sun:after, moon:after {
-        content: "";
-        position: absolute;
-        top: 0; bottom: 0;
-        left: 0; right: 0;
-      }
-
-      
-      sun {
-        background-image: url('img/lava-tileable.jpg');
-        background-color: #fdd633;
-        background-blend-mode: color-dodge;
-        box-shadow: inset -2px -2px 20px 10px #f1e496ef;
-        
-        animation: starSpinRotate 100s infinite linear;
-      }
-      
-      sun:after {
-        background: radial-gradient(circle at 30% 30%, rgb(255 255 255), rgb(0 0 0 / 0%))
-      }
-
-      moon {
-        background-image: url('img/moon-tileable.jpg');
-        background-color: black;
-        box-shadow: inset 0 0 10vw 6vw #0a0a0a;
-      }
-      
-      moon:after {
-        background: radial-gradient(circle at 30% 30%, rgb(154 131 213 / 15%), rgb(0 0 0 / 20%));
-      }
-
-      h1 {
-        background: radial-gradient(circle, #c790ce 0%, #7673a8 100%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        margin-bottom: 1em;
-      }
-      
-      h1 > small {
-        display: block;
-        margin-top: 0;
-        margin-left: 2em;
-        
-        background: radial-gradient(circle, #bbb 0%, #999 100%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-
-    </style>
-  </head>
-  <body>
-    <a is="fadeout-anchor" print-hidden href="./">Back</a>
-    <main id="main">
-      <h1>Celestial Body Animations<small>with pseudo-3d rotation</small></h1>
-      
-      <h2>The Moon</h2>
-      <moon style="float: right;"></moon>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempor quam id urna viverra rutrum. Fusce tempor tortor vel nisi porta tincidunt. Morbi sed turpis vestibulum urna suscipit sollicitudin. Mauris vel vestibulum mauris, in tristique arcu. Mauris iaculis tempus tortor eget elementum. Aenean eget cursus augue. Mauris sem mauris, dictum ut rutrum sed, ornare ac ligula. Nullam finibus eget orci sagittis suscipit. Integer bibendum diam eu ligula imperdiet, eget porta enim aliquet. Sed neque orci, vehicula at est quis, dapibus gravida enim. Suspendisse non luctus urna.</p>
-      <sun style="float: left;"></sun>
-      <h2>The Sun</h2>
-      <p>Nulla laoreet quis dolor vitae dignissim. Curabitur fermentum neque vitae dolor mollis hendrerit. Donec imperdiet erat tincidunt commodo ultricies. Fusce efficitur ut dolor id ullamcorper. Nam venenatis vulputate arcu, vitae congue lorem vulputate a. Phasellus vitae sem ligula. Cras maximus augue eget interdum imperdiet. Quisque consectetur lobortis sapien, imperdiet aliquam leo sodales varius. Nulla nec hendrerit lorem, eget finibus mauris. Curabitur elit ligula, vestibulum sed diam vel, efficitur lacinia massa. Aliquam nisi erat, imperdiet vel fringilla sed, pulvinar sodales ante.</p>
-      <h3>Hot Surface</h3>
-      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec urna ex, ornare sollicitudin libero eu, accumsan molestie leo. Ut tortor nulla, tempor ac egestas vel, sagittis in ex. Nunc in bibendum orci. Maecenas massa ex, accumsan ac suscipit in, dapibus ac nisi. Sed posuere molestie nisi. Sed semper pretium dolor id tincidunt. Vestibulum libero est, aliquam vulputate elit ac, rutrum facilisis ex. Aliquam imperdiet, massa ac laoreet sollicitudin, mi lorem auctor risus, vel dignissim tellus eros quis arcu. Curabitur eu tortor convallis nisi lacinia facilisis. Proin porttitor, sapien rhoncus vehicula dapibus, purus libero sollicitudin sapien, a euismod augue orci et nibh. In quis scelerisque arcu. Vivamus sagittis consequat est. Curabitur tempus tortor ut ornare fermentum. Mauris iaculis dapibus sagittis. Cras lobortis, sem et rutrum interdum, felis lectus lacinia leo, nec convallis quam enim elementum ligula.</p>
-
-    </main>
-    <dialogs>
-      <dialog is="anim-dialog" id="about-dialog">
-        This website will be a sort of portfolio for me.
-        <button role="button">close</button>
-      </dialog>
-    </dialogs>
-  </body>
-  <script type="module">
-    import "./page-fade/page-fade.js";
-  </script>
+            <h2>The Moon</h2>
+            <moon style="float: right;"></moon>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempor quam id urna viverra rutrum. Fusce
+                tempor tortor vel nisi porta tincidunt. Morbi sed turpis vestibulum urna suscipit sollicitudin. Mauris
+                vel vestibulum mauris, in tristique arcu. Mauris iaculis tempus tortor eget elementum. Aenean eget
+                cursus augue. Mauris sem mauris, dictum ut rutrum sed, ornare ac ligula. Nullam finibus eget orci
+                sagittis suscipit. Integer bibendum diam eu ligula imperdiet, eget porta enim aliquet. Sed neque orci,
+                vehicula at est quis, dapibus gravida enim. Suspendisse non luctus urna.
+            </p>
+            <sun style="float: left;"></sun>
+            <h2>The Sun</h2>
+            <p>Nulla laoreet quis dolor vitae dignissim. Curabitur fermentum neque vitae dolor mollis hendrerit. Donec
+                imperdiet erat tincidunt commodo ultricies. Fusce efficitur ut dolor id ullamcorper. Nam venenatis
+                vulputate arcu, vitae congue lorem vulputate a. Phasellus vitae sem ligula. Cras maximus augue eget
+                interdum imperdiet. Quisque consectetur lobortis sapien, imperdiet aliquam leo sodales varius. Nulla nec
+                hendrerit lorem, eget finibus mauris. Curabitur elit ligula, vestibulum sed diam vel, efficitur lacinia
+                massa. Aliquam nisi erat, imperdiet vel fringilla sed, pulvinar sodales ante.
+            </p>
+            <h3>Hot Surface</h3>
+            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec urna ex,
+                ornare sollicitudin libero eu, accumsan molestie leo. Ut tortor nulla, tempor ac egestas vel, sagittis
+                in ex. Nunc in bibendum orci. Maecenas massa ex, accumsan ac suscipit in, dapibus ac nisi. Sed posuere
+                molestie nisi. Sed semper pretium dolor id tincidunt. Vestibulum libero est, aliquam vulputate elit ac,
+                rutrum facilisis ex. Aliquam imperdiet, massa ac laoreet sollicitudin, mi lorem auctor risus, vel
+                dignissim tellus eros quis arcu. Curabitur eu tortor convallis nisi lacinia facilisis. Proin porttitor,
+                sapien rhoncus vehicula dapibus, purus libero sollicitudin sapien, a euismod augue orci et nibh. In quis
+                scelerisque arcu. Vivamus sagittis consequat est. Curabitur tempus tortor ut ornare fermentum. Mauris
+                iaculis dapibus sagittis. Cras lobortis, sem et rutrum interdum, felis lectus lacinia leo, nec convallis
+                quam enim elementum ligula.
+            </p>
+        </main>
+        <dialogs>
+            <dialog is="anim-dialog" id="about-dialog">
+                This website will be a sort of portfolio for me.
+                <button role="button">close</button>
+            </dialog>
+        </dialogs>
+    </body>
+    <script type="module" src="page-fade/page-fade.js"></script>
 </html>

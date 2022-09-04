@@ -1,6 +1,6 @@
-import {FadeOutAnchorElement} from "../page-fade/page-fade.js";
+import {FadeOutAnchorElement} from "../page-fade/page-fade.js"; // eslint-disable-line no-unused-vars
 
-const pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',') ?? [];
+const pageFilters = new URLSearchParams(location.search)?.get("filter")?.split(",") ?? [];
 
 export default class ProjectDisplayElement extends HTMLElement {
 
@@ -14,9 +14,9 @@ export default class ProjectDisplayElement extends HTMLElement {
         const shadow = this.attachShadow({mode: "open"});
 
         // Apply external styles to the shadow DOM
-        const linkElem = document.createElement('link');
-        linkElem.setAttribute('rel', 'stylesheet');
-        linkElem.setAttribute('href', 'project-display/project-display.css');
+        const linkElem = document.createElement("link");
+        linkElem.setAttribute("rel", "stylesheet");
+        linkElem.setAttribute("href", "project-display/project-display.css");
 
         // Attach the created element to the shadow DOM
         shadow.appendChild(linkElem);
@@ -25,23 +25,23 @@ export default class ProjectDisplayElement extends HTMLElement {
         const clone = document.importNode(ProjectDisplayElement.templateElement.content, true);
         
         // Append Tags from attribute to list
-        this.tags = this.getAttribute("tags").split(',');
+        this.tags = this.getAttribute("tags").split(",");
         this.tags.sort((a, b) => a.length - b.length + a.localeCompare(b)); // shortest-first, then alphabetical
         this.tags.forEach(tag => {
-            if (tag.trim() == '') return; // ignore empties
+            if (tag.trim() == "") return; // ignore empties
 
-            const listItemEl = document.createElement('li');
+            const listItemEl = document.createElement("li");
             listItemEl.toggleAttribute("active", pageFilters.includes(tag));
 
-            const anchorEl = document.createElement('a', { is: "fadeout-anchor"});
+            /** @type FadeOutAnchorElement */
+            const anchorEl = document.createElement("a", { is: "fadeout-anchor"});
+
             anchorEl.textContent = tag;
             anchorEl.href= `?filter=${tag}`;
             anchorEl.addEventListener("fadednavigate", () => { 
-                listItemEl.toggleAttribute("active");
-                let active = listItemEl.hasAttribute("active");
-                const event = new CustomEvent("projectfilterselected", { detail: { tag, active } });
-                this.dispatchEvent(event);
-             }, {passive: false});
+                let active = listItemEl.toggleAttribute("active");
+                this.dispatchEvent(new CustomEvent("projectfilterselected", { detail: { tag, active } }));
+            }, {passive: false});
 
             listItemEl.appendChild(anchorEl);
             clone.querySelector("ul.tags").appendChild(listItemEl);
@@ -81,14 +81,14 @@ export default class ProjectDisplayElement extends HTMLElement {
         if (this.hasAttribute("released")) {
             let dateTimeEl = clone.querySelector(".published time");
             let dateTimeVal = this.getAttribute("released");
-            dateTimeEl.setAttribute('datetime', dateTimeVal);
+            dateTimeEl.setAttribute("datetime", dateTimeVal);
             dateTimeEl.textContent = dateTimeVal;
             clone.querySelector(".published").classList.remove("hidden");
         }
         if (this.hasAttribute("first")) {
             let dateTimeEl = clone.querySelector(".timeframe time.first");
             let dateTimeVal = this.getAttribute("first");
-            dateTimeEl.setAttribute('datetime', dateTimeVal);
+            dateTimeEl.setAttribute("datetime", dateTimeVal);
             dateTimeEl.textContent = dateTimeVal;
             dateTimeEl.classList.remove("hidden");
             clone.querySelector(".timeframe").classList.remove("hidden");
@@ -96,7 +96,7 @@ export default class ProjectDisplayElement extends HTMLElement {
         if (this.hasAttribute("last")) {
             let dateTimeEl = clone.querySelector(".timeframe time.last");
             let dateTimeVal = this.getAttribute("last");
-            dateTimeEl.setAttribute('datetime', dateTimeVal);
+            dateTimeEl.setAttribute("datetime", dateTimeVal);
             dateTimeEl.textContent = dateTimeVal;
             dateTimeEl.classList.remove("hidden");
             clone.querySelector(".timeframe").classList.remove("hidden");
@@ -145,12 +145,12 @@ export default class ProjectDisplayElement extends HTMLElement {
         if (!ongoingA && ongoingB) return -1;
 
 
-        let firstA = projectA.attributes['first']?.value ?? "";
-        let releasedA = projectA.attributes['released']?.value ?? "";
+        let firstA = projectA.attributes["first"]?.value ?? "";
+        let releasedA = projectA.attributes["released"]?.value ?? "";
         let minA =[releasedA, firstA].sort()[0];
         
-        let firstB = projectB.attributes['first']?.value ?? "";
-        let releasedB = projectB.attributes['released']?.value ?? "";
+        let firstB = projectB.attributes["first"]?.value ?? "";
+        let releasedB = projectB.attributes["released"]?.value ?? "";
         let minB = [releasedB, firstB].sort()[0];
         
         return minA.localeCompare(minB);
@@ -170,11 +170,11 @@ export default class ProjectDisplayElement extends HTMLElement {
     }
 }
 
-const templateResponse = await fetch('project-display/project-display.html');
+const templateResponse = await fetch("project-display/project-display.html");
 ProjectDisplayElement.templateElement = new DOMParser()
-    .parseFromString(await templateResponse.text(), 'text/html')
-    .querySelector('template');
+    .parseFromString(await templateResponse.text(), "text/html")
+    .querySelector("template");
 
 
 // Register element
-customElements.define('project-display', ProjectDisplayElement);
+customElements.define("project-display", ProjectDisplayElement);

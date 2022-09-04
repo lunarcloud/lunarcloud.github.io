@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <body>
         <template id="project-display-template">
@@ -5,21 +6,21 @@
                 <div class="thumbnail"></div>
                 <div class="info">
                     <div class="size hidden" title="Rough size of team [for the portion of project involved].">
-                        <img class="solo hidden" src="project-display/img/solo-size.png" />
-                        <img class="duo hidden" src="project-display/img/duo-size.png" />
-                        <img class="trio hidden" src="project-display/img/trio-size.png" />
-                        <img class="team hidden" src="project-display/img/team-size.png" />
+                        <img alt="solo" class="solo hidden" src="project-display/img/solo-size.png"/>
+                        <img alt="duo" class="duo hidden" src="project-display/img/duo-size.png" />
+                        <img alt="trio" class="trio hidden" src="project-display/img/trio-size.png" />
+                        <img alt="team" class="team hidden" src="project-display/img/team-size.png" />
                     </div>
                     <h1 class="name">Project Unknown</h1>
                     <p class="for hidden">TODO</p>
-                    <p class="timeframe hidden"><time class="first hidden" datetime="3038-01-01">TODO</time> - <time class="last" datetime="">ongoing</time></p>
+                    <p class="timeframe hidden"><time class="first hidden" datetime="3038-01-01">TODO</time> - <time class="last">ongoing</time></p>
                     <p class="published hidden">Released: <time datetime="3038-01-01">TODO</time></p>
                     <slot name="description"><p>Description Not Provided</p></slot>
                     <ul class="tags project-tags"></ul>
                     <ul class="links hidden">
-                        <li class="main hidden"><a href="#" target="_blank">Website</a></li>
-                        <li class="repo hidden"><a href="#" target="_blank">Source Code</a></li>
-                        <li class="announcement hidden"><a href="#" target="_blank">Announcement</a></li>
+                        <li class="main hidden"><a href="#" target="_blank" rel="noopener">Website</a></li>
+                        <li class="repo hidden"><a href="#" target="_blank" rel="noopener">Source Code</a></li>
+                        <li class="announcement hidden"><a href="#" target="_blank" rel="noopener">Announcement</a></li>
                     </ul>
                 </div>
             </internal>

@@ -1,0 +1,108 @@
+@import "main.css";
+
+main {
+  padding: 40px;
+}
+
+@keyframes celestial-spin {
+  0% {
+    background-position-x: 0;
+    background-position-y: 0;
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-25deg);
+  }
+
+  100% {
+    background-position-x: 2560px;
+    background-position-y: 640px;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes star-spin-rotate {
+  0% {
+    background-position-x: 0;
+    background-position-y: 0;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    background-position-x: 2560px;
+    background-position-y: 640px;
+    transform: rotate(360deg);
+  }
+}
+
+sun,
+moon {
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  max-width: 40vw;
+  max-height: 40vw;
+  width: 400px;
+  height: 400px;
+  background-size: contain;
+  background-repeat: repeat;
+  animation: celestial-spin 100s infinite linear;
+  border-radius: 50%;
+  clip-path: circle(50% at center);
+  shape-outside: circle(50% at center);
+  shape-margin: 6px;
+  overflow: hidden;
+  color: transparent; /* Don't put text in here */
+  margin: 10px;
+}
+
+sun::after,
+moon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+sun {
+  background-image: url("img/lava-tileable.jpg");
+  background-color: #fdd633;
+  background-blend-mode: color-dodge;
+  box-shadow: inset -2px -2px 20px 10px #f1e496ef;
+  animation: star-spin-rotate 100s infinite linear;
+}
+
+sun::after {
+  background: radial-gradient(circle at 30% 30%, rgb(255 255 255), rgb(0 0 0 / 0%));
+}
+
+moon {
+  background-image: url("img/moon-tileable.jpg");
+  background-color: black;
+  box-shadow: inset 0 0 10vw 6vw #0a0a0a;
+}
+
+moon::after {
+  background: radial-gradient(circle at 30% 30%, rgb(154 131 213 / 15%), rgb(0 0 0 / 20%));
+}
+
+h1 {
+  background: radial-gradient(circle, #c790ce 0%, #7673a8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1em;
+}
+
+h1 > small {
+  display: block;
+  margin-top: 0;
+  margin-left: 2em;
+  background: radial-gradient(circle, #bbb 0%, #999 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

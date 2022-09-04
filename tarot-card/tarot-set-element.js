@@ -31,14 +31,14 @@ export default class TarotSetElement extends HTMLElement {
         
         let target = document.getElementById(this.id); // don't use event's target, because it could be a child node, like another card
 
-        if (['all', 'move'].includes(event.dataTransfer.effectAllowed)) 
+        if (["all", "move"].includes(event.dataTransfer.effectAllowed)) 
         {
-          let sourceEl = document.getElementById(event.dataTransfer.getData("text"));
-          target.appendChild(sourceEl);
+            let sourceEl = document.getElementById(event.dataTransfer.getData("text"));
+            target.appendChild(sourceEl);
         }
     }
 
 }
 
 // Register element
-customElements.define('tarot-set', TarotSetElement);
+customElements.define("tarot-set", TarotSetElement);
