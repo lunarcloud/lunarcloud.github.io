@@ -22,6 +22,9 @@
         <main style="height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 101;">
             <div id="vr-content" style="height: 100%; width: 100%;">
                 <a-scene embedded vr-mode-ui="enabled: true;">
+                    <a-entity oculus-touch-controls="hand: left"></a-entity>
+                    <a-entity oculus-touch-controls="hand: right"></a-entity>
+
                     <a-assets>
                         <a-asset-item id="meeple-robot" src="gltf/robot.glb"></a-asset-item>
                         <a-asset-item id="meeple-gent1" src="gltf/gent1.glb"></a-asset-item>
@@ -32,6 +35,7 @@
                         <a-asset-item id="kmc-vr-large-bottle" src="gltf/kmc-vr-large-bottle.glb"></a-asset-item>
                         <a-asset-item id="shipwreck" src="gltf/shipwreck.glb"></a-asset-item>
 
+                        <img id="sky" src="img/photosphere/galaxy-sky.jpg">
                     </a-assets>
 
                     <a-entity gltf-model="#meeple-airship" shadow position="-1 0.1 -5" scale="0.5 0.5 0.5" rotation="0 25 0">
@@ -53,7 +57,10 @@
                     <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 4" rotation="45 0 0"></a-entity>
                     <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 -4" rotation="-45 0 0"></a-entity>
                     <a-entity light="type: ambient; color: #ccf; intensity: 1"></a-entity>
-                    <a-sky color="#333333"></a-sky>
+
+                    <!-- <a-sphere src="#sky" side="double" radius="50" rotation="0 -90 0"></a-sphere> -->
+
+                    <a-sky src="#sky"></a-sky>
             </a-scene>
             </div>
         </main>
