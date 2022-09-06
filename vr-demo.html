@@ -10,13 +10,18 @@
         <link rel="manifest" href="/ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="main.css">
-        <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
-        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+
+        <link rel="stylesheet" href="page-fade/page-fade.css">
+        <link rel="stylesheet" href="project-display/project-display.css">
+        <script type="module" src="project-display/project-display-element.js"></script>
+
+        <script src="//unpkg.com/@ungap/custom-elements/es.js" crossorigin="anonymous"></script> <!-- Safari polyfill -->
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <main style="height: 100vh; width: 100vw; position: absolute; right: 0; bottom: 0;">
+        <main style="height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 101;">
             <div id="vr-content" style="height: 100%; width: 100%;">
-                <a-scene vr-mode-ui="enabled: true;">
+                <a-scene embedded vr-mode-ui="enabled: true;">
                     <a-assets>
                         <a-asset-item id="meeple-robot" src="gltf/robot.glb"></a-asset-item>
                         <a-asset-item id="meeple-gent1" src="gltf/gent1.glb"></a-asset-item>
@@ -26,29 +31,34 @@
                         <a-asset-item id="ataito-bucket" src="gltf/ataito-bucket.glb"></a-asset-item>
                         <a-asset-item id="kmc-vr-large-bottle" src="gltf/kmc-vr-large-bottle.glb"></a-asset-item>
                         <a-asset-item id="shipwreck" src="gltf/shipwreck.glb"></a-asset-item>
+
                     </a-assets>
 
-                    <a-entity gltf-model="#meeple-airship" position="-1 0.1 -5" scale="0.5 0.5 0.5" rotation="0 25 0">
+                    <a-entity gltf-model="#meeple-airship" shadow position="-1 0.1 -5" scale="0.5 0.5 0.5" rotation="0 25 0">
                         <a-entity gltf-model="#meeple-robot" position="1.75 1.6 1" rotation="0 15 0"></a-entity>
                         <a-entity gltf-model="#meeple-lady1" position="0 1.6 1.5" rotation="0 0 0"></a-entity>
                         <a-entity gltf-model="#meeple-gent1" position="-1.75 1.6 1" rotation="0 -15 0"></a-entity>
                     </a-entity>
 
+                    <a-entity id="projects-entity" position="6 2 0" rotation="0 -90 0" scale="12 8 1">
+
+                    </a-entity>
+
                     <a-entity gltf-model="#ataito-bucket" position="1.5 0.25 -3.5" scale="0.25 0.25 0.25" rotation="0 45 0"></a-entity>
                     <a-entity gltf-model="#kmc-vr-large-bottle" position="0.5 0 -3.5" scale="3 3 3" rotation="0 45 0"></a-entity>
-                    <a-entity gltf-model="#shipwreck" position="2.5 3 -5.5" scale="1 1 1" rotation="45 45 0"></a-entity>
+                    <a-entity gltf-model="#shipwreck" shadow position="2.5 3 -5.5" scale="1 1 1" rotation="45 45 0"></a-entity>
 
                     <a-plane position="0 0 -4.5" rotation="-90 0 0" width="6" height="3.5" color="#61615e"></a-plane>
-
 
                     <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 4" rotation="45 0 0"></a-entity>
                     <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 -4" rotation="-45 0 0"></a-entity>
                     <a-entity light="type: ambient; color: #ccf; intensity: 1"></a-entity>
-
+                    <a-sky color="#333333"></a-sky>
             </a-scene>
             </div>
         </main>
-        <aside>
+        <div id="content-load-hider" style="position: fixed; top: 0; bottom: 0;left: 0;right: 0; z-index: 100; background-color: black;"></div>
+        <aside style="position: fixed; top: 0; bottom: 0;left: 0;right: 0;">
             <div style="
                 position: absolute;
                 top: 12px;
@@ -56,10 +66,498 @@
                 background: var(--dialog-color-backdrop);
                 border-radius: 8px;
                 padding: 8px;
-            ">
-            <a is="fadeout-anchor" print-hidden href="./">Back</a>
-          </div>
+                z-index: 103;">
+                <a is="fadeout-anchor" print-hidden href="./">Back</a>
+            </div>
+
+            <div id="all-projects" style="z-index: -20; width: calc(728px * 5); display: grid; grid-template-columns: repeat(5, 1fr);">
+
+                <project-display
+                    id="antiford-gerstenberg-heroes-game"
+                    name="Gersten&shy;berg Heroes"
+                    for="Citizens of Antiford"
+                    size="trio" team-role="Lead developer and designer."
+                    tags="hobby,gamedev,gamepad,multiplayer"
+                    thumbnail="img/projects/gerstenberg-heroes.jpg" thumbnail-size="cover"
+                    released="2016-11-13"
+                    first="2016-11-11" last="2021-08-06"
+                    link-main="https://citizensofantiford.itch.io/gerstenberg-heroes"
+                    link-announcement="https://citizensofantiford.com/game?jam&year=2016&month=november"
+                >
+                    <span slot="description">
+                        <p>Sponsored and Participated in game jam at NHTI in 2016.</p>
+                        <p>I created the game using ImpactJS, designed the mechanics and gameplay.</p>
+                        <p>Partners did level designs and artwork, respectively.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-switchboard-copper-game"
+                    name="Switch&shy;board Copper"
+                    for="Citizens of Antiford"
+                    size="trio" team-role="Lead developer and designer."
+                    tags="hobby,gamedev,ink,js/ts,unity,godot,xr,renpy,google-cardboard,google-daydream"
+                    thumbnail="img/projects/switchboard-copper.jpg" thumbnail-size="cover"
+                    released="2018-01-28"
+                    first="2018-01-26" last="2019-10-11"
+                    link-main="https://citizensofantiford.itch.io/switchboard-copper"
+                    link-repo="https://github.com/lunarcloud/visual-novel-GGJ-2018/"
+                >
+                    <span slot="description">
+                        <p>Sponsored and Participated in game jam at NHTI in 2018.</p>
+                        <p>I created the game using ImpactJS and Ink, designed the mechanics and gameplay.</p>
+                        <p>Partners did writing and artwork, respectively.</p>
+                        <p>Once the game was complete, I used as it as an example of using Ink in many game engines, by reimplementing it several times.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="homeworlds-game"
+                    name="Home&shy;worlds"
+                    for="Personal"
+                    size="duo" team-role="Co-developed with partner."
+                    tags="hobby,gamedev,xr,ink,google-cardboard,google-daydream"
+                    thumbnail="img/projects/homeworlds-game.jpg" thumbnail-size="cover"
+                    released="2019-02-27"
+                    first="2019-01-21" last="2019-02-03"
+                    link-main="https://samsarette.itch.io/homeworlds"
+                    link-repo="https://github.com/lunarcloud/vr-game-GGJ-2019"
+                    link-announcement="https://globalgamejam.org/2019/games/homeworlds"
+                >
+                    <span slot="description">
+                        <p>Participated in Global Game Jam at NHTI in 2019.</p>
+                        <p>Wired in the procedural generation system that my partner designed, and implemented the Ink-powered trade-partner discussion system.</p>
+                        <p>Also, created several character animations using a Microsoft Kinect.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-wild-araz"
+                    name="Nathan Powell's Wild Araz"
+                    for="Citizens of Antiford"
+                    team-role="Release Engineer."
+                    tags="hobby,support,gamedev,installers,windows,macos,linux"
+                    thumbnail="img/projects/wild-araz.jpg" thumbnail-size="cover"
+                    released="2019-08-10"
+                    link-main="https://citizensofantiford.itch.io/wild-araz"
+                >
+                    <span slot="description">
+                        <p> Beta Tester and Release Engineer for a friend's game.</p>
+                        <p>See <a href="#rpgmaker-installer-scripts">"RPG Maker Installer Creation Scripts"</a></p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="shipwreck-game"
+                    name="Shipwreck"
+                    for="Personal"
+                    size="duo" team-role="Co-developed with partner."
+                    tags="hobby,gamedev,unity,kinect,android,windows,linux"
+                    thumbnail="img/projects/shipwreck-game.jpg"  thumbnail-size="cover"
+                    released="2020-02-02"
+                    first="2020-01-31" last="2020-02-02"
+                    link-main="https://samsarette.itch.io/shipwreck"
+                    link-repo="https://github.com/Malcolmnixon/ShipwreckGameJam2020"
+                    link-announcement="https://globalgamejam.org/2020/games/shipwreck-9"
+                >
+                    <span slot="description">
+                        <p>Participated in Global Game Jam at NHTI in 2020.</p>
+                        <p>Made multiplayer-focused gameplay using server-size synchronization that partner developed.</p>
+                        <p>Designed the spaceship and did some texturing of it using material maker.</p>
+                        <p>Created the fly-by observation camera used by the "observer" client.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="color-below-game"
+                    name="The Color Below"
+                    for="Personal"
+                    size="trio" team-role="Lead developer."
+                    tags="hobby,gamedev,godot,ink,windows,macos,linux,android"
+                    thumbnail="img/projects/color-below-game.jpg"  thumbnail-size="cover"
+                    released="2020-08-03"
+                    first="2020-07-30" last="2020-08-10"
+                    link-main="https://samsarette.itch.io/color-below"
+                >
+                    <span slot="description">
+                        <p>Participated in the InkJam game jam online in 2020.</p>
+                        <p>Mentored writer in "Ink" technology, and helped artist with technical aspects of game-art development.</p>
+                        <p>Developed the game with the Godot game engine using the Ink narrative middleware.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="ataito-game"
+                    name="Ataito: The Spirit Swapper"
+                    for="Personal"
+                    size="duo" team-role="Co-developed with partner."
+                    tags="hobby,gamedev,godot,xr,3d-modelling,particle-effects,meta-quest-2,windows"
+                    thumbnail="img/projects/ataito-game.jpg"  thumbnail-size="cover"
+                    released="2022-01-30"
+                    first="2022-01-28" last="2022-06-26"
+                    link-main="https://malcolmnixon.itch.io/ataito-the-spirit-swapper"
+                    link-repo="https://github.com/Malcolmnixon/Ataito-Game "
+                >
+                    <span slot="description">
+                        <p>Hosted and Participated in Global Game Jam, online with the Southern NH Game Dev Meetup in 2022.</p>
+                        <p>First Project using the Godot game engine's XR Toolkit</p>
+                        <p>Created particle effects, Some modelling and texturing, mechanics programming, level design, foley sound effects work.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="igdanh-presents-ink"
+                    name="Present&shy;ation: Inter&shy;active Story&shy;telling with Ink"
+                    for="IGDANH"
+                    size="solo" team-role="Sole presenter."
+                    tags="hobby,gamedev,ink,presentation"
+                    thumbnail="img/projects/ink-presentation.jpg"  thumbnail-size="cover"
+                    released="2019-05-14"
+                    link-main="https://www.meetup.com/igda-new-hampshire-game-development-meetup/events/260827461/"
+                >
+                    <span slot="description">
+                        <p>Presented to NH game developers on the Ink narrative middleware.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="script-dialog"
+                    name="Script-Dialog"
+                    for="Personal"
+                    size="solo" team-role="Sole developer."
+                    tags="hobby,bash,linux"
+                    thumbnail="img/projects/script-dialog.jpg"  thumbnail-size="cover"
+                    first="2014-10-07" last="2022-05-21"
+                    link-repo="https://github.com/lunarcloud/script-dialog"
+                >
+                    <span slot="description">
+                        <p>Linux bash library for TUI/GUI dialogs.</p>
+                        <p>The idea is that if you launch the script via file manager, you get GUI popups,
+                            but if you ran it from the terminal, you'll get the TUI dialogs.
+                        </p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="unity-ballpoint-ink"
+                    name="Ballpoint: Friendly Wrapper for Ink on Unity"
+                    for="Personal"
+                    size="solo" team-role="Sole developer."
+                    tags="hobby,gamedev,unity,ink,addon"
+                    thumbnail="img/projects/ballpoint-unity.jpg"  thumbnail-size="cover"
+                    first="2020-09-09" last="2020-10-14"
+                    link-main="https://openupm.com/packages/org.samsarette.ballpoint-unity"
+                    link-repo="https://github.com/lunarcloud/ballpoint-unity"
+                >
+                    <span slot="description">
+                        <p>OpenUPM packaged addon for using Ink middleware with Unity game engine.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="godot-xr-toolkit"
+                    name="Godot XR Toolkit"
+                    for="Godot"
+                    size="duo" team-role="Co-developed with partner."
+                    tags="hobby,gamedev,addon,godot,xr,meta-quest-2,windows,linux"
+                    thumbnail="img/projects/godot-xr-tools.png"
+                    first="2022-05-19" last="2022-08-01"
+                    link-repo="https://github.com/GodotVR/godot-xr-tools"
+                >
+                    <span slot="description">
+                        <p>Contributed ranged grab logic, editor node icons, consulted on design.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="inky"
+                    name="Inky (Writing App for Ink)"
+                    for="Inkle"
+                    size="solo" team-role="Contributed to community project."
+                    tags="hobby,gamedev,ink,js/ts,installers,windows,macos,linux"
+                    thumbnail="img/projects/inky.png"
+                    first="2019-10-18" last="2022-06-15"
+                    link-repo="https://github.com/inkle/inky"
+                >
+                    <span slot="description">
+                        <p>Contributed to dark mode feature, web template improvements, linux packaging, keyboard shortcuts.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="playdate-build-scripts"
+                    name="PlayDate Project Build Scripts"
+                    for="Personal"
+                    size="solo" team-role="Sole developer."
+                    tags="hobby,gamedev,bash,windows,linux"
+                    thumbnail="img/projects/playdate-build-scripts.jpg"  thumbnail-size="cover"
+                    released="2022-06-10"
+                    link-repo="https://github.com/lunarcloud/playdate-project-build-scripts"
+                >
+                    <span slot="description">
+                        <p>Command-line script (windows and linux variants) for building PlayDate SDK projects.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="playdate-vscode"
+                    name="PlayDate Visual Studio Code Addon"
+                    for="Personal"
+                    size="solo" team-role="Contributed to community project."
+                    tags="hobby,gamedev,addon"
+                    thumbnail="img/projects/vscode-playdate.jpg"  thumbnail-size="cover"
+                    first="2022-05-13" last="2022-05-18"
+                    link-repo="https://github.com/orta/vscode-playdate"
+                >
+                    <span slot="description">
+                        <p>Contributed Linux fixes.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="godot-rumble-example"
+                    name="Godot (Gamepad) Rumble Demo"
+                    for="Godot"
+                    size="solo" team-role="Sole developer."
+                    tags="hobby,gamedev,godot,gamepad,android,windows,macos,linux"
+                    thumbnail="img/projects/godot-rumble.png"
+                    first="2022-02-10" last="2022-02-13"
+                    link-main="https://godotengine.org/asset-library/asset/1230"
+                    link-repo="https://github.com/lunarcloud/godot-rumble-example-project/ "
+                >
+                    <span slot="description">
+                        <p>Example Project for using gamepad rumble with the Godot game engine.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="rpgmaker-installer-scripts"
+                    name="RPG Maker Installer Creation Scripts"
+                    for="Personal"
+                    size="solo" team-role="Sole developer."
+                    tags="hobby,gamedev,bash,installers,linux"
+                    thumbnail="img/projects/lunarcloud.jpg"
+                    first="2015-09-02" last="2022-05-16"
+                    link-repo="https://github.com/lunarcloud/rpg-maker-vx-installer-scripts"
+                >
+                    <span slot="description">
+                        <p>Used on and developed for <a href="#antiford-wild-araz">"Nathan Powell's Wild Araz"</a>.</p>
+                        <p>These scripts will create a number of installers for Windows, Mac, and Linux for games made with the ruby-powered RPG Maker game engines (XP, VX, VX Ace).</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="qt-proj-template"
+                    name="Qt Enhanced Project Template"
+                    for="Personal"
+                    size="solo" team-role="Sole developer."
+                    tags="hobby,c++,qt,addon"
+                    thumbnail="img/projects/lunarcloud.jpg"
+                    first="2013-05-05" last="2018-12-13"
+                    link-repo="https://github.com/lunarcloud/qt-enhanced-project-template"
+                >
+                    <span slot="description">
+                        <p>Project Template for the Qt Creator IDE to produce a desktop application with icons, a main window, support for native OS dock menus, and styling.</p>
+                        <p>Also includes a default README with an explanation on how to deploy / create installers.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-doom-game"
+                    name="Antiford &quot;Doom&quot; "
+                    for="Personal"
+                    size="solo" team-role="Sole developer."
+                    tags="hobby,gamedev,js/ts,impactjs,gamepad"
+                    thumbnail="img/projects/antiford-doom.jpg" thumbnail-size="cover"
+                    first="2015-11-13" last="2015-11-15"
+                    link-main="https://citizensofantiford.com/games/jam/2015/november/games/AntifordDoom/"
+                    link-announcement="https://citizensofantiford.com/game?jam&year=2015&month=november"
+                >
+                    <span slot="description">
+                        <p>First-person shooter in the style of wolfenstein &amp; Doom, made with the ImpactJS game engine.</p>
+                        <p>First use of my <a href="#gameinputjs">GameInputJS</a> library </p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="gameinputjs"
+                    name="Game&shy;InputJS"
+                    for="Personal"
+                    size="solo" team-role="Sole developer."
+                    tags="hobby,gamedev,js/ts,gamepad,windows,macos,linux,android"
+                    thumbnail="img/projects/lunarcloud.jpg"
+                    first="2015-11-01" last="2019-05-05"
+                    link-repo="https://github.com/lunarcloud/gameinputjs"
+                >
+                    <span slot="description">
+                        <p>js/ts library for using gamepads with a standardized mapping, and APIs for getting the gamepads' type, icons, button names.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-website"
+                    name="CitizensOf&shy;Antiford&shy;.com" name-no-hyphen-char
+                    for="Citizens of Antiford"
+                    size="solo" team-role="Sole developer. Contributing writer."
+                    tags="hobby,php,sql,js/ts,rest-api"
+                    thumbnail="img/projects/antiford.png"
+                    first="2012-06-22" last="2021-08-19"
+                    link-main="https://citizensofantiford.com"
+                >
+                    <span slot="description">
+                        <p>PHP Web Application - Social Media and Document Creation. eBook Download and text-to-speech reader features.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-rogues-tabletop"
+                    name="Rogues of Antiford - Tabletop Game"
+                    for="Citizens of Antiford"
+                    size="solo" team-role="Sole creator. Partners playtest and laser-cut."
+                    tags="hobby,gamedev,fusion-360,3d-modelling,3d-printing"
+                    thumbnail="img/projects/rogues-of-antiford.jpg" thumbnail-size="cover"
+                    first="2017-09-17"
+                    link-main="https://www.facebook.com/roguesgame"
+                >
+                    <span slot="description">
+                        <p>Designed a tabletop board game using CAD for 3d-printed and laser-cut pieces.</p>
+                        <p>Game is designed to be re-configurable into many campaigns both included by me and imagined by players.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="jewelry-city-virtual-2020"
+                    name="Jewelry City Steam&shy;punk Festival 2020"
+                    for="Steam&shy;punks of New England"
+                    size="team" team-role="Technology expert and teacher."
+                    tags="hobby,presentation,event-planning,media-production"
+                    thumbnail="img/projects/jewelry-city-festival.jpg" thumbnail-size="cover"
+                    first="2020-05-19" last="2020-11-22"
+                    released="2020-11-20"
+                    link-main="https://www.youtube.com/playlist?list=PLYwE9hUT04-iByNOdPsDYGRKWGhZAF76P"
+                >
+                    <span slot="description">
+                        <p>Contributed technical expertise instrumental in planning the virtual event, came up with the idea to use a single playlist of 'premeire' and live videos.</p>
+                        <p>Trained and worked with several performers who sought to perform live on YouTube.</p>
+                        <p>Contributed a pre-recorded presentation, followed-up with live Q&amp;A.</p>
+                        <p>Manned the YouTube pages during the premeires and live videos to ensure all went well.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-panels"
+                    name="Steam&shy;punk Con&shy;vention Panels"
+                    for="Citizens Of Antiford"
+                    size="trio" team-role="Partner of three."
+                    tags="hobby,presentation"
+                    thumbnail="img/projects/steampunk-panels-karaoke.jpg" thumbnail-size="cover"
+                    first="2012-11-04" last="2020-11-22"
+                    link-main="https://citizensofantiford.com/about"
+                >
+                    <span slot="description">
+                        <p>Several presentations performed for various conventions. </p>
+                        <ul>
+                            <li>Another Anime Con&shy;vention</li>
+                            <li>TempleCon</li>
+                            <li>Steam&shy;punk Industrial Revolution</li>
+                            <li>RuffleCon</li>
+                            <li>Watch City Steam&shy;punk Festival</li>
+                            <li>Jewelry City Steam&shy;punk Festival</li>
+                            <li>Springfield Vermont Steam&shy;punk Festival</li>
+                            <li>FanExpo Boston</li>
+                        </ul>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-rufflecon-video"
+                    name="Antiford x RuffleCon Announcement Film"
+                    for="Citizens Of Antiford"
+                    size="team" team-role="Director, stop-motion animator, and editor."
+                    tags="hobby,media-production"
+                    thumbnail="img/projects/travelling-to-rufflecon.jpg" thumbnail-size="cover"
+                    released="2015-08-27"
+                    link-main="https://www.youtube.com/watch?v=bjy-jK9xtY0"
+                >
+                    <span slot="description">
+                        <p>Created a video to announce a particularly large involvement in the fashion convention, RuffleCon, in 2015.</p>
+                        <p>Since we were to do 10 panels, vending, and M.C. a portion of the fashion show, we thought it special.</p>
+                        <p>In this video, we got costumed, found excellent locations, worked with dry ice, and composited stop motion over live action.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="antiford-book"
+                    name="Adventure: A Collection of Steam&shy;punk Short Stories"
+                    for="Citizens Of Antiford"
+                    size="team" team-role="Lead editor. One of the three LLC partners producing."
+                    tags="hobby,writing,crowdfunding,media-production"
+                    thumbnail="img/projects/adventure-collection-book.jpg" thumbnail-size="cover"
+                    released="2016-12-01"
+                    first="2013-11-01" last="2017-01-01"
+                    link-main="https://citizensofantiford.storenvy.com/products/18598564-volume-1-adventure-a-collection-of-steampunk-short-stories"
+                    link-announcement="https://www.kickstarter.com/projects/citizensofantiford/adventure-a-collection-of-steampunk-short-stories"
+                >
+                    <span slot="description">
+                        <p>Ran a crowdfunding campaign, directed and edited the video, and helped design the campaign &amp; tiers.</p>
+                        <p>Was serious as amateur editor. </p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="machen-bachen-2019"
+                    name="Machen Bachen Steam&shy;punk Festival 2019"
+                    for="Citizens of Antiford"
+                    size="team" team-role="Technology expert and general collaborator."
+                    tags="hobby,event-planning,media-production,js/ts"
+                    thumbnail="img/projects/machen-bachen-2019.jpg" thumbnail-size="cover"
+                    released="2019-10-05"
+                    link-main="https://citizensofantiford.com/machenbachen?location-preview"
+                >
+                    <span slot="description">
+                        <p>Helped plan the event.</p>
+                        <p>Created an interactive virtual tour of the location using 360&deg; photography.</p>
+                        <p>Made a Raspberry Pi -powered photobooth for use during the event.</p>
+                        <p>During the event, our food truck bailed, so I personally ensured vendors had food and drink throughout the day.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="backtobacklog-podcast"
+                    name="Back to Backlog Podcast"
+                    for="Personal"
+                    size="duo" team-role="Co-creator, produce every-other episode."
+                    tags="hobby,presentation,media-production"
+                    thumbnail="img/projects/backtobacklog.jpg" thumbnail-size="cover"
+                    first="2022-02-21"
+                    link-main="https://anchor.fm/backtobacklog"
+                >
+                    <span slot="description">
+                        <p>An audio podcast where I discuss video games and related topics with my cohost, Lindsay.</p>
+                        <p>Production done online with video conferencing, OBS, and Audacity.</p>
+                    </span>
+                </project-display>
+
+                <project-display
+                    id="portfolio-website"
+                    name="Portfolio Website"
+                    for="Personal"
+                    size="solo" team-role="Sole developer."
+                    tags="professional,js/ts"
+                    thumbnail="favicon.ico" thumbnail-size="unset" thumbnail-repeat="repeat"
+                    first="2022-08-08"
+                    link-main="https://lunarcloud.github.io/"
+                    link-repo="https://github.com/lunarcloud/lunarcloud.github.io/"
+                >
+                    <span slot="description">
+                        <p>This very portfolio website. Using all the tricks I've learned in <a href="https://github.com/lunarcloud/modern-web-cheat-sheet/">my cheat sheet</a></p>
+                        <p>The desire to create a new web app came from the realization that some of my best, most professional work is, by its nature, proprietary.</p>
+                        <p>The website has: print vs screen styling, light v. dark themes, full v. reduced animation, and regular v. more contrast.</p>
+                    </span>
+                </project-display>
+            </div>
         </aside>
     </body>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" crossorigin="anonymous"></script>
     <script type="module" src="controllers/vr-demo.js"></script>
 </html>
