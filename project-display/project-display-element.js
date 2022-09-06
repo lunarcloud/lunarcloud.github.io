@@ -8,8 +8,13 @@ export default class ProjectDisplayElement extends HTMLElement {
 
     tags = [];
 
+    #ready = false;
+
     constructor() {
         super();
+
+        // Only need this because a-frame overwrites this
+        const createElement = (tagName, options) => Document.prototype.createElement.call(document, tagName, options);
 
         const shadow = this.attachShadow({mode: "open"});
 
@@ -30,11 +35,11 @@ export default class ProjectDisplayElement extends HTMLElement {
         this.tags.forEach(tag => {
             if (tag.trim() == "") return; // ignore empties
 
-            const listItemEl = document.createElement("li");
+            const listItemEl = createElement("li");
             listItemEl.toggleAttribute("active", pageFilters.includes(tag));
 
             /** @type FadeOutAnchorElement */
-            const anchorEl = document.createElement("a", { is: "fadeout-anchor"});
+            const anchorEl = createElement("a", { is: "fadeout-anchor"});
 
             anchorEl.textContent = tag;
             anchorEl.href= `?filter=${tag}`;
@@ -131,9 +136,16 @@ export default class ProjectDisplayElement extends HTMLElement {
             console.warn("project-display element does not have a name!", this);
         }
 
-
-
         shadow.appendChild(clone);
+        setTimeout(() => {
+            this.#ready = true;
+            this.dispatchEvent(new CustomEvent("ready"));
+        }, 500);
+    }
+
+    onReady(action) {
+        if (this.#ready) requestAnimationFrame(action);
+        else this.addEventListener("ready", action);
     }
 
     /**
