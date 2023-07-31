@@ -1,4 +1,6 @@
 import "../page-fade/page-fade.js";
+import "../include-element/include-element.js";
+import "./header-nav.js";
 import ProjectDisplayElement from "../project-display/project-display-element.js";
 
 export default class ProjectsPageController {

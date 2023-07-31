@@ -11,10 +11,6 @@
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="main.css">
 
-        <link rel="stylesheet" href="page-fade/page-fade.css">
-        <link rel="stylesheet" href="project-display/project-display.css">
-        <script type="module" src="project-display/project-display-element.js"></script>
-
         <script src="//unpkg.com/@ungap/custom-elements/es.js" crossorigin="anonymous"></script> <!-- Safari polyfill -->
         <script src="https://aframe.io/releases/1.3.0/aframe.min.js" crossorigin="anonymous"></script>
     </head>
@@ -65,17 +61,9 @@
             </div>
         </main>
         <div id="content-load-hider" style="position: fixed; top: 0; bottom: 0;left: 0;right: 0; z-index: 11; background-color: black;"></div>
-        <div style="
-                position: absolute;
-                top: 12px;
-                left: 12px;
-                background: var(--main-color-bg);
-                color: var(--main-color-text);
-                border-radius: 8px;
-                padding: 8px;
-                z-index: 20;">
-                <a is="fadeout-anchor" print-hidden href="./">Back</a>
-            </div>
+
+        <iframe is="include-element" src="./header-nav.html"></iframe>
+		
         <aside style="position: fixed; top: 0; bottom: 0;left: 0;right: 0; z-index: 0;">
             <div id="all-projects" style="width: calc(728px * 5); display: grid; grid-template-columns: repeat(5, 1fr);">
 

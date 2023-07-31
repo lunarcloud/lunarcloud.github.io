@@ -14,7 +14,7 @@
     </head>
 
     <body>
-        <a is="fadeout-anchor" print-hidden href="./">Back</a>
+        <iframe is="include-element" src="./header-nav.html"></iframe>
         <main id="main">
             <h1>
                 Projects <together>List Demo</together>
@@ -28,7 +28,7 @@
             </div>
 
             <div id="all-projects">
-                <iframe src="projects.html" onload="this.insertAdjacentHTML('afterend', (this.contentDocument.body||this.contentDocument).innerHTML);this.remove()"></iframe>
+                <iframe is="include-element" src="projects.html" ></iframe>
             </div> <!-- /all-projects-list -->
         </main>
     </body>

@@ -1,3 +1,6 @@
+import "../include-element/include-element.js";
+import "../page-fade/page-fade.js";
+import "./header-nav.js";
 import ProjectDisplayElement from "../project-display/project-display-element.js";
 
 // eslint-disable-next-line no-undef

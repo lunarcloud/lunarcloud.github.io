@@ -10,12 +10,11 @@
         <link rel="manifest" href="/ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="animated-dialog/animated-dialog.css">
         <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
     </head>
 
     <body>
-        <button id="open-about-dialog" role="button">i</button>
+        <iframe is="include-element" src="./header-nav.html"></iframe>
         <main id="main">
             <hero>
                 <h1>Under Con&shy;struction</h1>
@@ -33,12 +32,6 @@
                 </ul>
             </hero>
         </main>
-        <dialogs>
-            <dialog is="anim-dialog" id="about-dialog">
-                This website will be a sort of portfolio for me.
-                <button role="button">close</button>
-            </dialog>
-        </dialogs>
     </body>
     <script type="module" src="controllers/index.js"></script>
 </html>

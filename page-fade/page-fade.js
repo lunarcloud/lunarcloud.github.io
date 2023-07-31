@@ -46,11 +46,12 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
         document.body.toggleAttribute("unloading", true);
         document.body.toggleAttribute("same-page", this.samePage);
 
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             this.#fadingOutFinish();
-        else
+        } else {
             document.body.addEventListener("animationend", () => this.#fadingOutFinish(), {once: true});
-
+			setTimeout(() => this.#fadingOutFinish(), 1000); // in case the animation took too long
+		}
         event.preventDefault();
 
         return false;

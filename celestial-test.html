@@ -13,7 +13,7 @@
     </head>
 
     <body>
-        <a is="fadeout-anchor" print-hidden href="./">Back</a>
+        <iframe is="include-element" src="./header-nav.html"></iframe>
         <main id="main">
             <h1>Celestial Body Animations<small>with pseudo-3d rotation</small></h1>
 
@@ -48,12 +48,7 @@
                 quam enim elementum ligula.
             </p>
         </main>
-        <dialogs>
-            <dialog is="anim-dialog" id="about-dialog">
-                This website will be a sort of portfolio for me.
-                <button role="button">close</button>
-            </dialog>
-        </dialogs>
     </body>
     <script type="module" src="page-fade/page-fade.js"></script>
+    <script type="module" src="controllers/header-nav.js"></script>
 </html>
