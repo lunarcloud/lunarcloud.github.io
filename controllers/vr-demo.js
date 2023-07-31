@@ -9,21 +9,25 @@ globalThis.html2canvas = globalThis.html2canvas ?? function() { console.error("h
 export default class VrDemoPageController {
 
     constructor() {
-        const allProjectsEl = document.getElementById("all-projects")
+		document.querySelector('a-scene').addEventListener('loaded', () => {
+			setTimeout(() => {
+				const allProjectsEl = document.getElementById("all-projects")
 
-        const sceneEl = document.querySelector("a-scene");
-        const projects3dEl = sceneEl.querySelector("#projects-entity");
+				const sceneEl = document.querySelector("a-scene");
+				const projects3dEl = sceneEl.querySelector("#projects-entity");
 
-        globalThis
-            .html2canvas(allProjectsEl, {backgroundColor: "transparent"})
-            .then(canvas => {
-                let imageString = canvas.toDataURL("image/png");
+				globalThis
+					.html2canvas(allProjectsEl, {backgroundColor: "transparent"})
+					.then(canvas => {
+						let imageString = canvas.toDataURL("image/png");
 
-                let proj3dEl = document.createElement("a-image");
-                proj3dEl.id = "all-projects-3d";
-                proj3dEl.setAttribute("material", "src", `url(${imageString})`);
-                projects3dEl.appendChild(proj3dEl);
-            });
+						let proj3dEl = document.createElement("a-image");
+						proj3dEl.id = "all-projects-3d";
+						proj3dEl.setAttribute("material", "src", `url(${imageString})`);
+						projects3dEl.appendChild(proj3dEl);
+					});
+			}, 200);
+		});
     }
 
 }

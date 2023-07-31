@@ -17,4 +17,4 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("open-about-dialog").addEventListener("click", () => testDialog.showModal());
     testDialog.querySelector("button").addEventListener("click", () => testDialog.close());
 	
-});
+}, {once: true});
