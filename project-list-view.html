@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Sam Sarette | Test | Projects</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#37c482">
+
+        <link rel="manifest" href="/ssarette-portfolio.webmanifest">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="projects.css">
+    </head>
+
+    <body>
+        <a is="fadeout-anchor" print-hidden href="./">Back</a>
+        <main id="main">
+            <h1>
+                Projects <together>List Demo</together>
+            </h1>
+
+            <div id="filters-list">
+                <button id="filter-clear" type="reset" print-hidden>Clear Filters</button>
+                <a is="fadeout-anchor" id="filter-clear-a" hidden href="?"></a>
+                <ul id="active-project-tags" class="tags project-tags"></ul>
+                <span id="project-tags-label">Active:</span>
+            </div>
+
+            <div id="all-projects">
+                <iframe src="projects.html" onload="this.insertAdjacentHTML('afterend', (this.contentDocument.body||this.contentDocument).innerHTML);this.remove()"></iframe>
+            </div> <!-- /all-projects-list -->
+        </main>
+    </body>
+    <script type="module" src="./controllers/projects.js"></script>
+
+</html>
