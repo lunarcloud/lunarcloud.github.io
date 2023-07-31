@@ -19,6 +19,7 @@ internal {
   width: calc(100% - 28px); /* full, minus 12px*2 margin and 2px*2 border */
   overflow: hidden;
   hyphens: auto;
+  page-break-inside: avoid;
 }
 
 [word-break-no-hyphen] {

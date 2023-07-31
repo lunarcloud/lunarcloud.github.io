@@ -10,6 +10,8 @@
 /* Variables */
 :root,
 ::backdrop {
+  --main-color-nav-bg: #eee;
+  --main-color-nav-border: #a3e;
   --main-color-bg: #ccc;
   --main-color-text: #333;
   --dialog-color-backdrop: rgb(100 100 100 / 70%);
@@ -23,6 +25,7 @@
   --main-font-headers: var(--handwritten-font);
   --main-font-body: var(--high-readability-font);
   --main-font-size: 10pt;
+  --top-nav-height: 36px;
 }
 
 @media screen and (prefers-contrast: more) {
@@ -53,6 +56,7 @@
 @media screen and (prefers-color-scheme: dark) {
   :root,
   ::backdrop {
+    --main-color-nav-bg: #222;
     --main-color-bg: #333;
     --main-color-text: #ccc;
     --dialog-color-backdrop: rgb(0 0 0 / 70%);
@@ -191,7 +195,7 @@ html:focus-within {
 
 body {
   position: absolute;
-  top: 0;
+  top: var(--top-nav-height);
   left: 0;
   right: 0;
   margin: 0;
@@ -272,14 +276,36 @@ dialog::backdrop {
   background-color: var(--dialog-color-backdrop);
 }
 
+#top-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+    z-index: 13;
+    line-height: 28px;
+	min-height: var(--top-nav-height);
+	height: fit-content;
+    padding: 2px 6px;
+	background-color: var(--main-color-nav-bg);
+	border-bottom: 1px solid var(--main-color-nav-border);
+}
+#top-nav > * {
+	vertical-align: middle;
+}
+#nav-title {
+    position: absolute;
+    left: calc(50% - 64px);
+	top: 4px;
+}
+
 #open-about-dialog {
-  position: absolute;
-  top: 4px;
-  right: 4px;
+  float: right;
   font-weight: bold;
   border-radius: 50%;
   width: 8mm;
   font-size: 6mm;
+  line-height: 24px;
+  margin-top: 2px;
 }
 
 #about-dialog button {

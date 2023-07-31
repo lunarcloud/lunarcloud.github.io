@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    </head>
+
+    <body>
+        <dialogs>
+            <dialog is="anim-dialog" id="about-dialog">
+                This website will be a sort of portfolio for me.
+                <button role="button">close</button>
+            </dialog>
+        </dialogs>
+		<nav id="top-nav">
+			<a id="return-to-root" is="fadeout-anchor" print-hidden href="./">Back</a>
+			<label id="nav-title">Sam Sarette Portfolio</label>
+			<button id="open-about-dialog" print-hidden role="button">i</button>
+			
+			<script type="module" src="./controllers/header-nav.js"></script>
+		</nav>
+    </body>
+</html>
