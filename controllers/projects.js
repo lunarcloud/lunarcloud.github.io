@@ -1,99 +1,109 @@
-import "../page-fade/page-fade.js";
-import "../include-element/include-element.js";
-import "./header-nav.js";
-import ProjectDisplayElement from "../project-display/project-display-element.js";
+import '../include-element/include-element.js'
+import './header-nav.js'
+import ProjectDisplayElement from '../project-display/project-display-element.js'
+import FadeOutAnchorElement from '../page-fade/page-fade.js'
 
 export default class ProjectsPageController {
-    
-    /** @type HTMLElement */
-    allProjectsEl;
-    
-    /** @type Array<ProjectDisplayElement> */
-    projectEls;
+    /** @type {HTMLElement} */
+    allProjectsEl
 
-    /** @type boolean */
-    pageIsFiltered = false;
+    /** @type {Array<ProjectDisplayElement>} */
+    projectEls
 
-    /** @type Array<string> */
-    pageFilters = [];
+    /** @type {boolean} */
+    pageIsFiltered = false
 
-    /** @type HTMLButtonElement */
-    filterClearBtn;
-    /** @type FadeOutAnchorElement */
-    filterClearBtnA;
+    /** @type {Array<string>} */
+    pageFilters = []
 
-    constructor() {
-        this.allProjectsEl = document.getElementById("all-projects");
+    /** @type {HTMLButtonElement} */
+    filterClearBtn
+
+    /** @type {FadeOutAnchorElement} */
+    filterClearBtnA
+
+    /**
+     * Constructor.
+     */
+    constructor () {
+        this.allProjectsEl = document.getElementById('all-projects')
 
         this.projectEls = Array.prototype.slice.call(
-            this.allProjectsEl.querySelectorAll("project-display"), 0
-        );
-        this.projectEls = this.projectEls.sort(ProjectDisplayElement.compareDate).reverse();
+            this.allProjectsEl.querySelectorAll('project-display'), 0
+        )
+        this.projectEls = this.projectEls.sort(ProjectDisplayElement.compareDate).reverse()
 
-        this.pageFilters = new URLSearchParams(location.search)?.get("filter")?.split(",").filter(i => /\S/.test(i)) ?? [];
+        this.pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',').filter(i => /\S/.test(i)) ?? []
 
-        for (let projEl of this.projectEls) {
-            this.allProjectsEl.appendChild(projEl);
-            let hasFilterTags = this.pageFilters.length == 0 || this.pageFilters.every(i => projEl.tags.includes(i));
-            projEl.toggleAttribute("hidden", !hasFilterTags);
-            projEl.addEventListener("projectfilterselected", 
+        for (const projEl of this.projectEls) {
+            this.allProjectsEl.appendChild(projEl)
+            const hasFilterTags = this.pageFilters.length === 0 || this.pageFilters.every(i => projEl.tags.includes(i))
+            projEl.toggleAttribute('hidden', !hasFilterTags)
+            projEl.addEventListener('projectfilterselected',
                 event => this.updateFilter(event.detail.tag, event.detail.active)
-            );
+            )
         }
 
-        this.filterClearBtn = document.getElementById("filter-clear");
-        this.filterClearBtnA = document.getElementById("filter-clear-a");
-        if (this.pageFilters.length == 0) {
-            this.filterClearBtn.toggleAttribute("disabled", true);
-            document.getElementById("project-tags-label").toggleAttribute("hidden", true);
+        this.filterClearBtn = document.getElementById('filter-clear')
+        this.filterClearBtnA = document.getElementById('filter-clear-a')
+        if (this.pageFilters.length === 0) {
+            this.filterClearBtn.toggleAttribute('disabled', true)
+            document.getElementById('project-tags-label').toggleAttribute('hidden', true)
         } else {
-            this.filterClearBtn.addEventListener("click", () => this.clearFilters());
+            this.filterClearBtn.addEventListener('click', () => this.clearFilters())
         }
 
-        let filtersListEl = document.getElementById("filters-list").querySelector("ul.project-tags");
+        const filtersListEl = document.getElementById('filters-list').querySelector('ul.project-tags')
         for (const tag of this.pageFilters) {
-            if (tag.trim() == "") return; // ignore empties
+            if (tag.trim() === '') return // ignore empties
 
-            const listItemEl = document.createElement("li");
-            listItemEl.toggleAttribute("active", this.pageFilters.includes(tag));
+            const listItemEl = document.createElement('li')
+            listItemEl.toggleAttribute('active', this.pageFilters.includes(tag))
 
-            const anchorEl = document.createElement("a", { is: "fadeout-anchor"});
-            anchorEl.textContent = tag;
-            anchorEl.addEventListener("fadednavigate", () => { 
-                let active = listItemEl.toggleAttribute("active");
-                this.updateFilter(tag, active);
-                return false;
-            }, {passive: false});
-             
-            listItemEl.appendChild(anchorEl);
-            filtersListEl.appendChild(listItemEl);
+            const anchorEl = document.createElement('a', { is: 'fadeout-anchor' })
+            anchorEl.textContent = tag
+            anchorEl.addEventListener('fadednavigate', () => {
+                const active = listItemEl.toggleAttribute('active')
+                this.updateFilter(tag, active)
+                return false
+            }, { passive: false })
+
+            listItemEl.appendChild(anchorEl)
+            filtersListEl.appendChild(listItemEl)
         }
     }
 
-    updateFilter(tagName, active) {
+    /**
+     * Update the state of a filter.
+     * @param {string} tagName name of the label/tag to update
+     * @param {boolean} active whether it should be active
+     */
+    updateFilter (tagName, active) {
         if (active) {
-            this.pageFilters.push(tagName);
+            this.pageFilters.push(tagName)
         } else {
-            this.pageFilters.splice(this.pageFilters.indexOf(tagName), 1);
+            this.pageFilters.splice(this.pageFilters.indexOf(tagName), 1)
         }
 
-        let search = new URLSearchParams(location.search);
-        if (this.pageFilters.length == 0) {
-            search.delete("filter");
+        const search = new URLSearchParams(location.search)
+        if (this.pageFilters.length === 0) {
+            search.delete('filter')
         } else {
-            search.set("filter", this.pageFilters);
+            search.set('filter', this.pageFilters)
         }
-        location.search = search.toString().replaceAll("%2C", ",");
+        location.search = search.toString().replaceAll('%2C', ',')
     }
 
-    clearFilters() {
-        let search = new URLSearchParams(location.search);
-        search.delete("filter");
-        this.filterClearBtnA.href = `?${search}`;
-        this.filterClearBtnA.click();
+    /**
+     * Remove all filtering.
+     */
+    clearFilters () {
+        const search = new URLSearchParams(location.search)
+        search.delete('filter')
+        this.filterClearBtnA.href = `?${search}`
+        this.filterClearBtnA.click()
     }
-
 }
 
-if ("App" in globalThis === false) globalThis.App = { Page: undefined };
-globalThis.App.Page = new ProjectsPageController();
+if ('App' in globalThis === false) globalThis.App = { Page: undefined }
+globalThis.App.Page = new ProjectsPageController()
