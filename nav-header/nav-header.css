@@ -1,0 +1,43 @@
+@import url("../common.css");
+@import url("../page-fade/page-fade.css");
+@import url("../animated-dialog/animated-dialog.css");
+
+#top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 13;
+    line-height: 28px;
+    min-height: var(--top-nav-height);
+    height: fit-content;
+    padding: 2px 6px;
+    background-color: var(--main-color-nav-bg);
+    border-bottom: 1px solid var(--main-color-nav-border);
+
+    & > * {
+        vertical-align: middle;
+    }
+
+    & #nav-title {
+        position: absolute;
+        left: calc(50% - 64px);
+        top: 4px;
+    }
+
+    & #open-about-dialog {
+        float: right;
+        font-weight: bold;
+        border-radius: 50%;
+        width: 8mm;
+        font-size: 6mm;
+        line-height: 24px;
+        margin-top: 2px;
+    }
+}
+
+
+#about-dialog button {
+    display: block;
+    margin: 16px auto 0;
+}

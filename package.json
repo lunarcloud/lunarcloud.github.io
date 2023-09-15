@@ -1,17 +1,21 @@
 {
     "scripts": {
-        "eslint-fix": "eslint **/*.js --fix",
-        "eslint": "eslint **/*.js",
+        "eslint-fix": "npx eslint --ignore-path .gitignore --ext .js . --fix",
+        "eslint": "npx eslint --ignore-path .gitignore --ext .js .",
         "htmllint": "npx linthtml \"**/*.html\"",
-        "csslint": "npx stylelint \"**/*.css\""
+        "csslint": "npx stylelint \"**/*.css\" --quiet-deprecation-warnings",
+        "lint": "npm run eslint && npm run htmllint && npm run csslint"
     },
     "devDependencies": {
+        "@linthtml/linthtml": "^0.9.5",
         "eslint": "^8.49.0",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-editorconfig": "^4.0.3",
         "eslint-plugin-import": "^2.28.1",
-        "eslint-plugin-jsdoc": "^46.8.0",
+        "eslint-plugin-jsdoc": "^46.8.1",
         "eslint-plugin-n": "^16.1.0",
-        "eslint-plugin-promise": "^6.1.1"
+        "eslint-plugin-promise": "^6.1.1",
+        "stylelint": "^15.10.3",
+        "stylelint-config-standard": "^34.0.0"
     }
 }

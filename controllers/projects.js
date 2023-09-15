@@ -1,7 +1,7 @@
-import '../include-element/include-element.js'
-import './header-nav.js'
+import '../nav-header/nav-header-element.js'
 import ProjectDisplayElement from '../project-display/project-display-element.js'
 import FadeOutAnchorElement from '../page-fade/page-fade.js'
+import IncludeElement from '../include-element/include-element.js'
 
 export default class ProjectsPageController {
     /** @type {HTMLElement} */
@@ -28,22 +28,11 @@ export default class ProjectsPageController {
     constructor () {
         this.allProjectsEl = document.getElementById('all-projects')
 
-        this.projectEls = Array.prototype.slice.call(
-            this.allProjectsEl.querySelectorAll('project-display'), 0
-        )
-        this.projectEls = this.projectEls.sort(ProjectDisplayElement.compareDate).reverse()
+        // Apply filters from the URL params
+        this.pageFilters = new URLSearchParams(location.search)
+            ?.get('filter')?.split(',').filter(i => /\S/.test(i)) ?? []
 
-        this.pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',').filter(i => /\S/.test(i)) ?? []
-
-        for (const projEl of this.projectEls) {
-            this.allProjectsEl.appendChild(projEl)
-            const hasFilterTags = this.pageFilters.length === 0 || this.pageFilters.every(i => projEl.tags.includes(i))
-            projEl.toggleAttribute('hidden', !hasFilterTags)
-            projEl.addEventListener('projectfilterselected',
-                event => this.updateFilter(event.detail.tag, event.detail.active)
-            )
-        }
-
+        // Setup filter clear button
         this.filterClearBtn = document.getElementById('filter-clear')
         this.filterClearBtnA = document.getElementById('filter-clear-a')
         if (this.pageFilters.length === 0) {
@@ -53,6 +42,7 @@ export default class ProjectsPageController {
             this.filterClearBtn.addEventListener('click', () => this.clearFilters())
         }
 
+        // Setup the list of current filters at clickable items
         const filtersListEl = document.getElementById('filters-list').querySelector('ul.project-tags')
         for (const tag of this.pageFilters) {
             if (tag.trim() === '') return // ignore empties
@@ -70,6 +60,34 @@ export default class ProjectsPageController {
 
             listItemEl.appendChild(anchorEl)
             filtersListEl.appendChild(listItemEl)
+        }
+
+        // Setup projects once loaded
+        /** @type {IncludeElement} */
+        const includeProjectsEl = document.querySelector('#all-projects include-element')
+        includeProjectsEl.onReady(() => this.#initSortAndFilter())
+    }
+
+    /**
+     * Do the initial sort & filter on projects.
+     */
+    #initSortAndFilter () {
+        // Get projects from their elements
+        this.projectEls = Array.prototype.slice.call(
+            this.allProjectsEl.querySelectorAll('project-display'), 0
+        )
+
+        // Sort the projects by newest
+        this.projectEls = this.projectEls.sort(ProjectDisplayElement.compareDate).reverse()
+
+        // Add the sorted & filtered projects to the page
+        for (const projEl of this.projectEls) {
+            this.allProjectsEl.appendChild(projEl)
+            const hasFilterTags = this.pageFilters.length === 0 || this.pageFilters.every(i => projEl.tags.includes(i))
+            projEl.toggleAttribute('hidden', !hasFilterTags)
+            projEl.addEventListener('projectfilterselected',
+                event => this.updateFilter(event.detail.tag, event.detail.active)
+            )
         }
     }
 

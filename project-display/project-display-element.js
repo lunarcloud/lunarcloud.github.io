@@ -3,10 +3,22 @@ import { FadeOutAnchorElement } from '../page-fade/page-fade.js' // eslint-disab
 const pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',') ?? []
 
 export default class ProjectDisplayElement extends HTMLElement {
+    /**
+     * Element's template.
+     * @type {HTMLTemplateElement}
+     */
     static templateElement
 
+    /**
+     * List of relevant metadata tags.
+     * @type {Array<string>}
+     */
     tags = []
 
+    /**
+     * Whether the element is ready.
+     * @type {boolean}
+     */
     #ready = false
 
     /**
@@ -148,7 +160,7 @@ export default class ProjectDisplayElement extends HTMLElement {
     }
 
     /**
-     * RRegister an action to perform when the element is ready.
+     * Register an action to perform when the element is ready.
      * @param {Function} action function to perform.
      */
     onReady (action) {
@@ -166,14 +178,20 @@ export default class ProjectDisplayElement extends HTMLElement {
         // Check if they're both ongoing
         const ongoingA = projectA.hasAttribute('first') && !projectA.hasAttribute('last')
         const ongoingB = projectB.hasAttribute('first') && !projectB.hasAttribute('last')
-        if (ongoingA && !ongoingB) return 1
-        if (!ongoingA && ongoingB) return -1
+        if (ongoingA && !ongoingB)
+            return 1
+        if (!ongoingA && ongoingB)
+            return -1
 
         const firstA = projectA.attributes.first?.value ?? ''
+        const firstB = projectB.attributes.first?.value ?? ''
+
+        if (ongoingA && ongoingB)
+            return firstA.localeCompare(firstB)
+
         const releasedA = projectA.attributes.released?.value ?? ''
         const minA = [releasedA, firstA].sort()[0]
 
-        const firstB = projectB.attributes.first?.value ?? ''
         const releasedB = projectB.attributes.released?.value ?? ''
         const minB = [releasedB, firstB].sort()[0]
 
