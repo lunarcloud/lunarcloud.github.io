@@ -1,4 +1,4 @@
-@import "./project-tags.css";
+@import url("./project-tags.css");
 
 internal {
   --project-display-color-bg: #ddd;

@@ -1,4 +1,4 @@
-@import "main.css";
+@import url("main.css");
 
 main {
   padding: 4px;
@@ -46,7 +46,7 @@ main {
   display: none !important;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (width >= 640px) {
   main {
     font-size: 10pt;
   }

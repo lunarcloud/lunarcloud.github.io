@@ -1,5 +1,5 @@
-@import "./page-fade/page-fade.css";
-@import "./project-display/project-tags.css";
+@import url("./page-fade/page-fade.css");
+@import url("./project-display/project-tags.css");
 
 /* fonts */
 @font-face {
