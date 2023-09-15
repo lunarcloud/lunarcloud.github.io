@@ -36,7 +36,7 @@ export default class NavHeaderElement extends HTMLElement {
         const clone = document.importNode(NavHeaderElement.templateElement.content, true)
 
         // Remove the back button if on the home page.
-        if (['/index.html', '/'].includes(location.pathname)) {
+        if (['/index.html', '/', '/lunarcloud.github.io/'].includes(location.pathname)) {
             const backEl = clone.getElementById('return-to-root')
             backEl.parentNode.removeChild(backEl)
         }
