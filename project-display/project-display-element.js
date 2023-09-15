@@ -9,6 +9,9 @@ export default class ProjectDisplayElement extends HTMLElement {
 
     #ready = false
 
+    /**
+     * Constructor.
+     */
     constructor () {
         super()
 
@@ -37,7 +40,7 @@ export default class ProjectDisplayElement extends HTMLElement {
             const listItemEl = createElement('li')
             listItemEl.toggleAttribute('active', pageFilters.includes(tag))
 
-            /** @type FadeOutAnchorElement */
+            /** @type {FadeOutAnchorElement} */
             const anchorEl = createElement('a', { is: 'fadeout-anchor' })
 
             anchorEl.textContent = tag
@@ -144,6 +147,10 @@ export default class ProjectDisplayElement extends HTMLElement {
         }, 500)
     }
 
+    /**
+     * RRegister an action to perform when the element is ready.
+     * @param {Function} action function to perform.
+     */
     onReady (action) {
         if (this.#ready) requestAnimationFrame(action)
         else this.addEventListener('ready', action)
@@ -176,7 +183,7 @@ export default class ProjectDisplayElement extends HTMLElement {
     /**
      * Create a comparison function with the given attribute.
      * @param   {string}    attributeName   name of the attribute to compare on.
-     * @returns {function}                  comparator function.
+     * @returns {Function}                  comparator function.
      */
     static generateCompare (attributeName) {
         return (projectA, projectB) => {

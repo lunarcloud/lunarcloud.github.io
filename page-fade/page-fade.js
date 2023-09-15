@@ -20,6 +20,9 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
     fadingOut = false
     samePage = false
 
+    /**
+     * Constructor.
+     */
     constructor () {
         super()
         if (this.hasAttribute('download')) {
@@ -36,6 +39,11 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
         })
     }
 
+    /**
+     * Fade out the page.
+     * @param {Event} event event that triggers the fadeout.
+     * @returns {boolean} whether we were already fading out when called.
+     */
     fadePageOut (event) {
         if (this.fadingOut) return true
         this.fadingOut = true
@@ -55,6 +63,9 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
         return false
     }
 
+    /**
+     * Cleanup after a fadeout animation.
+     */
     #fadingOutFinish () {
         const pageFader = this
 

@@ -1,4 +1,7 @@
 export default class IncludeElement extends HTMLIFrameElement {
+    /**
+     * Constructor.
+     */
     constructor () {
         super()
         const content = (this.contentDocument.body || this.contentDocument)

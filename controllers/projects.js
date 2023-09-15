@@ -1,26 +1,30 @@
-import '../page-fade/page-fade.js'
 import '../include-element/include-element.js'
 import './header-nav.js'
 import ProjectDisplayElement from '../project-display/project-display-element.js'
+import FadeOutAnchorElement from '../page-fade/page-fade.js'
 
 export default class ProjectsPageController {
-    /** @type HTMLElement */
+    /** @type {HTMLElement} */
     allProjectsEl
 
-    /** @type Array<ProjectDisplayElement> */
+    /** @type {Array<ProjectDisplayElement>} */
     projectEls
 
-    /** @type boolean */
+    /** @type {boolean} */
     pageIsFiltered = false
 
-    /** @type Array<string> */
+    /** @type {Array<string>} */
     pageFilters = []
 
-    /** @type HTMLButtonElement */
+    /** @type {HTMLButtonElement} */
     filterClearBtn
-    /** @type FadeOutAnchorElement */
+
+    /** @type {FadeOutAnchorElement} */
     filterClearBtnA
 
+    /**
+     * Constructor.
+     */
     constructor () {
         this.allProjectsEl = document.getElementById('all-projects')
 
@@ -69,6 +73,11 @@ export default class ProjectsPageController {
         }
     }
 
+    /**
+     * Update the state of a filter.
+     * @param {string} tagName name of the label/tag to update
+     * @param {boolean} active whether it should be active
+     */
     updateFilter (tagName, active) {
         if (active) {
             this.pageFilters.push(tagName)
@@ -85,6 +94,9 @@ export default class ProjectsPageController {
         location.search = search.toString().replaceAll('%2C', ',')
     }
 
+    /**
+     * Remove all filtering.
+     */
     clearFilters () {
         const search = new URLSearchParams(location.search)
         search.delete('filter')

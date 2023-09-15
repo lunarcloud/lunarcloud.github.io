@@ -1,8 +1,11 @@
-import './tarot-card-element.js'
+import TarotCardElement from './tarot-card-element.js'
 
 export default class TarotSetElement extends HTMLElement {
     #holding = false
 
+    /**
+     * Constructor.
+     */
     constructor () {
         super()
 
@@ -15,8 +18,8 @@ export default class TarotSetElement extends HTMLElement {
     }
 
     /**
-     * Drag Over
-     * @param {DragEvent} e
+     * Drag Over.
+     * @param {DragEvent} event drag information
      */
     #dragOver (event) {
         event.preventDefault()
@@ -24,7 +27,7 @@ export default class TarotSetElement extends HTMLElement {
 
     /**
      * Drop
-     * @param {DragEvent} event
+     * @param {DragEvent} event drag information
      */
     #drop (event) {
         event.preventDefault()
@@ -43,12 +46,15 @@ export default class TarotSetElement extends HTMLElement {
         this.#sort()
     }
 
+    /**
+     * Sort the set.
+     */
     #sort () {
         if (!this.hasAttribute('sorted') && !this.hasAttribute('reverse-sorted')) { return }
 
         const sortedBy = document.body.getAttribute('reverse-sorted') || document.body.getAttribute('sorted') || 'id'
 
-        /** @type Array<TarotCardElement> */
+        /** @type {Array<TarotCardElement>} */
         const tarotCards = Array.prototype.slice.call(
             this.querySelectorAll('tarot-card'), 0
         )

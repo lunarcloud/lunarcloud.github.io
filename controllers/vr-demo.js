@@ -7,6 +7,9 @@ import '../project-display/project-display-element.js'
 globalThis.html2canvas = globalThis.html2canvas ?? function () { console.error('html2canvas is undefined!') }
 
 export default class VrDemoPageController {
+    /**
+     * Constructor.
+     */
     constructor () {
         document.querySelector('a-scene').addEventListener('loaded', () => {
             setTimeout(() => {

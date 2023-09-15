@@ -1,6 +1,9 @@
 export default class TarotCardElement extends HTMLElement {
     #holding = false
 
+    /**
+     * Constructor.
+     */
     constructor () {
         super()
         this.removeAttribute('dragging')
@@ -17,6 +20,10 @@ export default class TarotCardElement extends HTMLElement {
         this.addEventListener('touchcancel', this.#holdEnd)
     }
 
+    /**
+     * Handle the start of a drag.
+     * @param {DragEvent} event drag information
+     */
     #dragStart (event) {
         this.setAttribute('dragging', '')
         if (this.id) {
@@ -30,7 +37,7 @@ export default class TarotCardElement extends HTMLElement {
 
     /**
      * Handle the end of a drag.
-     * @param {DragEvent} event
+     * @param {DragEvent} event drag information
      */
     #dragEnd (event) {
         this.removeAttribute('dragging')
