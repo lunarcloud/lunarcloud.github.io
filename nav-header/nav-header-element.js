@@ -3,8 +3,16 @@ import '../animated-dialog/animated-dialog-element.js'
 import '../page-fade/page-fade.js'
 
 export default class NavHeaderElement extends HTMLElement {
+    /**
+     * Element's template.
+     * @type {HTMLTemplateElement}
+     */
     static templateElement
 
+    /**
+     * Whether the element is ready.
+     * @type {boolean}
+     */
     #ready = false
 
     /**

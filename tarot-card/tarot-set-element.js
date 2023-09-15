@@ -1,6 +1,10 @@
 import TarotCardElement from './tarot-card-element.js'
 
 export default class TarotSetElement extends HTMLElement {
+    /**
+     * Whether the element is being held.
+     * @type {boolean}
+     */
     #holding = false
 
     /**

@@ -1,4 +1,8 @@
 export default class TarotCardElement extends HTMLElement {
+    /**
+     * Whether the element is being held.
+     * @type {boolean}
+     */
     #holding = false
 
     /**

@@ -26,15 +26,19 @@ export default class ProjectsPageController {
      * Constructor.
      */
     constructor () {
+        // Get projects from their elements
         this.allProjectsEl = document.getElementById('all-projects')
-
         this.projectEls = Array.prototype.slice.call(
             this.allProjectsEl.querySelectorAll('project-display'), 0
         )
+
+        // Sort the projects by newest
         this.projectEls = this.projectEls.sort(ProjectDisplayElement.compareDate).reverse()
 
+        // Apply filters from the URL params
         this.pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',').filter(i => /\S/.test(i)) ?? []
 
+        // Add the sorted & filtered projects to the page
         for (const projEl of this.projectEls) {
             this.allProjectsEl.appendChild(projEl)
             const hasFilterTags = this.pageFilters.length === 0 || this.pageFilters.every(i => projEl.tags.includes(i))
@@ -44,6 +48,7 @@ export default class ProjectsPageController {
             )
         }
 
+        // Setup filter clear button
         this.filterClearBtn = document.getElementById('filter-clear')
         this.filterClearBtnA = document.getElementById('filter-clear-a')
         if (this.pageFilters.length === 0) {
@@ -53,6 +58,7 @@ export default class ProjectsPageController {
             this.filterClearBtn.addEventListener('click', () => this.clearFilters())
         }
 
+        // Setup the list of current filters at clickable items
         const filtersListEl = document.getElementById('filters-list').querySelector('ul.project-tags')
         for (const tag of this.pageFilters) {
             if (tag.trim() === '') return // ignore empties

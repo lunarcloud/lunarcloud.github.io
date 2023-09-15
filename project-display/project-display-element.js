@@ -3,10 +3,22 @@ import { FadeOutAnchorElement } from '../page-fade/page-fade.js' // eslint-disab
 const pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',') ?? []
 
 export default class ProjectDisplayElement extends HTMLElement {
+    /**
+     * Element's template.
+     * @type {HTMLTemplateElement}
+     */
     static templateElement
 
+    /**
+     * List of relevant metadata tags.
+     * @type {Array<string>}
+     */
     tags = []
 
+    /**
+     * Whether the element is ready.
+     * @type {boolean}
+     */
     #ready = false
 
     /**
@@ -166,16 +178,16 @@ export default class ProjectDisplayElement extends HTMLElement {
         // Check if they're both ongoing
         const ongoingA = projectA.hasAttribute('first') && !projectA.hasAttribute('last')
         const ongoingB = projectB.hasAttribute('first') && !projectB.hasAttribute('last')
-        if (ongoingA && !ongoingB) return 1
-        if (!ongoingA && ongoingB) return -1
 
         const firstA = projectA.attributes.first?.value ?? ''
         const releasedA = projectA.attributes.released?.value ?? ''
-        const minA = [releasedA, firstA].sort()[0]
+        const lastA = projectA.attributes.last?.value ?? ''
+        const minA = ongoingA ? lastA : [releasedA, firstA].sort()[0]
 
         const firstB = projectB.attributes.first?.value ?? ''
         const releasedB = projectB.attributes.released?.value ?? ''
-        const minB = [releasedB, firstB].sort()[0]
+        const lastB = projectB.attributes.last?.value ?? ''
+        const minB = ongoingB ? lastB : [releasedB, firstB].sort()[0]
 
         return minA.localeCompare(minB)
     }
