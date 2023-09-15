@@ -50,8 +50,8 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
             this.#fadingOutFinish();
         } else {
             document.body.addEventListener("animationend", () => this.#fadingOutFinish(), {once: true});
-			setTimeout(() => this.#fadingOutFinish(), 1000); // in case the animation took too long
-		}
+            setTimeout(() => this.#fadingOutFinish(), 1000); // in case the animation took too long
+        }
         event.preventDefault();
 
         return false;

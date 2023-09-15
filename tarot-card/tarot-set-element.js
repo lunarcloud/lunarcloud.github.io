@@ -1,4 +1,4 @@
-import TarotCardElement from "./tarot-card-element.js";
+import "./tarot-card-element.js";
 
 export default class TarotSetElement extends HTMLElement {
 
@@ -9,10 +9,10 @@ export default class TarotSetElement extends HTMLElement {
 
         this.addEventListener("dragover", this.#dragOver);
         this.addEventListener("drop", this.#drop);
-		
-		document.addEventListener("DOMContentLoaded", () => {
-			this.#sort();
-		}, {once: true});
+
+        document.addEventListener("DOMContentLoaded", () => {
+            this.#sort();
+        }, {once: true});
     }
 
     /**
@@ -34,40 +34,40 @@ export default class TarotSetElement extends HTMLElement {
             console.warn("Tried dropping onto a tarot-set without an id!");
             return;
         }
-        
+
         let target = document.getElementById(this.id); // don't use event's target, because it could be a child node, like another card
 
-        if (["all", "move"].includes(event.dataTransfer.effectAllowed)) 
+        if (["all", "move"].includes(event.dataTransfer.effectAllowed))
         {
             let sourceEl = document.getElementById(event.dataTransfer.getData("text"));
             target.appendChild(sourceEl);
         }
-		this.#sort();
+        this.#sort();
     }
-	
-	#sort() {
-		if (!this.hasAttribute("sorted") && !this.hasAttribute("reverse-sorted")) 
-			return;
-		
-		let sortedBy = document.body.getAttribute("reverse-sorted") || document.body.getAttribute("sorted") || "id";
-		
-		/** @type Array<TarotCardElement> */
-		let tarotCards = Array.prototype.slice.call(
+
+    #sort() {
+        if (!this.hasAttribute("sorted") && !this.hasAttribute("reverse-sorted"))
+            return;
+
+        let sortedBy = document.body.getAttribute("reverse-sorted") || document.body.getAttribute("sorted") || "id";
+
+        /** @type Array<TarotCardElement> */
+        let tarotCards = Array.prototype.slice.call(
             this.querySelectorAll("tarot-card"), 0
         );
-		
-		let sortFn = (a,b) => sortedBy == "text" 
-			? a.textContent.localeCompare(b.textContent)
-			: a.getAttribute(sortedBy).localeCompare(b.getAttribute(sortedBy));
-		
-		tarotCards.sort(sortFn);
-		if (this.hasAttribute("reverse-sorted"))
-			tarotCards.reverse();
-		
-		for (let card of tarotCards) {
-			this.appendChild(card);
-		}
-	}
+
+        let sortFn = (a,b) => sortedBy == "text"
+            ? a.textContent.localeCompare(b.textContent)
+            : a.getAttribute(sortedBy).localeCompare(b.getAttribute(sortedBy));
+
+        tarotCards.sort(sortFn);
+        if (this.hasAttribute("reverse-sorted"))
+            tarotCards.reverse();
+
+        for (let card of tarotCards) {
+            this.appendChild(card);
+        }
+    }
 
 }
 

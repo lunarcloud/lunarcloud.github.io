@@ -6,15 +6,15 @@ export default class AnimatedDialogElement extends HTMLDialogElement {
     constructor(){
         super();
 		
-		// If we've already added the styling, great!
-		if (document.querySelector("link[href='animated-dialog/animated-dialog.cssa']") != null)
-			return;
+        // If we've already added the styling, great!
+        if (document.querySelector("link[href='animated-dialog/animated-dialog.cssa']") != null)
+            return;
 		
         // Otherwise add styling to the DOM
         const linkElem = document.createElement("link");
         linkElem.setAttribute("rel", "stylesheet");
         linkElem.setAttribute("href", "animated-dialog/animated-dialog.css");
-		document.head.appendChild(linkElem);
+        document.head.appendChild(linkElem);
     }
 
     close() {

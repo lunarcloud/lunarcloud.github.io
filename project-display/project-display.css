@@ -58,7 +58,7 @@ internal > .thumbnail {
   background-color: rgb(0 0 0 / 20%);
   display: block;
   overflow: hidden;
-  background-position: 60%;
+  background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
 }

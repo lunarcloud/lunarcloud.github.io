@@ -60,6 +60,9 @@ export default class ProjectDisplayElement extends HTMLElement {
         if (this.hasAttribute("thumbnail-size")) {
             thumbStyle.backgroundSize = this.getAttribute("thumbnail-size");
         }
+        if (this.hasAttribute("thumbnail-x")) {
+            thumbStyle.backgroundPositionX = this.getAttribute("thumbnail-x");
+        }
         if (this.hasAttribute("thumbnail-repeat")) {
             thumbStyle.backgroundRepeat = this.getAttribute("thumbnail-repeat");
         }
