@@ -9,7 +9,7 @@
 
         <link rel="manifest" href="/ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="common.css">
 
         <script src="https://aframe.io/releases/1.4.2/aframe.min.js" crossorigin="anonymous"></script>
 
@@ -76,7 +76,9 @@
         </main>
         <div id="content-load-hider" style="position: fixed; top: 0; bottom: 0;left: 0;right: 0; z-index: 11; background-color: black;"></div>
 
-        <iframe is="include-element" src="./header-nav.html"></iframe>
+        <nav-header>
+            <span slot="about-info">Desktop Controls: WASD & Mouse</span>
+        </nav-header>
 
         <aside style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 0;">
             <div id="all-projects" style="width: fit-contents; height: 1024px; width: 1024px; columns: 2">

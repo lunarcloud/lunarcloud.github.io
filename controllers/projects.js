@@ -1,5 +1,5 @@
 import '../include-element/include-element.js'
-import './header-nav.js'
+import '../nav-header/nav-header-element.js'
 import ProjectDisplayElement from '../project-display/project-display-element.js'
 import FadeOutAnchorElement from '../page-fade/page-fade.js'
 

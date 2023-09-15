@@ -1,6 +1,6 @@
 import '../include-element/include-element.js'
+import '../nav-header/nav-header-element.js'
 import '../page-fade/page-fade.js'
-import './header-nav.js'
 import '../project-display/project-display-element.js'
 
 // eslint-disable-next-line no-undef

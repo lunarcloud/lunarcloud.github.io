@@ -148,7 +148,7 @@ export default class ProjectDisplayElement extends HTMLElement {
     }
 
     /**
-     * RRegister an action to perform when the element is ready.
+     * Register an action to perform when the element is ready.
      * @param {Function} action function to perform.
      */
     onReady (action) {
