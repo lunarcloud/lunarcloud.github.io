@@ -277,25 +277,27 @@ dialog::backdrop {
 }
 
 #top-nav {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-    z-index: 13;
-    line-height: 28px;
-	min-height: var(--top-nav-height);
-	height: fit-content;
-    padding: 2px 6px;
-	background-color: var(--main-color-nav-bg);
-	border-bottom: 1px solid var(--main-color-nav-border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 13;
+  line-height: 28px;
+  min-height: var(--top-nav-height);
+  height: fit-content;
+  padding: 2px 6px;
+  background-color: var(--main-color-nav-bg);
+  border-bottom: 1px solid var(--main-color-nav-border);
 }
+
 #top-nav > * {
-	vertical-align: middle;
+  vertical-align: middle;
 }
+
 #nav-title {
-    position: absolute;
-    left: calc(50% - 64px);
-	top: 4px;
+  position: absolute;
+  left: calc(50% - 64px);
+  top: 4px;
 }
 
 #open-about-dialog {

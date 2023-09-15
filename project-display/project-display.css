@@ -84,8 +84,9 @@ internal > .info > hr {
   width: 100%;
   margin: 0.25em 0;
 }
+
 @media screen and (prefers-color-scheme: dark) {
-  internal > .info > hr  {
+  internal > .info > hr {
     filter: invert(1);
   }
 }
@@ -105,7 +106,7 @@ internal > .info > h1 {
   font-family: var(--main-font-headers);
   margin-top: 8px;
   margin-bottom: 4px;
-  margin-right: calc(var(--team-icon-width) + 4px );
+  margin-right: calc(var(--team-icon-width) + 4px);
 }
 
 internal > .info > p {

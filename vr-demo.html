@@ -11,13 +11,14 @@
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="main.css">
 
-		<script src="https://aframe.io/releases/1.4.2/aframe.min.js" crossorigin="anonymous"></script>
+        <script src="https://aframe.io/releases/1.4.2/aframe.min.js" crossorigin="anonymous"></script>
 
         <script src="//unpkg.com/@ungap/custom-elements/es.js" crossorigin="anonymous"></script> <!-- Safari polyfill -->
     </head>
     <body>
         <main style="height: 100vh; width: 100vw; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 12;">
             <div id="vr-content" style="height: 100%; width: 100%;">
+                <!-- linthtml-disable attr-name-style, attr-bans -->
                 <a-scene embedded vr-mode-ui="enabled: true;" keyboard-shortcuts="enterVR: false" loading-screen="dotsColor: white; backgroundColor: black">
                     <a-entity oculus-touch-controls="hand: left"></a-entity>
                     <a-entity oculus-touch-controls="hand: right"></a-entity>
@@ -37,7 +38,7 @@
                         <a-asset-item id="kmc-vr-large-bottle" src="gltf/kmc-vr-large-bottle.glb"></a-asset-item>
                         <a-asset-item id="shipwreck" src="gltf/shipwreck.glb"></a-asset-item>
 
-                        <img id="sky" src="img/photosphere/galaxy-sky.jpg">
+                        <img id="sky" src="img/photosphere/galaxy-sky.jpg" alt="sky">
                     </a-assets>
 
                     <a-entity text="anchor: center; width: 1.5; color: black; value: Desktop Controls: WASD & Mouse"
@@ -69,7 +70,8 @@
                     <!-- <a-sphere src="#sky" side="double" radius="50" rotation="0 -90 0"></a-sphere> -->
 
                     <a-sky src="#sky"></a-sky>
-            </a-scene>
+                </a-scene>
+                <!-- linthtml-enable attr-name-style, attr-bans -->
             </div>
         </main>
         <div id="content-load-hider" style="position: fixed; top: 0; bottom: 0;left: 0;right: 0; z-index: 11; background-color: black;"></div>
@@ -89,10 +91,10 @@
                     released="2018-01-28"
                     first="2018-01-26" last="2019-10-11"
                 >
-				<!--
-                    link-main="https://citizensofantiford.itch.io/switchboard-copper"
-                    link-repo="https://github.com/lunarcloud/visual-novel-GGJ-2018/"
-				-->
+                    <!--
+                        link-main="https://citizensofantiford.itch.io/switchboard-copper"
+                        link-repo="https://github.com/lunarcloud/visual-novel-GGJ-2018/"
+                    -->
                     <span slot="description">
                         <p>Sponsored and Participated in game jam at NHTI in 2018.</p>
                         <p>I created the game using ImpactJS and Ink, designed the mechanics and gameplay.</p>
@@ -111,11 +113,11 @@
                     released="2019-02-27"
                     first="2019-01-21" last="2019-02-03"
                 >
-				<!--
-                    link-main="https://samsarette.itch.io/homeworlds"
-                    link-repo="https://github.com/lunarcloud/vr-game-GGJ-2019"
-                    link-announcement="https://globalgamejam.org/2019/games/homeworlds"
-				-->
+                    <!--
+                        link-main="https://samsarette.itch.io/homeworlds"
+                        link-repo="https://github.com/lunarcloud/vr-game-GGJ-2019"
+                        link-announcement="https://globalgamejam.org/2019/games/homeworlds"
+                    -->
                     <span slot="description">
                         <p>Participated in Global Game Jam at NHTI in 2019.</p>
                         <p>Wired in the procedural generation system that my partner designed, and implemented the Ink-powered trade-partner discussion system.</p>
@@ -133,10 +135,10 @@
                     released="2022-01-30"
                     first="2022-01-28" last="2022-06-26"
                 >
-				<!--
-                    link-main="https://malcolmnixon.itch.io/ataito-the-spirit-swapper"
-                    link-repo="https://github.com/Malcolmnixon/Ataito-Game "
-				-->
+                    <!--
+                        link-main="https://malcolmnixon.itch.io/ataito-the-spirit-swapper"
+                        link-repo="https://github.com/Malcolmnixon/Ataito-Game "
+                    -->
                     <span slot="description">
                         <p>Hosted and Participated in Global Game Jam, online with the Southern NH Game Dev Meetup in 2022.</p>
                         <p>First Project using the Godot game engine's XR Toolkit</p>
@@ -153,9 +155,9 @@
                     thumbnail="img/projects/godot-xr-tools.png"
                     first="2022-05-19" last="2022-08-01"
                 >
-				<!--
-                    link-repo="https://github.com/GodotVR/godot-xr-tools"
-				-->
+                    <!--
+                        link-repo="https://github.com/GodotVR/godot-xr-tools"
+                    -->
                     <span slot="description">
                         <p>Contributed ranged grab logic, editor node icons, consulted on design.</p>
                     </span>

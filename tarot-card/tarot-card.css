@@ -21,10 +21,7 @@ tarot-card {
 tarot-card::after {
   content: "backside";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   z-index: 3;
   background-color: var(--tarot-card-backside-color-bg);
   color: var(--tarot-card-color-text);
