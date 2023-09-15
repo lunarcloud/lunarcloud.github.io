@@ -178,16 +178,22 @@ export default class ProjectDisplayElement extends HTMLElement {
         // Check if they're both ongoing
         const ongoingA = projectA.hasAttribute('first') && !projectA.hasAttribute('last')
         const ongoingB = projectB.hasAttribute('first') && !projectB.hasAttribute('last')
+        if (ongoingA && !ongoingB)
+            return 1
+        if (!ongoingA && ongoingB)
+            return -1
 
         const firstA = projectA.attributes.first?.value ?? ''
-        const releasedA = projectA.attributes.released?.value ?? ''
-        const lastA = projectA.attributes.last?.value ?? ''
-        const minA = ongoingA ? lastA : [releasedA, firstA].sort()[0]
-
         const firstB = projectB.attributes.first?.value ?? ''
+
+        if (ongoingA && ongoingB)
+            return firstA.localeCompare(firstB)
+
+        const releasedA = projectA.attributes.released?.value ?? ''
+        const minA = [releasedA, firstA].sort()[0]
+
         const releasedB = projectB.attributes.released?.value ?? ''
-        const lastB = projectB.attributes.last?.value ?? ''
-        const minB = ongoingB ? lastB : [releasedB, firstB].sort()[0]
+        const minB = [releasedB, firstB].sort()[0]
 
         return minA.localeCompare(minB)
     }

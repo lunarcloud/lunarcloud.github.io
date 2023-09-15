@@ -12,9 +12,8 @@ export default class AnimatedDialogElement extends HTMLDialogElement {
         super()
 
         // If we've already added the styling, great!
-        if (document.querySelector("link[href='animated-dialog/animated-dialog.css']") != null) {
+        if (document.querySelector("link[href='animated-dialog/animated-dialog.css']") != null)
             return
-        }
 
         // Otherwise add styling to the DOM
         const linkElem = document.createElement('link')
@@ -27,7 +26,8 @@ export default class AnimatedDialogElement extends HTMLDialogElement {
      * Close the dialog.
      */
     close () {
-        if (this.closing) return
+        if (this.closing)
+            return
         this.#closing = true
         this.toggleAttribute('dismissing', true)
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
