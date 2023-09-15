@@ -123,5 +123,5 @@ export default class ProjectsPageController {
     }
 }
 
-if ('App' in globalThis === false) globalThis.App = { Page: undefined }
+globalThis.App ??= { Page: undefined }
 globalThis.App.Page = new ProjectsPageController()
