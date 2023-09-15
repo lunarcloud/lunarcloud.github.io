@@ -69,6 +69,9 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
     #fadingOutFinish () {
         const pageFader = this
 
+        if (!pageFader.fadingOut)
+            return
+
         // This is needed to reset the fade for when user returns via 'back' navigation.
         window.addEventListener('beforeunload', () => {
             document.body.toggleAttribute('loaded', true)
