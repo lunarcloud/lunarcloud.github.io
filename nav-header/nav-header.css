@@ -37,7 +37,6 @@
         line-height: 24px;
         display: inline-block;
         margin-top: 4px;
-
         color: var(--main-color-nav-text);
         background-color: var(--main-color-nav-button-bg);
         border-color: var(--main-color-nav-button-border);
@@ -45,6 +44,7 @@
         &:hover {
             cursor: pointer;
             filter: brightness(0.8);
+
             @media (prefers-color-scheme: dark) {
                 filter: brightness(1.2);
             }
@@ -54,6 +54,7 @@
             border-width: 2px;
             border-style: outset;
             width: 12mm;
+
             &:active {
                 border-style: inset;
             }
@@ -73,6 +74,7 @@
     & main {
         padding: 20px 12px;
     }
+
     & header {
         user-select: none;
         width: 100%;
@@ -83,7 +85,6 @@
         line-height: 26px;
         vertical-align: middle;
         text-align: center;
-
         color: var(--main-color-nav-text);
         background-color: var(--main-color-nav-bg);
         border-bottom: 1px solid var(--main-color-nav-border);
