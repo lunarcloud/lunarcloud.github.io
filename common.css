@@ -12,7 +12,9 @@
 ::backdrop {
   --main-color-nav-text: #333;
   --main-color-nav-bg: #eee;
+  --main-color-nav-button-bg: #ccc;
   --main-color-nav-border: #a3e;
+  --main-color-nav-button-border: #b9d;
   --main-color-bg: #ccc;
   --main-color-text: #333;
   --dialog-color-backdrop: rgb(100 100 100 / 70%);
@@ -59,6 +61,8 @@
   ::backdrop {
     --main-color-nav-text: #ccc;
     --main-color-nav-bg: #222;
+    --main-color-nav-button-bg: #343343;
+    --main-color-nav-button-border: #435;
     --main-color-bg: #333;
     --main-color-text: #ccc;
     --dialog-color-backdrop: rgb(0 0 0 / 70%);
@@ -276,6 +280,10 @@ a:visited {
 
 dialog::backdrop {
   background-color: var(--dialog-color-backdrop);
+}
+
+button:not(:disabled) {
+    cursor: pointer;
 }
 
 together {

@@ -39,8 +39,16 @@
         margin-top: 4px;
 
         color: var(--main-color-nav-text);
-        background-color: var(--main-color-nav-bg);
-        border-color: var(--main-color-nav-border);
+        background-color: var(--main-color-nav-button-bg);
+        border-color: var(--main-color-nav-button-border);
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(0.8);
+            @media (prefers-color-scheme: dark) {
+                filter: brightness(1.2);
+            }
+        }
 
         &#return-to-root {
             border-width: 2px;
@@ -57,7 +65,39 @@
     }
 }
 
-#about-dialog button {
-    display: block;
-    margin: 16px auto 0;
+#about-dialog {
+    padding: 0;
+    border: 2px solid var(--main-color-nav-border);
+    border-radius: 4px;
+
+    & main {
+        padding: 20px 12px;
+    }
+    & header {
+        user-select: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 4mm;
+        height: 26px;
+        line-height: 26px;
+        vertical-align: middle;
+        text-align: center;
+
+        color: var(--main-color-nav-text);
+        background-color: var(--main-color-nav-bg);
+        border-bottom: 1px solid var(--main-color-nav-border);
+
+        & button {
+            height: 24px;
+            line-height: 14px;
+            color: var(--main-color-nav-text);
+            background-color: transparent;
+            float: right;
+            display: block;
+            vertical-align: middle;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
 }
