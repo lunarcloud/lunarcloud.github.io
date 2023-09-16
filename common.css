@@ -10,6 +10,7 @@
 /* Variables */
 :root,
 ::backdrop {
+  --main-color-nav-text: #333;
   --main-color-nav-bg: #eee;
   --main-color-nav-border: #a3e;
   --main-color-bg: #ccc;
@@ -56,6 +57,7 @@
 @media screen and (prefers-color-scheme: dark) {
   :root,
   ::backdrop {
+    --main-color-nav-text: #ccc;
     --main-color-nav-bg: #222;
     --main-color-bg: #333;
     --main-color-text: #ccc;
