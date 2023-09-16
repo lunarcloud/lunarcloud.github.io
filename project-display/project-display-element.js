@@ -156,7 +156,7 @@ export default class ProjectDisplayElement extends HTMLElement {
         setTimeout(() => {
             this.#ready = true
             this.dispatchEvent(new CustomEvent('ready'))
-        }, 500)
+        }, 1)
     }
 
     /**
@@ -212,9 +212,8 @@ export default class ProjectDisplayElement extends HTMLElement {
     }
 }
 
-const templateResponse = await fetch('project-display/project-display.html')
 ProjectDisplayElement.templateElement = new DOMParser()
-    .parseFromString(await templateResponse.text(), 'text/html')
+    .parseFromString(await (await fetch('./project-display/project-display.html')).text(), 'text/html')
     .querySelector('template')
 
 // Register element
