@@ -3,15 +3,22 @@
     <body>
         <template id="nav-header-template">
             <nav id="top-nav">
-                <a id="return-to-root" is="fadeout-anchor" print-hidden href="./">Back</a>
+                <a id="return-to-root" is="fadeout-anchor" class="nav-btn" print-hidden href="./">⬅</a>
                 <label id="nav-title">Sam Sarette Portfolio</label>
-                <button id="open-about-dialog" print-hidden role="button">i</button>
+                <button id="open-about-dialog" class="nav-btn" print-hidden role="button">?</button>
             </nav>
 
             <dialogs>
                 <dialog is="anim-dialog" id="about-dialog">
-                    <slot name="about-info"><p>This website will be a sort of portfolio for me.</p></slot>
-                    <button role="button">close</button>
+                    <header>
+                        Info
+                        <button role="button">x</button>
+                    </header>
+                    <main>
+                        <slot name="about-info">
+                            <p>This website will be a sort of portfolio for me.</p>
+                        </slot>
+                    </main>
                 </dialog>
             </dialogs>
 

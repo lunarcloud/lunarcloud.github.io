@@ -12,6 +12,7 @@
     min-height: var(--top-nav-height);
     height: fit-content;
     padding: 2px 6px;
+    color: var(--main-color-nav-text);
     background-color: var(--main-color-nav-bg);
     border-bottom: 1px solid var(--main-color-nav-border);
 
@@ -25,19 +26,78 @@
         top: 4px;
     }
 
-    & #open-about-dialog {
-        float: right;
+    & .nav-btn {
+        text-decoration: none;
         font-weight: bold;
-        border-radius: 50%;
-        width: 8mm;
-        font-size: 6mm;
+        border-radius: 20%;
+        padding: 0;
+        min-width: 8mm;
+        font-size: 4mm;
+        text-align: center;
         line-height: 24px;
-        margin-top: 2px;
+        display: inline-block;
+        margin-top: 4px;
+
+        color: var(--main-color-nav-text);
+        background-color: var(--main-color-nav-button-bg);
+        border-color: var(--main-color-nav-button-border);
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(0.8);
+            @media (prefers-color-scheme: dark) {
+                filter: brightness(1.2);
+            }
+        }
+
+        &#return-to-root {
+            border-width: 2px;
+            border-style: outset;
+            width: 12mm;
+            &:active {
+                border-style: inset;
+            }
+        }
+
+        &#open-about-dialog {
+            float: right;
+        }
     }
 }
 
+#about-dialog {
+    padding: 0;
+    border: 2px solid var(--main-color-nav-border);
+    border-radius: 4px;
 
-#about-dialog button {
-    display: block;
-    margin: 16px auto 0;
+    & main {
+        padding: 20px 12px;
+    }
+    & header {
+        user-select: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 4mm;
+        height: 26px;
+        line-height: 26px;
+        vertical-align: middle;
+        text-align: center;
+
+        color: var(--main-color-nav-text);
+        background-color: var(--main-color-nav-bg);
+        border-bottom: 1px solid var(--main-color-nav-border);
+
+        & button {
+            height: 24px;
+            line-height: 14px;
+            color: var(--main-color-nav-text);
+            background-color: transparent;
+            float: right;
+            display: block;
+            vertical-align: middle;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
 }
