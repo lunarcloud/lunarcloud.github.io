@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sam Sarette | Home(star)</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#37c482">
+
+        <link rel="manifest" href="./ssarette-portfolio.webmanifest">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="common.css">
+        <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
+
+        <style>
+            body {
+                top: 0;
+                height: 100vh;
+                width: 100vw;
+                margin: 0;
+                padding: 0;
+                display: grid;
+                align-items: center;
+                justify-content: center;
+
+                & container {
+                    --stripe-color-1: rgb(122, 80, 148);
+                    --stripe-color-2: rgb(202, 209, 201);
+                    --stripe-color-3: rgb(173, 128, 79);
+                    --margin: 4mm;
+                    --marginx2: calc(4mm * 2);
+                    --ratio: calc(4 / 3);
+                    --min1vx: min(1vw, 1vh);
+                    position: relative;
+                    font-size: calc(var(--min1vx) * 1.01);
+                    margin: var(--margin);
+                    background-color: black;
+                    overflow: hidden;
+                    border-radius: 8px;
+                    grid-area: 1;
+                    grid-column: 1;
+                    aspect-ratio: var(--ratio);
+                    width: min(
+                        calc(100vw - var(--marginx2)),
+                        calc(calc(100vh * var(--ratio)) - var(--marginx2))
+                    );
+
+                    & nav {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        width: 25%;
+                        z-index: 5;
+                        padding-top: 1%;
+                        font-size: 2em;
+
+                        &:before {
+                            content: ' ';
+                            display: block;
+                            z-index: -2;
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            left: 0;
+                            width: 150%;
+                            background: var(--stripe-color-1);
+                            background: linear-gradient(90deg,
+                                var(--stripe-color-1) 0%, var(--stripe-color-1) 20%,
+                                var(--stripe-color-2) 20.1%, var(--stripe-color-2) 40%,
+                                var(--stripe-color-3) 40.1%, var(--stripe-color-3) 100%);
+                            clip-path: url(#nav-clip);
+                        }
+
+                        & h1 {
+                            font-size: 2.5em;
+                            background-color: black;
+                            border-radius: 50%;
+                            text-align: center;
+                            margin: 0 15%;
+                            width: 50%;
+                            padding: 1% 2%;
+                        }
+
+                        & ul {
+                            list-style: none;
+                            width: 200%;
+                            height: 80%;
+                            overflow: visible;
+                            display: grid;
+                            padding-left: 25%;
+                            grid-template-rows: repeat(4, 1fr);
+
+                            & li {
+                                text-align: center;
+                                height: 90%;
+                                padding: 2%;
+                                --padding-left-li: 6%;
+                                padding-left: var(--padding-left-li);
+                                display: grid;
+                                align-items: center;
+
+                                &:nth-of-type(2) {
+                                    padding-left: calc(var(--padding-left-li) * 2);
+                                }
+
+                                &:nth-of-type(3) {
+                                    padding-left: calc(var(--padding-left-li) * 3);
+                                }
+
+                                &:nth-of-type(4) {
+                                    padding-left: calc(var(--padding-left-li) * 5);
+                                }
+
+
+                                & a:is(:link, :visited) {
+                                    --home-btn-text-color: #ccc;
+                                    user-select: none;
+                                    display: block;
+                                    text-decoration: none;
+                                    font-size: 125%;
+                                    font-weight: bold;
+                                    color: var(--home-btn-text-color);
+                                    background-color: rgb(85, 20, 77);
+                                    border: 0.25em solid #333;
+                                    border-width: 0 0 0.25em;
+                                    border-radius: 1em;
+                                    padding: 6% 0;
+                                    width: 50%;
+
+                                    &:hover {
+                                        color: var(--home-btn-text-color);
+                                        &:not(:active):not(:disabled) {
+                                            border-width: 0 0 0.30em;
+                                            filter: brightness(1.1);
+                                        }
+                                    }
+
+                                    &:active {
+                                        border-width: 0 0 0.1em;
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+
+                    & header {
+                        background: var(--stripe-color-1);
+                        background: linear-gradient(180deg,
+                            var(--stripe-color-1) 0%, var(--stripe-color-1) 30%,
+                            var(--stripe-color-2) 35%, var(--stripe-color-2) 55%,
+                            var(--stripe-color-3) 60%, var(--stripe-color-3) 100%);
+                        z-index: 3;
+                        position: absolute;
+                        top: 0;
+                        left: 15%;
+                        width: 85%;
+                        height: 10%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-right: 20%;
+                        clip-path: url(#header-clip);
+                        box-shadow: inset 4em 0px 1em 0px black;
+
+                        & h1 {
+                            color: #222;
+                            text-shadow: 1px 1px 5px #946f6f;
+                            padding: 0;
+                            font-size: 500%;
+                        }
+                    }
+
+                    & main {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        z-index: 1;
+                        background: rgb(9,106,11);
+                        background: linear-gradient(0deg,
+                            rgba(9,106,11,1) 0%, rgba(22,162,25,1) 25%,
+                            rgba(66,216,255,1) 31%, rgba(66,235,255,1) 100%);
+                    }
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <container>
+            <nav>
+                <h1>S★S</h1>
+                <ul>
+                    <li><a is="fadeout-anchor" href="vr-demo.html">Virtual Explore</a></li>
+                    <li><a is="fadeout-anchor" href="project-list-view.html">Projects</a></li>
+                    <li><a is="fadeout-anchor" href="drag-n-drop.html">Tarot Cards</a></li>
+                    <li><a is="fadeout-anchor" href="celestial-test.html">CSS Animations</a></li>
+                </ul>
+                <svg width="0" height="0">
+                    <defs>
+                      <clipPath id="nav-clip" clipPathUnits="objectBoundingBox">
+                        <path d="M 0 1
+                                L 0 0
+                                L 0.548 0
+                                C 0.519 0.383 0.622 0.772 1 1" />
+                      </clipPath>
+                    </defs>
+                </svg>
+            </nav>
+            <header>
+                <h1>Sam Sarette's Portfolio</h1>
+                <svg width="0" height="0">
+                    <defs>
+                      <clipPath id="header-clip" clipPathUnits="objectBoundingBox">
+                        <path d="   M 0,1
+                                    L 0,0
+                                    L 1,0
+                                    L 1,1
+                                    C .65 .8, .35 .8, 0 1
+                                    Z" />
+                      </clipPath>
+                    </defs>
+                </svg>
+            </header>
+            <main>
+                <div style="position: absolute; right: 25%; bottom: 0; width: 20%; height: 50%; background-color: cadetblue;"></div>
+            </main>
+            <footer>
+                <ul>
+                    <li><a is="fadeout-anchor" href="home-ala-homestar.html">1</a></li>
+                    <li><a is="fadeout-anchor" href="home-ala-homestar.html">2</a></li>
+                    <li><a is="fadeout-anchor" href="home-ala-homestar.html">3</a></li>
+                    <li><a is="fadeout-anchor" href="home-ala-homestar.html">4</a></li>
+                </ul>
+            </footer>
+        </container>
+    </body>
+    <script type="module" src="controllers/index.js"></script>
+</html>

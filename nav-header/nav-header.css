@@ -22,8 +22,10 @@
 
     & #nav-title {
         position: absolute;
-        left: calc(50% - 64px);
+        left: calc(50% - 152px);
         top: 4px;
+        padding-top: 4px;
+        font-size: 8mm;
     }
 
     & .nav-btn {
