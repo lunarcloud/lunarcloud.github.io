@@ -18,6 +18,13 @@ export default class HomeAlaHomestarPageController {
         document.addEventListener('mouseover', autoPlayFn, { once: true })
         document.addEventListener('touchstart', autoPlayFn, { once: true })
 
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible')
+                bgAudio.play()
+            else
+                bgAudio.pause()
+        })
+
         const mainImg = document.querySelector('main > img')
         const navBtns = document.querySelectorAll('a[hover-style]')
         for (const btn of navBtns) {
