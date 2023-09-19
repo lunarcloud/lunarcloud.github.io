@@ -2,12 +2,11 @@ import '../include-element/include-element.js'
 import '../page-fade/page-fade.js'
 import '../nav-header/nav-header-element.js'
 
-
 export default class HomeAlaHomestarPageController {
     /**
      * Constructor.
      */
-    constructor() {
+    constructor () {
         /** Background @type {HTMLAudioElement} */
         const bgAudio = document.getElementById('bg-fire')
         const autoPlayFn = () => {
