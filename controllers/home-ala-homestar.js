@@ -27,13 +27,16 @@ export default class HomeAlaHomestarPageController {
         const mainImg = document.querySelector('main > img')
         const navBtns = document.querySelectorAll('a[hover-style]')
         for (const btn of navBtns) {
-            btn.addEventListener('mouseover', () => {
+            const hoverFn = () => {
                 const hoverStyle = btn.getAttribute('hover-style')
                 mainImg.classList.add(hoverStyle)
                 autoPlayFn()
                 btn.querySelector('audio').play()
-            })
+            }
+            btn.addEventListener('mouseover', hoverFn)
             btn.addEventListener('mouseout', () => { mainImg.className = '' })
+            btn.addEventListener('touchstart', hoverFn)
+            btn.addEventListener('touchend', () => { mainImg.className = '' })
         }
     }
 }
