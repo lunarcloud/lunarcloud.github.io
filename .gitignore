@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 img/projects/kmc-vr-lab-me.jpg
+
+*.*~
