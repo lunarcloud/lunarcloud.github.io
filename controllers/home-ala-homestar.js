@@ -10,7 +10,6 @@ export default class HomeAlaHomestarPageController {
     constructor() {
         /** Background @type {HTMLAudioElement} */
         const bgAudio = document.getElementById('bg-fire')
-        bgAudio.volume = 0.5
         const autoPlayFn = () => {
             if (bgAudio.paused)
                 bgAudio.play()
@@ -25,6 +24,8 @@ export default class HomeAlaHomestarPageController {
             btn.addEventListener('mouseover', () => {
                 const hoverStyle = btn.getAttribute('hover-style')
                 mainImg.classList.add(hoverStyle)
+                autoPlayFn()
+                btn.querySelector('audio').play()
             })
             btn.addEventListener('mouseout', () => { mainImg.className = '' })
         }
