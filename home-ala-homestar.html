@@ -27,6 +27,7 @@
                     --stripe-color-1: rgb(122, 80, 148);
                     --stripe-color-2: rgb(202, 209, 201);
                     --stripe-color-3: rgb(173, 128, 79);
+                    --stripe-color-4: rgb(218, 135, 47);
                     --margin: 4mm;
                     --marginx2: calc(4mm * 2);
                     --ratio: calc(4 / 3);
@@ -66,9 +67,11 @@
                             width: 150%;
                             background: var(--stripe-color-1);
                             background: linear-gradient(90deg,
-                                var(--stripe-color-1) 0%, var(--stripe-color-1) 20%,
-                                var(--stripe-color-2) 20.1%, var(--stripe-color-2) 40%,
-                                var(--stripe-color-3) 40.1%, var(--stripe-color-3) 100%);
+                                var(--stripe-color-1) 0%, var(--stripe-color-1) 19%,
+                                white 19.1%, white 20%,
+                                var(--stripe-color-2) 20.1%, var(--stripe-color-2) 39%,
+                                white 39.1%, white 40%,
+                                var(--stripe-color-3) 40.1%, var(--stripe-color-4) 100%);
                             clip-path: url(#nav-clip);
                         }
 
@@ -148,9 +151,11 @@
                     & header {
                         background: var(--stripe-color-1);
                         background: linear-gradient(180deg,
-                            var(--stripe-color-1) 0%, var(--stripe-color-1) 30%,
-                            var(--stripe-color-2) 35%, var(--stripe-color-2) 55%,
-                            var(--stripe-color-3) 60%, var(--stripe-color-3) 100%);
+                            var(--stripe-color-1) 0%, var(--stripe-color-1) 20%,
+                            white 20.1%, white 21%,
+                            var(--stripe-color-2) 35%, var(--stripe-color-2) 68%,
+                            white 68.1%, white 69%,
+                            var(--stripe-color-3) 70%, var(--stripe-color-3) 100%);
                         z-index: 3;
                         position: absolute;
                         top: 0;
@@ -176,13 +181,47 @@
                         position: absolute;
                         top: 0;
                         bottom: 0;
-                        left: 0;
+                        left: 20%;
                         right: 0;
                         z-index: 1;
-                        background: rgb(9,106,11);
-                        background: linear-gradient(0deg,
-                            rgba(9,106,11,1) 0%, rgba(22,162,25,1) 25%,
-                            rgba(66,216,255,1) 31%, rgba(66,235,255,1) 100%);
+                        background: #333;
+                        display: grid;
+                        align-content: center;
+                        transition-duration: 500ms;
+
+                        & img {
+                            width: 100%;
+                            transition-property: filter, rotate, width, margin;
+                            transition-duration: 300ms;
+                            transition-timing-function: ease-in-out;
+
+                            &.fire {
+                                filter: sepia(0.5) hue-rotate(-30deg) saturate(1.5);
+                                rotate: 5deg;
+                                width: 170%;
+                                margin-left: -60%;
+                                margin-top: -130%;
+                            }
+                            &.busted {
+                                filter: contrast(2) grayscale(1);
+                                width: 170%;
+                                margin-left: -12%;
+                                margin-top: -11%;
+                            }
+                            &.charcoal {
+                                filter: invert(0.75);
+                                rotate: -15deg;
+                                width: 170%;
+                                margin-left: -50%;
+                                margin-top: 20%;
+                            }
+                            &.focus-in {
+                                filter: sepia(0.5) saturate(10) hue-rotate(30deg);
+                                rotate: 15deg;
+                                width: 200%;
+                                margin-top: -100%;
+                            }
+                        }
                     }
                 }
             }
@@ -194,10 +233,10 @@
             <nav>
                 <h1>S★S</h1>
                 <ul>
-                    <li><a is="fadeout-anchor" href="vr-demo.html">Virtual Explore</a></li>
-                    <li><a is="fadeout-anchor" href="project-list-view.html">Projects</a></li>
-                    <li><a is="fadeout-anchor" href="drag-n-drop.html">Tarot Cards</a></li>
-                    <li><a is="fadeout-anchor" href="celestial-test.html">CSS Animations</a></li>
+                    <li><a is="fadeout-anchor" hover-style="fire" href="vr-demo.html">Virtual Explore</a></li>
+                    <li><a is="fadeout-anchor" hover-style="charcoal" href="project-list-view.html">Projects</a></li>
+                    <li><a is="fadeout-anchor" hover-style="busted" href="drag-n-drop.html">Tarot Cards</a></li>
+                    <li><a is="fadeout-anchor" hover-style="focus-in" href="celestial-test.html">CSS Animations</a></li>
                 </ul>
                 <svg width="0" height="0">
                     <defs>
@@ -226,7 +265,7 @@
                 </svg>
             </header>
             <main>
-                <div style="position: absolute; right: 25%; bottom: 0; width: 20%; height: 50%; background-color: cadetblue;"></div>
+                <img class="" src="img/rogues-booklet-campfire.webp" alt="background image" />
             </main>
             <footer>
                 <ul>
@@ -237,6 +276,7 @@
                 </ul>
             </footer>
         </container>
+        <audio id="bg-fire" src="audio/536935__defaultv__campfire.wav" loop="loop" autoplay></audio>
     </body>
-    <script type="module" src="controllers/index.js"></script>
+    <script type="module" src="controllers/home-ala-homestar.js"></script>
 </html>
