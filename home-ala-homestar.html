@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <title>Sam Sarette | Home(star)</title>
 
@@ -41,10 +42,8 @@
                     grid-area: 1;
                     grid-column: 1;
                     aspect-ratio: var(--ratio);
-                    width: min(
-                        calc(100vw - var(--marginx2)),
-                        calc(calc(100vh * var(--ratio)) - var(--marginx2))
-                    );
+                    width: min(calc(100vw - var(--marginx2)),
+                            calc(calc(100vh * var(--ratio)) - var(--marginx2)));
 
                     & nav {
                         position: absolute;
@@ -67,11 +66,11 @@
                             width: 150%;
                             background: var(--stripe-color-1);
                             background: linear-gradient(90deg,
-                                var(--stripe-color-1) 0%, var(--stripe-color-1) 19%,
-                                white 19.1%, white 20%,
-                                var(--stripe-color-2) 20.1%, var(--stripe-color-2) 39%,
-                                white 39.1%, white 40%,
-                                var(--stripe-color-3) 40.1%, var(--stripe-color-4) 100%);
+                                    var(--stripe-color-1) 0%, var(--stripe-color-1) 19%,
+                                    white 19.1%, white 20%,
+                                    var(--stripe-color-2) 20.1%, var(--stripe-color-2) 39%,
+                                    white 39.1%, white 40%,
+                                    var(--stripe-color-3) 40.1%, var(--stripe-color-4) 100%);
                             clip-path: url(#nav-clip);
                         }
 
@@ -133,6 +132,7 @@
 
                                     &:hover {
                                         color: var(--home-btn-text-color);
+
                                         &:not(:active):not(:disabled) {
                                             border-width: 0 0 0.30em;
                                             filter: brightness(1.1);
@@ -151,11 +151,11 @@
                     & header {
                         background: var(--stripe-color-1);
                         background: linear-gradient(180deg,
-                            var(--stripe-color-1) 0%, var(--stripe-color-1) 20%,
-                            white 20.1%, white 21%,
-                            var(--stripe-color-2) 35%, var(--stripe-color-2) 68%,
-                            white 68.1%, white 69%,
-                            var(--stripe-color-3) 70%, var(--stripe-color-3) 100%);
+                                var(--stripe-color-1) 0%, var(--stripe-color-1) 20%,
+                                white 20.1%, white 21%,
+                                var(--stripe-color-2) 35%, var(--stripe-color-2) 68%,
+                                white 68.1%, white 69%,
+                                var(--stripe-color-3) 70%, var(--stripe-color-3) 100%);
                         z-index: 3;
                         position: absolute;
                         top: 0;
@@ -202,12 +202,14 @@
                                 margin-left: -60%;
                                 margin-top: -130%;
                             }
+
                             &.busted {
                                 filter: contrast(2) grayscale(1);
                                 width: 170%;
                                 margin-left: -12%;
                                 margin-top: -11%;
                             }
+
                             &.charcoal {
                                 filter: invert(0.75);
                                 rotate: -15deg;
@@ -215,6 +217,7 @@
                                 margin-left: -50%;
                                 margin-top: 20%;
                             }
+
                             &.focus-in {
                                 filter: sepia(0.5) saturate(10) hue-rotate(30deg);
                                 rotate: 15deg;
@@ -233,47 +236,59 @@
             <nav>
                 <h1>S★S</h1>
                 <ul>
-                    <li><a is="fadeout-anchor" hover-style="fire" href="vr-demo.html">
-                        Virtual Explore
-                        <audio src="audio/518616__taman21__guitar-notes-a.mp3" preload></audio>
-                    </a></li>
-                    <li><a is="fadeout-anchor" hover-style="charcoal" href="project-list-view.html">
-                        Projects
-                        <audio src="audio/518616__taman21__guitar-notes-b.mp3" preload></audio>
-                    </a></li>
-                    <li><a is="fadeout-anchor" hover-style="busted" href="drag-n-drop.html">
-                        Tarot Cards
-                        <audio src="audio/518616__taman21__guitar-notes-c.mp3" preload></audio>
-                    </a></li>
-                    <li><a is="fadeout-anchor" hover-style="focus-in" href="celestial-test.html">
-                        CSS Animations
-                        <audio src="audio/518616__taman21__guitar-notes-d.mp3" preload></audio>
-                    </a></li>
+                    <li>
+                        <a is="fadeout-anchor" hover-style="fire" href="vr-demo.html">
+                            Virtual Explore
+                            <audio src="audio/518616__taman21__guitar-notes-a.mp3" preload></audio>
+                        </a>
+                    </li>
+                    <li>
+                        <a is="fadeout-anchor" hover-style="charcoal" href="project-list-view.html">
+                            Projects
+                            <audio src="audio/518616__taman21__guitar-notes-b.mp3" preload></audio>
+                        </a>
+                    </li>
+                    <li>
+                        <a is="fadeout-anchor" hover-style="busted" href="drag-n-drop.html">
+                            Tarot Cards
+                            <audio src="audio/518616__taman21__guitar-notes-c.mp3" preload></audio>
+                        </a>
+                    </li>
+                    <li>
+                        <a is="fadeout-anchor" hover-style="focus-in" href="celestial-test.html">
+                            CSS Animations
+                            <audio src="audio/518616__taman21__guitar-notes-d.mp3" preload></audio>
+                        </a>
+                    </li>
                 </ul>
-                <svg width="0" height="0">
+                <svg style="visibility: hidden">
+                    <!-- linthtml-disable attr-name-style, tag-name-lowercase -->
                     <defs>
-                      <clipPath id="nav-clip" clipPathUnits="objectBoundingBox">
-                        <path d="M 0 1
+                        <clipPath id="nav-clip" clipPathUnits="objectBoundingBox">
+                            <path d="M 0 1
                                 L 0 0
                                 L 0.548 0
                                 C 0.519 0.383 0.622 0.772 1 1" />
-                      </clipPath>
+                        </clipPath>
                     </defs>
+                    <!-- linthtml-ensable attr-name-style, tag-name-lowercase -->
                 </svg>
             </nav>
             <header>
                 <h1>Sam Sarette's Portfolio</h1>
-                <svg width="0" height="0">
+                <svg style="visibility: hidden">
                     <defs>
-                      <clipPath id="header-clip" clipPathUnits="objectBoundingBox">
-                        <path d="   M 0,1
+                        <!-- linthtml-disable attr-name-style, tag-name-lowercase -->
+                        <clipPath id="header-clip" clipPathUnits="objectBoundingBox">
+                            <path d="   M 0,1
                                     L 0,0
                                     L 1,0
                                     L 1,1
                                     C .65 .8, .35 .8, 0 1
                                     Z" />
-                      </clipPath>
+                        </clipPath>
                     </defs>
+                    <!-- linthtml-ensable attr-name-style, tag-name-lowercase -->
                 </svg>
             </header>
             <main>
@@ -291,4 +306,5 @@
         <audio id="bg-fire" src="audio/536935__defaultv__campfire.mp3" loop="loop" autoplay></audio>
     </body>
     <script type="module" src="controllers/home-ala-homestar.js"></script>
+
 </html>
