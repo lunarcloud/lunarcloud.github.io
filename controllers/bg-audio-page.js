@@ -23,6 +23,8 @@ export default class BgAudioManager {
 
         document.getElementById('unmute-btn')
             .addEventListener('click', () => this.unmuteFn(), { once: true, passive: true })
+        document.getElementById('unmute-btn')
+            .addEventListener('touchend', () => this.unmuteFn(), { once: true, passive: true })
     }
 
     /**
