@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Sam Sarette | LCARS</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#37c482">
+
+        <link rel="manifest" href="./ssarette-portfolio.webmanifest">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="stylesheet" href="common.css">
+        <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
+
+        <style>
+            @import url('https://fonts.cdnfonts.com/css/okuda');
+
+            :root {
+                --main-color-bg: black;
+                --main-font-body: "Okuda", sans-serif;
+                --main-font-headers: "Okuda", sans-serif
+            }
+
+            body, h1, h2, h3, h4, h5, h6 {
+                letter-spacing: 0.05em;
+            }
+
+            body {
+                padding-left: 6vw;
+                display: flex;
+                flex-direction: column;
+
+                & > * {
+                    padding-left: 2vw;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Sam Sarette's Portfolio</h1>
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <a is="fadeout-anchor" hover="ok" href="vr-demo.html">
+                        Virtual Explore
+                    </a>
+                </li>
+                <li>
+                    <a is="fadeout-anchor" hover="ok" href="project-list-view.html">
+                        Projects
+                    </a>
+                </li>
+                <li>
+                    <a is="fadeout-anchor" hover="ok" href="drag-n-drop.html">
+                        Tarot Cards
+                    </a>
+                </li>
+                <li>
+                    <a is="fadeout-anchor" hover="ok" href="celestial-test.html">
+                        CSS Animations
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            TBD
+        </main>
+        <footer>
+            <ul>
+                <li><a is="fadeout-anchor" hover="cancel" href="home-ala-homestar.html">1</a></li>
+                <li><a is="fadeout-anchor" hover="cancel" href="home-ala-homestar.html">2</a></li>
+                <li><a is="fadeout-anchor" hover="cancel" href="home-ala-homestar.html">3</a></li>
+                <li><a is="fadeout-anchor" hover="cancel" href="home-ala-homestar.html">4</a></li>
+            </ul>
+        </footer>
+        <audio id="warp-core-audio" src="" preload loop></audio>
+        <audio id="beep-ok-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-ok.mp3" preload></audio>
+        <audio id="beep-cancel-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-cancel.mp3" preload></audio>
+    </body>
+    <script type="module" src="controllers/home-lcars.js"></script>
+
+</html>
