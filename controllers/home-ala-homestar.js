@@ -13,9 +13,9 @@ export default class HomeAlaHomestarPageController {
             if (bgAudio.paused)
                 bgAudio.play()
         }
-        document.addEventListener('click', autoPlayFn, { once: true })
-        document.addEventListener('mouseover', autoPlayFn, { once: true })
-        document.addEventListener('touchstart', autoPlayFn, { once: true })
+        document.addEventListener('click', autoPlayFn, { once: true, passive: true })
+        document.addEventListener('mouseover', autoPlayFn, { once: true, passive: true })
+        document.addEventListener('touchstart', autoPlayFn, { once: true, passive: true })
 
         document.addEventListener('visibilitychange', () => {
             if (document.visibilityState === 'visible')
@@ -28,15 +28,18 @@ export default class HomeAlaHomestarPageController {
         const navBtns = document.querySelectorAll('a[hover-style]')
         for (const btn of navBtns) {
             const hoverFn = () => {
+                const hoverAudio = btn.querySelector('audio')
                 const hoverStyle = btn.getAttribute('hover-style')
                 mainImg.classList.add(hoverStyle)
                 autoPlayFn()
-                btn.querySelector('audio').play()
+                hoverAudio.currentTime = 0
+                hoverAudio.play()
             }
-            btn.addEventListener('mouseover', hoverFn)
-            btn.addEventListener('mouseout', () => { mainImg.className = '' })
-            btn.addEventListener('touchstart', hoverFn)
-            btn.addEventListener('touchend', () => { mainImg.className = '' })
+            const resetFn = () => { mainImg.className = '' }
+            btn.addEventListener('mouseover', hoverFn, { passive: true })
+            btn.addEventListener('mouseout', resetFn, { passive: true })
+            btn.addEventListener('touchstart', hoverFn, { passive: true })
+            btn.addEventListener('touchend', resetFn, { passive: true })
         }
     }
 }

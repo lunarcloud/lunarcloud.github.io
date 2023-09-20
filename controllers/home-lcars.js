@@ -14,9 +14,9 @@ export default class HomeAlaHomestarPageController {
             if (bgAudio.paused)
                 bgAudio.play()
         }
-        document.addEventListener('click', autoPlayFn, { once: true })
-        document.addEventListener('mouseover', autoPlayFn, { once: true })
-        document.addEventListener('touchstart', autoPlayFn, { once: true })
+        document.addEventListener('click', autoPlayFn, { once: true, passive: true })
+        document.addEventListener('mouseover', autoPlayFn, { once: true, passive: true })
+        document.addEventListener('touchstart', autoPlayFn, { once: true, passive: true })
 
         document.addEventListener('visibilitychange', () => {
             if (document.visibilityState === 'visible')
@@ -30,10 +30,14 @@ export default class HomeAlaHomestarPageController {
 
         const navBtns = document.querySelectorAll('a[hover]')
         for (const btn of navBtns) {
-            const hoverFn = (ok) => ok ? okAudio.play() : cancelAudio.play()
-            btn.addEventListener('mouseover', () => hoverFn(false))
-            btn.addEventListener('click', () => hoverFn(true), { once: btn instanceof FadeOutAnchorElement})
-            btn.addEventListener('touchstart', () => hoverFn(false))
+            const hoverFn = (ok) => {
+                const audioEl = ok ? okAudio : cancelAudio
+                audioEl.currentTime = 0
+                audioEl.play()
+            }
+            btn.addEventListener('mouseover', () => hoverFn(false), { passive: true })
+            btn.addEventListener('click', () => hoverFn(true), { once: btn instanceof FadeOutAnchorElement, passive: true})
+            btn.addEventListener('touchstart', () => hoverFn(false), { passive: true })
         }
     }
 }
