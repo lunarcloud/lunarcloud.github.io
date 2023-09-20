@@ -35,49 +35,67 @@
                     padding-left: 2vw;
                 }
             }
+
+            #unmute-btn {
+                z-index: 20;
+                position: fixed;
+                bottom: 1em;
+                right: 1em;
+                font-size: 200%;
+                background-color: transparent;
+                border-color: transparent;
+                &:hover {
+                    text-shadow: 0px 1px 4px #fff6;
+                }
+            }
         </style>
     </head>
 
     <body>
-        <header>
-            <h1>Sam Sarette's Portfolio</h1>
-        </header>
-        <nav>
-            <ul>
-                <li>
-                    <a is="fadeout-anchor" hover="ok" href="vr-demo.html">
-                        Virtual Explore
-                    </a>
-                </li>
-                <li>
-                    <a is="fadeout-anchor" hover="ok" href="project-list-view.html">
-                        Projects
-                    </a>
-                </li>
-                <li>
-                    <a is="fadeout-anchor" hover="ok" href="drag-n-drop.html">
-                        Tarot Cards
-                    </a>
-                </li>
-                <li>
-                    <a is="fadeout-anchor" hover="ok" href="celestial-test.html">
-                        CSS Animations
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <main>
-            TBD
-        </main>
-        <footer>
-            <ul>
-                <li><a is="fadeout-anchor" hover="cancel" href="home-ala-homestar.html">1</a></li>
-                <li><a is="fadeout-anchor" hover="cancel" href="home-ala-homestar.html">2</a></li>
-                <li><a is="fadeout-anchor" hover="cancel" href="home-ala-homestar.html">3</a></li>
-                <li><a is="fadeout-anchor" hover="cancel" href="home-ala-homestar.html">4</a></li>
-            </ul>
-        </footer>
-        <audio id="warp-core-audio" src="" preload loop></audio>
+        <container id="main">
+            <header>
+                <h1>Sam Sarette's Portfolio</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li>
+                        <a is="fadeout-anchor" hover="audio" href="vr-demo.html">
+                            Virtual Explore
+                        </a>
+                    </li>
+                    <li>
+                        <a is="fadeout-anchor" hover="audio" href="project-list-view.html">
+                            Projects
+                        </a>
+                    </li>
+                    <li>
+                        <a is="fadeout-anchor" hover="audio" href="drag-n-drop.html">
+                            Tarot Cards
+                        </a>
+                    </li>
+                    <li>
+                        <a is="fadeout-anchor" hover="audio" href="celestial-test.html">
+                            CSS Animations
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <main>
+                TBD
+            </main>
+            <footer>
+                <ul>
+                    <li><a is="fadeout-anchor" hover="audio" href="home-ala-homestar.html">1</a></li>
+                    <li><a is="fadeout-anchor" hover="audio" href="home-ala-homestar.html">2</a></li>
+                    <li><a is="fadeout-anchor" hover="audio" href="home-ala-homestar.html">3</a></li>
+                    <li><a is="fadeout-anchor" hover="audio" href="home-ala-homestar.html">4</a></li>
+                </ul>
+            </footer>
+
+            <button id="unmute-btn">🔇</button>
+        </container>
+
+        <audio id="bg-audio" src="" preload loop></audio>
         <audio id="beep-ok-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-ok.mp3" preload></audio>
         <audio id="beep-cancel-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-cancel.mp3" preload></audio>
     </body>

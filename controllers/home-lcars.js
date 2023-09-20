@@ -1,43 +1,32 @@
 import '../include-element/include-element.js'
-import FadeOutAnchorElement from '../page-fade/page-fade.js'
+import '../page-fade/page-fade.js'
 import '../nav-header/nav-header-element.js'
+import BgAudioManager from './bg-audio-page.js'
 
 export default class HomeAlaHomestarPageController {
+    /**
+     * Background Audio & Mute Manager
+     * @type {BgAudioManager}
+     */
+    audioManager = new BgAudioManager()
+
     /**
      * Constructor.
      */
     constructor () {
-        /** Background @type {HTMLAudioElement} */
-        const bgAudio = document.getElementById('warp-core-audio')
-        const autoPlayFn = () => {
-            if (bgAudio.paused)
-                bgAudio.play()
-        }
-        document.addEventListener('click', autoPlayFn, { once: true, passive: true })
-        document.addEventListener('mouseover', autoPlayFn, { once: true, passive: true })
-        document.addEventListener('touchstart', autoPlayFn, { once: true, passive: true })
-
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'visible')
-                bgAudio.play()
-            else
-                bgAudio.pause()
-        })
-
+        // Hook up hover buttons
         const okAudio = document.getElementById('beep-ok-audio')
         const cancelAudio = document.getElementById('beep-cancel-audio')
 
-        const navBtns = document.querySelectorAll('a[hover]')
-        for (const btn of navBtns) {
-            const hoverFn = (ok) => {
-                const audioEl = ok ? okAudio : cancelAudio
-                audioEl.currentTime = 0
-                audioEl.play()
-            }
-            btn.addEventListener('mouseover', () => hoverFn(false), { passive: true })
-            btn.addEventListener('click', () => hoverFn(true), { once: btn instanceof FadeOutAnchorElement, passive: true })
-            btn.addEventListener('touchstart', () => hoverFn(false), { passive: true })
+        const buttonEffects = (evtName, el, muted) => {
+            // Audio
+            if (muted)
+                return
+            const audioEl = evtName === 'click' ? okAudio : cancelAudio
+            audioEl.currentTime = 0
+            audioEl.play()
         }
+        this.audioManager.setupElements('a[hover]', buttonEffects, undefined, buttonEffects)
     }
 }
 
