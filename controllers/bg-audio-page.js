@@ -18,6 +18,7 @@ export default class BgAudioManager {
      */
     constructor () {
         this.bgAudio = document.getElementById('bg-audio')
+        this.bgAudio.pause() // prevents weirdness with navigation
         document.addEventListener('visibilitychange', () => this.pageVisibilityChanged())
 
         document.getElementById('unmute-btn')
