@@ -186,6 +186,7 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
   height: fit-content;
+  height: -webkit-fill-available;
   font-size: 14pt;
 }
 
@@ -200,12 +201,13 @@ html:focus-within {
 }
 
 body {
-  position: absolute;
-  top: var(--top-nav-height);
+  position: initial;
+  top: 0;
   left: 0;
   right: 0;
   margin: 0;
   padding: 0;
+  padding-top: var(--top-nav-height);
   overflow-y: auto;
   overflow-x: auto;
   overflow-wrap: anywhere;
@@ -217,6 +219,10 @@ body {
   text-rendering: optimizespeed;
   font-family: var(--main-font-body);
   font-size: var(--main-font-size);
+
+  &:has(nav-header) {
+    --top-nav-height: 36px;
+  }
 }
 
 h1,
