@@ -274,13 +274,26 @@
 
                         }
                     }
+
+                    & #unmute-btn {
+                        z-index: 20;
+                        position: absolute;
+                        bottom: 1em;
+                        right: 1em;
+                        font-size: 200%;
+                        background-color: transparent;
+                        border-color: transparent;
+                        &:hover {
+                            text-shadow: 0px 1px 4px #fff6;
+                        }
+                    }
                 }
             }
         </style>
     </head>
 
     <body>
-        <container>
+        <container id="main">
             <nav>
                 <h1>S★S</h1>
                 <ul>
@@ -350,8 +363,9 @@
                     <li><a is="fadeout-anchor" href="index.html">4</a></li>
                 </ul>
             </footer>
+            <button id="unmute-btn">🔇</button>
         </container>
-        <audio id="bg-fire" src="audio/536935__defaultv__campfire.mp3" loop="loop" autoplay></audio>
+        <audio id="bg-audio" src="audio/536935__defaultv__campfire.mp3" loop="loop" autoplay></audio>
     </body>
     <script type="module" src="controllers/home-ala-homestar.js"></script>
 

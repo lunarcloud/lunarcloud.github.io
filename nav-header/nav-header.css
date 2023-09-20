@@ -2,6 +2,10 @@
 @import url("../page-fade/page-fade.css");
 @import url("../animated-dialog/animated-dialog.css");
 
+:root {
+    --top-nav-height: 36px;
+}
+
 #top-nav {
     position: fixed;
     top: 0;
