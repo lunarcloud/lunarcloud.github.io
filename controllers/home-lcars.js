@@ -1,7 +1,6 @@
 import '../include-element/include-element.js'
-import '../page-fade/page-fade.js'
-import '../nav-header/nav-header-element.js'
 import FadeOutAnchorElement from '../page-fade/page-fade.js'
+import '../nav-header/nav-header-element.js'
 
 export default class HomeAlaHomestarPageController {
     /**
@@ -36,7 +35,7 @@ export default class HomeAlaHomestarPageController {
                 audioEl.play()
             }
             btn.addEventListener('mouseover', () => hoverFn(false), { passive: true })
-            btn.addEventListener('click', () => hoverFn(true), { once: btn instanceof FadeOutAnchorElement, passive: true})
+            btn.addEventListener('click', () => hoverFn(true), { once: btn instanceof FadeOutAnchorElement, passive: true })
             btn.addEventListener('touchstart', () => hoverFn(false), { passive: true })
         }
     }
