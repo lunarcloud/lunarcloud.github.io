@@ -1,5 +1,5 @@
 import '../include-element/include-element.js'
-import '../page-fade/page-fade.js'
+import FadeOutAnchorElement from '../page-fade/page-fade.js'
 import '../nav-header/nav-header-element.js'
 
 export default class HomeAlaHomestarPageController {
@@ -8,7 +8,7 @@ export default class HomeAlaHomestarPageController {
      */
     constructor () {
         /** Background @type {HTMLAudioElement} */
-        const bgAudio = document.getElementById('bg-fire')
+        const bgAudio = document.getElementById('warp-core-audio')
         const autoPlayFn = () => {
             if (bgAudio.paused)
                 bgAudio.play()
@@ -24,22 +24,19 @@ export default class HomeAlaHomestarPageController {
                 bgAudio.pause()
         })
 
-        const mainImg = document.querySelector('main > img')
-        const navBtns = document.querySelectorAll('a[hover-style]')
+        const okAudio = document.getElementById('beep-ok-audio')
+        const cancelAudio = document.getElementById('beep-cancel-audio')
+
+        const navBtns = document.querySelectorAll('a[hover]')
         for (const btn of navBtns) {
-            const hoverFn = () => {
-                const hoverAudio = btn.querySelector('audio')
-                const hoverStyle = btn.getAttribute('hover-style')
-                mainImg.classList.add(hoverStyle)
-                autoPlayFn()
-                hoverAudio.currentTime = 0
-                hoverAudio.play()
+            const hoverFn = (ok) => {
+                const audioEl = ok ? okAudio : cancelAudio
+                audioEl.currentTime = 0
+                audioEl.play()
             }
-            const resetFn = () => { mainImg.className = '' }
-            btn.addEventListener('mouseover', hoverFn, { passive: true })
-            btn.addEventListener('mouseout', resetFn, { passive: true })
-            btn.addEventListener('touchstart', hoverFn, { passive: true })
-            btn.addEventListener('touchend', resetFn, { passive: true })
+            btn.addEventListener('mouseover', () => hoverFn(false), { passive: true })
+            btn.addEventListener('click', () => hoverFn(true), { once: btn instanceof FadeOutAnchorElement, passive: true })
+            btn.addEventListener('touchstart', () => hoverFn(false), { passive: true })
         }
     }
 }
