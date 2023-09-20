@@ -28,7 +28,7 @@
   --main-font-headers: var(--handwritten-font);
   --main-font-body: var(--high-readability-font);
   --main-font-size: 10pt;
-  --top-nav-height: 36px;
+  --top-nav-height: 0;
 }
 
 @media screen and (prefers-contrast: more) {
