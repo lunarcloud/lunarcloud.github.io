@@ -19,7 +19,14 @@
             :root {
                 --main-color-bg: black;
                 --main-font-body: "Okuda", sans-serif;
-                --main-font-headers: "Okuda", sans-serif
+                --main-font-headers: "Okuda", sans-serif;
+
+                --trek-color-red: #cb5449;
+                    --trek-color-blue: #7a87f8;
+                    --trek-color-orange: #ed822c;
+                    --trek-color-peach: #f2af94;
+                    --trek-color-magenta: #bc5196;
+                    --trek-color-periwinkle: #c18cf9;
             }
 
             body, h1, h2, h3, h4, h5, h6 {
@@ -50,13 +57,6 @@
                 z-index: -2;
 
                 & > ul {
-                    --trek-color-red: #cb5449;
-                    --trek-color-blue: #7a87f8;
-                    --trek-color-orange: #ed822c;
-                    --trek-color-peach: #f2af94;
-                    --trek-color-magenta: #bc5196;
-                    --trek-color-periwinkle: #c18cf9;
-
                     display: flex;
                     flex-direction: column;
                     list-style: none;
@@ -160,7 +160,7 @@
     </head>
 
     <body>
-        <decoration>
+        <decoration class="page-fade">
             <ul>
                 <li class="upper-left"><a>Portfolio</a></li>
                 <li class="upper-left curve-bottom-right">
@@ -190,7 +190,7 @@
                 <li><a>08-148234</a></li>
             </ul>
         </decoration>
-        <container id="main">
+        <container id="main" class="page-fade">
             <header>
                 <h1>Sam Sarette's Portfolio</h1>
             </header>
