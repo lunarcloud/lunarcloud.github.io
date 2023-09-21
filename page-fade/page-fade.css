@@ -9,22 +9,22 @@
     100% { opacity: 0; }
   }
 
-  body > #main {
+  .page-fade {
     opacity: 0;
   }
 
-  body[loaded] > #main {
+  body[loaded] .page-fade {
     opacity: 1;
     animation: page-fade-in 500ms ease-in 0ms;
   }
 
-  body[unloading] > #main {
+  body[unloading] .page-fade {
     opacity: 0;
     animation: page-fade-out 500ms ease-in 0ms;
   }
 
-  body[loaded][same-page] > #main,
-  body[unloading][same-page] > #main {
+  body[loaded][same-page] .page-fade,
+  body[unloading][same-page] .page-fade {
     animation-duration: 300ms;
   }
 }
