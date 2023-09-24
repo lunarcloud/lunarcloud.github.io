@@ -3,7 +3,7 @@ import '../page-fade/page-fade.js'
 import '../nav-header/nav-header-element.js'
 import BgAudioManager from './bg-audio-page.js'
 
-export default class HomeAlaHomestarPageController {
+export default class HomeLCARSPageController {
     /**
      * Background Audio & Mute Manager
      * @type {BgAudioManager}
@@ -31,4 +31,4 @@ export default class HomeAlaHomestarPageController {
 }
 
 globalThis.App ??= { Page: undefined }
-globalThis.App.Page = new HomeAlaHomestarPageController()
+globalThis.App.Page = new HomeLCARSPageController()

@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <title>Sam Sarette | Home(star)</title>
+        <title>Sam Sarette | Home (Flash-Like)</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,12 +18,12 @@
                 top: 0;
                 bottom: 0;
                 position: fixed;
-                height: 100vh;
+                height: 100dvh;
                 width: 100vw;
                 margin: 0;
                 padding: 0;
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
                 overflow: hidden;
                 text-rendering: optimizeLegibility;
@@ -34,18 +34,18 @@
                     --stripe-color-3: rgb(173, 128, 79);
                     --stripe-color-4: rgb(218, 135, 47);
                     --margin: 4mm;
-                    --marginx2: calc(4mm * 2);
+                    --marginx2: calc(var(--margin) * 2);
                     --ratio: calc(4 / 3);
-                    --min1vx: min(1vw, 1vh);
+                    --min1vx: min(1vw, 1dvh);
                     position: relative;
                     font-size: calc(var(--min1vx) * 1.01);
                     margin: var(--margin);
                     background-color: black;
                     overflow: hidden;
-                    border-radius: 8px;
+                    border-radius: 10px;
                     aspect-ratio: var(--ratio);
                     width: min(calc(100vw - var(--marginx2)),
-                            calc(calc(100vh * var(--ratio)) - var(--marginx2)));
+                            calc(calc(100dvh * var(--ratio)) - var(--marginx2)));
 
                     & nav {
                         position: absolute;
@@ -356,8 +356,8 @@
                 <ul>
                     <li><a is="fadeout-anchor" href="home-ala-homestar.html">1</a></li>
                     <li><a is="fadeout-anchor" href="home-lcars.html">2</a></li>
-                    <li><a is="fadeout-anchor" href="index.html">3</a></li>
-                    <li><a is="fadeout-anchor" href="index.html">4</a></li>
+                    <li><a is="fadeout-anchor" href="home-fantasy.html">3</a></li>
+                    <li><a is="fadeout-anchor" href="home-pro.html">4</a></li>
                 </ul>
             </footer>
             <button id="unmute-btn">🔇</button>
