@@ -5,7 +5,7 @@
         <title>Sam Sarette | LCARS</title>
 
         <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=0.48, user-scalable=yes" />
+        <meta name="viewport" content="initial-scale=0.5, user-scalable=yes" />
         <meta name="theme-color" content="black">
 
         <link rel="manifest" href="./ssarette-portfolio.webmanifest">
@@ -264,11 +264,12 @@
                 margin-top: 4mm;
                 margin-left: 2mm;
                 margin-right: 6mm;
-                overflow: hidden;
+                overflow-x: hidden;
+                overflow-y: visible;
                 height: fit-content;
-                min-height: calc(100vh - 10mm);
-                min-width: 180mm;
-                padding-left: 44mm;
+                min-height: calc(100dvh - 2mm);
+                min-width: 160mm;
+                padding-left: 36mm;
                 grid-template-rows: 47mm 38mm auto 1fr;
                 grid-template-columns: 80mm auto;
                 grid-gap: 2mm;
@@ -307,6 +308,7 @@
                         & li {
                             flex-basis: 40%;
                             flex-shrink: 0;
+                            flex-grow: 1;
                             border: 1mm solid black;
                             border-radius: 4mm;
                             font-size: 6mm;
@@ -440,9 +442,6 @@
             <main>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate ut pharetra sit amet aliquam id diam maecenas. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Arcu non sodales neque sodales ut etiam sit amet. Donec massa sapien faucibus et molestie ac. In nulla posuere sollicitudin aliquam ultrices sagittis. Auctor elit sed vulputate mi sit amet mauris commodo quis. Laoreet id donec ultrices tincidunt arcu non. Blandit cursus risus at ultrices. Aliquam etiam erat velit scelerisque in dictum. Risus nullam eget felis eget nunc. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam. Posuere urna nec tincidunt praesent semper. Dignissim convallis aenean et tortor at risus viverra adipiscing at. At lectus urna duis convallis convallis.</p>
                 <p>Posuere ac ut consequat semper viverra. Nec feugiat nisl pretium fusce id velit ut tortor pretium. Dignissim suspendisse in est ante in nibh. Nisl purus in mollis nunc sed id. Egestas diam in arcu cursus euismod quis viverra. A erat nam at lectus urna. Sed viverra ipsum nunc aliquet bibendum. Tempus egestas sed sed risus pretium quam. Non enim praesent elementum facilisis. Platea dictumst quisque sagittis purus.</p>
-                <p>Odio eu feugiat pretium nibh ipsum consequat nisl. Tortor aliquam nulla facilisi cras fermentum. Lectus proin nibh nisl condimentum id venenatis. Mattis ullamcorper velit sed ullamcorper morbi. Amet nisl purus in mollis nunc sed. Magnis dis parturient montes nascetur ridiculus mus mauris vitae. Ipsum faucibus vitae aliquet nec ullamcorper sit amet. Eget mauris pharetra et ultrices neque ornare aenean euismod. Laoreet id donec ultrices tincidunt arcu non. Tincidunt lobortis feugiat vivamus at augue eget. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Vel pretium lectus quam id leo.</p>
-                <p>Risus quis varius quam quisque id diam. Nisl suscipit adipiscing bibendum est ultricies integer. Id neque aliquam vestibulum morbi blandit. Nisi est sit amet facilisis magna etiam tempor orci eu. Duis ut diam quam nulla porttitor massa id. Diam sit amet nisl suscipit adipiscing bibendum est. Risus ultricies tristique nulla aliquet enim tortor at auctor urna. Elementum curabitur vitae nunc sed velit. Elit ut aliquam purus sit amet. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Ultrices gravida dictum fusce ut. Eget velit aliquet sagittis id consectetur purus.</p>
-                <p>Ultrices eros in cursus turpis massa tincidunt dui. Scelerisque felis imperdiet proin fermentum. Feugiat vivamus at augue eget arcu dictum varius. Semper auctor neque vitae tempus. Orci porta non pulvinar neque laoreet. Libero volutpat sed cras ornare arcu dui. Scelerisque in dictum non consectetur a erat nam at lectus. Id faucibus nisl tincidunt eget nullam non. Scelerisque varius morbi enim nunc faucibus. Non nisi est sit amet facilisis magna.</p>
             </main>
 
             <button id="unmute-btn">🔇</button>
