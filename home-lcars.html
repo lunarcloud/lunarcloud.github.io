@@ -5,8 +5,8 @@
         <title>Sam Sarette | LCARS</title>
 
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#37c482">
+        <meta name="viewport" content="initial-scale=0.48, user-scalable=yes" />
+        <meta name="theme-color" content="black">
 
         <link rel="manifest" href="./ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -20,6 +20,7 @@
                 --main-color-bg: black;
                 --main-font-body: "Okuda", sans-serif;
                 --main-font-headers: "Okuda", sans-serif;
+                --main-font-size: 6mm;
 
                 --trek-color-red: #cb5449;
                     --trek-color-blue: #7a87f8;
@@ -29,14 +30,12 @@
                     --trek-color-periwinkle: #c18cf9;
             }
 
-            body, h1, h2, h3, h4, h5, h6 {
-                letter-spacing: 0.05em;
+            html, body {
+                overflow: unset; /* reset the common style of preventing x scrolling */
             }
 
-            body {
-                padding-left: 0;
-                display: flex;
-                flex-direction: column;
+            body, h1, h2, h3, h4, h5, h6 {
+                letter-spacing: 0.05em;
             }
 
             #unmute-btn {
@@ -53,14 +52,24 @@
             }
 
             decoration {
+                z-index: -1;
                 position: absolute;
-                z-index: 0;
-                overflow: visible;
+                top: 0;
+                left: 0;
+                height: fit-content;
+                width: 100%;
+                overflow-y: visible;
+                overflow-x: hidden;
 
                 & > ul {
+                    margin: 0;
                     display: flex;
                     flex-direction: column;
                     list-style: none;
+
+                    & > li:last-of-type {
+                        height: calc(100vh - 120mm);
+                    }
 
                     & li {
                         display: block;
@@ -77,7 +86,7 @@
                             display: flex;
                             flex-direction: row;
                             list-style: none;
-                            width: fit-content;
+                            width: 0; /* this (plus overflow:visible) is necessary to not grow the page's width */
                             position: relative;
 
                             & li {
@@ -241,13 +250,17 @@
             }
 
             container {
+                position: relative;
                 z-index: 1;
                 display: grid;
                 margin-top: 4mm;
                 margin-bottom: 2mm;
-                margin-left: 45mm;
+                margin-left: 4mm;
                 margin-right: 8mm;
-                grid-template-rows: 47mm 34mm 1fr auto;
+                height: fit-content;
+                min-width: 180mm;
+                padding-left: 44mm;
+                grid-template-rows: 47mm 38mm 1fr auto;
                 grid-template-columns: 80mm auto;
                 grid-gap: 2mm;
 
@@ -256,17 +269,21 @@
                     grid-column: 1;
                     & h1 {
                         font-size: 12mm;
-                        margin-top: 5mm;
+                        margin-top: 15mm;
                     }
                 }
                 & nav {
                     grid-row: 1;
                     grid-column: 2;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    align-items: center;
 
                     & ul {
                         list-style: none;
                         display: flex;
                         flex-wrap: wrap;
+                        justify-content: flex-end;
                         width: fit-content;
                         min-width: 80mm;
 
@@ -276,11 +293,14 @@
                             border: 1mm solid black;
                             border-radius: 4mm;
                             font-size: 6mm;
-                            padding: 4mm 0 4mm 4mm;
+                            height: fit-content;
+
 
                             & a {
+                                display: block;
                                 text-decoration: none !important;
                                 color: black !important;
+                                padding: 4mm 0 4mm 4mm;
                             }
                             &:hover {
                                 filter: brightness(1.25);
@@ -364,11 +384,6 @@
             </main>
 
             <button id="unmute-btn">🔇</button>
-        </container>
-
-        <audio id="bg-audio" src="" preload loop></audio>
-        <audio id="beep-ok-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-ok.mp3" preload></audio>
-        <audio id="beep-cancel-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-cancel.mp3" preload></audio>
 
         <decoration class="page-fade">
             <ul>
@@ -402,6 +417,12 @@
                 <li><a>08-148234</a></li>
             </ul>
         </decoration>
+        </container>
+
+        <audio id="bg-audio" src="" preload loop></audio>
+        <audio id="beep-ok-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-ok.mp3" preload></audio>
+        <audio id="beep-cancel-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-cancel.mp3" preload></audio>
+
     </body>
     <script type="module" src="controllers/home-lcars.js"></script>
 
