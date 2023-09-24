@@ -54,7 +54,8 @@
 
             decoration {
                 position: absolute;
-                z-index: -2;
+                z-index: 0;
+                overflow: visible;
 
                 & > ul {
                     display: flex;
@@ -63,20 +64,49 @@
 
                     & li {
                         display: block;
-                        min-height: 10vw;
-                        margin: 1vw 0;
-                        height: auto;
+                        min-height: 20mm;
+                        height: 35mm;
+                        margin: 2mm 0;
                         display: flex;
                         flex-direction: row;
                         flex-wrap: nowrap;
 
+                        & > ul {
+                            margin: 0;
+                            padding: 0;
+                            display: flex;
+                            flex-direction: row;
+                            list-style: none;
+                            width: fit-content;
+                            position: relative;
+
+                            & li {
+                                height: inherit;
+                                margin: 0 2mm;
+                                & a {
+                                    width: 50mm;
+                                }
+                            }
+                        }
+
+                        &:has(> a:hover) {
+                            & > a:hover,
+                            &:before,
+                            & > ul > li:first-child a,
+                            & > ul > li:first-child::before
+                            {
+                                filter: brightness(1.25);
+                            }
+                        }
+                        &:has(> ul > li:first-child a:hover) > a {
+                            filter: brightness(1.25);
+                        }
+
                         & a, a:link, a:visited {
                             display: flex;
                             flex-direction: column-reverse;
-                            font-size: 200%;
-                            width: 20vw;
-                            min-height: 10vw;
-                            height: 100%;
+                            font-size: 5mm;
+                            width: 30mm;
                             text-decoration: none;
                             text-align: right;
                             color: black;
@@ -86,19 +116,111 @@
                             &:hover {
                                 text-decoration: none;
                                 color: black;
-                                filter: brightness(1.25);
                             }
                         }
 
                         &.upper-left a {
                             flex-direction: column;
                         }
-                        &.curve-bottom-right > a {
-                            border-bottom-left-radius: 100%;
+
+                        &.curve-bottom-right, &.curve-top-right {
+
+                            height: 20mm;
+
+                            & > ul,
+                            & ul > li:first-child {
+                                margin-left: 0 !important;
+                            }
+
+                            & li:nth-of-type(1) {
+                                width: 30mm;
+                            }
+                            & li:nth-of-type(1):before {
+                                content: '';
+                                z-index: -2;
+                                height: 50%;
+                                width: 15mm;
+                                position: absolute;
+                                left: 0;
+                            }
+                            & li:nth-of-type(1):after {
+                                content: '';
+                                z-index: -1;
+                                background-color: black;
+                                height: 100%;
+                                width: 30mm;
+                                position: absolute;
+                                left: 0;
+                                border-radius: 50%;
+                            }
+
+                            & li:last-of-type > a {
+                                width: 100vw;
+                                height: 50%;
+                            }
                         }
-                        &.curve-top-right > a {
-                            border-top-left-radius: 100%;
+
+                        &.curve-bottom-right {
+                            & > a {
+                                border-bottom-left-radius: 100%;
+                            }
+                            & ul > li {
+                                align-items: flex-end;
+                                & a  {
+                                    min-height: 0;
+                                    height: 50%;
+                                }
+                            }
+
+                            & li:nth-of-type(2) a {
+                                background-color: var(--trek-color-orange);
+                            }
+
+                            & li:nth-of-type(1) a {
+                                background-color: var(--trek-color-blue);
+                                min-height: 0;
+                                height: 50%;
+                            }
+
+                            & li:nth-of-type(1):before {
+                                background-color: var(--trek-color-blue);
+                                bottom: 50%;
+                            }
+                            & li:nth-of-type(1):after {
+                                bottom: 50%;
+                            }
+
+                            & li:last-of-type > a {
+                                background-color: var(--trek-color-red);
+                            }
                         }
+                        &.curve-top-right {
+                            & > a {
+                                border-top-left-radius: 100%;
+                            }
+                            & li:nth-of-type(1) a {
+                                background-color: var(--trek-color-red);
+                                min-height: 0;
+                                height: 50%;
+                            }
+
+                            & li:nth-of-type(1):before {
+                                background-color: var(--trek-color-red);
+                                top: 50%;
+                            }
+                            & li:nth-of-type(1):after {
+                                top: 50%;
+                            }
+
+                            & li:nth-of-type(odd) a {
+                                min-height: 0;
+                                height: 50%;
+                            }
+                            & li:last-of-type > a {
+                                background-color: var(--trek-color-periwinkle);
+                            }
+                        }
+
                         &:nth-of-type(1) a {
                             background-color: var(--trek-color-periwinkle);
                         }
@@ -114,42 +236,79 @@
                         &:nth-of-type(6) a {
                             background-color: var(--trek-color-blue);
                         }
-
-                        & ul {
-                            margin: 0;
-                            padding: 0;
-                            display: flex;
-                            flex-direction: row;
-                            list-style: none;
-                            width: 60vw;
-                            margin: 0 1vw;
-
-                            & li {
-                                margin: 0 1vw;
-                            }
-                        }
                     }
                 }
             }
 
             container {
+                z-index: 1;
                 display: grid;
-                margin-top: 2vw;
-                margin-left: 26vw;
-                grid-template-rows: 10vw 26vw 1fr auto;
-                grid-template-columns: repeat(40%, 2);
+                margin-top: 4mm;
+                margin-bottom: 2mm;
+                margin-left: 45mm;
+                margin-right: 8mm;
+                grid-template-rows: 47mm 34mm 1fr auto;
+                grid-template-columns: 80mm auto;
+                grid-gap: 2mm;
 
                 & header {
-                    grid-row: 0;
+                    grid-row: 1;
                     grid-column: 1;
+                    & h1 {
+                        font-size: 12mm;
+                        margin-top: 5mm;
+                    }
                 }
                 & nav {
-                    grid-row: 0;
+                    grid-row: 1;
                     grid-column: 2;
+
+                    & ul {
+                        list-style: none;
+                        display: flex;
+                        flex-wrap: wrap;
+                        width: fit-content;
+                        min-width: 80mm;
+
+                        & li {
+                            flex-basis: 40%;
+                            flex-shrink: 0;
+                            border: 1mm solid black;
+                            border-radius: 4mm;
+                            font-size: 6mm;
+                            padding: 4mm 0 4mm 4mm;
+
+                            & a {
+                                text-decoration: none !important;
+                                color: black !important;
+                            }
+                            &:hover {
+                                filter: brightness(1.25);
+                            }
+
+                            &:nth-of-type(odd) {
+                                background-color: var(--trek-color-periwinkle);
+                            }
+                            &:nth-of-type(even) {
+                                background-color: var(--trek-color-red);
+                            }
+                            &:nth-of-type(2) {
+                                background-color: var(--trek-color-blue);
+                            }
+                            &:nth-of-type(3) {
+                                background-color: var(--trek-color-orange);
+                            }
+                            &:nth-of-type(4) {
+                                background-color: var(--trek-color-peach);
+                            }
+                        }
+                    }
                 }
                 & main {
                     grid-row: 3;
                     grid-column: 1 / 3;
+
+
                 }
                 & footer {
                     grid-row: 4;
@@ -160,36 +319,6 @@
     </head>
 
     <body>
-        <decoration class="page-fade">
-            <ul>
-                <li class="upper-left"><a>Portfolio</a></li>
-                <li class="upper-left curve-bottom-right">
-                    <a>02-452345</a>
-                    <ul>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                    </ul>
-                </li>
-                <li class="curve-top-right">
-                    <a>03-563456</a>
-                    <ul>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                    </ul>
-                </li>
-                <li><a>04-763457</a></li>
-                <li><a>05-176263</a></li>
-                <li><a>06-643268</a></li>
-                <li><a>07-012903</a></li>
-                <li><a>08-148234</a></li>
-            </ul>
-        </decoration>
         <container id="main" class="page-fade">
             <header>
                 <h1>Sam Sarette's Portfolio</h1>
@@ -240,6 +369,39 @@
         <audio id="bg-audio" src="" preload loop></audio>
         <audio id="beep-ok-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-ok.mp3" preload></audio>
         <audio id="beep-cancel-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-cancel.mp3" preload></audio>
+
+        <decoration class="page-fade">
+            <ul>
+                <li class="upper-left"><a>Portfolio</a></li>
+                <li class="upper-left curve-bottom-right">
+                    <a>02-452345</a>
+                    <ul>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                    </ul>
+                </li>
+                <li class="curve-top-right">
+                    <a>03-563456</a>
+                    <ul>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                    </ul>
+                </li>
+                <li><a>04-763457</a></li>
+                <li><a>05-176263</a></li>
+                <li><a>06-643268</a></li>
+                <li><a>07-012903</a></li>
+                <li><a>08-148234</a></li>
+            </ul>
+        </decoration>
     </body>
     <script type="module" src="controllers/home-lcars.js"></script>
 
