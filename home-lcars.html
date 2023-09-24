@@ -5,8 +5,8 @@
         <title>Sam Sarette | LCARS</title>
 
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#37c482">
+        <meta name="viewport" content="initial-scale=0.5, user-scalable=yes" />
+        <meta name="theme-color" content="black">
 
         <link rel="manifest" href="./ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -20,6 +20,7 @@
                 --main-color-bg: black;
                 --main-font-body: "Okuda", sans-serif;
                 --main-font-headers: "Okuda", sans-serif;
+                --main-font-size: 6mm;
 
                 --trek-color-red: #cb5449;
                     --trek-color-blue: #7a87f8;
@@ -29,54 +30,100 @@
                     --trek-color-periwinkle: #c18cf9;
             }
 
+            html, body {
+                overflow-x: unset; /* reset the common style of preventing x scrolling */
+                min-height: unset;
+            }
+            body {
+                width: unset;
+            }
+
             body, h1, h2, h3, h4, h5, h6 {
                 letter-spacing: 0.05em;
             }
 
-            body {
-                padding-left: 0;
-                display: flex;
-                flex-direction: column;
-            }
-
             #unmute-btn {
                 z-index: 20;
-                position: fixed;
-                bottom: 1em;
-                right: 1em;
-                font-size: 200%;
+                position: absolute;
+                top: 58mm;
+                left: 0;
+                font-size: 9mm;
                 background-color: transparent;
                 border-color: transparent;
                 &:hover {
-                    text-shadow: 0px 1px 4px #fff6;
+                    text-shadow: 0px 1mm 4mm #fff6;
                 }
             }
 
             decoration {
+                z-index: -1;
                 position: absolute;
-                z-index: -2;
+                top: 0;
+                left: 0;
+                height: 100%; /* be as big as the container */
+                width: 100%;
+                overflow: hidden;
 
                 & > ul {
+                    margin: 0;
+                    padding: 1mm;
                     display: flex;
                     flex-direction: column;
                     list-style: none;
 
+                    /* last element should go to the bottom (minus margin) */
+                    & > li:last-of-type {
+                        position: absolute;
+                        top: 242mm; /* height of everything else plus margin */
+                        bottom: 2mm;
+                        height: auto;
+                    }
+
                     & li {
                         display: block;
-                        min-height: 10vw;
-                        margin: 1vw 0;
-                        height: auto;
+                        min-height: 20mm;
+                        height: 35mm;
+                        margin: 2mm 0;
                         display: flex;
                         flex-direction: row;
                         flex-wrap: nowrap;
 
+                        & > ul {
+                            margin: 0;
+                            padding: 0;
+                            display: flex;
+                            flex-direction: row;
+                            list-style: none;
+                            width: 0; /* this (plus overflow:visible) is necessary to not grow the page's width */
+                            position: relative;
+
+                            & li {
+                                height: inherit;
+                                margin: 0 2mm;
+                                & a {
+                                    width: 50mm;
+                                }
+                            }
+                        }
+
+                        &:has(> a:hover) {
+                            & > a:hover,
+                            &:before,
+                            & > ul > li:first-child a,
+                            & > ul > li:first-child::before
+                            {
+                                filter: brightness(1.25);
+                            }
+                        }
+                        &:has(> ul > li:first-child a:hover) > a {
+                            filter: brightness(1.25);
+                        }
+
                         & a, a:link, a:visited {
                             display: flex;
                             flex-direction: column-reverse;
-                            font-size: 200%;
-                            width: 20vw;
-                            min-height: 10vw;
-                            height: 100%;
+                            font-size: 5mm;
+                            width: 30mm;
                             text-decoration: none;
                             text-align: right;
                             color: black;
@@ -86,19 +133,111 @@
                             &:hover {
                                 text-decoration: none;
                                 color: black;
-                                filter: brightness(1.25);
                             }
                         }
 
                         &.upper-left a {
                             flex-direction: column;
                         }
-                        &.curve-bottom-right > a {
-                            border-bottom-left-radius: 100%;
+
+                        &.curve-bottom-right, &.curve-top-right {
+
+                            height: 20mm;
+
+                            & > ul,
+                            & ul > li:first-child {
+                                margin-left: 0 !important;
+                            }
+
+                            & li:nth-of-type(1) {
+                                width: 30mm;
+                            }
+                            & li:nth-of-type(1):before {
+                                content: '';
+                                z-index: -2;
+                                height: 50%;
+                                width: 15mm;
+                                position: absolute;
+                                left: 0;
+                            }
+                            & li:nth-of-type(1):after {
+                                content: '';
+                                z-index: -1;
+                                background-color: black;
+                                height: 100%;
+                                width: 30mm;
+                                position: absolute;
+                                left: 0;
+                                border-radius: 50%;
+                            }
+
+                            & li:last-of-type > a {
+                                width: 100vw;
+                                height: 50%;
+                            }
                         }
-                        &.curve-top-right > a {
-                            border-top-left-radius: 100%;
+
+                        &.curve-bottom-right {
+                            & > a {
+                                border-bottom-left-radius: 100%;
+                            }
+                            & ul > li {
+                                align-items: flex-end;
+                                & a  {
+                                    min-height: 0;
+                                    height: 50%;
+                                }
+                            }
+
+                            & li:nth-of-type(2) a {
+                                background-color: var(--trek-color-orange);
+                            }
+
+                            & li:nth-of-type(1) a {
+                                background-color: var(--trek-color-blue);
+                                min-height: 0;
+                                height: 50%;
+                            }
+
+                            & li:nth-of-type(1):before {
+                                background-color: var(--trek-color-blue);
+                                bottom: 50%;
+                            }
+                            & li:nth-of-type(1):after {
+                                bottom: 50%;
+                            }
+
+                            & li:last-of-type > a {
+                                background-color: var(--trek-color-red);
+                            }
                         }
+                        &.curve-top-right {
+                            & > a {
+                                border-top-left-radius: 100%;
+                            }
+                            & li:nth-of-type(1) a {
+                                background-color: var(--trek-color-red);
+                                min-height: 0;
+                                height: 50%;
+                            }
+
+                            & li:nth-of-type(1):before {
+                                background-color: var(--trek-color-red);
+                                top: 50%;
+                            }
+                            & li:nth-of-type(1):after {
+                                top: 50%;
+                            }
+
+                            & li:nth-of-type(odd) a {
+                                min-height: 0;
+                                height: 50%;
+                            }
+                            & li:last-of-type > a {
+                                background-color: var(--trek-color-periwinkle);
+                            }
+                        }
+
                         &:nth-of-type(1) a {
                             background-color: var(--trek-color-periwinkle);
                         }
@@ -114,82 +253,156 @@
                         &:nth-of-type(6) a {
                             background-color: var(--trek-color-blue);
                         }
-
-                        & ul {
-                            margin: 0;
-                            padding: 0;
-                            display: flex;
-                            flex-direction: row;
-                            list-style: none;
-                            width: 60vw;
-                            margin: 0 1vw;
-
-                            & li {
-                                margin: 0 1vw;
-                            }
-                        }
                     }
                 }
             }
 
             container {
+                position: relative;
+                z-index: 1;
                 display: grid;
-                margin-top: 2vw;
-                margin-left: 26vw;
-                grid-template-rows: 10vw 26vw 1fr auto;
-                grid-template-columns: repeat(40%, 2);
+                margin-top: 4mm;
+                margin-left: 2mm;
+                margin-right: 6mm;
+                overflow-x: hidden;
+                overflow-y: visible;
+                height: fit-content;
+                min-height: calc(100dvh - 2mm);
+                min-width: 160mm;
+                padding-left: 36mm;
+                grid-template-rows: 47mm 38mm auto 1fr;
+                grid-template-columns: 80mm auto;
+                grid-gap: 2mm;
 
                 & header {
-                    grid-row: 0;
+                    grid-row: 1;
                     grid-column: 1;
+                    & h1 {
+                        font-size: 12mm;
+                        margin-top: 15mm;
+                    }
                 }
-                & nav {
-                    grid-row: 0;
-                    grid-column: 2;
-                }
+
                 & main {
                     grid-row: 3;
                     grid-column: 1 / 3;
+
+
                 }
+
+                & nav {
+                    grid-row: 1;
+                    grid-column: 2;
+                    display: flex;
+                    flex-direction: row-reverse;
+                    align-items: center;
+
+                    & ul {
+                        list-style: none;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: flex-end;
+                        width: fit-content;
+                        min-width: 80mm;
+
+                        & li {
+                            flex-basis: 40%;
+                            flex-shrink: 0;
+                            flex-grow: 1;
+                            border: 1mm solid black;
+                            border-radius: 4mm;
+                            font-size: 6mm;
+                            height: fit-content;
+
+
+                            & a {
+                                display: block;
+                                text-decoration: none !important;
+                                color: black !important;
+                                padding: 4mm 0 4mm 4mm;
+                            }
+                            &:hover {
+                                filter: brightness(1.25);
+                            }
+
+                            &:nth-of-type(odd) {
+                                background-color: var(--trek-color-periwinkle);
+                            }
+                            &:nth-of-type(even) {
+                                background-color: var(--trek-color-red);
+                            }
+                            &:nth-of-type(2) {
+                                background-color: var(--trek-color-blue);
+                            }
+                            &:nth-of-type(3) {
+                                background-color: var(--trek-color-orange);
+                            }
+                            &:nth-of-type(4) {
+                                background-color: var(--trek-color-peach);
+                            }
+                        }
+                    }
+                }
+
                 & footer {
                     grid-row: 4;
                     grid-column: 1 / 3;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    padding-bottom: 4mm;
+
+                    & ul {
+                        list-style: none;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: left;
+                        min-width: 80mm;
+                        width: 100%;
+                        margin: 0;
+
+                        & li {
+                            flex-basis: 20%;
+                            flex-shrink: 0;
+                            border: 1mm solid black;
+                            border-radius: 4mm;
+                            font-size: 6mm;
+                            height: fit-content;
+
+
+                            & a {
+                                display: block;
+                                text-decoration: none !important;
+                                color: black !important;
+                                padding: 4mm 0 4mm 4mm;
+                            }
+                            &:hover {
+                                filter: brightness(1.25);
+                            }
+
+                            &:nth-of-type(odd) {
+                                background-color: var(--trek-color-periwinkle);
+                            }
+                            &:nth-of-type(even) {
+                                background-color: var(--trek-color-red);
+                            }
+                            &:nth-of-type(2) {
+                                background-color: var(--trek-color-blue);
+                            }
+                            &:nth-of-type(3) {
+                                background-color: var(--trek-color-orange);
+                            }
+                            &:nth-of-type(4) {
+                                background-color: var(--trek-color-peach);
+                            }
+                        }
+                    }
                 }
             }
         </style>
     </head>
 
     <body>
-        <decoration class="page-fade">
-            <ul>
-                <li class="upper-left"><a>Portfolio</a></li>
-                <li class="upper-left curve-bottom-right">
-                    <a>02-452345</a>
-                    <ul>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                    </ul>
-                </li>
-                <li class="curve-top-right">
-                    <a>03-563456</a>
-                    <ul>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                    </ul>
-                </li>
-                <li><a>04-763457</a></li>
-                <li><a>05-176263</a></li>
-                <li><a>06-643268</a></li>
-                <li><a>07-012903</a></li>
-                <li><a>08-148234</a></li>
-            </ul>
-        </decoration>
         <container id="main" class="page-fade">
             <header>
                 <h1>Sam Sarette's Portfolio</h1>
@@ -229,17 +442,48 @@
             <main>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate ut pharetra sit amet aliquam id diam maecenas. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Arcu non sodales neque sodales ut etiam sit amet. Donec massa sapien faucibus et molestie ac. In nulla posuere sollicitudin aliquam ultrices sagittis. Auctor elit sed vulputate mi sit amet mauris commodo quis. Laoreet id donec ultrices tincidunt arcu non. Blandit cursus risus at ultrices. Aliquam etiam erat velit scelerisque in dictum. Risus nullam eget felis eget nunc. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam. Posuere urna nec tincidunt praesent semper. Dignissim convallis aenean et tortor at risus viverra adipiscing at. At lectus urna duis convallis convallis.</p>
                 <p>Posuere ac ut consequat semper viverra. Nec feugiat nisl pretium fusce id velit ut tortor pretium. Dignissim suspendisse in est ante in nibh. Nisl purus in mollis nunc sed id. Egestas diam in arcu cursus euismod quis viverra. A erat nam at lectus urna. Sed viverra ipsum nunc aliquet bibendum. Tempus egestas sed sed risus pretium quam. Non enim praesent elementum facilisis. Platea dictumst quisque sagittis purus.</p>
-                <p>Odio eu feugiat pretium nibh ipsum consequat nisl. Tortor aliquam nulla facilisi cras fermentum. Lectus proin nibh nisl condimentum id venenatis. Mattis ullamcorper velit sed ullamcorper morbi. Amet nisl purus in mollis nunc sed. Magnis dis parturient montes nascetur ridiculus mus mauris vitae. Ipsum faucibus vitae aliquet nec ullamcorper sit amet. Eget mauris pharetra et ultrices neque ornare aenean euismod. Laoreet id donec ultrices tincidunt arcu non. Tincidunt lobortis feugiat vivamus at augue eget. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Vel pretium lectus quam id leo.</p>
-                <p>Risus quis varius quam quisque id diam. Nisl suscipit adipiscing bibendum est ultricies integer. Id neque aliquam vestibulum morbi blandit. Nisi est sit amet facilisis magna etiam tempor orci eu. Duis ut diam quam nulla porttitor massa id. Diam sit amet nisl suscipit adipiscing bibendum est. Risus ultricies tristique nulla aliquet enim tortor at auctor urna. Elementum curabitur vitae nunc sed velit. Elit ut aliquam purus sit amet. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Ultrices gravida dictum fusce ut. Eget velit aliquet sagittis id consectetur purus.</p>
-                <p>Ultrices eros in cursus turpis massa tincidunt dui. Scelerisque felis imperdiet proin fermentum. Feugiat vivamus at augue eget arcu dictum varius. Semper auctor neque vitae tempus. Orci porta non pulvinar neque laoreet. Libero volutpat sed cras ornare arcu dui. Scelerisque in dictum non consectetur a erat nam at lectus. Id faucibus nisl tincidunt eget nullam non. Scelerisque varius morbi enim nunc faucibus. Non nisi est sit amet facilisis magna.</p>
             </main>
 
             <button id="unmute-btn">🔇</button>
+
+            <decoration class="page-fade">
+                <ul>
+                    <li class="upper-left"><a>Portfolio</a></li>
+                    <li class="upper-left curve-bottom-right">
+                        <a>02-452345</a>
+                        <ul>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                        </ul>
+                    </li>
+                    <li class="curve-top-right">
+                        <a>03-563456</a>
+                        <ul>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                            <li><a></a></li>
+                        </ul>
+                    </li>
+                    <li><a>04-763457</a></li>
+                    <li><a>05-176263</a></li>
+                    <li><a>06-643268</a></li>
+                    <li><a>07-012903</a></li>
+                    <li><a>08-148234</a></li>
+                </ul>
+            </decoration>
         </container>
 
         <audio id="bg-audio" src="" preload loop></audio>
         <audio id="beep-ok-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-ok.mp3" preload></audio>
         <audio id="beep-cancel-audio" src="audio/423167__plasterbrain__minimalist-sci-fi-ui-cancel.mp3" preload></audio>
+
     </body>
     <script type="module" src="controllers/home-lcars.js"></script>
 
