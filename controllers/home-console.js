@@ -64,7 +64,6 @@ export default class HomeConsolePageController {
             }
         }
 
-
         window.addEventListener('keydown', (e) => {
             switch (e.key) {
             case 'ArrowLeft':
@@ -169,9 +168,9 @@ export default class HomeConsolePageController {
     /**
      * Get the grid start minus 1
      * @param {Element} el element
-     * @returns 0-based grid index
+     * @returns {number} 0-based grid index
      */
-    getGridRow(el) {
+    getGridRow (el) {
         return parseInt(
             el.computedStyleMap().get('grid-row-start').toString()
         ) - 1

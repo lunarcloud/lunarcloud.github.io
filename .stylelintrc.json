@@ -1,5 +1,6 @@
 {
   "extends": "stylelint-config-standard",
+  "ignorePatterns": ["**/lib/**/*.css"],
   "rules": {
     "property-no-vendor-prefix": null,
     "value-no-vendor-prefix": null,
