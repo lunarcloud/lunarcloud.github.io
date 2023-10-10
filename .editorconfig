@@ -3,7 +3,7 @@ root = true
 
 [*]
 end_of_line = lf
-insert_final_newline = false
+insert_final_newline = true
 max_line_length = off
 
 [*.{js,ts,css,json,html,md,webmanifest}]
