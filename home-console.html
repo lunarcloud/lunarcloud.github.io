@@ -183,7 +183,21 @@
                 & > * {
                     scroll-snap-align: start;
                     scroll-snap-stop: always;
+                    position: relative;
+                    margin-bottom: 1em;
 
+                    & h2 {
+                        position: fixed;
+                        margin: 0;
+                        padding: 0;
+                        font-size: 1.2em;
+                        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        color:rgba(255, 255, 255, 0.5);
+                    }
+                    & ul {
+                        margin: 0;
+                        margin-top: 1.5em;
+                    }
                 }
 
                 & header {
@@ -248,12 +262,12 @@
                                 right: 1em;
 
                                 background-position: 75% center;
-                                background-size: 120%;
+                                background-size: 130%;
                                 background-repeat: no-repeat;
                                 filter: grayscale(0.5);
 
                                 &:focus {
-                                    background-size: 150%;
+                                    background-size: 160%;
                                 }
                             }
                         }
@@ -313,6 +327,7 @@
         </bg-container>
         <container id="main">
             <nav>
+                <h2>Pages</h2>
                 <ul>
                     <li>
                         <a is="fadeout-anchor" href="vr-demo.html"
@@ -352,6 +367,7 @@
                 <p tabindex="2" narrate="select">This page is meant for large screens controlled at a distance by keyboards / remotes and game controllers. Try using one of those with this page.</p>
             </main>
             <footer>
+                <h2>Other Home Screens</h2>
                 <ul>
                     <li><a is="fadeout-anchor" href="home-ala-homestar.html"
                         style="background-image: url('img/pages/home-flash.webp');">
@@ -360,17 +376,14 @@
                     <li><a is="fadeout-anchor" href="home-lcars.html"
                         style="background-image: url('img/pages/home-lcars.webp');">
                         Sci-fi
-
                     </a></li>
                     <li><a is="fadeout-anchor" href="home-console.html"
                         style="background-image: url('img/pages/home-console.webp');">
-                        TV
-
+                        Big Picture
                     </a></li>
-                    <li><a is="fadeout-anchor" href="home-pro.html"
+                    <li><a is="fadeout-anchor" href="index.html"
                         style="background-image: url('img/pages/home-pro.webp');">
-                        Pro
-
+                        Standard
                     </a></li>
                 </ul>
             </footer>
