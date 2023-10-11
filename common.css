@@ -217,7 +217,7 @@ body {
   background-color: var(--main-color-bg);
   width: 100%; /* using [d]vw causes issues not seen with % */
   min-height: 100dvh;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   font-family: var(--main-font-body);
   font-size: var(--main-font-size);
 

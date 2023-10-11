@@ -23,9 +23,11 @@
         opacity: 1;
         animation-name: page-fade-in;
     }
+
     &[unloading].page-fade, &[unloading] .page-fade {
         animation-name: page-fade-out;
     }
+
     &[same-page].page-fade, &[same-page] .page-fade {
         animation-duration: 300ms;
     }
