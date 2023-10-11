@@ -188,6 +188,7 @@ html {
   height: fit-content;
   height: -webkit-fill-available;
   font-size: 14pt;
+  background-color: var(--main-color-bg);
 }
 
 html:focus-within {
@@ -214,9 +215,9 @@ body {
   hyphens: auto;
   color: var(--main-color-text);
   background-color: var(--main-color-bg);
-  width: 100vw;
-  min-height: 100vh;
-  text-rendering: optimizespeed;
+  width: 100%; /* using [d]vw causes issues not seen with % */
+  min-height: 100dvh;
+  text-rendering: optimizelegibility;
   font-family: var(--main-font-body);
   font-size: var(--main-font-size);
 

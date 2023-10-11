@@ -1,30 +1,35 @@
 @media screen and (prefers-reduced-motion: no-preference) {
   @keyframes page-fade-in {
-    0% { opacity: 0; }
+    0% { opacity: 0;}
+    5% { opacity: 0;}
     100% { opacity: 1; }
   }
 
   @keyframes page-fade-out {
     0% { opacity: 1; }
-    100% { opacity: 0; }
+    95% { opacity: 0;}
+    100% { opacity: 0;}
   }
 
   .page-fade {
     opacity: 0;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in;
+    animation-delay: 0ms;
   }
 
-  body[loaded] .page-fade {
-    opacity: 1;
-    animation: page-fade-in 500ms ease-in 0ms;
-  }
+  body {
+    &[loaded].page-fade, &[loaded] .page-fade {
+        opacity: 1;
+        animation-name: page-fade-in;
+    }
 
-  body[unloading] .page-fade {
-    opacity: 0;
-    animation: page-fade-out 500ms ease-in 0ms;
-  }
+    &[unloading].page-fade, &[unloading] .page-fade {
+        animation-name: page-fade-out;
+    }
 
-  body[loaded][same-page] .page-fade,
-  body[unloading][same-page] .page-fade {
-    animation-duration: 300ms;
+    &[same-page].page-fade, &[same-page] .page-fade {
+        animation-duration: 300ms;
+    }
   }
 }

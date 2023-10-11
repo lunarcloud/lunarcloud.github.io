@@ -15,10 +15,11 @@
 
         <style>
             html {
+                background-color: black;
                 height: unset;
             }
 
-            @keyframes bgChange {
+            @keyframes backgroundSwirls {
                 0% {
                     transform: rotate(0deg) scale(1, 1);
                 }
@@ -39,18 +40,25 @@
             body {
                 padding: 0;
                 margin: 0;
+                width: 100%;
                 height: fit-content;
                 overflow-x: hidden;
                 overflow-y: auto;
                 scrollbar-gutter: stable both-edges;
-                background: hsl(241, 84%, 23%);
-                background: linear-gradient(45deg, hsl(241, 84%, 23%) 0%, hsl(244, 100%, 63%) 100%);
-
                 transition: background,filter 500ms;
+
+                --bg-alpha: 0;
+                background: linear-gradient(45deg,
+                    hsla(241, 84%, 23%, var(--bg-alpha)) 0%,
+                    hsla(244, 100%, 63%, var(--bg-alpha)) 100%);
+
+                &[loaded] {
+                    --bg-alpha: 1;
+                }
+
                 &.backgrounded, &.paused {
-                    filter: grayscale(1) brightness(0.5) blur(2px);
-                    background: hsl(241, 0%, 23%);
-                    background: linear-gradient(45deg, hsl(241, 0%, 0%) 0%, hsl(244, 0%, 20%) 100%);
+                    filter: brightness(0.75);
+                    --bg-alpha: 0.5;
                 }
             }
 
@@ -87,7 +95,7 @@
                         height: 125%;
                         transform: rotate(45deg) scale(1, 1);
                         filter: blur(40px);
-                        animation: bgChange 60s infinite ease;
+                        animation: backgroundSwirls 60s infinite ease;
                     }
                     &::after {
                         content: '';
@@ -105,17 +113,8 @@
                         height: 125%;
                         transform: rotate(45deg) scale(1, 1);
                         filter: blur(40px);
-                        animation: bgChange 30s infinite ease;
+                        animation: backgroundSwirls 30s infinite ease;
                     }
-                }
-            }
-
-            @keyframes unblur {
-                0% {
-                    filter: blur(40px);
-                }
-                100% {
-                    filter: blur(0px);
                 }
             }
 
@@ -137,12 +136,12 @@
                     color: inherit;
                     padding-left: 1ex;
                     padding-right: 1ex;
-
-                    transition: background-color 300ms, color 300ms;
+                    transition: text-shadow 300ms,
+                                color 300ms,
+                                background-size 300ms;
 
                     &:focus {
                         background-color: rgba(207, 180, 146, 0.25);
-                        color: black;
                     }
                 }
             }
@@ -150,8 +149,20 @@
             a {
                 text-decoration: none;
                 color: inherit;
+                text-shadow: 0 0 4px black;
+                transition: text-shadow 300ms,
+                            color 300ms,
+                            background-size 300ms;
+                &:focus {
+                    text-shadow: 0 4px 6px black;
+                }
             }
 
+
+            body[loaded] #main {
+                transition: filter 800ms ease-in 0ms;
+                filter: blur(0);
+            }
             #main {
                 position: relative; /* override common's "static" so we can use z-index */
                 z-index: 2;
@@ -161,7 +172,7 @@
                 overflow-x: visible;
                 padding: var(--main-padding);
                 margin: 0;
-                animation: unblur 500ms ease-in;
+                filter: blur(40px);
                 scroll-snap-type: y mandatory;
 
                 display: grid;
@@ -172,6 +183,21 @@
                 & > * {
                     scroll-snap-align: start;
                     scroll-snap-stop: always;
+                    position: relative;
+                    margin-bottom: 1em;
+
+                    & h2 {
+                        position: fixed;
+                        margin: 0;
+                        padding: 0;
+                        font-size: 1.2em;
+                        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        color:rgba(255, 255, 255, 0.5);
+                    }
+                    & ul {
+                        margin: 0;
+                        margin-top: 1.5em;
+                    }
                 }
 
                 & header {
@@ -234,6 +260,15 @@
                                 bottom: 1em;
                                 left: 1em;
                                 right: 1em;
+
+                                background-position: 75% center;
+                                background-size: 130%;
+                                background-repeat: no-repeat;
+                                filter: grayscale(0.5);
+
+                                &:focus {
+                                    background-size: 160%;
+                                }
                             }
                         }
                     }
@@ -269,6 +304,15 @@
                                 bottom: 1em;
                                 left: 1em;
                                 right: 1em;
+
+                                background-position: center 75%;
+                                background-size: 125%;
+                                background-repeat: no-repeat;
+                                filter: grayscale(0.5);
+
+                                &:focus {
+                                    background-size: 150%;
+                                }
                             }
                         }
                     }
@@ -277,35 +321,36 @@
         </style>
     </head>
 
-    <body>
+    <body class="page-fade">
         <bg-container>
             <bganims></bganims>
         </bg-container>
-        <container id="main"  class="page-fade">
+        <container id="main">
             <nav>
+                <h2>Pages</h2>
                 <ul>
                     <li>
-                        <a is="fadeout-anchor" hover-style="fire" href="vr-demo.html">
+                        <a is="fadeout-anchor" href="vr-demo.html"
+                            style="background-image: url('img/projects/kmc-vr-lab-me.jpg');">
                             Virtual Explore
-                            <audio src="audio/518616__taman21__guitar-notes-a.mp3" preload></audio>
                         </a>
                     </li>
                     <li>
-                        <a is="fadeout-anchor" hover-style="charcoal" href="project-list-view.html">
+                        <a is="fadeout-anchor" href="project-list-view.html"
+                            style="background-image: url('img/projects/steampunk-panels-karaoke.jpg');">
                             Projects
-                            <audio src="audio/518616__taman21__guitar-notes-b.mp3" preload></audio>
                         </a>
                     </li>
                     <li>
-                        <a is="fadeout-anchor" hover-style="busted" href="drag-n-drop.html">
+                        <a is="fadeout-anchor" href="drag-n-drop.html"
+                            style="background-image: url('img/projects/travelling-to-rufflecon.jpg');">
                             Tarot Cards
-                            <audio src="audio/518616__taman21__guitar-notes-c.mp3" preload></audio>
                         </a>
                     </li>
                     <li>
-                        <a is="fadeout-anchor" hover-style="focus-in" href="celestial-test.html">
+                        <a is="fadeout-anchor" href="celestial-test.html"
+                            style="background-image: url('img/projects/color-below-game.jpg');">
                             CSS Animations
-                            <audio src="audio/518616__taman21__guitar-notes-d.mp3" preload></audio>
                         </a>
                     </li>
                 </ul>
@@ -319,18 +364,43 @@
                 <button id="unmute-btn" tabindex="1">🔇</button>
             </header>
             <main>
-                <p tabindex="2">This page is meant for large screens controlled at a distance by keyboards / remotes and game controllers. Try using one of those with this page.</p>
+                <p tabindex="2" narrate="select">This page is meant for large screens controlled at a distance by keyboards / remotes and game controllers. Try using one of those with this page.</p>
             </main>
             <footer>
+                <h2>Other Home Screens</h2>
                 <ul>
-                    <li><a is="fadeout-anchor" href="home-ala-homestar.html">Flash-Like</a></li>
-                    <li><a is="fadeout-anchor" href="home-lcars.html">Sci-fi</a></li>
-                    <li><a is="fadeout-anchor" href="home-console.html">TV</a></li>
-                    <li><a is="fadeout-anchor" href="home-pro.html">Pro</a></li>
+                    <li>
+                        <a is="fadeout-anchor" href="home-ala-homestar.html"
+                        style="background-image: url('img/pages/home-flash.webp');">
+                            Flash-Like
+                        </a>
+                    </li>
+                    <li>
+                        <a is="fadeout-anchor" href="home-lcars.html"
+                        style="background-image: url('img/pages/home-lcars.webp');">
+                            Sci-fi
+                        </a>
+                    </li>
+                    <li>
+                        <a is="fadeout-anchor" href="home-console.html"
+                        style="background-image: url('img/pages/home-console.webp');">
+                            Big Picture
+                        </a>
+                    </li>
+                    <li>
+                        <a is="fadeout-anchor" href="index.html"
+                        style="background-image: url('img/pages/home-pro.webp');">
+                            Standard
+                        </a>
+                    </li>
                 </ul>
             </footer>
         </container>
-        <audio id="bg-audio" src="" loop="loop" autoplay></audio>
+        <audio id="chime-audio" src="audio/538551__sjonas88__3-select-chime.mp3"></audio>
+        <audio id="cancel-audio" src="audio/538551__sjonas88__3-select-cancel.mp3"></audio>
+        <audio id="ok-audio" src="audio/538551__sjonas88__3-select-ok.mp3"></audio>
+        <audio id="select-audio" src="audio/538551__sjonas88__3-select-3.mp3"></audio>
+        <audio id="bg-audio" src="audio/687905__tehclaw__ambient_piano__bpm62.mp3" loop="loop" autoplay></audio>
     </body>
     <script type="module" src="controllers/home-console.js"></script>
 

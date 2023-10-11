@@ -26,7 +26,6 @@
                 align-items: flex-start;
                 justify-content: center;
                 overflow: hidden;
-                text-rendering: optimizeLegibility;
 
                 & container {
                     --stripe-color-1: rgb(122, 80, 148);
@@ -44,7 +43,7 @@
                     overflow: hidden;
                     border-radius: 10px;
                     aspect-ratio: var(--ratio);
-                    width: min(calc(100vw - var(--marginx2)),
+                    width: min(calc(100% - var(--marginx2)),
                             calc(calc(100dvh * var(--ratio)) - var(--marginx2)));
 
                     & nav {
@@ -357,7 +356,7 @@
                     <li><a is="fadeout-anchor" href="home-ala-homestar.html">1</a></li>
                     <li><a is="fadeout-anchor" href="home-lcars.html">2</a></li>
                     <li><a is="fadeout-anchor" href="home-console.html">3</a></li>
-                    <li><a is="fadeout-anchor" href="home-pro.html">4</a></li>
+                    <li><a is="fadeout-anchor" href="index.html">4</a></li>
                 </ul>
             </footer>
             <button id="unmute-btn">🔇</button>

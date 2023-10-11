@@ -41,7 +41,38 @@ export default class HomeConsolePageController {
      */
     rowLastFocus = new Map()
 
+    /**
+     * Audio that plays when an item is selected (focused)
+     * @type {HTMLAudioElement}
+     */
+    selectAudio
+
+    /**
+     * Audio that plays when an item is clicked (or equivalent)
+     * @type {HTMLAudioElement}
+     */
+    okAudio
+
+    /**
+     * Audio that plays when cancel button is pushed
+     * @type {HTMLAudioElement}
+     */
+    cancelAudio
+
+    /**
+     * Audio that plays when menu button is pushed
+     * @type {HTMLAudioElement}
+     */
+    chimeAudio
+
     constructor () {
+        // Cache audio references
+        this.selectAudio = document.querySelector('audio#select-audio')
+        this.cancelAudio = document.querySelector('audio#cancel-audio')
+        this.okAudio = document.querySelector('audio#ok-audio')
+        this.chimeAudio = document.querySelector('audio#chime-audio')
+
+        // Get system info
         const browserNameEls = document.getElementsByClassName('browser-name')
         for (const el of browserNameEls)
             el.textContent = DetectedBrowser
@@ -61,43 +92,35 @@ export default class HomeConsolePageController {
 
             for (let j = 0; j < els.length; j++) {
                 els[j].addEventListener('focus', () => this.focusChanged(i, j))
+                if (els[j].getAttribute('narrate') === 'select') {
+                    els[j].addEventListener('click', () => this.narrate(els[j].textContent))
+                }
             }
         }
 
+        // Wire up events
         window.addEventListener('keydown', (e) => {
-            switch (e.key) {
-            case 'ArrowLeft':
-                this.navigate('left')
-                break
-            case 'ArrowRight':
-                this.navigate('right')
-                break
-            case 'ArrowUp':
-                this.navigate('up')
-                break
-            case 'ArrowDown':
-                this.navigate('down')
-                break
+            if (e.key.startsWith('Arrow')) {
+                this.navigate(e.key.replace('Arrow', '').toLowerCase())
+                e.preventDefault()
+                e.stopPropagation()
             }
-        }, { passive: true, capture: false })
+        }, { passive: false, capture: true })
 
         window.addEventListener('keyup', (e) => {
-            switch (e.key) {
-            case 'Home':
+            if (e.key === 'Home') {
                 this.activateMenu()
-                break
-            case 'Accept':
-            case 'Enter':
-            case ' ':
+            } else if (['Accept', 'Enter', ' '].includes(e.key)) {
                 this.accept()
-                break
-            case 'Cancel':
-            case 'Backspace':
-            case 'Escape':
+            } else if (['Cancel', 'Backspace'].includes(e.key)) {
                 this.cancel()
-                break
+            } else {
+                // no matches, so let event propagate
+                return
             }
-        }, { passive: true, capture: false })
+            e.preventDefault()
+            e.stopPropagation()
+        }, { passive: false, capture: true })
 
         window.addEventListener('focus', (e) => {
             // document.body.classList.remove('backgrounded')
@@ -107,6 +130,7 @@ export default class HomeConsolePageController {
             // document.body.classList.add('backgrounded')
         }, { passive: true, capture: false })
 
+        // Wire up gamepad events
         this.gameInput
             .onReinitialize(() => {
                 // TODO show player symbols
@@ -153,13 +177,11 @@ export default class HomeConsolePageController {
                     break
                 case GameInputButtons.button0:
                 case GameInputButtons.button1:
-                    this.accept()
-                    console.debug()
+                    this.accept(true)
                     break
                 case GameInputButtons.button2:
                 case GameInputButtons.button3:
                     this.cancel()
-                    console.debug()
                     break
                 }
             })
@@ -187,10 +209,7 @@ export default class HomeConsolePageController {
         if (!el)
             return
 
-        el.focus()
-        el.parentElement.scroll({ left: 0, behavior: 'smooth' })
-
-        this.gameInput.getPlayer(0).rumble({ duration: 200, weakMagnitude: 0.2, strongMagnitude: 0.0 })
+        el.focus({ preventScroll: true })
     }
 
     focusChanged (row, column) {
@@ -198,12 +217,25 @@ export default class HomeConsolePageController {
         this.currentFocus.column = column
 
         this.rowLastFocus.set(row, column)
-        // TODO: make noise
+
+        // make noise
+        this.audioManager.playOnce(this.selectAudio)
+
+        const el = this.focusableElements[row][column]
+        if (!el)
+            return
+
+        if (row <= 1)
+            // If element is near the top, go to the top of the page
+            document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+        else
+            // Otherwise scroll to the element
+            el.scrollIntoView({ block: "start", inline: "start", behavior: 'smooth' })
     }
 
     /**
      *
-     * @param {'up'|'down'|'left'|'right'} direction the direction to navigate.
+     * @param {string} direction the direction to navigate.
      */
     navigate (direction) {
         if (!document.hasFocus())
@@ -252,14 +284,25 @@ export default class HomeConsolePageController {
         }
     }
 
+    /**
+     * Respond to the "menu" button
+     */
     activateMenu () {
         if (!document.hasFocus())
             return
 
+        if (!document.body.classList.contains('paused'))
+            this.audioManager.playOnce(this.chimeAudio)
+        else
+            this.audioManager.playOnce(this.cancelAudio)
         document.body.classList.toggle('paused')
     }
 
-    accept () {
+    /**
+     * Respond to the "accept" button
+     * @param {boolean} fromGamepad whether this request came from a gamepad
+     */
+    accept (fromGamepad = false) {
         if (!document.hasFocus())
             return
 
@@ -267,23 +310,35 @@ export default class HomeConsolePageController {
 
         document.body.classList.remove('paused')
 
-        // TODO: make noise
+        // make noise
+        this.audioManager.playOnce(this.okAudio)
 
         const currentEl = this.focusableElements[this.currentFocus.row][this.currentFocus.column]
         if (currentEl && 'click' in currentEl) {
             currentEl.click()
-            this.gameInput.getPlayer(0).rumble({ duration: 200, weakMagnitude: 0.0, strongMagnitude: 0.2 })
+            if (fromGamepad)
+                this.gameInput.getPlayer(0).rumble({ duration: 200, weakMagnitude: 0.0, strongMagnitude: 0.2 })
         }
     }
 
+    /**
+     * Respond to the "cancel" button
+     */
     cancel () {
         if (!document.hasFocus())
             return
 
         document.body.classList.remove('paused')
 
-        // TODO: make noise
+        // make noise
+        this.audioManager.playOnce(this.cancelAudio)
+
         console.debug('cancel/exit')
+    }
+
+    narrate (text) {
+        speechSynthesis.cancel()
+        speechSynthesis.speak(new SpeechSynthesisUtterance(text))
     }
 }
 

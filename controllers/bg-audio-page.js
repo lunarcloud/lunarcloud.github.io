@@ -85,4 +85,19 @@ export default class BgAudioManager {
                 })
         }
     }
+
+    /**
+     * Play a non-looping sound (if not muted)
+     * @param {Element | string} element    element to handle events for.
+     */
+    playOnce (element) {
+        if (typeof element === 'string')
+            element = document.querySelector(element)
+
+        // make noise
+        if (!this.muted && element instanceof HTMLAudioElement) {
+            element.currentTime = 0
+            element.play()
+        }
+    }
 }
