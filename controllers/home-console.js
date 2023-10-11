@@ -41,7 +41,38 @@ export default class HomeConsolePageController {
      */
     rowLastFocus = new Map()
 
+    /**
+     * Audio that plays when an item is selected (focused)
+     * @type {HTMLAudioElement}
+     */
+    selectAudio
+
+    /**
+     * Audio that plays when an item is clicked (or equivalent)
+     * @type {HTMLAudioElement}
+     */
+    okAudio
+
+    /**
+     * Audio that plays when cancel button is pushed
+     * @type {HTMLAudioElement}
+     */
+    cancelAudio
+
+    /**
+     * Audio that plays when menu button is pushed
+     * @type {HTMLAudioElement}
+     */
+    chimeAudio
+
     constructor () {
+        // Cache audio references
+        this.selectAudio = document.querySelector('audio#select-audio')
+        this.cancelAudio = document.querySelector('audio#cancel-audio')
+        this.okAudio = document.querySelector('audio#ok-audio')
+        this.chimeAudio = document.querySelector('audio#chime-audio')
+
+        // Get system info
         const browserNameEls = document.getElementsByClassName('browser-name')
         for (const el of browserNameEls)
             el.textContent = DetectedBrowser
@@ -61,9 +92,13 @@ export default class HomeConsolePageController {
 
             for (let j = 0; j < els.length; j++) {
                 els[j].addEventListener('focus', () => this.focusChanged(i, j))
+                if (els[j].getAttribute('narrate') === 'select') {
+                    els[j].addEventListener('click', () => this.narrate(els[j].textContent))
+                }
             }
         }
 
+        // Wire up events
         window.addEventListener('keydown', (e) => {
             if (e.key.startsWith('Arrow')) {
                 this.navigate(e.key.replace('Arrow', '').toLowerCase())
@@ -95,6 +130,7 @@ export default class HomeConsolePageController {
             // document.body.classList.add('backgrounded')
         }, { passive: true, capture: false })
 
+        // Wire up gamepad events
         this.gameInput
             .onReinitialize(() => {
                 // TODO show player symbols
@@ -181,7 +217,9 @@ export default class HomeConsolePageController {
         this.currentFocus.column = column
 
         this.rowLastFocus.set(row, column)
-        // TODO: make noise
+
+        // make noise
+        this.audioManager.playOnce(this.selectAudio)
 
         const el = this.focusableElements[row][column]
         if (!el)
@@ -253,6 +291,10 @@ export default class HomeConsolePageController {
         if (!document.hasFocus())
             return
 
+        if (!document.body.classList.contains('paused'))
+            this.audioManager.playOnce(this.chimeAudio)
+        else
+            this.audioManager.playOnce(this.cancelAudio)
         document.body.classList.toggle('paused')
     }
 
@@ -268,7 +310,8 @@ export default class HomeConsolePageController {
 
         document.body.classList.remove('paused')
 
-        // TODO: make noise
+        // make noise
+        this.audioManager.playOnce(this.okAudio)
 
         const currentEl = this.focusableElements[this.currentFocus.row][this.currentFocus.column]
         if (currentEl && 'click' in currentEl) {
@@ -287,8 +330,15 @@ export default class HomeConsolePageController {
 
         document.body.classList.remove('paused')
 
-        // TODO: make noise
+        // make noise
+        this.audioManager.playOnce(this.cancelAudio)
+
         console.debug('cancel/exit')
+    }
+
+    narrate (text) {
+        speechSynthesis.cancel()
+        speechSynthesis.speak(new SpeechSynthesisUtterance(text))
     }
 }
 
