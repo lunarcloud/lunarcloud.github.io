@@ -343,7 +343,8 @@ export default class HomeConsolePageController {
 
     narrate (text) {
         speechSynthesis.cancel()
-        speechSynthesis.speak(new SpeechSynthesisUtterance(text))
+        if (!this.audioManager.muted)
+            speechSynthesis.speak(new SpeechSynthesisUtterance(text))
     }
 }
 
