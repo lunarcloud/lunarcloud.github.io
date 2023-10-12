@@ -17,6 +17,7 @@
             body {
                 top: 0;
                 bottom: 0;
+                background-color: #222;
                 position: fixed;
                 height: 100dvh;
                 width: 100vw;
@@ -78,6 +79,7 @@
                         & h1 {
                             font-size: 2.5em;
                             background-color: black;
+                            color: #ddd;
                             border-radius: 50%;
                             text-align: center;
                             margin: 0 15%;
@@ -271,16 +273,25 @@
                         }
                     }
 
-                    & #unmute-btn {
+                    & #mute-btn {
                         z-index: 20;
                         position: absolute;
-                        bottom: 1em;
-                        right: 1em;
-                        font-size: 200%;
+                        bottom: 0.25em;
+                        right: 0.25em;
+                        font-size: 400%;
                         background-color: transparent;
                         border-color: transparent;
+
                         &:hover {
                             text-shadow: 0px 1px 4px #fff6;
+                        }
+
+                        &.on > .off {
+                            display: none;
+                        }
+
+                        &:not(.on) > .on {
+                            display: none;
                         }
                     }
                 }
@@ -359,7 +370,10 @@
                     <li><a is="fadeout-anchor" href="index.html">4</a></li>
                 </ul>
             </footer>
-            <button id="unmute-btn">🔇</button>
+            <button id="mute-btn">
+                <span class="off">🔊</span>
+                <span class="on">🔇</span>
+            </button>
         </container>
         <audio id="bg-audio" src="audio/536935__defaultv__campfire.mp3" loop="loop" autoplay></audio>
     </body>

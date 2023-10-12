@@ -105,6 +105,11 @@ export default class HomeConsolePageController {
                 e.preventDefault()
                 e.stopPropagation()
             }
+            if (['Accept', 'Enter', ' ', 'Cancel', 'Backspace'].includes(e.key)) {
+                // Will be handling on key up
+                e.preventDefault()
+                e.stopPropagation()
+            }
         }, { passive: false, capture: true })
 
         window.addEventListener('keyup', (e) => {

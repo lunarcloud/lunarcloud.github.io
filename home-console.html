@@ -14,8 +14,13 @@
         <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
 
         <style>
+
+            :root {
+                --main-color-bg: black;
+                --main-color-text: #ccc;
+            }
+
             html {
-                background-color: black;
                 height: unset;
             }
 
@@ -318,6 +323,16 @@
                     }
                 }
             }
+
+            #mute-btn {
+                &.on > .off {
+                    display: none;
+                }
+
+                &:not(.on) > .on {
+                    display: none;
+                }
+            }
         </style>
     </head>
 
@@ -361,7 +376,10 @@
             <header class="right">
                 <span class="browser-name"></span>
                 <span class="os-name"></span>
-                <button id="unmute-btn" tabindex="1">🔇</button>
+                <button id="mute-btn" title="Toggle Audio Mute" tabindex="1">
+                    <span class="off">🔊</span>
+                    <span class="on">🔇</span>
+                </button>
             </header>
             <main>
                 <p tabindex="2" narrate="select">This page is meant for large screens controlled at a distance by keyboards / remotes and game controllers. Try using one of those with this page.</p>
