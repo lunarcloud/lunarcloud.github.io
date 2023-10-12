@@ -55,6 +55,7 @@ export default class BgAudioManager {
 
         if (this.muted) {
             this.bgAudio.pause()
+            speechSynthesis?.cancel()
             document.getElementById('mute-btn').classList.add('on')
         } else {
             this.bgAudio.play()
@@ -77,7 +78,7 @@ export default class BgAudioManager {
 
     /**
      * Setup elements which may need to play sounds.
-     * @param {Array<Element> | string} elements elements to handle events for.
+     * @param {Array<Element>|NodeListOf<Element>|string} elements elements to handle events for.
      * @param {Function} onHover Element hovering handler.
      * @param {Function} onLeave Element un-hovering handler.
      * @param {Function} onClick Element clicking handler.
@@ -85,6 +86,9 @@ export default class BgAudioManager {
     setupElements (elements, onHover, onLeave, onClick) {
         if (typeof elements === 'string')
             elements = document.querySelectorAll(elements)
+
+        if (!(elements?.[0] instanceof Element))
+            throw new Error('Error during setup, can\'t use these elements')
 
         for (const el of elements) {
             if (onHover) {
