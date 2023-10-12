@@ -17,24 +17,49 @@ export default class BgAudioManager {
      * Constructor.
      */
     constructor () {
-        this.bgAudio = document.getElementById('bg-audio')
+        // Find the background audio element
+        const bgAudioEl = document.getElementById('bg-audio')
+        if (bgAudioEl instanceof HTMLAudioElement)
+            this.bgAudio = bgAudioEl
+        else
+            throw new Error("BG Audio isn't an audio element!")
+
         this.bgAudio.pause() // prevents weirdness with navigation
+
+        if (localStorage.getItem('muted') === 'true') {
+            this.muteToggle(true)
+        } else {
+            // Detect whether we are muted
+            this.bgAudio.currentTime = 0
+            this.bgAudio.play()
+                .then(() => this.muteToggle(false))
+                .catch(() => this.muteToggle(true))
+        }
+
         document.addEventListener('visibilitychange', () => this.pageVisibilityChanged())
 
-        document.getElementById('unmute-btn')
-            .addEventListener('click', () => this.unmuteFn(), { once: true, passive: true })
-        document.getElementById('unmute-btn')
-            .addEventListener('touchend', () => this.unmuteFn(), { once: true, passive: true })
+        document.getElementById('mute-btn')
+            .addEventListener('click', () => this.muteToggle(), { once: false, passive: true })
+
+        document.getElementById('mute-btn')
+            .addEventListener('touchend', () => this.muteToggle(), { once: false, passive: true })
     }
 
     /**
-     * Unmute.
+     * Update the muted value.
+     * @param {boolean} value what to set mute to (defaults to toggle)
      */
-    unmuteFn () {
-        this.muted = false
-        this.bgAudio.play()
+    muteToggle (value = !this.muted) {
+        this.muted = value
+        localStorage.setItem('muted', value ? 'true' : 'false')
 
-        document.getElementById('unmute-btn').style.display = 'none'
+        if (this.muted) {
+            this.bgAudio.pause()
+            document.getElementById('mute-btn').classList.add('on')
+        } else {
+            this.bgAudio.play()
+            document.getElementById('mute-btn').classList.remove('on')
+        }
     }
 
     /**

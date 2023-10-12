@@ -19,16 +19,17 @@
 
             :root {
                 --main-color-bg: black;
+                --main-color-text: #ccc;
                 --main-font-body: "Okuda", sans-serif;
                 --main-font-headers: "Okuda", sans-serif;
                 --main-font-size: 7mm;
 
                 --trek-color-red: #cb5449;
-                    --trek-color-blue: #7a87f8;
-                    --trek-color-orange: #ed822c;
-                    --trek-color-peach: #f2af94;
-                    --trek-color-magenta: #bc5196;
-                    --trek-color-periwinkle: #c18cf9;
+                --trek-color-blue: #7a87f8;
+                --trek-color-orange: #ed822c;
+                --trek-color-peach: #f2af94;
+                --trek-color-magenta: #bc5196;
+                --trek-color-periwinkle: #c18cf9;
             }
 
             html, body {
@@ -48,7 +49,7 @@
                 letter-spacing: 0.35mm;
             }
 
-            #unmute-btn {
+            #mute-btn {
                 z-index: 20;
                 position: absolute;
                 top: 58mm;
@@ -56,8 +57,17 @@
                 font-size: 9mm;
                 background-color: transparent;
                 border-color: transparent;
+
                 &:hover {
                     text-shadow: 0px 1mm 4mm #fff6;
+                }
+
+                &.on > .off {
+                    display: none;
+                }
+
+                &:not(.on) > .on {
+                    display: none;
                 }
             }
 
@@ -435,7 +445,7 @@
                         </a>
                     </li>
                     <li>
-                        <a is="fadeout-anchor" hover="audio" href="home-pro.html">
+                        <a is="fadeout-anchor" hover="audio" href="index.html">
                             Standard
                         </a>
                     </li>
@@ -493,7 +503,10 @@
                 </p>
             </main>
 
-            <button id="unmute-btn">🔇</button>
+            <button id="mute-btn" title="Toggle Audio Mute">
+                <span class="off">🔊</span>
+                <span class="on">🔇</span>
+            </button>
 
             <decoration class="page-fade">
                 <ul>
