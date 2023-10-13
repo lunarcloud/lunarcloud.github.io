@@ -10,13 +10,13 @@
 /* Variables */
 :root,
 ::backdrop {
-  --main-color-nav-text: #333;
+  --main-color-nav-text: #222;
   --main-color-nav-bg: #eee;
   --main-color-nav-button-bg: #ccc;
   --main-color-nav-border: #a3e;
   --main-color-nav-button-border: #b9d;
-  --main-color-bg: #ccc;
-  --main-color-text: #333;
+  --main-color-bg: #ddd;
+  --main-color-text: #222;
   --dialog-color-backdrop: rgb(100 100 100 / 70%);
   --main-a-link-color: #488948;
   --main-a-hover-color: #319131;
@@ -25,7 +25,7 @@
   --high-readability-font: "Lexend Deca", sans-serif;
   --print-readability-font: "Gentium Book Basic", serif;
   --handwritten-font: "Sam Handwritten A", sans-serif;
-  --main-font-headers: var(--handwritten-font);
+  --main-font-headers: var(--high-readability-font);
   --main-font-body: var(--high-readability-font);
   --main-font-size: 10pt;
   --top-nav-height: 0;
@@ -59,12 +59,12 @@
 @media screen and (prefers-color-scheme: dark) {
   :root,
   ::backdrop {
-    --main-color-nav-text: #ccc;
-    --main-color-nav-bg: #222;
+    --main-color-nav-text: #ddd;
+    --main-color-nav-bg: #111;
     --main-color-nav-button-bg: #343343;
     --main-color-nav-button-border: #435;
-    --main-color-bg: #333;
-    --main-color-text: #ccc;
+    --main-color-bg: #222;
+    --main-color-text: #ddd;
     --dialog-color-backdrop: rgb(0 0 0 / 70%);
   }
 }
@@ -172,6 +172,12 @@
     100% {
       transform: scale(1);
     }
+  }
+
+  @keyframes bouncing {
+    0% { transform: translateY(0);}
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
   }
 }
 
@@ -298,14 +304,3 @@ together {
   white-space: nowrap;
 }
 
-hero {
-  display: block;
-  margin-top: 3vh;
-  margin-left: 2rem;
-  padding: 12px 16px 12px 6px;
-  font-size: 1.5rem;
-}
-
-hero h1 {
-  font-size: 4rem;
-}
