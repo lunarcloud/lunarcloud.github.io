@@ -10,330 +10,8 @@
 
         <link rel="manifest" href="./ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="common.css">
+        <link rel="stylesheet" href="css/home-console.css">
         <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
-
-        <style>
-
-            :root {
-                --main-color-bg: black;
-                --main-color-text: #ccc;
-            }
-
-            html {
-                height: unset;
-            }
-
-            @keyframes backgroundSwirls {
-                0% {
-                    transform: rotate(0deg) scale(1, 1);
-                }
-                25% {
-                    transform: rotate(90deg) scale(1, -1) translateY(25%);
-                }
-                50% {
-                    transform: rotate(180deg) scale(1, 1) translateY(50%);
-                }
-                75% {
-                    transform: rotate(270deg) scale(1, -1) translateY(25%);
-                }
-                100% {
-                    transform: rotate(360deg) scale(1, 1);
-                }
-            }
-
-            body {
-                padding: 0;
-                margin: 0;
-                width: 100%;
-                height: fit-content;
-                overflow-x: hidden;
-                overflow-y: auto;
-                scrollbar-gutter: stable both-edges;
-                transition: background,filter 500ms;
-
-                --bg-alpha: 0;
-                background: linear-gradient(45deg,
-                    hsla(241, 84%, 23%, var(--bg-alpha)) 0%,
-                    hsla(244, 100%, 63%, var(--bg-alpha)) 100%);
-
-                &[loaded] {
-                    --bg-alpha: 1;
-                }
-
-                &.backgrounded, &.paused {
-                    filter: brightness(0.75);
-                    --bg-alpha: 0.5;
-                }
-            }
-
-            bg-container {
-                position: absolute;
-                top: 0; bottom: 0; left: 0; right: 0;
-                z-index: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                display: block;
-
-                & bganims {
-                    position: absolute;
-                    top: 0; bottom: 0; left: 0; right: 0;
-                    z-index: 0;
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-
-                    &::before {
-                        content: '';
-                        user-select: none;
-                        z-index: 0;
-                        /* border: 1px solid black; */
-                        border-radius: 20%;
-                        box-shadow:     0px 0px 15px 8px #4db7b6,
-                                inset   0px 0px 15px 8px #4db7b6;
-                        position: absolute;
-                        overflow: hidden;
-                        top: 25%;
-                        left: 0%;
-                        width: 125%;
-                        height: 125%;
-                        transform: rotate(45deg) scale(1, 1);
-                        filter: blur(40px);
-                        animation: backgroundSwirls 60s infinite ease;
-                    }
-                    &::after {
-                        content: '';
-                        user-select: none;
-                        z-index: 0;
-                        /* border: 1px solid black; */
-                        border-radius: 20%;
-                        box-shadow:     0px 0px 15px 8px #76617b,
-                                inset   0px 0px 15px 8px #76617b;
-                        position: absolute;
-                        overflow: hidden;
-                        top: 25%;
-                        left: 0%;
-                        width: 125%;
-                        height: 125%;
-                        transform: rotate(45deg) scale(1, 1);
-                        filter: blur(40px);
-                        animation: backgroundSwirls 30s infinite ease;
-                    }
-                }
-            }
-
-            a[href],
-            area[href],
-            input:not([disabled]),
-            select:not([disabled]),
-            textarea:not([disabled]),
-            button:not([disabled]),
-            iframe,
-            [tabindex],
-            [contentEditable=true]
-            {
-                &:not([tabindex='-1'])
-                {
-                    /* focusable elements */
-                    border-radius: 4px;
-                    background-color: rgba(0, 0, 0, 0.05);
-                    color: inherit;
-                    padding-left: 1ex;
-                    padding-right: 1ex;
-                    transition: text-shadow 300ms,
-                                color 300ms,
-                                background-size 300ms;
-
-                    &:focus {
-                        background-color: rgba(207, 180, 146, 0.25);
-                    }
-                }
-            }
-
-            a {
-                text-decoration: none;
-                color: inherit;
-                text-shadow: 0 0 4px black;
-                transition: text-shadow 300ms,
-                            color 300ms,
-                            background-size 300ms;
-                &:focus {
-                    text-shadow: 0 4px 6px black;
-                }
-            }
-
-
-            body[loaded] #main {
-                transition: filter 800ms ease-in 0ms;
-                filter: blur(0);
-            }
-            #main {
-                position: relative; /* override common's "static" so we can use z-index */
-                z-index: 2;
-                height: fit-content;
-                --main-padding: 3em;
-                width: calc(100% - calc(2 * var(--main-padding)));
-                overflow-x: visible;
-                padding: var(--main-padding);
-                margin: 0;
-                filter: blur(40px);
-                scroll-snap-type: y mandatory;
-
-                display: grid;
-                grid-template-columns: 1fr auto;
-
-                font-size: 2dvw;
-
-                & > * {
-                    scroll-snap-align: start;
-                    scroll-snap-stop: always;
-                    position: relative;
-                    margin-bottom: 1em;
-
-                    & h2 {
-                        position: fixed;
-                        margin: 0;
-                        padding: 0;
-                        font-size: 1.2em;
-                        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                        color:rgba(255, 255, 255, 0.5);
-                    }
-                    & ul {
-                        margin: 0;
-                        margin-top: 1.5em;
-                    }
-                }
-
-                & header {
-                    grid-row: 1;
-
-                    & h1 {
-                        margin-top: 0;
-                        font-size: 2em;
-                    }
-
-                    &.left {
-                        grid-column: 1;
-                    }
-                    &.right {
-                        grid-column: 2;
-                        align-content: end;
-
-                        & > * {
-                            background-color: rgba(0, 0, 0, 0.3);
-                            border-radius: 50%;
-                        }
-                        & > span {
-                            display: inline-block;
-                            padding: 2px 4px;
-                        }
-                    }
-                }
-                & main {
-                    grid-row: 2;
-                    grid-column: 1 / 3;
-                }
-                & nav {
-                    grid-row: 3;
-                    grid-column: 1 / 3;
-
-                    width: 100%;
-                    overflow-x: scroll;
-                    scroll-snap-type: x mandatory;
-
-                    &::-webkit-scrollbar {
-                        width: 0;
-                    }
-
-                    & > ul {
-                        display: flex;
-                        width: fit-content;
-
-                        & > li {
-                            display: block;
-                            position: relative;
-                            scroll-snap-align: start;
-                            scroll-snap-stop: always;
-
-                            width: 40dvw;
-                            aspect-ratio: 4/3;
-
-                            & > a {
-                                position: absolute;
-                                top: 1em;
-                                bottom: 1em;
-                                left: 1em;
-                                right: 1em;
-
-                                background-position: 75% center;
-                                background-size: 130%;
-                                background-repeat: no-repeat;
-                                filter: grayscale(0.5);
-
-                                &:focus {
-                                    background-size: 160%;
-                                }
-                            }
-                        }
-                    }
-                }
-                & footer {
-                    grid-row: 4;
-                    grid-column: 1 / 3;
-
-                    width: 100%;
-                    overflow-x: scroll;
-                    scroll-snap-type: x mandatory;
-
-                    &::-webkit-scrollbar {
-                        width: 0;
-                    }
-
-                    & > ul {
-                        display: flex;
-                        width: fit-content;
-
-                        & > li {
-                            display: block;
-                            position: relative;
-                            scroll-snap-align: start;
-                            scroll-snap-stop: always;
-
-                            width: 25dvw;
-                            aspect-ratio: 4/3;
-
-                            & > a {
-                                position: absolute;
-                                top: 1em;
-                                bottom: 1em;
-                                left: 1em;
-                                right: 1em;
-
-                                background-position: center 75%;
-                                background-size: 125%;
-                                background-repeat: no-repeat;
-                                filter: grayscale(0.5);
-
-                                &:focus {
-                                    background-size: 150%;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            #mute-btn {
-                &.on > .off {
-                    display: none;
-                }
-
-                &:not(.on) > .on {
-                    display: none;
-                }
-            }
-        </style>
     </head>
 
     <body class="page-fade">
@@ -342,14 +20,8 @@
         </bg-container>
         <container id="main">
             <nav>
-                <h2>Pages</h2>
+                <h2>Explore</h2>
                 <ul>
-                    <li>
-                        <a is="fadeout-anchor" href="vr-demo.html"
-                            style="background-image: url('img/projects/kmc-vr-lab.jpg');">
-                            Virtual Explore
-                        </a>
-                    </li>
                     <li>
                         <a is="fadeout-anchor" href="project-list-view.html"
                             style="background-image: url('img/projects/steampunk-panels-karaoke.jpg');">
@@ -357,15 +29,9 @@
                         </a>
                     </li>
                     <li>
-                        <a is="fadeout-anchor" href="drag-n-drop.html"
-                            style="background-image: url('img/projects/travelling-to-rufflecon.jpg');">
-                            Tarot Cards
-                        </a>
-                    </li>
-                    <li>
-                        <a is="fadeout-anchor" href="celestial-test.html"
-                            style="background-image: url('img/projects/color-below-game.jpg');">
-                            CSS Animations
+                        <a is="fadeout-anchor" href="3d-showcase.html"
+                            style="background-image: url('img/projects/kmc-vr-lab.jpg');">
+                            3-D Showcase
                         </a>
                     </li>
                 </ul>
@@ -385,8 +51,14 @@
                 <p tabindex="2" narrate="select">This page is meant for large screens controlled at a distance by keyboards / remotes and game controllers. Try using one of those with this page.</p>
             </main>
             <footer>
-                <h2>Other Home Screens</h2>
+                <h2>Home Screens</h2>
                 <ul>
+                    <li>
+                        <a is="fadeout-anchor" href="index.html"
+                        style="background-image: url('img/pages/home-pro.webp');">
+                            Standard
+                        </a>
+                    </li>
                     <li>
                         <a is="fadeout-anchor" href="home-ala-homestar.html"
                         style="background-image: url('img/pages/home-flash.webp');">
@@ -403,12 +75,6 @@
                         <a is="fadeout-anchor" href="home-console.html"
                         style="background-image: url('img/pages/home-console.webp');">
                             Big Picture
-                        </a>
-                    </li>
-                    <li>
-                        <a is="fadeout-anchor" href="index.html"
-                        style="background-image: url('img/pages/home-pro.webp');">
-                            Standard
                         </a>
                     </li>
                 </ul>

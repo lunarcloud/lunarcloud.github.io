@@ -10,293 +10,8 @@
 
         <link rel="manifest" href="./ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="common.css">
+        <link rel="stylesheet" href="css/home-ala-homestar.css">
         <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
-
-        <style>
-            body {
-                top: 0;
-                bottom: 0;
-                background-color: #222;
-                position: fixed;
-                height: 100dvh;
-                width: 100vw;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                align-items: flex-start;
-                justify-content: center;
-                overflow: hidden;
-
-                & container {
-                    --stripe-color-1: rgb(122, 80, 148);
-                    --stripe-color-2: rgb(202, 209, 201);
-                    --stripe-color-3: rgb(173, 128, 79);
-                    --stripe-color-4: rgb(218, 135, 47);
-                    --margin: 4mm;
-                    --marginx2: calc(var(--margin) * 2);
-                    --ratio: calc(4 / 3);
-                    --min1vx: min(1vw, 1dvh);
-                    position: relative;
-                    font-size: calc(var(--min1vx) * 1.01);
-                    margin: var(--margin);
-                    background-color: black;
-                    overflow: hidden;
-                    border-radius: 10px;
-                    aspect-ratio: var(--ratio);
-                    width: min(calc(100% - var(--marginx2)),
-                            calc(calc(100dvh * var(--ratio)) - var(--marginx2)));
-
-                    & nav {
-                        position: absolute;
-                        top: 0;
-                        bottom: 0;
-                        left: 0;
-                        width: 25%;
-                        z-index: 5;
-                        padding-top: 1%;
-                        font-size: 2em;
-
-                        &:before {
-                            content: ' ';
-                            display: block;
-                            z-index: -2;
-                            position: absolute;
-                            top: 0;
-                            bottom: 0;
-                            left: 0;
-                            width: 150%;
-                            background: var(--stripe-color-1);
-                            background: linear-gradient(90deg,
-                                    var(--stripe-color-1) 0%, var(--stripe-color-1) 19%,
-                                    white 19.1%, white 20%,
-                                    var(--stripe-color-2) 20.1%, var(--stripe-color-2) 39%,
-                                    white 39.1%, white 40%,
-                                    var(--stripe-color-3) 40.1%, var(--stripe-color-4) 100%);
-                            clip-path: url(#nav-clip);
-                        }
-
-                        & h1 {
-                            font-size: 2.5em;
-                            background-color: black;
-                            color: #ddd;
-                            border-radius: 50%;
-                            text-align: center;
-                            margin: 0 15%;
-                            width: 50%;
-                            padding: 1% 2%;
-                        }
-
-                        & ul {
-                            list-style: none;
-                            width: 200%;
-                            height: 80%;
-                            overflow: visible;
-                            display: grid;
-                            padding-left: 25%;
-                            grid-template-rows: repeat(4, 1fr);
-
-                            & li {
-                                text-align: center;
-                                height: 90%;
-                                padding: 2%;
-                                --padding-left-li: 6%;
-                                padding-left: var(--padding-left-li);
-                                display: grid;
-                                align-items: center;
-
-                                &:nth-of-type(2) {
-                                    padding-left: calc(var(--padding-left-li) * 2);
-                                }
-
-                                &:nth-of-type(3) {
-                                    padding-left: calc(var(--padding-left-li) * 3);
-                                }
-
-                                &:nth-of-type(4) {
-                                    padding-left: calc(var(--padding-left-li) * 5);
-                                }
-
-
-                                & a:is(:link, :visited) {
-                                    --home-btn-text-color: #ccc;
-                                    user-select: none;
-                                    display: block;
-                                    text-decoration: none;
-                                    font-size: 125%;
-                                    font-weight: bold;
-                                    color: var(--home-btn-text-color);
-                                    background-color: rgb(85, 20, 77);
-                                    border: 0.25em solid #333;
-                                    border-width: 0 0 0.25em;
-                                    border-radius: 1em;
-                                    padding: 6% 0;
-                                    width: 50%;
-
-                                    &:hover {
-                                        color: var(--home-btn-text-color);
-
-                                        &:not(:active):not(:disabled) {
-                                            border-width: 0 0 0.30em;
-                                            filter: brightness(1.1);
-                                        }
-                                    }
-
-                                    &:active {
-                                        border-width: 0 0 0.1em;
-                                    }
-
-                                }
-                            }
-                        }
-                    }
-
-                    & header {
-                        background: var(--stripe-color-1);
-                        background: linear-gradient(180deg,
-                                var(--stripe-color-1) 0%, var(--stripe-color-1) 20%,
-                                white 20.1%, white 21%,
-                                var(--stripe-color-2) 35%, var(--stripe-color-2) 68%,
-                                white 68.1%, white 69%,
-                                var(--stripe-color-3) 70%, var(--stripe-color-3) 100%);
-                        z-index: 3;
-                        position: absolute;
-                        top: 0;
-                        left: 20%;
-                        width: 85%;
-                        height: 10%;
-                        text-wrap: nowrap;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        padding-left: 10%;
-                        clip-path: url(#header-clip);
-                        box-shadow: inset 1em -0.25em 1em 0px black;
-
-                        & h1 {
-                            color: #222;
-                            text-shadow: 1px 1px 5px #946f6f;
-                            padding: 0;
-                            font-size: 500%;
-                            width: 100%;
-                            text-align: center;
-                        }
-                    }
-
-                    & main {
-                        position: absolute;
-                        top: 0;
-                        bottom: 0;
-                        left: 20%;
-                        right: 0;
-                        z-index: 1;
-                        background: #333;
-                        display: grid;
-                        align-content: center;
-                        transition-duration: 500ms;
-
-                        & img {
-                            width: 100%;
-                            transition-property: filter, rotate, width, margin;
-                            transition-duration: 300ms;
-                            transition-timing-function: ease-in-out;
-
-                            &.fire {
-                                filter: sepia(0.5) hue-rotate(-30deg) saturate(1.5);
-                                rotate: 5deg;
-                                width: 170%;
-                                margin-left: -60%;
-                                margin-top: -130%;
-                            }
-
-                            &.busted {
-                                filter: contrast(2) grayscale(1);
-                                width: 170%;
-                                margin-left: -12%;
-                                margin-top: -11%;
-                            }
-
-                            &.charcoal {
-                                filter: invert(0.75);
-                                rotate: -15deg;
-                                width: 170%;
-                                margin-left: -50%;
-                                margin-top: 20%;
-                            }
-
-                            &.focus-in {
-                                filter: sepia(0.5) saturate(10) hue-rotate(30deg);
-                                rotate: 15deg;
-                                width: 200%;
-                                margin-top: -100%;
-                            }
-                        }
-                    }
-
-                    & footer {
-                        z-index: 10;
-                        position: absolute;
-                        bottom: 12px;
-                        left: 12px;
-                        font-size: 200%;
-
-                        & ul {
-                            margin: 0;
-                            padding: 0;
-                            list-style-type: none;
-                            display: flex;
-                            flex-direction: row;
-                            width: 100%;
-
-                            & li {
-                                margin-right: 1em;
-
-                                & a, a:link, a:visited {
-                                    display: inline-block;
-                                    text-decoration: none;
-                                    padding: 0.125em 0.5em;
-                                    border-radius: 50%;
-                                    border: 2px solid #ccc;
-                                    box-shadow: 0 0 6px 0 rgba(0,0,0,0.4);
-                                    background-color: #222;
-                                    color: whitesmoke;
-                                    transition: all 100ms ease-in-out;
-
-                                    &:hover {
-                                        box-shadow: 0 0 6px 0 rgba(0,0,0,0.6);
-                                        scale: 110%;
-                                    }
-                                }
-
-                            }
-
-                        }
-                    }
-
-                    & #mute-btn {
-                        z-index: 20;
-                        position: absolute;
-                        bottom: 0.25em;
-                        right: 0.25em;
-                        font-size: 400%;
-                        background-color: transparent;
-                        border-color: transparent;
-
-                        &:hover {
-                            text-shadow: 0px 1px 4px #fff6;
-                        }
-
-                        &.on > .off {
-                            display: none;
-                        }
-
-                        &:not(.on) > .on {
-                            display: none;
-                        }
-                    }
-                }
-            }
-        </style>
     </head>
 
     <body>
@@ -305,8 +20,8 @@
                 <h1>S★S</h1>
                 <ul>
                     <li>
-                        <a is="fadeout-anchor" hover-style="fire" href="vr-demo.html">
-                            Virtual Explore
+                        <a is="fadeout-anchor" hover-style="fire" href="3d-showcase.html">
+                            3-D Showcase
                             <audio src="audio/518616__taman21__guitar-notes-a.mp3" preload></audio>
                         </a>
                     </li>
@@ -317,14 +32,14 @@
                         </a>
                     </li>
                     <li>
-                        <a is="fadeout-anchor" hover-style="busted" href="drag-n-drop.html">
-                            Tarot Cards
+                        <a hover-style="busted" href="#">
+                            ?
                             <audio src="audio/518616__taman21__guitar-notes-c.mp3" preload></audio>
                         </a>
                     </li>
                     <li>
-                        <a is="fadeout-anchor" hover-style="focus-in" href="celestial-test.html">
-                            CSS Animations
+                        <a hover-style="focus-in" href="#">
+                            ?
                             <audio src="audio/518616__taman21__guitar-notes-d.mp3" preload></audio>
                         </a>
                     </li>
@@ -364,10 +79,10 @@
             </main>
             <footer>
                 <ul>
-                    <li><a is="fadeout-anchor" href="home-ala-homestar.html">1</a></li>
-                    <li><a is="fadeout-anchor" href="home-lcars.html">2</a></li>
-                    <li><a is="fadeout-anchor" href="home-console.html">3</a></li>
-                    <li><a is="fadeout-anchor" href="index.html">4</a></li>
+                    <li><a is="fadeout-anchor" href="index.html">1</a></li>
+                    <li><a is="fadeout-anchor" href="home-ala-homestar.html">2</a></li>
+                    <li><a is="fadeout-anchor" href="home-lcars.html">3</a></li>
+                    <li><a is="fadeout-anchor" href="home-console.html">4</a></li>
                 </ul>
             </footer>
             <button id="mute-btn" title="Toggle Audio Mute">
