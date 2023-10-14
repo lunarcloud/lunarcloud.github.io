@@ -1,5 +1,5 @@
-@import url("./page-fade/page-fade.css");
-@import url("./project-display/project-tags.css");
+@import url("../page-fade/page-fade.css");
+@import url("../project-display/project-tags.css");
 
 /* fonts */
 @font-face {
@@ -17,17 +17,17 @@
   --main-color-nav-button-border: #b9d;
   --main-color-bg: #ddd;
   --main-color-text: #222;
-  --dialog-color-backdrop: rgb(100 100 100 / 70%);
-  --main-a-link-color: #488948;
-  --main-a-hover-color: #319131;
-  --main-a-active-color: #316c31;
-  --main-a-visited-color: #528379;
+  --dialog-color-backdrop: hsl(0deg 0% 39% / 70%);
+  --main-a-link-color: hsl(220deg 31% 41%);
+  --main-a-hover-color: hsl(220deg 49% 38%);
+  --main-a-active-color: hsl(220deg 38% 31%);
+  --main-a-visited-color: hsl(268deg 23% 42%);
   --high-readability-font: "Lexend Deca", sans-serif;
   --print-readability-font: "Gentium Book Basic", serif;
   --handwritten-font: "Sam Handwritten A", sans-serif;
   --main-font-headers: var(--high-readability-font);
   --main-font-body: var(--high-readability-font);
-  --main-font-size: 10pt;
+  --main-font-size: 11pt;
   --top-nav-height: 0;
 }
 
@@ -36,7 +36,7 @@
   ::backdrop {
     --main-color-bg: white;
     --main-color-text: black;
-    --dialog-color-backdrop: rgb(255 255 255 / 90%);
+    --dialog-color-backdrop: hsl(0deg 0% 100% / 90%);
   }
 }
 
@@ -65,7 +65,7 @@
     --main-color-nav-button-border: #435;
     --main-color-bg: #222;
     --main-color-text: #ddd;
-    --dialog-color-backdrop: rgb(0 0 0 / 70%);
+    --dialog-color-backdrop: hsl(0deg 0% 0% / 70%);
   }
 }
 
@@ -74,7 +74,7 @@
   ::backdrop {
     --main-color-bg: black;
     --main-color-text: white;
-    --dialog-color-backdrop: rgb(0 0 0 / 90%);
+    --dialog-color-backdrop: hsl(0deg 0% 0% / 90%);
   }
 }
 
@@ -242,19 +242,19 @@ h6 {
 }
 
 h1 {
-  font-size: 2.9rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 2.6rem;
+  font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 2.3rem;
+  font-size: 1.2rem;
 }
 
 h4 {
-  font-size: 2rem;
+  font-size: 1.1rem;
 }
 
 small {
@@ -269,17 +269,15 @@ select {
 }
 
 a,
-a:link {
+a:any-link {
   color: var(--main-a-link-color);
 }
 
-a:hover,
-a:visited:hover {
+a:any-link:hover {
   color: var(--main-a-hover-color);
 }
 
-a:active,
-a:visited:active {
+a:any-link:active {
   color: var(--main-a-active-color);
 }
 

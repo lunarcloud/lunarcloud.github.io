@@ -6,7 +6,7 @@ if (document.referrer) {
 
 // Let the CSS know when to fade the page in
 document.addEventListener('readystatechange', (event) => {
-    if (event.target.readyState === 'complete') {
+    if ('readyState' in event.target && event.target.readyState === 'complete') {
         document.body.toggleAttribute('loaded', true)
     }
 })

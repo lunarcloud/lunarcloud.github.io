@@ -1,0 +1,188 @@
+@import url("./common.css");
+
+:root {
+    --blue-shadow: hsl(215deg 100% 20%);
+}
+
+body {
+    padding-top: 0;
+}
+
+hero {
+    display: block;
+    margin: 0;
+    margin-bottom: 4px;
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 2;
+    font-size: 5vw;
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position-y: 8%;
+    background-position-x: left;
+    box-shadow: inset 11em 0 1em 0 hsl(0deg 0% 0% / 50%);
+
+    & p {
+        color: transparent;
+        background: radial-gradient(circle, hsl(193deg 100% 74%) 0%, hsl(55deg 100% 54%) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-shadow: none;
+        padding-left: 0.5em;
+    }
+
+    & p:last-of-type {
+        margin-bottom: 0;
+    }
+
+    & .nag-arrow {
+        width: fit-content;
+        position: relative;
+        z-index: 0;
+
+        &.bounce {
+            animation: bouncing 500ms infinite 1s ease;
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 3em;
+                z-index: 1;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0.25em 0.35em 0;
+                border-color: white transparent transparent;
+            }
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    font-size: 1em;
+    padding: 0 2em 6em;
+
+    & > h2, & > h3, & > h4 {
+        margin-bottom: 1mm;
+        margin-top: 0.5em;
+    }
+
+    & > h2 + h3, & > h3 + h4 {
+        margin-top: 2mm;
+    }
+
+    & a, & a:any-link, & a:hover {
+        text-decoration: none;
+
+        & h2, & h3, & h4, & h5, & h6 {
+            color: inherit;
+        }
+    }
+
+    & h2, & h3, & h4, & h5, & h6 {
+        & a, & a:any-link, & a:hover {
+            color: inherit;
+        }
+
+        & .icon {
+            height: 1em;
+            aspect-ratio: 1;
+            font-size: 1em;
+        }
+    }
+
+    & .external-symbol {
+        height: 0.75em;
+        vertical-align: middle;
+        margin: -0.1em;
+    }
+
+    & :hover {
+        & > .external-symbol {
+            border-style: solid;
+            border-width: 0 0 2px 2px;
+            border-color: var(--main-a-hover-color);
+        }
+    }
+
+    & .two-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    & > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        gap: 1em;
+        flex-wrap: nowrap;
+
+        @media (width < 640px) {
+            flex-wrap: wrap;
+        }
+
+        & > * {
+            @media (width < 640px) {
+                width: 100%;
+            }
+        }
+
+        & li {
+            display: block;
+            aspect-ratio: calc(4 / 3);
+            height: 16em;
+            max-height: 20vw;
+            background-size: 100%;
+            background-position: 25% center;
+            border-radius: 1em;
+            position: relative;
+            overflow: hidden;
+
+            @media (width < 640px) {
+                height: 10em;
+                max-height: unset;
+                aspect-ratio: unset;
+                width: 100%;
+            }
+
+            box-shadow: 0 0 10px 0 var(--blue-shadow);
+            transition: box-shadow,background-size 400ms ease;
+
+            &:hover {
+                box-shadow: 0 0 5px 5px var(--blue-shadow);
+                background-size: 110%;
+            }
+
+            & h3, p {
+                text-align: center;
+                background-color: var(--main-color-nav-bg);
+                color: var(--main-color-nav-text) !important;
+            }
+
+            & h3 {
+                margin-top: 0;
+            }
+
+            & p {
+                position: absolute;
+                bottom: -1em;
+                left: 0;
+                right: 0;
+                padding-bottom: 0.5em;
+            }
+        }
+    }
+}
+
+footer {
+    padding: 2em;
+    text-align: center;
+}

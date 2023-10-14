@@ -9,100 +9,131 @@
 
         <link rel="manifest" href="./ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="common.css">
+        <link rel="stylesheet" href="css/index.css">
         <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
-        <style>
-            body {
-                padding-top: 0;
-            }
-
-            hero {
-                display: block;
-                font-size: 1.5rem;
-                margin: 0;
-                margin-bottom: 4px;
-                width: 100%;
-                overflow: hidden;
-                aspect-ratio: 2;
-
-                font-size: 5vw;
-                color: hsl(77, 100%, 80%);
-                text-shadow: 2px -2px 6px hsl(215, 100%, 20%),
-                             -2px 2px 6px hsl(215, 100%, 20%);
-
-                background-size: 120%;
-                background-repeat: no-repeat;
-                background-position-y: 8%;
-                background-position-x: left;
-
-                & p {
-                    padding-left: 0.5em;
-                }
-                & p:last-of-type {
-                    margin-bottom: 0;
-                }
-
-                & .bouncing {
-                    width: fit-content;
-                    animation: bouncing 500ms infinite 1s ease;
-                    position: relative;
-                    z-index: 0;
-
-                    &::after {
-                        content: '';
-                        display: block;
-                        position: absolute;
-                        top: 0;
-                        left: 3em;
-                        z-index: 1;
-                        width: 0;
-                        height: 0;
-                        border-style: solid;
-                        border-width: 0.25em 0.35em 0 0.35em;
-                        border-color: var(--main-color-text) transparent transparent transparent;
-                    }
-                }
-            }
-
-            main {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
-                font-size: 1.5rem;
-
-                & > div {
-                    margin: 0.25em;
-                }
-            }
-        </style>
     </head>
 
     <body class="page-fade">
         <hero style="background-image: url('img/portrait/sam-portrait-steampunk-2023.webp');">
-            <p>Sam.<br>Techy and Creative.</p>
+            <p>
+                <span class="name">Sam.</span>
+                <br>
+                Techy and Creative.
+            </p>
             <p>This is his portfolio,<br>a small showcase.</p>
             <p>Take a look.</p>
-            <div class="bouncing"></div>
+            <div class="nag-arrow"></div>
         </hero>
         <main>
-            <div>
-                <h2>Test Pages</h2>
-                <ul>
-                    <li><a is="fadeout-anchor" href="vr-demo.html">VR Demo</a></li>
-                    <li><a is="fadeout-anchor" href="project-list-view.html">Projects</a></li>
-                    <li><a is="fadeout-anchor" href="drag-n-drop.html">Tarot Card Drag N' Drop</a></li>
-                    <li><a is="fadeout-anchor" href="celestial-test.html">Celestial Body Animations</a></li>
-                </ul>
-            </div>
-            <div>
-                <h2>Alter&shy;nate Home Pages</h2>
-                <ul>
-                    <li><a is="fadeout-anchor" href="home-ala-homestar.html">Flash-Like</a></li>
-                    <li><a is="fadeout-anchor" href="home-lcars.html">Sci-fi</a></li>
-                    <li><a is="fadeout-anchor" href="home-console.html">TV</a></li>
-                </ul>
+            <h2>Alter&shy;nate Home Pages</h2>
+            <p>Showcases in their own right. They're alternate ideas of what a home page can be.</p>
+            <ul>
+                <a is="fadeout-anchor" href="home-ala-homestar.html">
+                    <li style="background-image: url('img/pages/home-flash.webp');">
+                        <h3>Flash-Like</h3>
+                        <p>Exemplifying a kid-friendly / edutainment styled website.</p>
+                    </li>
+                </a>
+                <a is="fadeout-anchor" href="home-lcars.html">
+                    <li style="background-image: url('img/pages/home-lcars.webp');">
+                        <h3>Sci-fi</h3>
+                        <p>Harkening to hollywood-styled UX design (great on screen, not as much irl).</p>
+                    </li>
+                </a>
+                <a is="fadeout-anchor" href="home-console.html">
+                    <li style="background-image: url('img/pages/home-console.webp');">
+                        <h3>Big Picture</h3>
+                        <p>Utilizing gamepad support and designed for distance.</p>
+                    </li>
+                </a>
+            </ul>
+
+            <h2 class="nag-target">About Sam Sarette</h2>
+
+            <p>He's a community-minded storytelling maker. He's a professional developer. He's a leader.</p>
+            <p>Sam has always been a creative guy, creating fictional worlds and roping his friends into creating characters and stories has been a lifelong past-time.</p>
+            <p>At the same time, he's been tinkering with robotics since his early lego mindstorm childhood and learning programming at summer-camp.</p>
+
+            <h3><span class="icon">‍⚕️</span>Medical Lab Devices</h3>
+
+            <p>
+                Sam has proudly created software for several robotics-powered devices at KMC Systems, Inc since
+                before graduating Keene State College.
+            </p>
+            <p>
+                He's been able to leaverage his hobbyist work in VR to create virtual lab environments,
+                and his web expertise from his steampunk community works to improve the web frontends of instruments.
+            </p>
+            <p>
+                He has lots of fun moving motors and reading sensors, and is proud of the many processes and
+                tooling he's helped establish to make the act of creating professional, documented work easier.
+            </p>
+            <p>
+                Sam is currently a principle engineer leading a small team to recreate a project from early in his career.
+                This effort is going well, and he would say he's very proud of it so far.
+            </p>
+
+            <h3>Leading in Communities</h3>
+
+            <h4><span class="icon">🚂</span>Steampunk</h4>
+            <p>
+                He and his group "the Citizens of Antiford" have been leaders in the Steampunk community,
+                and have been involved in teaching new community members with their "Intro to Steampunk" presentation.
+                This steampunk group has been involved in the planning of at least 2 festivals,
+                notably the "Railway to the Moon" planning, and helped shape the steampunk track of RuffleCon.
+            </p>
+            <p>
+                His proudest accomplishments include creating and managing a social media writing platform,
+                helping realize the group's crowd-funded anthology, and running a small festival of their own.
+                Sam is proud of the focus on history and crafting that the community embraces and that he's embraced back.
+            </p>
+            <p>
+                This steampunk community is inactive since the pandemic.
+                A decade-long project is resting while it's members discover more in life, as does Sam.
+            </p>
+
+            <h4><span class="icon">🎮</span>Hobbyist Game Development</h4>
+            <p>
+                Sam's steampunk connections and long history of interest with game development, led him to be
+                introduced to a professor of game development at NHTI (AGGP program no longer offered).
+                He attended his first game jam as part of a partnership between his steampunk group and school.
+            </p>
+            <p>
+                Sam became an avid member of the Southern NH Game Developer Meetup and the Independent Game Developer's Association NH.
+                When the organizer of the SNHGD Meetup was looking to be less involved, Sam stepped up to help plan the monthly meetups.
+                He led the transition to digital meetups during the pandemic and a hybrid (every-other) schedule.
+            </p>
+            <p>
+                Sam tends to lead meetings as a casual "scrum-like" affair, followed by demos and discussion.
+                He and his fellow organizers are planning more activities in future for this group.
+            </p>
+
+            <h2>Further Exploration</h2>
+
+            <div class="two-columns">
+                <div class="column">
+                    <h3>
+                        <a is="fadeout-anchor" href="project-list-view.html">
+                            <span class="icon">☰</span>
+                            Projects List
+                            <img class="external-symbol" src="img/external-link.svg" alt="external link symbol" >
+                        </a>
+                    </h3>
+                    <p>A comprehensive, filterable listing of all the projects - personal and professional - that Sam's worked on in his adult life.</p>
+                </div>
+                <div class="column">
+                    <h3>
+                        <a is="fadeout-anchor" href="3d-showcase.html">
+                            <img class="icon" src="img/3d-gizmo.svg" alt="3d symbol" >
+                            3-D Showcase
+                            <img class="external-symbol" src="img/external-link.svg" alt="external link symbol" >
+                        </a>
+                    </h3>
+                    <p>Demonstrating the 3-D and VR design work Sam has done in a simple, virtual space.</p>
+                </div>
             </div>
         </main>
+        <footer>© Samuel James Sarette 2023</footer>
     </body>
     <script type="module" src="controllers/index.js"></script>
 </html>

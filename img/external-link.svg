@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184 220">
+<defs>
+    <style>
+      svg {
+        color: #222;
+        color-scheme:light dark;
+      }
+      @media (prefers-color-scheme:dark) {
+        svg {
+          color: #ddd;
+        }
+      }
+    </style>
+  </defs>
+  <path fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="2" stroke-width="18" d="M106.4 41.3H10.6"/>
+  <path fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="2" stroke-width="18" d="M10.7 46.1v121.4m1.8-.2h126m.2-5.2v-75"/>
+  <path fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="2.2" stroke-width="18" d="M48.5 132.4 161 23.4"/>
+  <path fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="2" stroke-width="18" d="M165.1 17.3c-10.5 1.2-16.2-1.9-26.1.2m25.9 2.8c2 14.6 3 12.7 3.7 21"/>
+</svg>
