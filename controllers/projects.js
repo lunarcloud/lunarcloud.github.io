@@ -33,8 +33,18 @@ export default class ProjectsPageController {
             ?.get('filter')?.split(',').filter(i => /\S/.test(i)) ?? []
 
         // Setup filter clear button
-        this.filterClearBtn = document.getElementById('filter-clear')
-        this.filterClearBtnA = document.getElementById('filter-clear-a')
+        const filterClearEl = document.getElementById('filter-clear')
+        if (filterClearEl instanceof HTMLButtonElement)
+            this.filterClearBtn = filterClearEl
+        else
+            throw new Error('Couldn\'t find filter clear button')
+
+        const filterClearAEl = document.getElementById('filter-clear-a')
+        if (filterClearAEl instanceof FadeOutAnchorElement)
+            this.filterClearBtnA = filterClearAEl
+        else
+            throw new Error('Couldn\'t find filter clear button')
+
         if (this.pageFilters.length === 0) {
             this.filterClearBtn.toggleAttribute('disabled', true)
             document.getElementById('project-tags-label').toggleAttribute('hidden', true)
@@ -63,9 +73,7 @@ export default class ProjectsPageController {
         }
 
         // Setup projects once loaded
-        /** @type {IncludeElement} */
-        const includeProjectsEl = document.querySelector('#all-projects include-element')
-        includeProjectsEl.onReady(() => this.#initSortAndFilter())
+        this.#initSortAndFilter()
     }
 
     /**
