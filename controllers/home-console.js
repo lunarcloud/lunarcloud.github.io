@@ -3,7 +3,7 @@ import '../include-element/include-element.js'
 import '../page-fade/page-fade.js'
 import '../nav-header/nav-header-element.js'
 import BgAudioManager from './bg-audio-page.js'
-import { DetectedBrowser, DetectedOS, GameInput, GameInputButtons } from '../lib/gameinputjs/gameinput.js'
+import { DetectedBrowser, DetectedOS, GameInput, GameInputButtons } from '../lib/gameinputjs/src/gameinput.js'
 
 export default class HomeConsolePageController {
     static FocusableQuery = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, *[tabindex], *[contentEditable=true]'
