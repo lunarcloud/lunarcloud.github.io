@@ -1,11 +1,17 @@
 {
+    "name": "@lunarcloud/portfolio",
+    "repository": {
+        "url": "https://github.com/lunarcloud/lunarcloud.github.io"
+    },
+    "private": true,
     "scripts": {
         "eslint-fix": "npx eslint --ignore-path .gitignore --ext .js . --fix",
         "eslint": "npx eslint --ignore-path .gitignore --ext .js .",
         "htmllint": "npx linthtml \"**/*.html\"",
         "csslint": "npx stylelint \"**/*.css\" --quiet-deprecation-warnings",
         "lint": "npm run eslint && npm run htmllint && npm run csslint",
-        "serve": "serve"
+        "serve": "serve",
+        "deps2lib": "rm -r lib/* && cp -r node_modules/@lunarcloud/gameinputjs lib/"
     },
     "devDependencies": {
         "@linthtml/linthtml": "^0.9.5",
@@ -19,5 +25,8 @@
         "serve": "^14.2.1",
         "stylelint": "^15.10.3",
         "stylelint-config-standard": "^34.0.0"
+    },
+    "dependencies": {
+        "@lunarcloud/gameinputjs": "^12.2.2"
     }
 }
