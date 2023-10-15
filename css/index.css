@@ -65,7 +65,7 @@ main {
     flex-flow: column;
     flex-wrap: nowrap;
     font-size: 1em;
-    padding: 0 2em 6em;
+    padding: 0 2em 3em;
 
     & > h2, & > h3, & > h4 {
         margin-bottom: 1mm;
@@ -200,6 +200,33 @@ main {
                 }
             }
         }
+    }
+
+    & ul.socials {
+        list-style: none;
+        display: flex;
+        flex-flow: row;
+
+        & li {
+            flex: 1 1 30%;
+            gap: 1em;
+            border: none;
+
+            & a:any-link {
+                color: inherit;
+
+                & svg {
+                    width: 98%;
+                    aspect-ratio: 2;
+                    color: var(--main-color-text);
+
+                    &:hover {
+                        color: var(--main-a-hover-color);
+                    }
+                }
+            }
+        }
+
     }
 }
 
