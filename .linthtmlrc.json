@@ -17,7 +17,7 @@
 		"width"
 	],
 	"attr-name-style": "dash",
-	"attr-name-ignore-regex": false,
+	"attr-name-ignore-regex": "viewBox",
 	"attr-no-dup": true,
 	"attr-no-unsafe-char": true,
 	"attr-quote-style": "double",
