@@ -4,7 +4,7 @@
 /* fonts */
 @font-face {
   font-family: "Sam Handwritten A";
-  src: url("font/SamHandwrittenA-Regular.woff2");
+  src: url("../font/SamHandwrittenA-Regular.woff2") format("woff2");
 }
 
 /* Variables */

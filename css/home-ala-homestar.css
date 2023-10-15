@@ -1,5 +1,10 @@
 @import url("./common.css");
 
+:root {
+    --main-font-headers: var(--handwritten-font);
+    --main-font-body: var(--handwritten-font);
+}
+
 body {
     top: 0;
     bottom: 0;

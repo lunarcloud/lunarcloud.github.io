@@ -141,34 +141,50 @@ main {
             height: 16em;
             max-height: 20vw;
             background-size: 100%;
+            background-repeat: no-repeat;
             background-position: 25% center;
-            border-radius: 1em;
+            border-radius: 8px;
             position: relative;
             overflow: hidden;
+            border: 4px solid var(--blue-shadow);
+            transition: border-bottom-width,margin-top,background-size 400ms ease;
+
+            &:hover {
+                background-size: 110%;
+            }
 
             @media (width < 640px) {
-                height: 10em;
+                height: 6em;
                 max-height: unset;
                 aspect-ratio: unset;
                 width: 100%;
-            }
+                border-radius: 0 8px 8px 0;
+                border-width: 0;
+                background-position-x: right;
+                background-position-y: 50%;
+                background-size: 55%;
 
-            box-shadow: 0 0 10px 0 var(--blue-shadow);
-            transition: box-shadow,background-size 400ms ease;
-
-            &:hover {
-                box-shadow: 0 0 5px 5px var(--blue-shadow);
-                background-size: 110%;
+                &:hover {
+                    background-size: 60%;
+                }
             }
 
             & h3, p {
                 text-align: center;
                 background-color: var(--main-color-nav-bg);
                 color: var(--main-color-nav-text) !important;
+
+                @media (width < 640px) {
+                    width: 50%;
+                }
             }
 
             & h3 {
                 margin-top: 0;
+
+                @media (width < 640px) {
+                    height: 40%;
+                }
             }
 
             & p {
@@ -177,6 +193,11 @@ main {
                 left: 0;
                 right: 0;
                 padding-bottom: 0.5em;
+
+                @media (width < 640px) {
+                    height: 60%;
+                    padding-bottom: 0.25em;
+                }
             }
         }
     }

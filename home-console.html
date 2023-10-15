@@ -6,7 +6,11 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#37c482">
+        <meta name="theme-color" content="#37C0C4">
+
+        <meta property="og:title" content="Sam Portfolio (TV Variant)">
+        <meta property="og:description" content="TV Interface variant for Sam's showcase website.">
+        <meta property="og:image" content="img/pages/home-console.webp" />
 
         <link rel="manifest" href="./ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -40,6 +44,7 @@
                 <h1>Sam Sarette's Portfolio</h1>
             </header>
             <header class="right">
+                <img class="gamepad" src="lib/gameinputjs/img/generic.png" alt="gamepad symbol">
                 <span class="browser-name"></span>
                 <span class="os-name"></span>
                 <button id="mute-btn" title="Toggle Audio Mute" tabindex="1">
@@ -48,9 +53,16 @@
                 </button>
             </header>
             <main>
-                <p tabindex="2" narrate="select">This page is meant for large screens controlled at a distance by keyboards / remotes and game controllers. Try using one of those with this page.</p>
+                <p tabindex="2" narrate="select">
+                    This page is meant for large screens controlled at a distance by keyboards / remotes
+                    and game controllers. Try using one of those with this page.
+                    <span class="hasGamepad" hidden>
+                        push (<span class="button0-name">0</span>) to select an item,
+                        (<span class="menu-name">0</span>) to "pause".
+                    </span>
+                </p>
             </main>
-            <footer>
+            <secondary>
                 <h2>Home Screens</h2>
                 <ul>
                     <li>
@@ -78,8 +90,9 @@
                         </a>
                     </li>
                 </ul>
-            </footer>
+            </secondary>
         </container>
+        <footer>© Samuel James Sarette 2023</footer>
         <audio id="chime-audio" src="audio/538551__sjonas88__3-select-chime.mp3"></audio>
         <audio id="cancel-audio" src="audio/538551__sjonas88__3-select-cancel.mp3"></audio>
         <audio id="ok-audio" src="audio/538551__sjonas88__3-select-ok.mp3"></audio>
