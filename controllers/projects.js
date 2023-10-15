@@ -1,7 +1,6 @@
 import '../nav-header/nav-header-element.js'
 import ProjectDisplayElement from '../project-display/project-display-element.js'
 import FadeOutAnchorElement from '../page-fade/page-fade.js'
-import IncludeElement from '../include-element/include-element.js'
 
 export default class ProjectsPageController {
     /** @type {HTMLElement} */
@@ -73,7 +72,10 @@ export default class ProjectsPageController {
         }
 
         // Setup projects once loaded
-        this.#initSortAndFilter()
+        if (document.getElementById('all-projects').children.length > 1)
+            this.#initSortAndFilter()
+        else
+            setTimeout(() => this.#initSortAndFilter(), 10)
     }
 
     /**
@@ -94,6 +96,7 @@ export default class ProjectsPageController {
             const hasFilterTags = this.pageFilters.length === 0 || this.pageFilters.every(i => projEl.tags.includes(i))
             projEl.toggleAttribute('hidden', !hasFilterTags)
             projEl.addEventListener('projectfilterselected',
+                // @ts-ignore
                 event => this.updateFilter(event.detail.tag, event.detail.active)
             )
         }
@@ -115,7 +118,7 @@ export default class ProjectsPageController {
         if (this.pageFilters.length === 0) {
             search.delete('filter')
         } else {
-            search.set('filter', this.pageFilters)
+            search.set('filter', this.pageFilters.join(','))
         }
         location.search = search.toString().replaceAll('%2C', ',')
     }

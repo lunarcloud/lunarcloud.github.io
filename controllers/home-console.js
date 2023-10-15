@@ -75,11 +75,11 @@ export default class HomeConsolePageController {
         // Get system info
         const browserNameEls = document.getElementsByClassName('browser-name')
         for (const el of browserNameEls)
-            el.textContent = DetectedBrowser
+            el.textContent = DetectedBrowser === 'Chrome' ? 'Chrome' : DetectedBrowser === 'Firefox' ? 'FF' : '-'
 
         const osNameEls = document.getElementsByClassName('os-name')
         for (const el of osNameEls)
-            el.textContent = DetectedOS
+            el.textContent = DetectedOS.substring(0, 3)
 
         // Prepare list of elements one can navigate
         const rowEls = document.querySelectorAll('#main > *')
@@ -148,6 +148,21 @@ export default class HomeConsolePageController {
                     setTimeout(() => player.rumble({ duration: 400, weakMagnitude: 0.25, strongMagnitude: 1.0 }), 300)
                     setTimeout(() => player.rumble({ duration: 200, weakMagnitude: 0.25, strongMagnitude: 0.25 }), 800)
                 }
+                const firstPlayer = this.gameInput.getPlayer(0)
+                const gamepadImgEl = document.querySelector('img.gamepad')
+                if (gamepadImgEl instanceof HTMLImageElement)
+                    gamepadImgEl.src = `lib/gameinputjs/img/${firstPlayer?.model?.iconName || 'generic'}.png`
+
+                const gamepadInstructionsEl = document.querySelector('.hasGamepad')
+                if (firstPlayer?.model) {
+                    gamepadInstructionsEl.removeAttribute('hidden')
+                    if (firstPlayer?.type) {
+                        gamepadInstructionsEl.querySelector('.button0-name').textContent = firstPlayer?.type.buttonNames.get('button0')
+                        gamepadInstructionsEl.querySelector('.menu-name').textContent = firstPlayer?.type.buttonNames.get('menu')
+                    }
+                } else {
+                    gamepadInstructionsEl.setAttribute('hidden', 'hidden')
+                }
             })
             .onButtonDown((index, button) => {
                 // const player = this.gameInput.getPlayer(index)
@@ -198,9 +213,14 @@ export default class HomeConsolePageController {
      * @returns {number} 0-based grid index
      */
     getGridRow (el) {
-        return parseInt(
-            el.computedStyleMap().get('grid-row-start').toString()
-        ) - 1
+        if (!el)
+            throw new Error('No element provided!')
+
+        const gridRowVal = 'computedStyleMap' in el
+            ? el.computedStyleMap().get('grid-row-start').toString()
+            : window.getComputedStyle(el)['grid-row-start']
+
+        return parseInt(gridRowVal) - 1
     }
 
     /**
