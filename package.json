@@ -1,11 +1,9 @@
 {
-    "name": "@lunarcloud/gameinputjs",
+    "name": "@lunarcloud/portfolio",
     "repository": {
-        "url": "https://github.com/lunarcloud/gameinputjs"
+        "url": "https://github.com/lunarcloud/lunarcloud.github.io"
     },
-    "publishConfig": {
-        "@lunarcloud:registry": "https://npm.pkg.github.com"
-    },
+    "private": true,
     "scripts": {
         "eslint-fix": "npx eslint --ignore-path .gitignore --ext .js . --fix",
         "eslint": "npx eslint --ignore-path .gitignore --ext .js .",
