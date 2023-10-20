@@ -22,10 +22,10 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
-        registry-url: "https://npm.pkg.github.com"
+        registry-url: "https://npm.pkg.github.com/lunarcloud"
 
     - name: Install Tools
-      run: npm i -D
+      run: npm ci
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
