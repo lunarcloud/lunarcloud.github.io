@@ -22,11 +22,17 @@ jobs:
         node-version: 18.x
         cache: 'npm'
 
-    - name: Build
+    - name: Install Tools
       run: npm ci --only=dev
 
-    - run: npm run eslint
-    - run: npm run htmllint
-    - run: npm run csslint
+    - name: Lint JavaScript
+      run: npm run eslint
+
+    - name: Lint HTML
+      run: npm run htmllint
+
+    - name: Lint CSS
+      run: npm run csslint
+
     #- run: npm run build --if-present
     #- run: npm test --if-present
