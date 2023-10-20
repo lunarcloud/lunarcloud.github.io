@@ -280,8 +280,7 @@ container#main {
     margin-top: 4mm;
     margin-left: 2mm;
     margin-right: 6mm;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: hidden visible;
     height: fit-content;
     min-height: calc(100dvh - 2mm);
     min-width: 160mm;
