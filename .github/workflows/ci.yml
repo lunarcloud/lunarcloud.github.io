@@ -21,7 +21,14 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
-    - run: npm ci
+
+    - name: Build
+      env:
+        # also other environment variable
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        npm ci
+
     - run: npm run eslint
     - run: npm run htmllint
     - run: npm run csslint
