@@ -26,6 +26,8 @@ jobs:
 
     - name: Install Tools
       run: npm ci --only=dev
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Lint JavaScript
       run: npm run eslint
