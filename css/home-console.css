@@ -39,8 +39,7 @@ body {
     margin: 0;
     width: 100%;
     height: fit-content;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden auto;
     scrollbar-gutter: stable both-edges;
     transition: background,filter 500ms;
     background: linear-gradient(45deg,

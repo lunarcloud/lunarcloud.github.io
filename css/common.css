@@ -189,8 +189,7 @@ html {
   right: 0;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   height: fit-content;
   height: -webkit-fill-available;
   font-size: 14pt;
@@ -215,8 +214,7 @@ body {
   margin: 0;
   padding: 0;
   padding-top: var(--top-nav-height);
-  overflow-y: auto;
-  overflow-x: auto;
+  overflow: auto auto;
   overflow-wrap: anywhere;
   hyphens: auto;
   color: var(--main-color-text);
