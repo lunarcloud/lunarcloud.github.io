@@ -23,11 +23,7 @@ jobs:
         cache: 'npm'
 
     - name: Build
-      env:
-        # also other environment variable
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        npm ci
+      run: npm ci --only=dev
 
     - run: npm run eslint
     - run: npm run htmllint
