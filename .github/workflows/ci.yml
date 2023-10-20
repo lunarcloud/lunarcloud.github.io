@@ -24,8 +24,11 @@ jobs:
         cache: 'npm'
         registry-url: "https://npm.pkg.github.com"
 
+    - name: Clean
+      run: npm c
+
     - name: Install Tools
-      run: npm ci --only=dev
+      run: npm i --only=dev
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
