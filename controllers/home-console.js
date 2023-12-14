@@ -3,8 +3,7 @@ import '../include-element/include-element.js'
 import '../page-fade/page-fade.js'
 import '../nav-header/nav-header-element.js'
 import BgAudioManager from './bg-audio-page.js'
-import { DetectedBrowser, DetectedOS, GameInput, GameInputButtons } from '../lib/gameinputjs/src/gameinput.js'
-
+import { DetectedOS, GameInput } from '../lib/gameinputjs/src/gameinput.js'
 export default class HomeConsolePageController {
     static FocusableQuery = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, *[tabindex], *[contentEditable=true]'
 
@@ -73,10 +72,6 @@ export default class HomeConsolePageController {
         this.chimeAudio = document.querySelector('audio#chime-audio')
 
         // Get system info
-        const browserNameEls = document.getElementsByClassName('browser-name')
-        for (const el of browserNameEls)
-            el.textContent = DetectedBrowser === 'Chrome' ? 'Chrome' : DetectedBrowser === 'Firefox' ? 'FF' : '-'
-
         const osNameEls = document.getElementsByClassName('os-name')
         for (const el of osNameEls)
             el.textContent = DetectedOS.substring(0, 3)
@@ -156,53 +151,37 @@ export default class HomeConsolePageController {
                 const gamepadInstructionsEl = document.querySelector('.hasGamepad')
                 if (firstPlayer?.model) {
                     gamepadInstructionsEl.removeAttribute('hidden')
-                    if (firstPlayer?.type) {
-                        gamepadInstructionsEl.querySelector('.button0-name').textContent = firstPlayer?.type.buttonNames.get('button0')
-                        gamepadInstructionsEl.querySelector('.menu-name').textContent = firstPlayer?.type.buttonNames.get('menu')
+                    if (firstPlayer?.schema) {
+                        firstPlayer?.model.mapping.face.ordinal(0)
+                        gamepadInstructionsEl.querySelector('.button0-name').textContent = firstPlayer?.schema.ordinal(0)
+                        gamepadInstructionsEl.querySelector('.menu-name').textContent = firstPlayer?.schema.center.menu
                     }
                 } else {
                     gamepadInstructionsEl.setAttribute('hidden', 'hidden')
                 }
             })
-            .onButtonDown((index, button) => {
+            .onButtonDown((_index, sectionName /* @type {import('./gameinput-schema.js').GameInputSchemaSectionName} */, buttonName) => {
                 // const player = this.gameInput.getPlayer(index)
                 // console.debug(`Player ${index} pushed ${player.getButtonText(button)} (${button})`)
 
-                switch (button) {
-                case GameInputButtons.dpadLeft:
-                case GameInputButtons.leftStickLeft:
-                    this.navigate('left')
-                    break
-                case GameInputButtons.dpadRight:
-                case GameInputButtons.leftStickRight:
-                    this.navigate('right')
-                    break
-                case GameInputButtons.dpadUp:
-                case GameInputButtons.leftStickUp:
-                    this.navigate('up')
-                    break
-                case GameInputButtons.dpadDown:
-                case GameInputButtons.leftStickDown:
-                    this.navigate('down')
-                    break
+                if (['leftStick', 'dpad'].includes(sectionName)) {
+                    this.navigate(buttonName)
                 }
             })
-            .onButtonUp((index, button) => {
-                // const player = this.gameInput.getPlayer(index)
+            .onButtonUp((index, sectionName, buttonName) => {
+                const player = this.gameInput.getPlayer(index)
                 // console.debug(`Player ${index} released ${player.getButtonText(button)} (${button})`)
 
-                switch (button) {
-                case GameInputButtons.menu:
+                if (sectionName === 'center' && buttonName === 'menu') {
                     this.activateMenu()
-                    break
-                case GameInputButtons.button0:
-                case GameInputButtons.button1:
-                    this.accept(true)
-                    break
-                case GameInputButtons.button2:
-                case GameInputButtons.button3:
+                    return
+                } else if (sectionName === 'face' && buttonName === player.schema.ordinalButton(1)) {
                     this.cancel()
-                    break
+                    return
+                }
+
+                if (sectionName === 'face' && buttonName === player.schema.ordinalButton(0)) {
+                    this.accept(true)
                 }
             })
     }

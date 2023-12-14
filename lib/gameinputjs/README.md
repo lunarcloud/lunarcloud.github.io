@@ -5,43 +5,49 @@ Game-Input (JavaScript) Library
 A client-side JavaScript module one can import to add good gamepad support to web-powered games or other gamepad-powered web applications.
 
 ```js
-import { GameInput } from './gameinput.js'
+import { GameInput, DetectedOS } from './gameinput.js'
+import { GameInputSchemaSectionNames, GameInputSchemaButtonNames } from './gameinput-schema.js'
 
+/** @type {GameInput} */
 const gameInput = new GameInput()
 // Events style
     .onReinitialize(() => {
         console.debug("Players updated")
-        const firstPlayer = this.gameInput.getPlayer(0)
+        const firstPlayer = gameInput.getPlayer(0)
         if (!firstPlayer?.model) {
             noPlayers()
             return
         }
-        displayButtons(firstPlayer?.type.buttonNames)
-        document.querySelector('img.gamepad').src = `img/${firstPlayer?.model?.iconName || 'generic'}.png`
+        displayButtons(firstPlayer)
+        document.querySelector('img.gamepad').src = `img/${firstPlayer?.model?.iconName ?? 'generic'}.png`
     })
-    .onButtonDown((index, button) => {
-        const player = this.gameInput.getPlayer(index)
-        console.debug(`Player ${player} pushed ${player.getButtonText(button)} (${button})`)
-        switch (button) {
-        case GameInputButtons.menu:
-            break
-        default:
-            break
+    .onButtonDown((playerIndex, sectionName, buttonName) => {
+        const player = gameInput.getPlayer(playerIndex)
+        console.debug(`Player ${player} pushed ${player.getButtonText(sectionName, buttonName)} (${buttonName})`)
+    })
+    .onButtonUp((playerIndex, sectionName, buttonName) => {
+        const player = gameInput.getPlayer(playerIndex)
+        console.debug(`Player ${player} released ${player.getButtonText(sectionName, buttonName)} (${buttonName})`)
+
+        if (sectionName === 'center' && buttonName === 'menu') {
+            console.debug('menu requested')
+            return
         }
-    })
-    .onButtonUp((index, button) => {
-        const player = this.gameInput.getPlayer(index)
-        console.debug(`Player ${player} released ${player.getButtonText(button)} (${button})`)
+
+        if (sectionName === 'face' && buttonName === player.schema.ordinalButton(0)) {
+            console.debug('Jump / Confirm pushed')
+        }
     })
 
 // Game-Loop Style
-const gameLoop = function () {
-    for (let i = 0; i < 4; i++) {
-        const player = gameInput.getPlayer(4)
+function gameLoop() {
+    for (const player of gameInput.Players) {
         if (!player)
             continue
-        if (player.state[GameInputButtons.button0])
+
+        if (player.state.face.ordinal(0))
             player.rumble({ duration: 200, weakMagnitude: 1.0, strongMagnitude: 0.25 })
+
         const leftStick = player.getStickVector('left')
         console.debug(`Player left stick vector is ${leftStick.toString()}`)
         requestAnimationFrame(() => gameLoop())
