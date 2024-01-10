@@ -95,10 +95,9 @@ main {
     padding: 0 2em 3em;
 
     & p {
-        text-indent: 1.5em;
         margin-top: 0.25em;
-        margin-bottom: 0.5em;
-        line-height: 1.45em;
+        margin-bottom: 1em;
+        line-height: 1.25em;
     }
 
     & > h2, & > h3, & > h4 {
