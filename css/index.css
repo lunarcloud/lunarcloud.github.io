@@ -1,17 +1,44 @@
 @import url("./common.css");
 
 :root {
-    --blue-shadow: hsl(215deg 100% 20%);
+    --blue-shadow: hsl(260deg 40% 40%);
+    --further-explore-bg: hsl(65deg 100% 85% / 20%);
+    --further-explore-header-hover: hsl(240 80% 50%);
+    --further-explore-header-active: hsl(240 40% 50%);
+    --further-explore-headerimg-hover: brightness(0.75);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --blue-shadow: hsl(215deg 100% 20%);
+        --further-explore-bg: hsl(180deg 45% 30% / 20%);
+        --further-explore-header-hover: hsl(240, 60%, 65%);
+        --further-explore-header-active: hsl(240, 30%, 65%);
+        --further-explore-headerimg-hover: invert(1);
+    }
 }
 
 body {
     padding-top: 0;
+    background-color: var(--void-bg);
+}
+
+main, footer {
+    background-color: var(--main-color-bg);
+    max-width: 1216px;
+
+    @media screen and (width > 1216px) {
+        /* Portion of the empty space */
+        margin-left: calc(0.2 * calc(100% - 1216px));
+        box-shadow:  6px 0 6px -6px rgba(0,0,0,0.5) inset,
+                    -6px 0 6px -6px rgba(0,0,0,0.5) inset;
+
+    }
 }
 
 hero {
     display: block;
     margin: 0;
-    margin-bottom: 4px;
     width: 100%;
     overflow: hidden;
     aspect-ratio: 2;
@@ -113,7 +140,44 @@ main {
     & .two-columns {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        gap: 2em;
+    }
+
+    & .highlighted-section {
+        display: block;
+        height: calc(100% - 1.5em);
+        margin-top: 0.5em;
+        padding: 0 1em 0.5em;
+        background-color: var(--further-explore-bg);
+        border: 2px solid var(--blue-shadow);
+        border-radius: 8px;
+
+        &, &:link, &:hover, &:focus {
+            color: unset;
+        }
+
+        &:hover, &:focus {
+            & h3 {
+                color: var(--further-explore-header-hover);
+                & img {
+                    filter: var(--further-explore-headerimg-hover);
+                }
+            }
+        }
+        &:active {
+            border-color: var(--main-a-active-color);
+            & h3 {
+                color: var(--further-explore-header-active);
+            }
+        }
+
+        & h3 {
+            margin-top: 0.6em;
+        }
+        & p {
+            text-decoration: none;
+            color: inherit;
+        }
     }
 
     & > ul {
@@ -122,9 +186,12 @@ main {
         padding: 0;
         display: flex;
         justify-content: space-around;
+
+    }
+
+    & #alt-pages {
         gap: 1em;
         flex-wrap: nowrap;
-
         @media (width < 640px) {
             flex-wrap: wrap;
         }
@@ -136,9 +203,9 @@ main {
         }
 
         & li {
-            display: block;
             aspect-ratio: calc(4 / 3);
             height: 16em;
+            display: block;
             max-height: 20vw;
             background-size: 100%;
             background-repeat: no-repeat;
@@ -206,20 +273,27 @@ main {
         list-style: none;
         display: flex;
         flex-flow: row;
+        justify-content: space-around;
 
         & li {
-            flex: 1 1 30%;
-            gap: 1em;
             border: none;
+
+            @media (width < 640px) {
+                height: fit-content;
+            }
 
             & a:any-link {
                 color: inherit;
 
                 & svg {
-                    width: 98%;
-                    aspect-ratio: 2;
+                    height: 8em;
+                    min-height: 100%;
+                    aspect-ratio: calc(4 / 3);
                     color: var(--main-color-text);
 
+                    @media (width < 640px) {
+                        height: 4em;
+                    }
                     &:hover {
                         color: var(--main-a-hover-color);
                     }

@@ -10,6 +10,7 @@
 /* Variables */
 :root,
 ::backdrop {
+  --void-bg: lightgray;
   --main-color-nav-text: #222;
   --main-color-nav-bg: #eee;
   --main-color-nav-button-bg: #ccc;
@@ -43,6 +44,7 @@
 @media print {
   :root,
   ::backdrop {
+    --void-bg: transparent;
     --main-color-bg: white;
     --main-font-body: var(--print-readability-font);
   }
@@ -59,6 +61,7 @@
 @media screen and (prefers-color-scheme: dark) {
   :root,
   ::backdrop {
+    --void-bg: #1a1a1a;
     --main-color-nav-text: #ddd;
     --main-color-nav-bg: #111;
     --main-color-nav-button-bg: #343343;
