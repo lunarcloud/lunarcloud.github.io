@@ -71,7 +71,7 @@
     --main-color-nav-button-border: #435;
     --main-color-bg: #222;
     --main-color-text: #ddd;
-    --shadow-color-text: hsl(180 25% 20%);
+    --shadow-color-text: hsl(180deg 25% 20%);
     --dialog-color-backdrop: hsl(0deg 0% 0% / 70%);
   }
 }
