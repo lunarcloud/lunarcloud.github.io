@@ -94,10 +94,23 @@ main {
     font-size: 1em;
     padding: 0 2em 3em;
 
+    & p {
+        text-indent: 1.5em;
+        margin-top: 0.25em;
+        margin-bottom: 0.5em;
+        line-height: 1.45em;
+    }
+
     & > h2, & > h3, & > h4 {
         margin-bottom: 1mm;
         margin-top: 0.5em;
+
+        & .icon {
+            margin-left: -1em;
+            margin-right: 0.25em;
+        }
     }
+
 
     & > h2 + h3, & > h3 + h4 {
         margin-top: 2mm;
@@ -120,6 +133,7 @@ main {
             height: 1em;
             aspect-ratio: 1;
             font-size: 1em;
+            text-shadow: none;
         }
     }
 
