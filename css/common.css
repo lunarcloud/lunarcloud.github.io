@@ -10,6 +10,7 @@
 /* Variables */
 :root,
 ::backdrop {
+  --void-bg: lightgray;
   --main-color-nav-text: #222;
   --main-color-nav-bg: #eee;
   --main-color-nav-button-bg: #ccc;
@@ -17,6 +18,7 @@
   --main-color-nav-button-border: #b9d;
   --main-color-bg: #ddd;
   --main-color-text: #222;
+  --shadow-color-text: #aaa;
   --dialog-color-backdrop: hsl(0deg 0% 39% / 70%);
   --main-a-link-color: hsl(220deg 31% 41%);
   --main-a-hover-color: hsl(220deg 49% 38%);
@@ -36,6 +38,7 @@
   ::backdrop {
     --main-color-bg: white;
     --main-color-text: black;
+    --shadow-color-text: transparent;
     --dialog-color-backdrop: hsl(0deg 0% 100% / 90%);
   }
 }
@@ -43,6 +46,8 @@
 @media print {
   :root,
   ::backdrop {
+    --void-bg: transparent;
+    --shadow-color-text: transparent;
     --main-color-bg: white;
     --main-font-body: var(--print-readability-font);
   }
@@ -59,12 +64,14 @@
 @media screen and (prefers-color-scheme: dark) {
   :root,
   ::backdrop {
+    --void-bg: #1a1a1a;
     --main-color-nav-text: #ddd;
     --main-color-nav-bg: #111;
     --main-color-nav-button-bg: #343343;
     --main-color-nav-button-border: #435;
     --main-color-bg: #222;
     --main-color-text: #ddd;
+    --shadow-color-text: hsl(180deg 25% 20%);
     --dialog-color-backdrop: hsl(0deg 0% 0% / 70%);
   }
 }
