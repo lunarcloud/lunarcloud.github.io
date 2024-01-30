@@ -90,16 +90,23 @@ export default class ProjectsPageController {
         // Sort the projects by newest
         this.projectEls = this.projectEls.sort(ProjectDisplayElement.compareDate).reverse()
 
+        let shownProjects = 0
+
         // Add the sorted & filtered projects to the page
         for (const projEl of this.projectEls) {
             this.allProjectsEl.appendChild(projEl)
             const hasFilterTags = this.pageFilters.length === 0 || this.pageFilters.every(i => projEl.tags.includes(i))
             projEl.toggleAttribute('hidden', !hasFilterTags)
+            if (hasFilterTags)
+                shownProjects++
             projEl.addEventListener('projectfilterselected',
                 // @ts-ignore
                 event => this.updateFilter(event.detail.tag, event.detail.active)
             )
         }
+
+        document.getElementById('projects-count').textContent =
+            `(${shownProjects}${(shownProjects !== this.projectEls.length ? ` of ${this.projectEls.length}` : '')})`
     }
 
     /**
