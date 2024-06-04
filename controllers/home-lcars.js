@@ -18,7 +18,10 @@ export default class HomeLCARSPageController {
         const okAudio = document.getElementById('beep-ok-audio')
         const cancelAudio = document.getElementById('beep-cancel-audio')
 
-        const buttonEffects = (evtName, el, muted) => {
+        if (okAudio instanceof HTMLAudioElement === false || cancelAudio instanceof HTMLAudioElement === false)
+            throw new Error("This page is wrong")
+
+        const buttonEffects = (evtName, _el, muted) => {
             // Audio
             if (muted)
                 return
