@@ -50,12 +50,10 @@
                         <a-entity gltf-model="#meeple-gent1" position="-1.75 1.6 1" rotation="0 -15 0"></a-entity>
                     </a-entity>
 
-                    <a-entity id="projects-entity" position="-3 1.6 -1.5" rotation="0 90 0" scale="5 4 1"></a-entity>
+                    <a-entity id="projects-entity" position="-3 1.6 -1.5" rotation="0 90 0" scale="8 4 1"></a-entity>
                     <!--
                         scale="5 2 1"></a-entity>
                     -->
-
-
 
                     <a-entity gltf-model="#ataito-bucket" position="1.5 0.25 -3.5" scale="0.25 0.25 0.25" rotation="0 45 0"></a-entity>
                     <a-entity gltf-model="#kmc-vr-large-bottle" position="0.5 0 -3.5" scale="3 3 3" rotation="0 45 0"></a-entity>
@@ -81,7 +79,7 @@
         </nav-header>
 
         <aside style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 0;">
-            <div id="all-projects" style="width: fit-contents; width: 1280px; columns: 2">
+            <div id="all-projects" style="width: fit-contents; width: 1920px; columns: 3">
 
                 <project-display
                     id="antiford-switchboard-copper-game"
@@ -102,6 +100,19 @@
                         <p>I created the game using ImpactJS and Ink, designed the mechanics and gameplay.</p>
                         <p>Partners did writing and artwork, respectively.</p>
                         <p>Once the game was complete, I used as it as an example of using Ink in many game engines, by reimplementing it several times.</p>
+                    </span>
+                </project-display>
+
+                <project-display id="vr-lab" name="Virtual Medical Labratory" for="KMC Systems" size="solo"
+                    team-role="Sole developer for majority, initially duo."
+                    tags="professional,gamedev,unity,xr,c#,meta-quest" thumbnail="img/projects/kmc-vr-lab.jpg"
+                    thumbnail-size="cover" thumbnail-x="46%" released="2021-09-20" first="2021-08-02" last="2021-09-20"
+                    link-announcement="https://www.linkedin.com/posts/kmc-systems-inc-_innovation-activity-6857727563062620161-mGuG">
+                    <span slot="description">
+                        <p>VR experience for KMC Systems trade show booth and office marketing installation. Shown at the AACC Annual Scientific Meeting &amp; Clinical Lab Expo 2021 (Sept 26-30).</p>
+                        <p>I was the primary developer - 360 photography, environment and interaction design, and more.</p>
+                        <p>We recorded lots of mixed-reality footage for display on a TV near the installation.</p>
+                        <p>In the demo, you can use a floating paintbrush and pallet to change the instrument’s skins, open the drawers and replace the bottles in their slots, open the robotics area and watch the machine park itself into a safe position so you can insert a microtiter plate, and overall, you can play with the consumables on the desk and fridge and walk around the instrument.</p>
                     </span>
                 </project-display>
 
@@ -162,6 +173,35 @@
                     -->
                     <span slot="description">
                         <p>Contributed ranged grab logic, editor node icons, consulted on design.</p>
+                    </span>
+                </project-display>
+
+                <project-display id="exo-gardener-game" name="Exo-Gardener" for="Personal" size="team"
+                    team-role="Project manager and second developer on the team." tags="hobby,gamedev,godot,xr,meta-quest,windows,linux"
+                    thumbnail="img/projects/exo-gardener-game.jpg" thumbnail-size="cover" thumbnail-x="50%"
+                    released="2023-02-05" first="2023-02-03" last="2023-02-13"
+                    link-main="https://samsarette.itch.io/exo-gardener"
+                    link-repo="https://github.com/lunarcloud/vr-game-GGJ-2023"
+                    link-announcement="https://globalgamejam.org/2023/games/exo-gardener-1">
+                    <span slot="description">
+                        <p>Ran &amp; Participated in Global Game Jam with the Southern NH Game Developer Meetup in 2023.</p>
+                        <p>Developed the puzzle systems, directed the voice actor and implemented their character and voice line activation.</p>
+                        <p>I also spent the week post-jam adding usability and extra polish, such as enhancing the final plants puzzle look-and-feel.</p>
+                        <p>For much of this project, I was coordinating between the four of us to ensure the team collaborated effectively.</p>
+                    </span>
+                </project-display>
+
+                <project-display id="cool-shoot-game" name="Cool Shoot" for="Personal" size="solo"
+                    team-role="Developed solo." tags="hobby,gamedev,godot,windows,macos,linux"
+                    thumbnail="img/projects/cool-shoot-game.jpg" thumbnail-size="cover" thumbnail-x="65%"
+                    released="2024-01-28" first="2024-01-26" last="2024-01-29"
+                    link-main="https://samsarette.itch.io/cool-shoot"
+                    link-repo="https://github.com/lunarcloud/ggj-2024-rail-shooter"
+                    link-announcement="https://globalgamejam.org/games/2024/cool-shoot-1">
+                    <span slot="description">
+                        <p>Ran &amp; Participated in Global Game Jam with the Southern NH Game Developer Meetup in 2024.</p>
+                        <p>Implemented the "shoot the screen, hit a target" system, the levels, drew and animated the werewolf and vampire characters, voiced the vampire, etc.</p>
+                        <p>Kit-bashed free 3D assets, shaders, and the phantom camera addon to create a 32-bit arcade feel, ala Time Crisis or House of the Dead.</p>
                     </span>
                 </project-display>
 
