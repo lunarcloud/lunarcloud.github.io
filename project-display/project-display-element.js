@@ -80,6 +80,9 @@ export default class ProjectDisplayElement extends HTMLElement {
         if (this.hasAttribute('thumbnail-repeat')) {
             thumbStyle.backgroundRepeat = this.getAttribute('thumbnail-repeat')
         }
+        if (this.hasAttribute('thumbnail-bg-color-override')) {
+            thumbStyle.backgroundColor = this.getAttribute('thumbnail-bg-color-override')
+        }
 
         // Set Links
         const linksEl = clone.querySelector('.links')
