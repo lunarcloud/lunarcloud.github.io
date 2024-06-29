@@ -27,6 +27,6 @@
         "stylelint-config-standard": "^35.0.0"
     },
     "dependencies": {
-        "@lunarcloud/gameinputjs": "^13.1.0"
+        "@lunarcloud/gameinputjs": "^13.2.1"
     }
 }
