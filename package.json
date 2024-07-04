@@ -11,7 +11,7 @@
         "csslint": "npx stylelint \"**/*.css\" --quiet-deprecation-warnings",
         "lint": "npm run eslint && npm run htmllint && npm run csslint",
         "serve": "serve",
-        "deps2lib": "rm -r lib/* && cp -r node_modules/gameinputjs lib/"
+        "deps2lib": "shx rm -rf lib && shx mkdir lib && shx cp -r node_modules/gameinputjs lib/"
     },
     "devDependencies": {
         "@linthtml/linthtml": "^0.9.5",
@@ -23,10 +23,11 @@
         "eslint-plugin-n": "^16.4.0",
         "eslint-plugin-promise": "^6.1.1",
         "serve": "^14.2.1",
+        "shx": "^0.3.4",
         "stylelint": "^16.0.2",
         "stylelint-config-standard": "^35.0.0"
     },
     "dependencies": {
-        "gameinputjs": "^13.2.4"
+        "gameinputjs": "^13.2.7"
     }
 }

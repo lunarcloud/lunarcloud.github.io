@@ -1,16 +1,48 @@
-Game-Input (JavaScript) Library
+[<img src="img/generic.png" width="48" />](img/generic.png) Game-Input JavaScript Library
 =============
-![](img/generic.png)
+[![npm](https://img.shields.io/npm/v/gameinputjs)](https://www.npmjs.com/package/gameinputjs)
+[![license](https://img.shields.io/npm/l/gameinputjs)](LICENSE)
+[![language](https://img.shields.io/badge/lang-JavaScript-orange)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![environment](https://img.shields.io/badge/env-Browser-green)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
 
 A client-side JavaScript module one can import to add good gamepad support to web-powered games or other gamepad-powered web applications.
 
-```js
-import { GameInput, DetectedOS } from './gameinput.js'
-import { GameInputSchemaSectionNames, GameInputSchemaButtonNames } from './gameinput-schema.js'
+## Installation
 
-/** @type {GameInput} */
+GameinputJS's `src` and `img` folders need to be accessible in the distributed version of your website.
+
+I would recommend setting up a `package.json` script to help update a distributable copy of the library outside node_modules:
+```json
+{
+    "name": "@me/my-client-webapp",
+    "scripts": {
+        "deps2lib": "shx rm -rf lib && shx mkdir lib && shx cp -r node_modules/gameinputjs lib/"
+    }
+    ...
+}
+```
+Which would allow you to run:
+
+```sh
+    npm i --save-dev shx
+    npm i gameinputjs
+    npm run deps2lib
+```
+
+
+## Usage
+Import from within a Javascript module, construct it, and then use either the events or make a game loop that uses the properties.
+
+```js
+import { GameInput, DetectedOS } from './lib/gameinputjs/src/gameinput.js'
+import { GameInputSchemaSectionNames, GameInputSchemaButtonNames } from './lib/gameinputjs/src/gameinput-schema.js'
+
 const gameInput = new GameInput()
-// Events style
+```
+
+### Event-Driven Style
+```js
+gameInput
     .onReinitialize(() => {
         console.debug("Players updated")
         const firstPlayer = gameInput.getPlayer(0)
@@ -38,8 +70,10 @@ const gameInput = new GameInput()
             console.debug('Jump / Confirm pushed')
         }
     })
+```
 
-// Game-Loop Style
+### Game-Loop Style
+```js
 function gameLoop() {
     for (const player of gameInput.Players) {
         if (!player)
