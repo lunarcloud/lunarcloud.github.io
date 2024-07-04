@@ -11,7 +11,7 @@
         "csslint": "npx stylelint \"**/*.css\" --quiet-deprecation-warnings",
         "lint": "npm run eslint && npm run htmllint && npm run csslint",
         "serve": "serve",
-        "deps2lib": "rm -r lib/* && cp -r node_modules/@lunarcloud/gameinputjs lib/"
+        "deps2lib": "rm -r lib/* && cp -r node_modules/gameinputjs lib/"
     },
     "devDependencies": {
         "@linthtml/linthtml": "^0.9.5",
@@ -27,6 +27,6 @@
         "stylelint-config-standard": "^35.0.0"
     },
     "dependencies": {
-        "@lunarcloud/gameinputjs": "^13.2.1"
+        "gameinputjs": "^13.2.4"
     }
 }
