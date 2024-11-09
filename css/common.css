@@ -221,7 +221,7 @@ body {
   margin: 0;
   padding: 0;
   padding-top: var(--top-nav-height);
-  overflow: auto auto;
+  overflow: auto;
   overflow-wrap: anywhere;
   word-break: auto-phrase;
   hyphens: auto;
