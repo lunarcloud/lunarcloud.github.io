@@ -1,6 +1,6 @@
 # Experimental Portfolio Site
 
-![Code Quality](https://github.com/lunarcloud/gameinputjs/actions/workflows/ci.yml/badge.svg)
+![Code Quality](https://github.com/lunarcloud/lunarcloud.github.io/actions/workflows/ci.yml/badge.svg)
 
 for now, a bunch of test pages. Soon? A proper portfolio.
 
