@@ -38,26 +38,61 @@
                         <a-asset-item id="kmc-vr-large-bottle" src="gltf/kmc-vr-large-bottle.glb"></a-asset-item>
                         <a-asset-item id="shipwreck" src="gltf/shipwreck.glb"></a-asset-item>
 
+                        <a-asset-item id="trek-hugo-class-ship" src="gltf/trek/sta-sarelle-expanse-hugo-class-ship.glb"></a-asset-item>
+                        <a-asset-item id="trek-starbase-364-narendra-station" src="gltf/trek/starbase-364-narendra-station.glb"></a-asset-item>
+                        <a-asset-item id="trek-cetacean" src="gltf/trek/starfleet-cetacean.glb"></a-asset-item>
+                        <a-asset-item id="trek-edosian" src="gltf/trek/starfleet-edosian.glb"></a-asset-item>
+                        <a-asset-item id="trek-exocomp" src="gltf/trek/starfleet-exocomp.glb"></a-asset-item>
+                        <a-asset-item id="trek-medusan" src="gltf/trek/starfleet-medusan-hover-suit.glb"></a-asset-item>
+                        <a-asset-item id="trek-phaser" src="gltf/trek/sta-sarelle-phaser.glb"></a-asset-item>
+
                         <img id="sky" src="img/photosphere/galaxy-sky.jpg" alt="sky">
                     </a-assets>
 
                     <a-entity text="anchor: center; width: 1.5; color: black; value: Desktop Controls: WASD & Mouse"
                             position="0 0. -2.8" rotation="-90 0 0"></a-entity>
 
-                    <a-entity gltf-model="#meeple-airship" shadow position="-1 0.1 -5" scale="0.5 0.5 0.5" rotation="0 25 0">
+                    <a-entity gltf-model="#meeple-airship" shadow position="-0.75 0.1 -3.25" scale="0.1 0.1 0.1" rotation="0 25 0">
                         <a-entity gltf-model="#meeple-robot" position="1.75 1.6 1" rotation="0 15 0"></a-entity>
                         <a-entity gltf-model="#meeple-lady1" position="0 1.6 1.5" rotation="0 0 0"></a-entity>
                         <a-entity gltf-model="#meeple-gent1" position="-1.75 1.6 1" rotation="0 -15 0"></a-entity>
                     </a-entity>
 
-                    <a-entity id="projects-entity" position="-3 1.6 -1.5" rotation="0 90 0" scale="8 4 1"></a-entity>
+                    <a-entity id="projects-entity" position="-3 1.6 -6" rotation="0 60 0" scale="8 4 1"></a-entity>
                     <!--
                         scale="5 2 1"></a-entity>
                     -->
 
-                    <a-entity gltf-model="#ataito-bucket" position="1.5 0.25 -3.5" scale="0.25 0.25 0.25" rotation="0 45 0"></a-entity>
-                    <a-entity gltf-model="#kmc-vr-large-bottle" position="0.5 0 -3.5" scale="3 3 3" rotation="0 45 0"></a-entity>
-                    <a-entity gltf-model="#shipwreck" shadow position="2.5 3 -5.5" scale="1 1 1" rotation="45 45 0"></a-entity>
+                    <a-entity position="0.5 0.1 -3.5" scale="0.01 0.01 0.01">
+                        <a-light type="point" color="#cc4400" position="30 5 0" intensity="1"></a-light>
+                        <a-light type="point" color="#aaaa00" position="-30 5 40" intensity="1"></a-light>
+                        <a-entity gltf-model="#trek-cetacean" position="-45 0 40" rotation="0 30 0"></a-entity>
+                        <a-entity gltf-model="#trek-edosian" position="-20 0 0" rotation="0 90 0"></a-entity>
+                        <a-entity gltf-model="#trek-exocomp" position="0 0 40" rotation="0 -45 0"></a-entity>
+                        <a-entity gltf-model="#trek-medusan" position="30 0 0" rotation="0 0 0"></a-entity>
+                    </a-entity>
+
+                    <a-entity gltf-model="#trek-phaser" scale="0.5 0.5 0.5" position="1.45 0.125 -3.25" rotation="10 30 80"></a-entity>
+
+                    <a-entity position="5 2 -3.5" scale="0.025 0.025 0.025" rotation="-15 50 20">
+                        <a-entity gltf-model="#trek-hugo-class-ship"
+                        animation="property: rotation; from: 0 0 -45; to: 0 0 15; loop: true; dir: alternate; easing: linear; dur: 25000" ></a-entity>
+                    </a-entity>
+
+                    <a-entity position="15 5 -25" scale="0.25 0.25 0.25" rotation="15 35 0">
+                        <a-entity gltf-model="#trek-starbase-364-narendra-station"
+                        animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; elasticity:1000; dur: 50000; easing: linear;"></a-entity>
+                    </a-entity>
+
+                    <a-entity gltf-model="#ataito-bucket" position="2 0.25 -3.5" scale="0.25 0.25 0.25" rotation="0 45 0"></a-entity>
+
+                    <a-entity gltf-model="#kmc-vr-large-bottle" position="-2 0 -3.5" scale="3 3 3" rotation="0 -45 0"></a-entity>
+
+
+                    <a-entity position="1.5 3.5 -8" scale="1 1 1" rotation="45 45 0">
+                        <a-entity gltf-model="#shipwreck" shadow
+                        animation="property: rotation; from: 0 0 0; to: 0 -360 0; loop: true; elasticity:1000; dur: 50000; easing: linear;"></a-entity>
+                    </a-entity>
 
                     <a-plane position="0 0 -4.5" rotation="-90 0 0" width="6" height="3.5" color="#61615e"></a-plane>
 

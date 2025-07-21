@@ -310,6 +310,45 @@ body[loaded] #main {
             }
         }
     }
+
+    & tertiary {
+        grid-row: 5;
+        grid-column: 1 / 3;
+        width: 100%;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+
+        & > ul {
+            display: flex;
+            width: fit-content;
+
+            & > li {
+                display: block;
+                position: relative;
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+                width: 25dvw;
+                aspect-ratio: 4/3;
+
+                & > a {
+                    position: absolute;
+                    inset: 1em;
+                    background-position: center 75%;
+                    background-size: 50%;
+                    background-repeat: no-repeat;
+                    filter: grayscale(0.5);
+
+                    &:focus {
+                        background-size: 75%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 footer {
