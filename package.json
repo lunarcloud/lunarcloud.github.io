@@ -23,7 +23,7 @@
     "devDependencies": {
         "@linthtml/linthtml": "^0.10.2",
         "cspell": "^9.6.4",
-        "eslint": "^9.39.3",
+        "eslint": "^10.0.1",
         "eslint-plugin-editorconfig": "^4.0.3",
         "eslint-plugin-jsdoc": "^62.7.0",
         "neostandard": "^0.12.2",
