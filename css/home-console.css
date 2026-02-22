@@ -43,8 +43,8 @@ body {
     scrollbar-gutter: stable both-edges;
     transition: background,filter 500ms;
     background: linear-gradient(45deg,
-        hsla(241deg 84% 23% / var(--bg-alpha)) 0%,
-        hsla(244deg 100% 63% / var(--bg-alpha)) 100%);
+        hsl(241deg 84% 23% / var(--bg-alpha)) 0%,
+        hsl(244deg 100% 63% / var(--bg-alpha)) 100%);
 
     &[loaded] {
         --bg-alpha: 100%;
@@ -126,7 +126,7 @@ iframe,
     {
         /* focusable elements */
         border-radius: 4px;
-        background-color: rgba(0 0 0 / 5%);
+        background-color: rgb(0 0 0 / 5%);
         color: inherit;
         padding-left: 1ex;
         padding-right: 1ex;
@@ -135,7 +135,7 @@ iframe,
                     background-size 300ms;
 
         &:focus {
-            background-color: rgba(207 180 146 / 25%);
+            background-color: rgb(207 180 146 / 25%);
         }
     }
 }
@@ -186,7 +186,7 @@ body[loaded] #main {
             padding: 0;
             font-size: 1.2em;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            color:rgba(255 255 255 / 50%);
+            color:rgb(255 255 255 / 50%);
         }
 
         & ul {
@@ -212,7 +212,7 @@ body[loaded] #main {
             align-content: end;
 
             & > * {
-                background-color: rgba(0 0 0 / 30%);
+                background-color: rgb(0 0 0 / 30%);
                 border-radius: 50%;
             }
 

@@ -11,26 +11,37 @@
         "htmllint": "npx linthtml \"**/*.html\"",
         "csslint": "npx stylelint \"**/*.css\" --quiet-deprecation-warnings",
         "csslint-fix": "npx stylelint \"**/*.css\" --quiet-deprecation-warnings --fix",
-        "lint": "npm run eslint && npm run htmllint && npm run csslint",
-        "lint-fix": "npm run eslint-fix && npm run htmllint && npm run csslint-fix",
+        "spellcheck": "npx cspell --no-progress --unique",
+        "lint": "npm run eslint; npm run htmllint; npm run csslint; npm run spellcheck",
+        "lint-fix": "npm run eslint-fix; npm run htmllint; npm run csslint-fix; npm run spellcheck",
         "serve": "serve",
-        "copy-deps": "shx rm -rf lib && shx mkdir lib && shx cp -r node_modules/gameinputjs lib/"
+        "copy-deps": "shx rm -rf lib && shx mkdir lib && shx cp -r node_modules/gameinputjs lib/",
+        "outdated": "npx npm-check-updates",
+        "outdated:minor": "npx npm-check-updates --target minor",
+        "outdated:patch": "npx npm-check-updates --target patch"
     },
     "devDependencies": {
-        "@linthtml/linthtml": "^0.10.1",
-        "eslint": "^8.57.1",
-        "eslint-config-standard": "^17.1.0",
+        "@linthtml/linthtml": "^0.10.2",
+        "cspell": "^9.6.4",
+        "eslint": "^9.39.3",
         "eslint-plugin-editorconfig": "^4.0.3",
-        "eslint-plugin-import": "^2.31.0",
-        "eslint-plugin-jsdoc": "^46.10.1",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-jsdoc": "^62.7.0",
         "eslint-plugin-n": "^16.6.2",
         "eslint-plugin-promise": "^6.6.0",
-        "serve": "^14.2.4",
-        "shx": "^0.3.4",
-        "stylelint": "^16.10.0",
-        "stylelint-config-standard": "^35.0.0"
+        "neostandard": "^0.12.2",
+        "npm-check-updates": "^19.4.1",
+        "serve": "^14.2.5",
+        "shx": "^0.4.0",
+        "stylelint": "^17.3.0",
+        "stylelint-config-standard": "^40.0.0"
     },
     "dependencies": {
         "gameinputjs": "^13.2.7"
+    },
+    "version-constraints": {
+        "eslint": "Cannot upgrade to v10 until eslint-plugin-jsdoc adds support (currently supports ^7 || ^8 || ^9). Track: https://github.com/gajus/eslint-plugin-jsdoc/issues",
+        "eslint-plugin-editorconfig": "^4.0.3 required for ESLint 9+ flat config compatibility",
+        "notes": "Check 'npm outdated' regularly. Use 'npm audit' with caution - many vulnerabilities are in dev dependencies and don't affect production. See https://overreacted.io/npm-audit-broken-by-design/"
     }
 }

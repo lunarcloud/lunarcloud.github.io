@@ -247,13 +247,13 @@ body {
                         padding: 0.125em 0.5em;
                         border-radius: 50%;
                         border: 2px solid #ccc;
-                        box-shadow: 0 0 6px 0 rgba(0 0 0 / 40%);
+                        box-shadow: 0 0 6px 0 rgb(0 0 0 / 40%);
                         background-color: #222;
                         color: whitesmoke;
                         transition: all 100ms ease-in-out;
 
                         &:hover {
-                            box-shadow: 0 0 6px 0 rgba(0 0 0 / 60%);
+                            box-shadow: 0 0 6px 0 rgb(0 0 0 / 60%);
                             scale: 110%;
                         }
                     }

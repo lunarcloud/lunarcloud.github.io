@@ -80,7 +80,7 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
             pageFader.fadingOut = false
         })
 
-        // done as a final "fadednavigate" means it'll be subject to prevented propogation, and actually happen last
+        // done as a final "fadednavigate" means it'll be subject to prevented propagation, and actually happen last
         // particularly, helpful when reduced-motion means no extra time due to animations
         this.addEventListener('fadednavigate', () => {
             // actual click must happen last in function, all code ceases to exist after navigation

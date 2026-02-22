@@ -1,0 +1,103 @@
+# Project-Specific Technical Terms
+# This dictionary contains words specific to the project,
+# including tool names, file formats, and code identifiers.
+
+# Project Name & Formats
+webapp
+
+# Web Technologies & Standards
+autorotate
+contenteditable
+gltf
+GLTF
+skybox
+textareas
+Textareas
+webmanifest
+webp
+indexeddb
+
+# Dependencies & Tools
+csslint
+cssprop
+eslint
+htmllint
+linthtml
+lunarcloud
+neostandard
+packagejson
+stylelint
+ungap
+
+# Companies, Products, Places, etc
+Astralore
+Monstrata
+BackToBacklog
+Machen
+Bachen
+RuffleCon
+Wolfenstein
+PlayDate
+ImpactJs
+Araz
+Gerstenberg
+HiArc
+bioMérieux
+Avalonia
+Cobas
+VITEK
+winforms
+AGGP
+SNHGD
+Antiford
+Keene
+Sarette
+LCARS
+LEGO
+mindstorm
+Okuda
+Lexend
+Deca
+projectfilterselected
+gameinputjs
+Homestar
+microtiter
+NHTI
+AACC
+Ren'Py
+gamedev
+ataito
+Narendra
+starbase
+Edosian
+Meeple
+WASD
+Kinect
+fadednavigate
+tonypop
+bganims
+headerimg
+frontend
+frontends
+spinlab
+vmsp
+Modiphius
+exocomp
+
+# Words used as part of css ids / code
+marginx2
+gameinput
+homeworlds
+renpy
+
+# Word parts split by a &shy; character
+vention
+ation
+Gersten
+
+# Plurals/Past-tenses/etc of legit words cspell doesn't like
+barcodes
+backgrounded
+
+# Alternate spelling (cspell being pedantic about the *American* in *American English*)
+travelling
