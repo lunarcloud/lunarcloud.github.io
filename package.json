@@ -6,8 +6,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "eslint-fix": "npx eslint --ignore-path .gitignore --ext .js . --fix",
-        "eslint": "npx eslint --ignore-path .gitignore --ext .js .",
+        "eslint-fix": "npx eslint --ext .js . --fix",
+        "eslint": "npx eslint --ext .js .",
         "htmllint": "npx linthtml \"**/*.html\"",
         "csslint": "npx stylelint \"**/*.css\" --quiet-deprecation-warnings",
         "csslint-fix": "npx stylelint \"**/*.css\" --quiet-deprecation-warnings --fix",
