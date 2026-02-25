@@ -66,7 +66,11 @@ export default class ProjectsPageController {
     }
 
     // Setup projects once loaded
-    if (document.getElementById('all-projects').children.length > 1) { this.#initSortAndFilter() } else { setTimeout(() => this.#initSortAndFilter(), 10) }
+    if (document.getElementById('all-projects').children.length > 1) {
+      this.#initSortAndFilter()
+    } else {
+      setTimeout(() => this.#initSortAndFilter(), 10)
+    }
   }
 
   /**

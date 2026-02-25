@@ -16,7 +16,7 @@ export default class HomeAlaHomestarPageController {
   constructor () {
     // Hook up hover buttons
     const mainImg = document.querySelector('main > img')
-    const hoverFn = (_, el, muted) => {
+    const hoverFn = (/** @type {string} */_, /** @type {Element} */ el, /** @type {boolean} */muted) => {
       // Visual
       const hoverStyle = el.getAttribute('hover-style')
       mainImg.classList.add(hoverStyle)

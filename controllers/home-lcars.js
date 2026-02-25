@@ -20,7 +20,7 @@ export default class HomeLCARSPageController {
 
     if (okAudio instanceof HTMLAudioElement === false || cancelAudio instanceof HTMLAudioElement === false) { throw new Error('This page is wrong') }
 
-    const buttonEffects = (evtName, _el, muted) => {
+    const buttonEffects = (/** @type {string} */ evtName, /** @type {Element} */ _el, /** @type {boolean} */ muted) => {
       // Audio
       if (muted) { return }
       const audioEl = evtName === 'click' ? okAudio : cancelAudio

@@ -28,7 +28,8 @@ export default class ProjectDisplayElement extends HTMLElement {
     super()
 
     // Only need this because a-frame overwrites this
-    const createElement = (tagName, options) => Document.prototype.createElement.call(document, tagName, options)
+    const createElement = (/** @type {string} */ tagName, /** @type {any} */ options) =>
+      Document.prototype.createElement.call(document, tagName, options)
 
     const shadow = this.attachShadow({ mode: 'open' })
 
@@ -204,9 +205,16 @@ export default class ProjectDisplayElement extends HTMLElement {
   }
 
   /**
+   * @callback ProjectComparator
+   * @param {{ attributes: { [x: string]: { value: string; }; }; }} projectA
+   * @param {{ attributes: { [x: string]: { value: string; }; }; }} projectB
+   * @returns {number}      -1, 0, 1 for less than, equal, greater than
+   */
+
+  /**
    * Create a comparison function with the given attribute.
    * @param   {string}    attributeName   name of the attribute to compare on.
-   * @returns {ReadyAction}                  comparator function.
+   * @returns {ProjectComparator}         comparator function.
    */
   static generateCompare (attributeName) {
     return (projectA, projectB) => {

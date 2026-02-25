@@ -25,7 +25,9 @@ export class AnimatedDialogElement extends HTMLDialogElement {
    * Close the dialog.
    */
   close () {
-    if (this.closing) { return }
+    if (this.#closing) {
+      return
+    }
     this.#closing = true
     this.toggleAttribute('dismissing', true)
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

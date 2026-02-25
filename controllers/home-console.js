@@ -211,6 +211,11 @@ export default class HomeConsolePageController {
     el.focus({ preventScroll: true })
   }
 
+  /**
+   * Focus change handler
+   * @param {number} row        item row
+   * @param {number} column     item column
+   */
   focusChanged (row, column) {
     this.currentFocus.row = row
     this.currentFocus.column = column
@@ -325,6 +330,10 @@ export default class HomeConsolePageController {
     console.debug('cancel/exit')
   }
 
+  /**
+   * Perform an audio narration
+   * @param {string} text   words to speak
+   */
   narrate (text) {
     if (this.audioManager.muted) { return }
     speechSynthesis.cancel()
