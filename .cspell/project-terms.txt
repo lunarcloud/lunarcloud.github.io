@@ -16,6 +16,8 @@ Textareas
 webmanifest
 webp
 indexeddb
+aframe
+a-frame
 
 # Dependencies & Tools
 csslint
