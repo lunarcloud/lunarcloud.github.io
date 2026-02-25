@@ -8,10 +8,11 @@ import { cpSync, mkdirSync, rmSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // Remove and recreate js/lib directory
-const distDir = join(__dirname, 'lib')
+const distDir = join(__dirname, 'dist')
 rmSync(distDir, { recursive: true, force: true })
 mkdirSync(distDir, { recursive: true })
 
@@ -25,7 +26,6 @@ function distribute (source) {
   cpSync(sourcePath, destPath, { recursive: true })
   console.log(`Copied ${source} -> ${distDir}/${source}`)
 }
-
 
 distribute('animated-dialog')
 distribute('audio')

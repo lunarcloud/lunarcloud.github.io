@@ -18,7 +18,7 @@
         "lint": "npm run eslint; npm run htmllint; npm run csslint; npm run spellcheck",
         "lint-fix": "npm run eslint-fix; npm run htmllint; npm run csslint-fix; npm run spellcheck",
         "serve": "serve",
-        "serve-build": "serve build",
+        "serve-dist": "serve dist",
         "copy-deps": "node copy-deps.js",
         "build": "node build.js",
         "outdated": "npx npm-check-updates",
