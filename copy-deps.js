@@ -28,6 +28,17 @@ function copyDependency (source, destination) {
   console.log(`Copied ${source} -> lib/${destination}`)
 }
 
+// custom element polyfill for safari
+copyDependency('./node_modules/@ungap/custom-elements/es.js', 'custom-elements.js')
+
+// 3d model viewing
+copyDependency('./node_modules/three/build/three.module.min.js', 'three.module.min.js')
+copyDependency('./node_modules/@google/model-viewer/dist/model-viewer.min.js', 'model-viewer.min.js')
+
+// 3D web scenes
+copyDependency('./node_modules/aframe/dist', 'aframe')
+copyDependency('./node_modules/buffer/index.js', 'buffer/index.js')
+
 // gamepad library
 copyDependency('node_modules/gameinputjs', 'gameinputjs')
 

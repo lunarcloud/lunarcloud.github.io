@@ -1,6 +1,7 @@
 import '../include-element/include-element.js'
 import '../page-fade/page-fade.js'
 import '../nav-header/nav-header-element.js'
+import '../lib/model-viewer.min.js'
 import BgAudioManager from './bg-audio-page.js'
 
 export default class HomeLCARSPageController {

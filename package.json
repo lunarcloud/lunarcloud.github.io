@@ -33,6 +33,9 @@
         "stylelint-config-standard": "^40.0.0"
     },
     "dependencies": {
+        "@google/model-viewer": "^4.1.0",
+        "@ungap/custom-elements": "^1.3.0",
+        "aframe": "^1.7.1",
         "gameinputjs": "^13.2.7"
     },
     "version-constraints": {

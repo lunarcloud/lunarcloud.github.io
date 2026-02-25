@@ -15,8 +15,7 @@
         <link rel="manifest" href="./ssarette-portfolio.webmanifest">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="css/home-lcars.css">
-        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-        <script src="//unpkg.com/@ungap/custom-elements/es.js"></script> <!-- Safari polyfill -->
+        <script src="lib/custom-elements.js"></script> <!-- Safari polyfill -->
     </head>
 
     <body>
@@ -80,11 +79,12 @@
                 </ul>
                 <p>
                     <!-- linthtml-disable attr-name-style -->
-                    <model-viewer id="mv-demo" src="gltf/shipwreck.glb"
+                    <model-viewer id="mv-demo" src="gltf/trek/sta-sarelle-expanse-hugo-class-ship.glb"
                         alt="starship 3d model" loading="lazy"
+                        orientation="15deg 0deg 45deg" scale="100 100 100"
                         auto-rotate auto-rotate-delay="0"  interaction-prompt="none"
-                        camera-controls orientation="15deg 90deg 45deg"
-                        powerPreference="low-power" style="margin: 0 auto; min-width: 1px; height: 80mm"></model-viewer>
+                        camera-controls tone-mapping="neutral"
+                        powerPreference="low-power" style="margin: 0 auto; min-width: 1px; height: 80mm; width: 100%;"></model-viewer>
                     <!-- linthtml-enable attr-name-style -->
                 </p>
                 <p>
