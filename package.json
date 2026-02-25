@@ -5,6 +5,9 @@
     },
     "private": true,
     "type": "module",
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "scripts": {
         "eslint-fix": "npx eslint --ext .js . --fix",
         "eslint": "npx eslint --ext .js .",
