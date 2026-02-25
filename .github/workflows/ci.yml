@@ -43,7 +43,7 @@ jobs:
         if: ${{ ! cancelled() }}
         run: npm run csslint
 
-      - name: Lint CSS
+      - name: Check Spelling
         if: ${{ ! cancelled() }}
         run: npm run spellcheck
 
