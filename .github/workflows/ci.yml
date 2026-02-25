@@ -28,6 +28,8 @@ jobs:
 
       - name: Install Tools
         run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Lint JavaScript
         if: ${{ ! cancelled() }}
