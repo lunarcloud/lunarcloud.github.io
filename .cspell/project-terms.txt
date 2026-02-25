@@ -32,6 +32,8 @@ stylelint
 ungap
 
 # Companies, Products, Places, etc
+Sarette
+ssarette
 Astralore
 Monstrata
 BackToBacklog
