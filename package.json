@@ -28,12 +28,12 @@
     "devDependencies": {
         "@linthtml/linthtml": "^0.10.2",
         "cspell": "^9.7.0",
-        "eslint": "^9.39.3",
+        "eslint": "^10.0.2",
         "eslint-plugin-editorconfig": "^4.0.3",
         "eslint-plugin-jsdoc": "^62.7.1",
-        "neostandard": "^0.12.2",
-        "npm-check-updates": "^19.5.0",
-        "serve": "^14.2.5",
+        "neostandard": "^0.13.0",
+        "npm-check-updates": "^19.6.3",
+        "serve": "^14.2.6",
         "stylelint": "^17.4.0",
         "stylelint-config-standard": "^40.0.0"
     },
