@@ -20,8 +20,6 @@ let filterClearBtn
 /** @type {FadeOutAnchorElement} */
 let filterClearBtnA
 
-/** @type {boolean} */
-const pageIsFiltered = false
 
 /**
  * Do the initial sort & filter on projects.
