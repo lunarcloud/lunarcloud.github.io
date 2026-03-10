@@ -7,37 +7,75 @@
   src: url("../font/SamHandwrittenA-Regular.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: 'Noto Emoji';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/noto-emoji@latest/emoji-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/noto-emoji@latest/emoji-400-normal.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lexend';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/lexend@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/lexend@latest/latin-400-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'Marcellus';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/marcellus@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/marcellus@latest/latin-400-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: 'Geologica';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/geologica@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/geologica@latest/latin-400-normal.woff) format('woff');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
 /* Variables */
 :root,
 ::backdrop {
   --void-bg: lightgray;
-  --main-color-nav-text: #222;
-  --main-color-nav-bg: #eee;
-  --main-color-nav-button-bg: #ccc;
-  --main-color-nav-border: #a3e;
-  --main-color-nav-button-border: #b9d;
-  --main-color-bg: #ddd;
-  --main-color-text: #222;
+  --main-color-nav-text: oklab(25.197% 0 -0.00003);
+  --main-color-nav-bg: oklab(80% 0.04519 0.13908);
+  --main-color-nav-shadow: oklab(50% 0 -0.00008 / 0.59);
+  --main-color-nav-button-bg: oklab(73.188% 0.11186 0.1483);
+  --main-color-nav-border: oklab(28.178% 0.04961 0.04633);
+  --main-color-nav-button-border: oklab(86.52% -0.01555 0.07669);
+  --main-color-bg: oklab(89.755% 0 -0.0001);
+  --main-color-text: oklab(25.197% 0 -0.00003);
   --shadow-color-text: #aaa;
-  --dialog-color-backdrop: hsl(0deg 0% 39% / 70%);
-  --main-a-link-color: hsl(220deg 31% 41%);
-  --main-a-hover-color: hsl(220deg 49% 38%);
-  --main-a-active-color: hsl(220deg 38% 31%);
-  --main-a-visited-color: hsl(268deg 23% 42%);
-  --high-readability-font: "Lexend Deca", sans-serif;
+  --dialog-color-backdrop: oklab(49.97% 0 -0.00006 / 0.7);
+  --main-a-link-color: oklab(48.313% -0.00894 -0.07426);
+  --main-a-hover-color: oklab(44.37% -0.0144 -0.10953);
+  --main-a-active-color: oklab(39.332% -0.00856 -0.07235);
+  --main-a-visited-color: oklab(48.286% 0.04689 -0.06792);
+  --high-readability-font: "Lexend", sans-serif;
   --print-readability-font: "Gentium Book Basic", serif;
   --handwritten-font: "Sam Handwritten A", sans-serif;
-  --main-font-headers: var(--high-readability-font);
+  --nav-title-font: "Marcellus", serif;
+  --main-font-headers: "Geologica", sans-serif;
   --main-font-body: var(--high-readability-font);
   --main-font-size: 11pt;
   --top-nav-height: 0;
+  --emoji-font: 'Noto Emoji', monospace;
 }
 
 @media screen and (prefers-contrast: more) {
   :root,
   ::backdrop {
-    --main-color-bg: white;
-    --main-color-text: black;
+    --main-color-bg: oklab(100% 0 0);
+    --main-color-text: oklab(0% 0 0);
     --shadow-color-text: transparent;
     --dialog-color-backdrop: hsl(0deg 0% 100% / 90%);
   }
@@ -48,7 +86,7 @@
   ::backdrop {
     --void-bg: transparent;
     --shadow-color-text: transparent;
-    --main-color-bg: white;
+    --main-color-bg: oklab(100% 0 0);
     --main-font-body: var(--print-readability-font);
   }
 
@@ -64,24 +102,25 @@
 @media screen and (prefers-color-scheme: dark) {
   :root,
   ::backdrop {
-    --void-bg: #1a1a1a;
-    --main-color-nav-text: #ddd;
-    --main-color-nav-bg: #111;
-    --main-color-nav-button-bg: #343343;
-    --main-color-nav-button-border: #435;
-    --main-color-bg: #222;
-    --main-color-text: #ddd;
-    --shadow-color-text: hsl(180deg 25% 20%);
-    --dialog-color-backdrop: hsl(0deg 0% 0% / 70%);
+    --void-bg: oklab(21.779% 0 -0.00002);
+    --main-color-nav-text: oklab(89.755% 0 -0.0001);
+    --main-color-nav-bg: oklab(31.05% 0.07166 -0.08054);
+    --main-color-nav-shadow: oklab(0 0 0 / 0.59);
+    --main-color-nav-button-bg: oklab(22.613% 0.04055 -0.03146);
+    --main-color-nav-button-border: oklab(34.691% -0.00976 0.03423);
+    --main-color-bg: oklab(25.197% 0 -0.00003);
+    --main-color-text: oklab(89.755% 0 -0.0001);
+    --shadow-color-text: oklab(35.061% -0.0307 -0.00872);
+    --dialog-color-backdrop: oklab(0% 0 0 / 0.7);
   }
 }
 
 @media screen and (prefers-contrast: more) and (prefers-color-scheme: dark) {
   :root,
   ::backdrop {
-    --main-color-bg: black;
-    --main-color-text: white;
-    --dialog-color-backdrop: hsl(0deg 0% 0% / 90%);
+    --main-color-bg: oklab(0% 0 0);
+    --main-color-text: oklab(100% 0 0);
+    --dialog-color-backdrop: oklab(0% 0 0 / 0.9);
   }
 }
 
@@ -308,3 +347,7 @@ together {
   white-space: nowrap;
 }
 
+.emoji,
+symbol {
+    font-family: var(--emoji-font);
+}

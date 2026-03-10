@@ -95,23 +95,43 @@ main {
     padding: 0 2em 3em;
 
     & p {
-        margin-top: 0.25em;
+        margin-top: 0;
         margin-bottom: 1em;
         line-height: 1.25em;
+
+        &.attach-next {
+            margin-bottom: 0.125em;
+        }
+    }
+    & ul {
+        margin-top: 0.125em;
     }
 
-    & > h2, & > h3, & > h4 {
+    & h2, & h3, & h4 {
         margin-bottom: 1mm;
         margin-top: 0.5em;
 
-        & .icon {
-            margin-left: -1em;
+        & symbol,
+        img.icon {
             margin-right: 0.25em;
         }
     }
 
+    & section {
+        margin-left: 1em;
 
-    & > h2 + h3, & > h3 + h4 {
+        & h2, & h3, & h4 {
+            margin-bottom: 0.5em;
+
+            & symbol,
+            img.icon {
+                margin-left: -1.6em;
+            }
+        }
+    }
+
+
+    & h2 + h3, & h3 + h4 {
         margin-top: 2mm;
     }
 
@@ -128,7 +148,8 @@ main {
             color: inherit;
         }
 
-        & .icon {
+        & symbol,
+        img.icon {
             height: 1em;
             aspect-ratio: 1;
             font-size: 1em;
@@ -154,6 +175,11 @@ main {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2em;
+
+        @media (width < 640px) {
+            grid-template-columns: 1fr;
+            gap: 1em;
+        }
     }
 
     & .highlighted-section {
@@ -203,7 +229,6 @@ main {
         padding: 0;
         display: flex;
         justify-content: space-around;
-
     }
 
     & #alt-pages {

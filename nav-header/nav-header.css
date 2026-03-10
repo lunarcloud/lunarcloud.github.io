@@ -15,6 +15,7 @@
     color: var(--main-color-nav-text);
     background-color: var(--main-color-nav-bg);
     border-bottom: 1px solid var(--main-color-nav-border);
+    box-shadow: 0 0 6px 6px var(--main-color-nav-shadow);
 
     & > * {
         vertical-align: middle;
@@ -26,6 +27,8 @@
         top: 4px;
         padding-top: 4px;
         font-size: 8mm;
+        font-family: var(--nav-title-font);
+
     }
 
     & .nav-btn {
@@ -42,20 +45,21 @@
         color: var(--main-color-nav-text);
         background-color: var(--main-color-nav-button-bg);
         border-color: var(--main-color-nav-button-border);
+        transition: filter 200ms ease-out;
 
         &:hover {
             cursor: pointer;
-            filter: brightness(0.8);
+            filter: brightness(0.75);
 
             @media (prefers-color-scheme: dark) {
-                filter: brightness(1.2);
+                filter: brightness(1.5);
             }
         }
 
         &#return-to-root {
             border-width: 2px;
             border-style: outset;
-            width: 12mm;
+            width: fit-content;
 
             &:active {
                 border-style: inset;
@@ -70,11 +74,14 @@
 
 #about-dialog {
     padding: 0;
-    border: 2px solid var(--main-color-nav-border);
+    border: 0;
     border-radius: 4px;
+    box-shadow: 0 0 15px 5px oklab(0.52 -0.07 -0.14 / 0.4);
 
     & main {
         padding: 20px 12px;
+        background-color: var(--main-color-bg);
+        color: var(--main-color-text);
     }
 
     & header {
@@ -95,12 +102,19 @@
             height: 24px;
             line-height: 14px;
             color: var(--main-color-nav-text);
+            border: none;
             background-color: transparent;
             float: right;
             display: block;
             vertical-align: middle;
             text-align: center;
             cursor: pointer;
+            transition: background-color 200ms ease-out, font-size 200ms ease-in-out;
+
+            &:hover {
+                background-color: oklab(0% 0 0 / 0.532);
+                font-size: 1.1em;
+            }
         }
     }
 }
