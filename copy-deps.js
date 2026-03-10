@@ -28,6 +28,9 @@ function copyDependency (source, destination) {
   console.log(`Copied ${source} -> lib/${destination}`)
 }
 
+// library to turn html doc into an image/canvas
+copyDependency('./node_modules/html2canvas/dist/html2canvas.min.js', 'html2canvas.min.js')
+
 // custom element polyfill for safari
 copyDependency('./node_modules/@ungap/custom-elements/es.js', 'custom-elements.js')
 
