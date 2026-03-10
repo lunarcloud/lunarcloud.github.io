@@ -65,7 +65,7 @@ export class ProjectDisplayElement extends HTMLElement {
     })
 
     // Set Thumbnail
-    /** @type HTMLElement */ const thumbnail = clone.querySelector('.thumbnail')
+    /** @type {HTMLElement} */ const thumbnail = clone.querySelector('.thumbnail')
     const thumbStyle = thumbnail.style
     if (this.hasAttribute('thumbnail')) {
       thumbStyle.backgroundImage = `url(${this.getAttribute('thumbnail')})`
@@ -84,7 +84,7 @@ export class ProjectDisplayElement extends HTMLElement {
     }
 
     // Set Links
-    /** @type HTMLElement */ const linksEl = clone.querySelector('.links')
+    /** @type {HTMLElement} */ const linksEl = clone.querySelector('.links')
     if (this.hasAttribute('link-main')) {
       // @ts-ignore
       linksEl.querySelector('.main a').href = this.getAttribute('link-main')
