@@ -44,7 +44,6 @@ distribute('home-lcars.html')
 distribute('icon.png')
 distribute('index.html')
 distribute('project-list-view.html')
-distribute('projects.html')
 distribute('ssarette-portfolio.webmanifest')
 
 console.log('All distribution files copied successfully!')
