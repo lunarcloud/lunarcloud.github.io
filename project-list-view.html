@@ -18,15 +18,14 @@
             <span slot="about-info">This is a list of projects that Sam Sarette has been involved in.</span>
         </nav-header>
         <main id="main"  class="page-fade">
-            <h1>
-                Projects <span id="projects-count"></span>
-            </h1>
-
             <div id="filters-list">
-                <button id="filter-clear" type="reset" print-hidden>Clear Filters</button>
+                <button id="filter-clear" type="reset" print-hidden title="clear all filters">
+                    <symbol>⌫</symbol>
+                </button>
                 <a is="fadeout-anchor" id="filter-clear-a" hidden href="?"></a>
                 <ul id="active-project-tags" class="tags project-tags"></ul>
-                <span id="project-tags-label">Active:</span>
+                <span id="no-filters-label" disabled>no filters</span>
+                <span id="project-tags-label">Projects <span id="projects-count"></span></span>
             </div>
 
             <div id="all-projects">
@@ -133,17 +132,18 @@
                     </span>
                 </project-display>
 
-                <project-display id="hiarc-sdk" name="Internal SDK"
+                <project-display id="hiarc-launchcode" name="HiArc LaunchCode"
                     for="HiArc (Formerly KMC Systems)" size="trio"
-                    team-role="Installer, Packaging, and XR expert."
+                    team-role="Improver of the user experience."
+                    link-main="https://ctrl.hiarc.inc/launchcode"
                     tags="professional,c#,c++,xaml,nuget,installers,os-integration,continuous-integration,godot,xr"
                     thumbnail="img/projects/hiarc-simple.svg" thumbnail-bg-color-override="#27424a" first="2022-08-11">
                     <!--last="2025-06-26"-->
                     <span slot="description">
-                        <p>Created the Installer (msi) and NuGet packages for our primary Robotics SDK. Involved lots of manually-created nuspec files, adjusting project templates, devops yaml build scripts.</p>
-                        <p>Ensured the project’s lead developer was happy. The work has process improvement implications of nearly all projects at HiArc (an internally-fundamental SDK).</p>
+                        <p>Created the MSI installer and was first to implement NuGet packages for the SDK. Involved lots of manually-created nuspec files, adjusting project templates, devops yaml build scripts.</p>
                         <p>Added Godot-powered XR capabilities to the simulator template.</p>
-                        <p>Rewrote a key SDK utility from Winforms to Avalonia.</p>
+                        <p>Rewrote the Diagnostics application from Winforms to Avalonia and made several improvements to it and the Designer application.</p>
+                        <p>The work has process improvement implications of nearly all projects at HiArc as it is the (originally internal-only) fundamental SDK.</p>
                     </span>
                 </project-display>
 
@@ -153,7 +153,7 @@
                     tags="professional,c#,yaml,markdown,nuget,continuous-integration"
                     thumbnail="img/projects/hiarc-simple.svg" thumbnail-bg-color-override="#27424a" first="2023-09-10">
                     <span slot="description">
-                        <p>Helped to develop a series of standardized Azure DevOps build pipelines for use on all company projects in future, starting with the Internal SDK.</p>
+                        <p>Helped to develop a series of standardized Azure DevOps build pipelines for use on all company projects in future, starting with HiArc LaunchCode.</p>
                         <p>Additionally, he built a utility which uses standard tools and a highly customized CSS template to produce the documentation required of a regulated medical program, written in markdown and output as PDF.</p>
                     </span>
                 </project-display>
@@ -161,7 +161,7 @@
                 <project-display id="hiarc-large-ivd-nextgen" name="Next Generation IVD Device"
                     for="HiArc (Formerly KMC Systems)" size="team" team-role="Technical Lead of a large firmware team."
                     tags="professional,c#,c++,robotics,nuget,continuous-integration"
-                    thumbnail="img/projects/hiarc-simple.svg" thumbnail-bg-color-override="#27424a" first="2024-12-17">
+                    thumbnail="img/projects/hiarc-simple.svg" thumbnail-bg-color-override="#27424a" first="2024-12-17" last="2026-02-28">
                     <span slot="description">
                         <p>Helped to reorganize and train a large team of firmware developers to produce RTOS firmware running nearly two dozen ARM SBCs.</p>
                         <p>Utilized the company's Internal SDK and standard CI/CD Toolkit in order to develop firmware and supporting documentation automatically and continuously.</p>
@@ -556,7 +556,7 @@
                 </project-display>
 
                 <project-display id="sta-play-app" name="Play App for Star Trek Adventures" for="Personal" size="solo"
-                    team-role="Developed solo." tags="hobby,js/ts,gamedev"
+                    team-role="Developed solo." tags="hobby,js/ts,gamedev,agentic-development"
                     thumbnail="img/projects/sta-play-app.jpg" thumbnail-size="contain" thumbnail-x="50%" thumbnail-bg-color-override="black"
                     released="2024-05-20" first="2024-05-15"
                     link-main="https://samsarette.itch.io/sta-play"
@@ -564,6 +564,7 @@
                     <span slot="description">
                         <p>An unofficial, unaffiliated app for displaying game information for players of the <a href="https://www.startrekttrpg.com/">Star Trek Adventures</a> game by Modiphius® Entertainment.</p>
                         <p>Uses indexeddb in-browser database, drag and drop, 3D model displays multiple themes, custom web components, and custom keyboard shortcuts.</p>
+                        <p>Recently, Sam has used this project to test agentic development using GitHub copilot (AI), but make no mistake about the hands-on craftmanship still on display. The AI still has no account for good taste (awful at the theme CSS work), and the fun parts should be for humans anyway.</p>
                     </span>
                 </project-display>
             </div>

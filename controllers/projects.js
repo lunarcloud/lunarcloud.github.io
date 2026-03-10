@@ -40,9 +40,10 @@ export default class ProjectsPageController {
 
     if (this.pageFilters.length === 0) {
       this.filterClearBtn.toggleAttribute('disabled', true)
-      document.getElementById('project-tags-label').toggleAttribute('hidden', true)
+      document.getElementById('no-filters-label').style.display = 'inline'
     } else {
       this.filterClearBtn.addEventListener('click', () => this.clearFilters())
+      document.getElementById('no-filters-label').style.display = 'none'
     }
 
     // Setup the list of current filters at clickable items

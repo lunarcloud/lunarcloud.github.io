@@ -6,31 +6,74 @@ main {
 
 #all-projects {
   display: flex;
+  flex-wrap: wrap;
   margin: auto;
-  flex-direction: column;
   align-items: center;
+  margin-top: calc(var(--top-nav-height) + 2em);
 }
 
 #filters-list,
 #all-projects project-display {
   max-width: 100%;
-  width: 720px;
+  width: 680px;
   margin: auto;
+  flex-shrink: 0;
+}
+
+#all-projects project-display {
+  flex-grow: 1;
+  height: stretch;
 }
 
 #filters-list {
+  --filters-bg-color: oklab(100% 0 0);
+  --filters-box-shadow-color: oklab(50% 0 0);
   display: flex;
   flex-direction: row-reverse;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  background-color: var(--filters-bg-color);
+  box-shadow: 0 0 6px 0 var(--filters-box-shadow-color);
+  margin-top: 1em;
+  position: fixed;
+  top: calc(var(--top-nav-height) + 1em);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  line-height: 1.5em;
+  vertical-align: text-bottom;
+
+  @media screen and (prefers-color-scheme: dark) {
+    --filters-bg-color: oklab(50% 0 0);
+    --filters-box-shadow-color: oklab(0% 0 0);
+  }
+
+  #no-filters-label {
+    line-height: 2em;
+    filter: opacity(0.5);
+  }
 }
 
-#filters-list #filter-clear {
-  text-align: right;
-  margin-right: 20px;
+#filter-clear {
+  margin-right: 1em;
   flex-grow: 0;
   white-space: nowrap;
   overflow: hidden;
   overflow-wrap: break-word;
   text-overflow: ellipsis;
+  appearance: none;
+  background-color: transparent;
+  border: unset;
+  border-radius: 1em;
+  font-size: 2em;
+  line-height: 1em;
+  padding-left: 0.1em;
+  transition: background-color 300ms ease-out;
+
+  &:not(:disabled):hover {
+    color: var(--main-a-hover-color);
+    background-color: oklab(50% 0 0 / 0.5);
+  }
 }
 
 #filters-list .project-tags {
@@ -40,18 +83,9 @@ main {
 
 #project-tags-label {
   margin: auto;
+  margin-right: 1em;
 }
 
 #all-projects project-display[hidden] {
   display: none !important;
-}
-
-@media screen and (width >= 640px) {
-  main {
-    font-size: 10pt;
-  }
-
-  main > h1 {
-    font-size: 24pt;
-  }
 }
