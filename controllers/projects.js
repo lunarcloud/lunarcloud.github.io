@@ -20,7 +20,6 @@ let filterClearBtn
 /** @type {FadeOutAnchorElement} */
 let filterClearBtnA
 
-
 /**
  * Do the initial sort & filter on projects.
  */
