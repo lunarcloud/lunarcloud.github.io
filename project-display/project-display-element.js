@@ -58,7 +58,7 @@ export default class ProjectDisplayElement extends HTMLElement {
 
       anchorEl.textContent = tag
       anchorEl.href = `?filter=${tag}`
-      anchorEl.title = `fitler on '${tag}'`
+      anchorEl.title = `filter on '${tag}'`
       anchorEl.addEventListener('fadednavigate', () => {
         const active = listItemEl.toggleAttribute('active')
         this.dispatchEvent(new CustomEvent('projectfilterselected', { detail: { tag, active } }))

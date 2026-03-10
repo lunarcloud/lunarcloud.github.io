@@ -18,6 +18,7 @@ webp
 indexeddb
 aframe
 a-frame
+agentic
 
 # Dependencies & Tools
 csslint
