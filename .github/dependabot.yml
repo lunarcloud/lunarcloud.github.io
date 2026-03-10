@@ -9,6 +9,13 @@ updates:
       interval: "weekly"
       day: "thursday"
     open-pull-requests-limit: 10
+    # Ignore major version updates for ESLint and related plugins to prevent breaking changes
+    # ESLint config standard is tied to ESLint v8.x, so we can't upgrade to ESLint v9+ yet
+    ignore:
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint-*"
+        update-types: ["version-update:semver-major"]
     groups:
       npm-dependencies:
         patterns:
