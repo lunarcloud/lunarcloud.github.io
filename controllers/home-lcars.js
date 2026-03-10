@@ -31,5 +31,5 @@ export default class HomeLCARSPageController {
   }
 }
 
-globalThis.App ??= { Page: undefined }
-globalThis.App.Page = new HomeLCARSPageController()
+// Run the Page's Controller
+new HomeLCARSPageController()

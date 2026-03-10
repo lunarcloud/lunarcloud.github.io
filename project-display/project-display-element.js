@@ -2,12 +2,14 @@ import { FadeOutAnchorElement } from '../page-fade/page-fade.js'
 
 const pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',') ?? []
 
-export default class ProjectDisplayElement extends HTMLElement {
+const templateHTML = await (await fetch('./project-display/project-display.html')).text()
+
+export class ProjectDisplayElement extends HTMLElement {
   /**
    * Element's template.
    * @type {HTMLTemplateElement}
    */
-  static templateElement
+  static templateElement = new DOMParser().parseFromString(templateHTML, 'text/html').querySelector('template')
 
   /**
    * List of relevant metadata tags.
@@ -69,7 +71,8 @@ export default class ProjectDisplayElement extends HTMLElement {
     })
 
     // Set Thumbnail
-    const thumbStyle = clone.querySelector('.thumbnail').style
+    /** @type HTMLElement */ const thumbnail = clone.querySelector('.thumbnail')
+    const thumbStyle = thumbnail.style
     if (this.hasAttribute('thumbnail')) {
       thumbStyle.backgroundImage = `url(${this.getAttribute('thumbnail')})`
     }
@@ -87,18 +90,21 @@ export default class ProjectDisplayElement extends HTMLElement {
     }
 
     // Set Links
-    const linksEl = clone.querySelector('.links')
+    /** @type HTMLElement */ const linksEl = clone.querySelector('.links')
     if (this.hasAttribute('link-main')) {
+      // @ts-ignore
       linksEl.querySelector('.main a').href = this.getAttribute('link-main')
       linksEl.querySelector('.main').classList.remove('hidden')
       linksEl.classList.remove('hidden')
     }
     if (this.hasAttribute('link-repo')) {
+      // @ts-ignore
       linksEl.querySelector('.repo a').href = this.getAttribute('link-repo')
       linksEl.querySelector('.repo').classList.remove('hidden')
       linksEl.classList.remove('hidden')
     }
     if (this.hasAttribute('link-announcement')) {
+      // @ts-ignore
       linksEl.querySelector('.announcement a').href = this.getAttribute('link-announcement')
       linksEl.querySelector('.announcement').classList.remove('hidden')
       linksEl.classList.remove('hidden')
@@ -152,16 +158,18 @@ export default class ProjectDisplayElement extends HTMLElement {
     if (this.hasAttribute('name')) {
       const nameEl = clone.querySelector('.name')
       nameEl.textContent = this.getAttribute('name')
-      if (this.hasAttribute('name-no-hyphen-char')) { nameEl.setAttribute('word-break-no-hyphen', true) }
+      if (this.hasAttribute('name-no-hyphen-char')) { nameEl.setAttribute('word-break-no-hyphen', 'true') }
     } else {
       console.warn('project-display element does not have a name!', this)
     }
 
     shadow.appendChild(clone)
-    setTimeout(() => {
+
+    //debugger
+    requestAnimationFrame(() => {
       this.#ready = true
       this.dispatchEvent(new CustomEvent('ready'))
-    }, 1)
+    })
   }
 
   /**
@@ -191,15 +199,15 @@ export default class ProjectDisplayElement extends HTMLElement {
     if (ongoingA && !ongoingB) { return 1 }
     if (!ongoingA && ongoingB) { return -1 }
 
-    const firstA = projectA.attributes.first?.value ?? ''
-    const firstB = projectB.attributes.first?.value ?? ''
+    const firstA = projectA.attributes['first']?.value ?? ''
+    const firstB = projectB.attributes['first']?.value ?? ''
 
     if (ongoingA && ongoingB) { return firstA.localeCompare(firstB) }
 
-    const releasedA = projectA.attributes.released?.value ?? ''
+    const releasedA = projectA.attributes['released']?.value ?? ''
     const minA = [releasedA, firstA].sort()[0]
 
-    const releasedB = projectB.attributes.released?.value ?? ''
+    const releasedB = projectB.attributes['released']?.value ?? ''
     const minB = [releasedB, firstB].sort()[0]
 
     return minA.localeCompare(minB)
@@ -225,10 +233,6 @@ export default class ProjectDisplayElement extends HTMLElement {
     }
   }
 }
-
-ProjectDisplayElement.templateElement = new DOMParser()
-  .parseFromString(await (await fetch('./project-display/project-display.html')).text(), 'text/html')
-  .querySelector('template')
 
 // Register element
 customElements.define('project-display', ProjectDisplayElement)

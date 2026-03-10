@@ -339,6 +339,5 @@ export default class HomeConsolePageController {
     speechSynthesis.speak(new SpeechSynthesisUtterance(text))
   }
 }
-
-globalThis.App ??= { Page: undefined }
-globalThis.App.Page = new HomeConsolePageController()
+// Run the Page's Controller
+new HomeConsolePageController()

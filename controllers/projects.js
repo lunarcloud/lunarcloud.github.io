@@ -1,6 +1,6 @@
 import '../nav-header/nav-header-element.js'
-import ProjectDisplayElement from '../project-display/project-display-element.js'
-import FadeOutAnchorElement from '../page-fade/page-fade.js'
+import { ProjectDisplayElement } from '../project-display/project-display-element.js'
+import { FadeOutAnchorElement } from '../page-fade/page-fade.js'
 
 export default class ProjectsPageController {
   /** @type {HTMLElement} */
@@ -136,5 +136,5 @@ export default class ProjectsPageController {
   }
 }
 
-globalThis.App ??= { Page: undefined }
-globalThis.App.Page = new ProjectsPageController()
+// Run the Page's Controller
+new ProjectsPageController()

@@ -57,6 +57,4 @@ export default class StandardHomePageController {
     return percentTop >= 0 && percentTop < 0.50
   }
 }
-
-globalThis.App ??= { Page: undefined }
-globalThis.App.Page = new StandardHomePageController()
+new StandardHomePageController()

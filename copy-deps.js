@@ -29,13 +29,12 @@ function copyDependency (source, destination) {
 }
 
 // library to turn html doc into an image/canvas
-copyDependency('./node_modules/html2canvas/dist/html2canvas.min.js', 'html2canvas.min.js')
+copyDependency('./node_modules/html2canvas-pro/dist/', 'html2canvas-pro')
 
 // custom element polyfill for safari
 copyDependency('./node_modules/@ungap/custom-elements/es.js', 'custom-elements.js')
 
 // 3d model viewing
-copyDependency('./node_modules/three/build/three.module.min.js', 'three.module.min.js')
 copyDependency('./node_modules/@google/model-viewer/dist/model-viewer.min.js', 'model-viewer.min.js')
 
 // 3D web scenes

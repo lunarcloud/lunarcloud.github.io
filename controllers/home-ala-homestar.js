@@ -34,6 +34,5 @@ export default class HomeAlaHomestarPageController {
     this.audioManager.setupElements('a[hover-style]', hoverFn, resetFn, undefined)
   }
 }
-
-globalThis.App ??= { Page: undefined }
-globalThis.App.Page = new HomeAlaHomestarPageController()
+// Run the Page's Controller
+new HomeAlaHomestarPageController()

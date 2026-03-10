@@ -1,4 +1,4 @@
-import FadeOutAnchorElement from '../page-fade/page-fade.js'
+import { FadeOutAnchorElement } from '../page-fade/page-fade.js'
 
 export default class BgAudioManager {
   /**

@@ -25,9 +25,9 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
    */
   constructor () {
     super()
+
     if (this.hasAttribute('download')) {
       console.warn('FadeOutAnchorElement is a download! Fading will not be available.', this)
-      return
     }
 
     this.addEventListener('click', e => this.fadePageOut(e))
@@ -92,5 +92,3 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
 
 // Register element
 customElements.define('fadeout-anchor', FadeOutAnchorElement, { extends: 'a' })
-
-export default FadeOutAnchorElement

@@ -1,4 +1,5 @@
 @import url("./common.css");
+@import url("../project-display/project-tags.css");
 
 main {
   padding: 4px;
