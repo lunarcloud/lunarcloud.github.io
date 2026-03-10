@@ -39,6 +39,7 @@ copyDependency('./node_modules/@google/model-viewer/dist/model-viewer.min.js', '
 
 // 3D web scenes
 copyDependency('./node_modules/aframe/dist', 'aframe')
+copyDependency('./node_modules/aframe-htmlembed-component/dist', 'aframe-htmlembed-component')
 copyDependency('./node_modules/buffer/index.js', 'buffer/index.js')
 
 // gamepad library

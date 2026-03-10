@@ -29,14 +29,14 @@ export class FadeOutAnchorElement extends HTMLAnchorElement {
     if (this.hasAttribute('download')) {
       console.warn('FadeOutAnchorElement is a download! Fading will not be available.', this)
     }
+  }
+
+  // the pathname doesn't correctly read at construction, but does one frame later
+  connectedCallback () {
+    this.samePage = this.pathname === window.location.pathname
+    this.toggleAttribute('same-page', this.samePage)
 
     this.addEventListener('click', e => this.fadePageOut(e))
-
-    // the pathname doesn't correctly read at construction, but does one frame later
-    requestAnimationFrame(() => {
-      this.samePage = this.pathname === window.location.pathname
-      this.toggleAttribute('same-page', this.samePage)
-    })
   }
 
   /**

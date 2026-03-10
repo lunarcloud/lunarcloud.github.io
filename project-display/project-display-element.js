@@ -18,12 +18,6 @@ export class ProjectDisplayElement extends HTMLElement {
   tags = []
 
   /**
-   * Whether the element is ready.
-   * @type {boolean}
-   */
-  #ready = false
-
-  /**
    * Constructor.
    */
   constructor () {
@@ -164,26 +158,6 @@ export class ProjectDisplayElement extends HTMLElement {
     }
 
     shadow.appendChild(clone)
-
-    //debugger
-    requestAnimationFrame(() => {
-      this.#ready = true
-      this.dispatchEvent(new CustomEvent('ready'))
-    })
-  }
-
-  /**
-   * @callback ReadyAction   Callback when ready
-   * @augments Function
-   */
-
-  /**
-   * Register an action to perform when the element is ready.
-   * @param {ReadyAction} action function to perform.
-   */
-  onReady (action) {
-    if (this.#ready) requestAnimationFrame(action)
-    else this.addEventListener('ready', action)
   }
 
   /**
