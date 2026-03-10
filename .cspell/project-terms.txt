@@ -58,9 +58,10 @@ Keene
 Sarette
 LCARS
 LEGO
-mindstorm
+MINDSTORMS
 Okuda
 Lexend
+Geologica
 Deca
 projectfilterselected
 gameinputjs

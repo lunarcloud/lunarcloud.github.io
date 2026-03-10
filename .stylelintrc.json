@@ -4,6 +4,10 @@
     "property-no-vendor-prefix": null,
     "value-no-vendor-prefix": null,
     "selector-type-no-unknown": null,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "number-max-precision": [
+        4,
+        { "insideFunctions": { "/^(oklch|oklab|lch|lab)$/": 5 } }
+    ]
   }
 }
