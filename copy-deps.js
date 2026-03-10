@@ -28,9 +28,6 @@ function copyDependency (source, destination) {
   console.log(`Copied ${source} -> lib/${destination}`)
 }
 
-// library to turn html doc into an image/canvas
-copyDependency('./node_modules/html2canvas-pro/dist/', 'html2canvas-pro')
-
 // custom element polyfill for safari
 copyDependency('./node_modules/@ungap/custom-elements/es.js', 'custom-elements.js')
 
@@ -39,7 +36,6 @@ copyDependency('./node_modules/@google/model-viewer/dist/model-viewer.min.js', '
 
 // 3D web scenes
 copyDependency('./node_modules/aframe/dist', 'aframe')
-copyDependency('./node_modules/aframe-htmlembed-component/dist', 'aframe-htmlembed-component')
 copyDependency('./node_modules/buffer/index.js', 'buffer/index.js')
 
 // gamepad library
