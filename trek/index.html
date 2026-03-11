@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Anime UI</title>
-    <meta name="description" content="Star Trek Misfits">
-    <script src="../../lib/aframe/aframe-master.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
-  </head>
-  <body>
-    <a-scene renderer="colorManagement: true;" xr-mode-ui="XRMode: xr" inspector="" keyboard-shortcuts="" screenshot="" device-orientation-permission-ui="">
-        <a-assets>
-            <a-asset-item id="ship" src="ship.glb"></a-asset-item>
-            <a-asset-item id="station" src="station.glb"></a-asset-item>
-            <a-asset-item id="shuttle" src="shuttle.glb"></a-asset-item>
-            <a-asset-item id="runabout" src="runabout.glb"></a-asset-item>
+    <head>
+        <meta charset="utf-8">
+        <title>Anime UI</title>
+        <meta name="description" content="Star Trek Misfits">
+        <script src="../../lib/aframe/aframe-master.min.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
+    </head>
+    <body>
+        <!-- linthtml-disable attr-name-style, attr-bans -->
+        <a-scene renderer="colorManagement: true;" xr-mode-ui="XRMode: xr" inspector="" keyboard-shortcuts="" screenshot="" device-orientation-permission-ui="">
+            <a-assets>
+                <a-asset-item id="ship" src="ship.glb"></a-asset-item>
+                <a-asset-item id="station" src="station.glb"></a-asset-item>
+                <a-asset-item id="shuttle" src="shuttle.glb"></a-asset-item>
+                <a-asset-item id="runabout" src="runabout.glb"></a-asset-item>
 
-            <img id="sky" src="../img/photosphere/galaxy-sky.jpg" alt="sky">
-        </a-assets>
+                <img id="sky" src="../img/photosphere/galaxy-sky.jpg" alt="sky">
+            </a-assets>
 
-        <a-entity position="4 0 4" rotation="0 0 0">
-            <a-camera position="0 0 0" near="0.1" camera="" rotation="" look-controls="" wasd-controls=""></a-camera>
-        </a-entity>
+            <a-entity position="4 0 4" rotation="0 0 0">
+                <a-camera position="0 0 0" near="0.1" camera="" rotation="" look-controls="" wasd-controls=""></a-camera>
+            </a-entity>
 
-        <a-entity position="6 -1 -40" scale="1 1 1" rotation="15 35 0">
-            <a-entity gltf-model="#station" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; elasticity:1000; dur: 500000; easing: linear;"></a-entity>
-        </a-entity>
+            <a-entity position="6 -1 -40" scale="1 1 1" rotation="15 35 0">
+                <a-entity gltf-model="#station" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; elasticity:1000; dur: 500000; easing: linear;"></a-entity>
+            </a-entity>
 
-        <a-entity position="5 0 0" scale="0.03 0.03 0.03" rotation="0 0 0">
-            <a-entity gltf-model="#shuttle" animation="property: rotation; from: 0 0 -45; to: 0 0 15; loop: true; dir: alternate; easing: linear; dur: 25000"></a-entity>
-        </a-entity>
+            <a-entity position="5 0 0" scale="0.03 0.03 0.03" rotation="0 0 0">
+                <a-entity gltf-model="#shuttle" animation="property: rotation; from: 0 0 -45; to: 0 0 15; loop: true; dir: alternate; easing: linear; dur: 25000"></a-entity>
+            </a-entity>
 
-        <a-entity position="2.5 0 -1" scale="0.4 0.4 0.4" rotation="0 180 0">
-            <a-entity gltf-model="#runabout" animation="property: rotation; from: 0 0 -45; to: 0 0 15; loop: true; dir: alternate; easing: linear; dur: 25000"></a-entity>
-        </a-entity>
+            <a-entity position="2.5 0 -1" scale="0.4 0.4 0.4" rotation="0 180 0">
+                <a-entity gltf-model="#runabout" animation="property: rotation; from: 0 0 -45; to: 0 0 15; loop: true; dir: alternate; easing: linear; dur: 25000"></a-entity>
+            </a-entity>
 
 
-        <a-entity position="4 0 -2" scale="1 1 1" rotation="0 0 0">
-            <a-entity gltf-model="#ship" animation="property: rotation; from: 0 0 -5; to: 0 0 5; loop: true; dir: alternate; easing: linear; dur: 25000"></a-entity>
-        </a-entity>
+            <a-entity position="4 0 -2" scale="1 1 1" rotation="0 0 0">
+                <a-entity gltf-model="#ship" animation="property: rotation; from: 0 0 -5; to: 0 0 5; loop: true; dir: alternate; easing: linear; dur: 25000"></a-entity>
+            </a-entity>
 
-        <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 4" rotation="45 0 0"></a-entity>
-        <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 -4" rotation="-45 0 0"></a-entity>
-        <a-entity light="type: ambient; color: #ccf; intensity: 1"></a-entity>
+            <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 4" rotation="45 0 0"></a-entity>
+            <a-entity light="type: directional; color: #ccc; intensity: 0.4" position="0 1 -4" rotation="-45 0 0"></a-entity>
+            <a-entity light="type: ambient; color: #ccf; intensity: 1"></a-entity>
 
-        <a-sky src="#sky" color="#888" material="" geometry="" scale=""></a-sky>
-    </a-scene>
-  </body>
+            <a-sky src="#sky" color="#888" material="" geometry="" scale=""></a-sky>
+        </a-scene>
+        <!-- linthtml-enable attr-name-style, attr-bans -->
+    </body>
 </html>
