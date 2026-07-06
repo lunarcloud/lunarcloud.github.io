@@ -6,8 +6,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "thursday"
+      interval: "monthly"
     open-pull-requests-limit: 10
     # Ignore major version updates for ESLint and related plugins to prevent breaking changes
     # ESLint config standard is tied to ESLint v8.x, so we can't upgrade to ESLint v9+ yet
@@ -25,8 +24,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "monthly"
     open-pull-requests-limit: 10
     groups:
       github-actions-dependencies:
