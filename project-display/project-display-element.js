@@ -85,23 +85,34 @@ export class ProjectDisplayElement extends HTMLElement {
 
     // Set Links
     /** @type {HTMLElement} */ const linksEl = clone.querySelector('.links')
-    if (this.hasAttribute('link-main')) {
-      // @ts-ignore
-      linksEl.querySelector('.main a').href = this.getAttribute('link-main')
-      linksEl.querySelector('.main').classList.remove('hidden')
-      linksEl.classList.remove('hidden')
-    }
-    if (this.hasAttribute('link-repo')) {
-      // @ts-ignore
-      linksEl.querySelector('.repo a').href = this.getAttribute('link-repo')
-      linksEl.querySelector('.repo').classList.remove('hidden')
-      linksEl.classList.remove('hidden')
-    }
-    if (this.hasAttribute('link-announcement')) {
-      // @ts-ignore
-      linksEl.querySelector('.announcement a').href = this.getAttribute('link-announcement')
-      linksEl.querySelector('.announcement').classList.remove('hidden')
-      linksEl.classList.remove('hidden')
+
+    // For each possible type of link button...
+    const linkTypes = ['main', 'repo', 'announcement', 'other']
+    for (var name of linkTypes) {
+        // If we don't list this type of link, skip
+        if (!this.hasAttribute(`link-${name}`))
+            continue
+
+        // Find the list element (or skip)
+        let listEl = linksEl.querySelector(`.${name}`)
+        if (listEl instanceof HTMLElement === false)
+            continue;
+
+        // Find the anchor element (or skip)
+        let anchorEl = listEl.querySelector('a')
+        if (anchorEl instanceof HTMLAnchorElement === false)
+            continue
+
+        // set the anchor to the correct URL
+        anchorEl.href = this.getAttribute(`link-${name}`) ?? ''
+
+        // un-hide
+        listEl.classList.remove('hidden')
+        linksEl.classList.remove('hidden')
+
+        if (this.hasAttribute(`link-${name}-text`)) {
+            anchorEl.text = this.getAttribute(`link-${name}-text`) ?? ''
+        }
     }
 
     // Set Dates
@@ -161,6 +172,16 @@ export class ProjectDisplayElement extends HTMLElement {
   }
 
   /**
+   * Return the newer of two dates
+   * @param {string} value             one of the values
+   * @param {string} other             the other value
+   * @returns {string}  the later value
+   */
+  static #maxDate(value, other, returnMinimum = true) {
+    return [value, other].sort()[1];
+  }
+
+  /**
    * Compare two project-displays by provided dates.
    * @param {ProjectDisplayElement} projectA  a project-display.
    * @param {ProjectDisplayElement} projectB  another project-display.
@@ -170,19 +191,27 @@ export class ProjectDisplayElement extends HTMLElement {
     // Check if they're both ongoing
     const ongoingA = projectA.hasAttribute('first') && !projectA.hasAttribute('last')
     const ongoingB = projectB.hasAttribute('first') && !projectB.hasAttribute('last')
-    if (ongoingA && !ongoingB) { return 1 }
-    if (!ongoingA && ongoingB) { return -1 }
 
-    const firstA = projectA.attributes['first']?.value ?? ''
-    const firstB = projectB.attributes['first']?.value ?? ''
+    if (ongoingA && !ongoingB)
+         return 1
 
-    if (ongoingA && ongoingB) { return firstA.localeCompare(firstB) }
+    if (!ongoingA && ongoingB)
+        return -1
 
-    const releasedA = projectA.attributes['released']?.value ?? ''
-    const minA = [releasedA, firstA].sort()[0]
+    const firstA = projectA.getAttribute('first') ?? ''
+    const firstB = projectB.getAttribute('first') ?? ''
 
-    const releasedB = projectB.attributes['released']?.value ?? ''
-    const minB = [releasedB, firstB].sort()[0]
+    if (ongoingA && ongoingB)
+        return firstA.localeCompare(firstB)
+
+    const lastA = projectA.getAttribute('last') ?? ''
+    const lastB = projectB.getAttribute('last') ?? ''
+
+    const releasedA = projectA.getAttribute('released') ?? ''
+    const releasedB = projectB.getAttribute('released') ?? ''
+
+    const minA = ProjectDisplayElement.#maxDate(releasedA, lastA)
+    const minB = ProjectDisplayElement.#maxDate(releasedB, lastB)
 
     return minA.localeCompare(minB)
   }

@@ -40,6 +40,11 @@ main, footer {
     }
 }
 
+#showcase-buttons {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
 hero {
     display: block;
     margin: 0;
