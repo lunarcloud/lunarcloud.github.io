@@ -5,9 +5,6 @@ import { FadeOutAnchorElement } from '../page-fade/page-fade.js'
 /** @type {HTMLElement} */
 const allProjectsEl = document.getElementById('all-projects')
 
-// Ignore if there's nothing after the ?
-if (location.href.endsWith('?')) { location.href = location.href.split('?')[0] }
-
 /**
  * Apply filters from the URL params
  * @type {Array<string>}
@@ -74,7 +71,14 @@ function updateFilter (tagName, active) {
   } else {
     search.set('filter', pageFilters.join(','))
   }
-  location.search = search.toString().replaceAll('%2C', ',')
+
+  if (search.size === 0) {
+    // Remove search and '?' character
+    location.href = location.href.split('?')[0]
+  } else {
+    // Use the new filters list
+    location.search = search.toString().replaceAll('%2C', ',')
+  }
 }
 
 /**
@@ -83,7 +87,14 @@ function updateFilter (tagName, active) {
 function clearFilters () {
   const search = new URLSearchParams(location.search)
   search.delete('filter')
-  filterClearBtnA.href = `?${search}`
+
+  if (search.size === 0) {
+    // Remove search and '?' character
+    filterClearBtnA.href = location.href.split('?')[0]
+  } else {
+    // Use the search without the filter
+    filterClearBtnA.href = `?${search}`
+  }
   filterClearBtnA.click()
 }
 
