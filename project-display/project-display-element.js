@@ -88,31 +88,28 @@ export class ProjectDisplayElement extends HTMLElement {
 
     // For each possible type of link button...
     const linkTypes = ['main', 'repo', 'announcement', 'other']
-    for (var name of linkTypes) {
-        // If we don't list this type of link, skip
-        if (!this.hasAttribute(`link-${name}`))
-            continue
+    for (const name of linkTypes) {
+      // If we don't list this type of link, skip
+      if (!this.hasAttribute(`link-${name}`)) { continue }
 
-        // Find the list element (or skip)
-        let listEl = linksEl.querySelector(`.${name}`)
-        if (listEl instanceof HTMLElement === false)
-            continue;
+      // Find the list element (or skip)
+      const listEl = linksEl.querySelector(`.${name}`)
+      if (listEl instanceof HTMLElement === false) { continue }
 
-        // Find the anchor element (or skip)
-        let anchorEl = listEl.querySelector('a')
-        if (anchorEl instanceof HTMLAnchorElement === false)
-            continue
+      // Find the anchor element (or skip)
+      const anchorEl = listEl.querySelector('a')
+      if (anchorEl instanceof HTMLAnchorElement === false) { continue }
 
-        // set the anchor to the correct URL
-        anchorEl.href = this.getAttribute(`link-${name}`) ?? ''
+      // set the anchor to the correct URL
+      anchorEl.href = this.getAttribute(`link-${name}`) ?? ''
 
-        // un-hide
-        listEl.classList.remove('hidden')
-        linksEl.classList.remove('hidden')
+      // un-hide
+      listEl.classList.remove('hidden')
+      linksEl.classList.remove('hidden')
 
-        if (this.hasAttribute(`link-${name}-text`)) {
-            anchorEl.text = this.getAttribute(`link-${name}-text`) ?? ''
-        }
+      if (this.hasAttribute(`link-${name}-text`)) {
+        anchorEl.text = this.getAttribute(`link-${name}-text`) ?? ''
+      }
     }
 
     // Set Dates
@@ -177,8 +174,8 @@ export class ProjectDisplayElement extends HTMLElement {
    * @param {string} other             the other value
    * @returns {string}  the later value
    */
-  static #maxDate(value, other, returnMinimum = true) {
-    return [value, other].sort()[1];
+  static #maxDate (value, other) {
+    return [value, other].sort()[1]
   }
 
   /**
@@ -192,17 +189,14 @@ export class ProjectDisplayElement extends HTMLElement {
     const ongoingA = projectA.hasAttribute('first') && !projectA.hasAttribute('last')
     const ongoingB = projectB.hasAttribute('first') && !projectB.hasAttribute('last')
 
-    if (ongoingA && !ongoingB)
-         return 1
+    if (ongoingA && !ongoingB) { return 1 }
 
-    if (!ongoingA && ongoingB)
-        return -1
+    if (!ongoingA && ongoingB) { return -1 }
 
     const firstA = projectA.getAttribute('first') ?? ''
     const firstB = projectB.getAttribute('first') ?? ''
 
-    if (ongoingA && ongoingB)
-        return firstA.localeCompare(firstB)
+    if (ongoingA && ongoingB) { return firstA.localeCompare(firstB) }
 
     const lastA = projectA.getAttribute('last') ?? ''
     const lastB = projectB.getAttribute('last') ?? ''

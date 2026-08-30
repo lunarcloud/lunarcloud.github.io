@@ -6,8 +6,7 @@ import { FadeOutAnchorElement } from '../page-fade/page-fade.js'
 const allProjectsEl = document.getElementById('all-projects')
 
 // Ignore if there's nothing after the ?
-if (location.href.endsWith('?'))
-    location.href = location.href.split('?')[0]
+if (location.href.endsWith('?')) { location.href = location.href.split('?')[0] }
 
 /**
  * Apply filters from the URL params
@@ -45,8 +44,7 @@ function initSortAndFilter () {
     const hasFilterTags = pageFilters.length === 0 || pageFilters.every(i => projEl.tags.includes(i))
     projEl.toggleAttribute('hidden', !hasFilterTags)
 
-    if (hasFilterTags)
-        shownProjects++
+    if (hasFilterTags) { shownProjects++ }
 
     projEl.addEventListener('projectfilterselected',
       // @ts-ignore

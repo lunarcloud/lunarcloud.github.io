@@ -31,6 +31,7 @@ neostandard
 packagejson
 stylelint
 ungap
+Krita
 
 # Companies, Products, Places, etc
 Sarette
@@ -89,6 +90,10 @@ spinlab
 vmsp
 Modiphius
 exocomp
+Sarell
+starships
+TTRPG
+
 
 # Words used as part of css ids / code
 marginx2
