@@ -30,6 +30,7 @@ lunarcloud
 neostandard
 packagejson
 stylelint
+svglint
 ungap
 Krita
 

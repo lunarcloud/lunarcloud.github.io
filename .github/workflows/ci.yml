@@ -43,6 +43,10 @@ jobs:
         if: ${{ ! cancelled() }}
         run: npm run csslint
 
+      - name: Lint SVGs
+        if: ${{ ! cancelled() }}
+        run: npm run svglint
+
       - name: Check Spelling
         if: ${{ ! cancelled() }}
         run: npm run spellcheck
