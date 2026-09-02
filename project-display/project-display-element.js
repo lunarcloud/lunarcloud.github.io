@@ -1,4 +1,3 @@
-import { FadeOutAnchorElement } from '../page-fade/page-fade.js'
 
 const pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',') ?? []
 
@@ -49,7 +48,7 @@ export class ProjectDisplayElement extends HTMLElement {
       const listItemEl = createElement('li')
       listItemEl.toggleAttribute('active', pageFilters.includes(tag))
 
-      /** @type {FadeOutAnchorElement} */
+      /** @type {HTMLAnchorElement} */
       const anchorEl = createElement('a', { is: 'fadeout-anchor' })
 
       anchorEl.textContent = tag

@@ -1,4 +1,3 @@
-import '../page-fade/page-fade.js'
 import '../nav-header/nav-header-element.js'
 import BgAudioManager from './bg-audio-page.js'
 import { DetectedOS, GameInput } from '../lib/gameinputjs/src/gameinput.js'
@@ -19,7 +18,7 @@ const gameInput = new GameInput({ debugStatements: true })
 
 /**
  * Elements that can receive focus.
- * @type {Array<Array>}
+ * @type {Array<Array<HTMLElement>>}
  */
 const focusableElements = []
 
@@ -278,6 +277,18 @@ window.addEventListener('focus', (e) => {
 window.addEventListener('blur', (e) => {
 // document.body.classList.add('backgrounded')
 }, { passive: true, capture: false })
+
+
+// Let the CSS know when to fade the page in
+document.addEventListener('readystatechange', (event) => {
+  if ('readyState' in event.target && event.target.readyState === 'complete') {
+    document.body.toggleAttribute('loaded', true)
+  }
+})
+
+if (document.readyState === 'complete') {
+  document.body.toggleAttribute('loaded', true)
+}
 
 // Wire up gamepad events
 gameInput

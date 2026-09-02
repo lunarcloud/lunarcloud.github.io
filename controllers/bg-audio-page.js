@@ -1,5 +1,3 @@
-import { FadeOutAnchorElement } from '../page-fade/page-fade.js'
-
 export default class BgAudioManager {
   /**
    * Whether the page audio is enabled.
@@ -107,7 +105,7 @@ export default class BgAudioManager {
       }
       if (onClick) {
         el.addEventListener('click', () => onClick('click', el, this.muted), {
-          once: el instanceof FadeOutAnchorElement,
+          once: el instanceof HTMLAnchorElement,
           passive: true
         })
       }

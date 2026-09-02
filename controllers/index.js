@@ -1,4 +1,3 @@
-import '../page-fade/page-fade.js'
 import '../nav-header/nav-header-element.js'
 
 /**

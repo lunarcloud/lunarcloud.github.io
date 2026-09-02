@@ -1,6 +1,5 @@
 import '../nav-header/nav-header-element.js'
 import { ProjectDisplayElement } from '../project-display/project-display-element.js'
-import { FadeOutAnchorElement } from '../page-fade/page-fade.js'
 
 /** @type {HTMLElement} */
 const allProjectsEl = document.getElementById('all-projects')
@@ -17,7 +16,7 @@ let projectEls = []
 /** @type {HTMLButtonElement} */
 let filterClearBtn
 
-/** @type {FadeOutAnchorElement} */
+/** @type {HTMLAnchorElement} */
 let filterClearBtnA
 
 /**
@@ -103,7 +102,7 @@ const filterClearEl = document.getElementById('filter-clear')
 if (filterClearEl instanceof HTMLButtonElement) { filterClearBtn = filterClearEl } else { throw new Error('Couldn\'t find filter clear button') }
 
 const filterClearAEl = document.getElementById('filter-clear-a')
-if (filterClearAEl instanceof FadeOutAnchorElement) { filterClearBtnA = filterClearAEl } else { throw new Error('Couldn\'t find filter clear button') }
+if (filterClearAEl instanceof HTMLAnchorElement) { filterClearBtnA = filterClearAEl } else { throw new Error('Couldn\'t find filter clear button') }
 
 if (pageFilters.length === 0) {
   filterClearBtn.toggleAttribute('disabled', true)
