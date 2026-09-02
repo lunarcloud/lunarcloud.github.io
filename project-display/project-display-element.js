@@ -1,4 +1,3 @@
-
 const pageFilters = new URLSearchParams(location.search)?.get('filter')?.split(',') ?? []
 
 const templateHTML = await (await fetch('./project-display/project-display.html')).text()

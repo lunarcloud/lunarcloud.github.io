@@ -278,7 +278,6 @@ window.addEventListener('blur', (e) => {
 // document.body.classList.add('backgrounded')
 }, { passive: true, capture: false })
 
-
 // Let the CSS know when to fade the page in
 document.addEventListener('readystatechange', (event) => {
   if ('readyState' in event.target && event.target.readyState === 'complete') {
