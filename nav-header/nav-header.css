@@ -46,6 +46,12 @@
         border-color: var(--main-color-nav-button-border);
         transition: filter 200ms ease-out;
 
+        & > img {
+            height: 16px;
+            vertical-align: middle;
+            margin-top: 4px;
+        }
+
         &:hover {
             cursor: pointer;
             filter: brightness(0.75);

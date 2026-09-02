@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184 184">
+<defs>
+    <style>
+      svg {
+        color: #222;
+        color-scheme:light dark;
+      }
+      @media (prefers-color-scheme:dark) {
+        svg {
+          color: #ddd;
+        }
+      }
+    </style>
+  </defs>
+<path fill="currentColor" d="M184 50L184 134L92 134L92 184L0 92L92 0L92 50Z"/>
+</svg>
