@@ -82,31 +82,35 @@ body {
             & ul {
                 list-style: none;
                 width: 200%;
-                height: 80%;
+                height: 85%;
                 overflow: visible;
                 display: grid;
-                padding-left: 25%;
-                grid-template-rows: repeat(4, 1fr);
+                padding-left: 20%;
+                grid-template-rows: repeat(5, 1fr);
 
                 & li {
-                    --padding-left-li: 6%;
+                    --padding-left-li: 7%;
 
-                    padding-left: 2% 2% 2% var(--padding-left-li);
+                    padding-left: var(--padding-left-li);
                     text-align: center;
                     height: 90%;
                     display: grid;
                     align-items: center;
 
                     &:nth-of-type(2) {
-                        padding-left: calc(var(--padding-left-li) * 2);
+                        padding-left: calc(var(--padding-left-li) * 1.75);
                     }
 
                     &:nth-of-type(3) {
-                        padding-left: calc(var(--padding-left-li) * 3);
+                        padding-left: calc(var(--padding-left-li) * 2.25);
                     }
 
                     &:nth-of-type(4) {
-                        padding-left: calc(var(--padding-left-li) * 5);
+                        padding-left: calc(var(--padding-left-li) * 3);
+                    }
+
+                    &:nth-of-type(5) {
+                        padding-left: calc(var(--padding-left-li) * 4);
                     }
 
 
@@ -187,9 +191,12 @@ body {
 
             & img {
                 width: 100%;
-                transition-property: filter, rotate, width, margin;
-                transition-duration: 300ms;
-                transition-timing-function: ease-in-out;
+
+                @media (prefers-reduced-motion: no-preference) {
+                    transition-property: filter, rotate, width, margin, transform;
+                    transition-duration: 300ms;
+                    transition-timing-function: ease-in-out;
+                }
 
                 &.fire {
                     filter: sepia(0.5) hue-rotate(-30deg) saturate(1.5);
@@ -214,11 +221,29 @@ body {
                     margin-top: 20%;
                 }
 
-                &.focus-in {
+                &.fire-focus {
                     filter: sepia(0.5) saturate(10) hue-rotate(30deg);
                     rotate: 15deg;
                     width: 200%;
                     margin-top: -100%;
+                    margin-left: -25%;
+                }
+
+                &.focus-in {
+                    filter: none;
+                    rotate: 0deg;
+                    width: 250%;
+                    margin-top: -120%;
+                    margin-left: 0%;
+                }
+
+                &.upside-down {
+                    filter: none;
+                    transform: rotate3d(90, 0, 0, 180deg);
+                    rotate: 0deg;
+                    width: 100%;
+                    margin-top: 50%;
+                    margin-left: 0%;
                 }
             }
         }

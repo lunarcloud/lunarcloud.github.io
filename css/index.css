@@ -18,7 +18,7 @@
         --further-explore-header-active: hsl(240deg 30% 65%);
         --further-explore-headerimg-hover: invert(1);
         --hover-alt-page-filter: brightness(1.25);
-        --hover-highlighted-section-filter: brightness(2);
+        --hover-highlighted-section-filter: brightness(1.5);
     }
 }
 
@@ -42,7 +42,39 @@ main, footer {
 
 #showcase-buttons {
     margin-top: 2em;
-    margin-bottom: 2em;
+
+    & a {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        aspect-ratio: calc(16 / 9);
+
+        & .lower-image {
+            height: 100%;
+            margin-bottom: 1em;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-y: 0%;
+            transition: background-position-y 1s ease-out;
+        }
+
+        &:hover {
+            & .lower-image {
+                @media (prefers-reduced-motion: no-preference) {
+                    transition: background-position-y 20s ease-out;
+                    background-position-y: 60%;
+                }
+            }
+        }
+    }
+}
+
+#about-copy {
+    margin-top: 3em;
+
+    & h2 {
+        margin-top: -1em;
+    }
 }
 
 hero {
@@ -119,7 +151,7 @@ main {
 
     & h2, & h3, & h4 {
         margin-bottom: 1mm;
-        margin-top: 0.5em;
+        margin-top: 1em;
 
         & symbol,
         img.icon {
@@ -202,7 +234,7 @@ main {
         border-radius: 8px;
         transition: filter 300ms ease-out;
 
-        &:hover{
+        &:hover {
             filter: var(--hover-highlighted-section-filter);
         }
 
@@ -272,10 +304,16 @@ main {
             position: relative;
             overflow: hidden;
             border: 4px solid var(--block-shadow);
-            transition: border-bottom-width 300ms ease, margin-top 300ms ease, background-size 500ms ease, filter 300ms ease-out;
+
+            @media (prefers-reduced-motion: no-preference) {
+                transition: border-bottom-width 300ms ease, margin-top 300ms ease, background-size 500ms ease, filter 300ms ease-out;
+
+                &:hover {
+                    background-size: 110%;
+                }
+            }
 
             &:hover {
-                background-size: 110%;
                 filter: var(--hover-alt-page-filter);
             }
 
@@ -336,17 +374,31 @@ main {
 
         & li {
             border: none;
+            margin-inline: 0.75em;
+            height: fit-content;
 
             @media (width < 640px) {
                 height: fit-content;
             }
 
             & a:any-link {
-                color: inherit;
+                text-align: center;
+                color: var(--main-color-text);
+
+                & p {
+                    margin-top: 1em;
+                }
+
+                &:hover {
+                    color: var(--main-a-hover-color);
+                }
 
                 & svg {
+                    display: block;
+                    margin: 0 auto;
                     height: 8em;
                     min-height: 100%;
+                    max-width: 100%;
                     aspect-ratio: calc(4 / 3);
                     color: var(--main-color-text);
 

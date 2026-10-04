@@ -19,6 +19,11 @@ indexeddb
 aframe
 a-frame
 agentic
+sodipodi
+nodetypes
+czczc
+csczc
+czzccczcc
 
 # Dependencies & Tools
 csslint
