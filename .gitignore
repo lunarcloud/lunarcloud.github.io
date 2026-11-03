@@ -135,3 +135,4 @@ img/projects/kmc-vr-lab-me.jpg
 lib/
 js/lib/
 dist
+lib/*

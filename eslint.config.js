@@ -18,6 +18,11 @@ import { jsdoc } from 'eslint-plugin-jsdoc'
  */
 
 const config = [
+  // Global ignores applied to every config object below (e.g. jsdoc)
+  {
+    ignores: resolveIgnoresFromGitignore()
+  },
+
   // Base neostandard configuration for browser environment
   ...neostandard({
     env: ['browser'],
