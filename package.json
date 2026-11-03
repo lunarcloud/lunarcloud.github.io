@@ -41,7 +41,7 @@
         "@google/model-viewer": "^4.4.0",
         "@ungap/custom-elements": "^1.3.0",
         "aframe": "^1.8.0",
-        "gameinputjs": "^13.3.1"
+        "gameinputjs": "^13.3.2"
     },
     "version-constraints": {
         "notes": "Check 'npm outdated' regularly. Use 'npm audit' with caution - many vulnerabilities are in dev dependencies and don't affect production. See https://overreacted.io/npm-audit-broken-by-design/"
