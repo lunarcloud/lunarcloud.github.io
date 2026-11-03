@@ -291,55 +291,58 @@ if (document.readyState === 'complete') {
 }
 
 // Wire up gamepad events
-gameInput
-  .onReinitialize(() => {
-    // TODO show player symbols
-    console.debug('Players updated')
-    for (let i = 0; i < 4; i++) {
-      const player = gameInput.getPlayer(i)
+// onReinitialize, onButtonDown, and onButtonUp each return an unsubscribe
+// function (not the GameInput instance), so they are not chainable.
+gameInput.onReinitialize(() => {
+  // TODO show player symbols
+  console.debug('Players updated')
+  for (let i = 0; i < 4; i++) {
+    const player = gameInput.getPlayer(i)
 
-      // Play rumble pattern
-      player.rumble({ duration: 200, weakMagnitude: 1.0, strongMagnitude: 0.25 })
-      setTimeout(() => player.rumble({ duration: 400, weakMagnitude: 0.25, strongMagnitude: 1.0 }), 300)
-      setTimeout(() => player.rumble({ duration: 200, weakMagnitude: 0.25, strongMagnitude: 0.25 }), 800)
-    }
-    const firstPlayer = gameInput.getPlayer(0)
-    const gamepadImgEl = document.querySelector('img.gamepad')
-    if (gamepadImgEl instanceof HTMLImageElement) { gamepadImgEl.src = `lib/gameinputjs/img/${firstPlayer?.model?.iconName || 'generic'}.png` }
+    // Play rumble pattern
+    player.rumble({ duration: 200, weakMagnitude: 1.0, strongMagnitude: 0.25 })
+    setTimeout(() => player.rumble({ duration: 400, weakMagnitude: 0.25, strongMagnitude: 1.0 }), 300)
+    setTimeout(() => player.rumble({ duration: 200, weakMagnitude: 0.25, strongMagnitude: 0.25 }), 800)
+  }
+  const firstPlayer = gameInput.getPlayer(0)
+  const gamepadImgEl = document.querySelector('img.gamepad')
+  if (gamepadImgEl instanceof HTMLImageElement) { gamepadImgEl.src = `lib/gameinputjs/img/${firstPlayer?.model?.iconName || 'generic'}.png` }
 
-    const gamepadInstructionsEl = document.querySelector('.hasGamepad')
-    if (firstPlayer?.model) {
-      gamepadInstructionsEl.removeAttribute('hidden')
-      if (firstPlayer?.schema) {
-        firstPlayer?.model.mapping.face.ordinal(0)
-        gamepadInstructionsEl.querySelector('.button0-name').textContent = firstPlayer?.schema.ordinal(0)
-        gamepadInstructionsEl.querySelector('.menu-name').textContent = firstPlayer?.schema.center.menu
-      }
-    } else {
-      gamepadInstructionsEl.setAttribute('hidden', 'hidden')
+  const gamepadInstructionsEl = document.querySelector('.hasGamepad')
+  if (firstPlayer?.model) {
+    gamepadInstructionsEl.removeAttribute('hidden')
+    if (firstPlayer?.schema) {
+      firstPlayer?.model.mapping.face.ordinal(0)
+      gamepadInstructionsEl.querySelector('.button0-name').textContent = firstPlayer?.schema.ordinal(0)
+      gamepadInstructionsEl.querySelector('.menu-name').textContent = firstPlayer?.schema.center.menu
     }
-  })
-  .onButtonDown((_index, sectionName /* @type {import('./gameinput-schema.js').GameInputSchemaSectionName} */, buttonName) => {
-    // const player = gameInput.getPlayer(index)
-    // console.debug(`Player ${index} pushed ${player.getButtonText(button)} (${button})`)
+  } else {
+    gamepadInstructionsEl.setAttribute('hidden', 'hidden')
+  }
+})
 
-    if (['leftStick', 'dpad'].includes(sectionName)) {
-      navigate(buttonName)
-    }
-  })
-  .onButtonUp((index, sectionName, buttonName) => {
-    const player = gameInput.getPlayer(index)
-    // console.debug(`Player ${index} released ${player.getButtonText(button)} (${button})`)
+gameInput.onButtonDown((_index, sectionName /* @type {import('./gameinput-schema.js').GameInputSchemaSectionName} */, buttonName) => {
+  // const player = gameInput.getPlayer(index)
+  // console.debug(`Player ${index} pushed ${player.getButtonText(button)} (${button})`)
 
-    if (sectionName === 'center' && buttonName === 'menu') {
-      activateMenu()
-      return
-    } else if (sectionName === 'face' && buttonName === player.schema.ordinalButton(1)) {
-      cancel()
-      return
-    }
+  if (['leftStick', 'dpad'].includes(sectionName)) {
+    navigate(buttonName)
+  }
+})
 
-    if (sectionName === 'face' && buttonName === player.schema.ordinalButton(0)) {
-      accept(true)
-    }
-  })
+gameInput.onButtonUp((index, sectionName, buttonName) => {
+  const player = gameInput.getPlayer(index)
+  // console.debug(`Player ${index} released ${player.getButtonText(button)} (${button})`)
+
+  if (sectionName === 'center' && buttonName === 'menu') {
+    activateMenu()
+    return
+  } else if (sectionName === 'face' && buttonName === player.schema.ordinalButton(1)) {
+    cancel()
+    return
+  }
+
+  if (sectionName === 'face' && buttonName === player.schema.ordinalButton(0)) {
+    accept(true)
+  }
+})
